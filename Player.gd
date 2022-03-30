@@ -49,26 +49,15 @@ func process_input(delta):
 		process_head_input(delta)
 	else:
 		process_topdown_input(delta)
-	# ----------------------------------
+	# -----------------------------
 	# Jumping
-	# ----------------------------------
+	# -----------------------------
 	if is_on_floor():
 		if Input.is_action_just_pressed("movement_jump"):
 			vel.y = JUMP_SPEED	
-	
-	if Input.is_action_just_pressed("change_camera"):
-		if is_head_view:
-			is_head_view = false
-			var head_pivot_rot = head_pivot.rotation_degrees
-			head_pivot_rot.x = 0
-			head_pivot.rotation_degrees = head_pivot_rot
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			topdown_camera.make_current()
-		else:
-			is_head_view = true
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			head_camera.make_current()
-		# Capturing/Freeing the cursor
+	# -----------------------------
+	# Capturing/Freeing the cursor
+	# -----------------------------
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -102,9 +91,19 @@ func process_head_input(delta):
 	dir += cam_front * topdown_movement.y
 	dir += cam_right * topdown_movement.x
 	dir = dir.normalized()
+	# -----------------------------
+	# Changing camera view
+	# -----------------------------
+	if Input.is_action_just_pressed("change_camera"):
+		is_head_view = false
+		var head_pivot_rot = head_pivot.rotation_degrees
+		head_pivot_rot.x = 0
+		head_pivot.rotation_degrees = head_pivot_rot
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		topdown_camera.make_current()
 
+# Process input if current view is on topdown camera.
 func process_topdown_input(delta):
-
 	# -----------------------------
 	# Walking
 	# -----------------------------
@@ -128,7 +127,7 @@ func process_topdown_input(delta):
 	dir += cam_up * topdown_movement.y
 	dir += cam_right * topdown_movement.x
 	dir = dir.normalized()
-	# Save pivot transformation
+	# Save pivot transformation.
 	var pivot_transf = topdown_pivot.get_global_transform()
 	# Rotate player towards mouse position if clicked. Otherwise, rotate
 	# towards movement direction (camera is rotated in 180).
@@ -139,7 +138,7 @@ func process_topdown_input(delta):
 		self.look_at(self.translation + mouse_dir, Vector3(0, 1, 0))
 	elif dir != Vector3():
 		self.look_at(self.translation + (dir * -1) , Vector3(0, 1, 0))
-	# Reset pivot transformation
+	# Reset pivot transformation.
 	topdown_pivot.set_global_transform(pivot_transf)
 	# -----------------------------
 	# Rotating topdown camera
@@ -152,6 +151,13 @@ func process_topdown_input(delta):
 	# Zoom camera
 	# -----------------------------
 	
+	# -----------------------------
+	# Changing camera view
+	# -----------------------------
+	if Input.is_action_just_pressed("change_camera"):
+		is_head_view = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		head_camera.make_current()
 	
 func process_movement(delta):
 	var hvel = vel
