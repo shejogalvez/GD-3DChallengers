@@ -17,7 +17,7 @@ var dir = Vector3()
 
 var vel = Vector3()
 
-const MAX_SPEED = 32
+const MAX_SPEED = 28
 
 const ACCEL = 4.5
 const DEACCEL= 16
