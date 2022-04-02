@@ -17,16 +17,20 @@ var dir = Vector3()
 
 var vel = Vector3()
 
-const MAX_SPEED = 35
+const MAX_SPEED = 28
 
 const ACCEL = 4.5
-const DEACCEL= 16
+const DEACCEL= 20
 
 const JUMP_SPEED = 32
 
 const GRAVITY = -56
 
 const MAX_SLOPE_ANGLE = 40
+# Sprinting
+const MAX_SPRINT_SPEED = 42
+const SPRINT_ACCEL = 16
+var is_sprinting = false
 
 onready var gun = $Model/Gun
 
@@ -54,28 +58,22 @@ func process_input(delta):
 		process_head_input(delta)
 	else:
 		process_topdown_input(delta)
-	# ----------------------------------
+	# -----------------------------
 	# Jumping
-	# ----------------------------------
+	# -----------------------------
 	if is_on_floor():
 		if Input.is_action_just_pressed("movement_jump"):
-			vel.y = JUMP_SPEED	
-	
-	if Input.is_action_just_pressed("change_camera"):
-		if is_head_view:
-			is_head_view = false
-			var head_pivot_rot = head_pivot.rotation_degrees
-			head_pivot_rot.x = 0
-			head_pivot.rotation_degrees = head_pivot_rot
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			topdown_camera.make_current()
-			# reset gun rotation(?)
-			gun.rotation_degrees.x = 0
-		else:
-			is_head_view = true
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			head_camera.make_current()
-		# Capturing/Freeing the cursor
+			vel.y = JUMP_SPEED
+	# -----------------------------
+	# Sprinting
+	# -----------------------------
+	if Input.is_action_pressed("movement_sprint"):
+		is_sprinting = true
+	else:
+		is_sprinting = false
+	# -----------------------------
+	# Capturing/Freeing the cursor
+	# -----------------------------
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -118,10 +116,21 @@ func process_head_input(delta):
 	dir += cam_front * topdown_movement.y
 	dir += cam_right * topdown_movement.x
 	dir = dir.normalized()
-	
+	# -----------------------------
+	# Changing camera view
+	# -----------------------------
+	if Input.is_action_just_pressed("change_camera"):
+		is_head_view = false
+		var head_pivot_rot = head_pivot.rotation_degrees
+		head_pivot_rot.x = 0
+		head_pivot.rotation_degrees = head_pivot_rot
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		topdown_camera.make_current()
+		# reset gun rotation(?)
+		gun.rotation_degrees.x = 0
 
+# Process input if current view is on topdown camera.
 func process_topdown_input(delta):
-
 	# -----------------------------
 	# Walking
 	# -----------------------------
@@ -145,7 +154,7 @@ func process_topdown_input(delta):
 	dir += cam_up * topdown_movement.y
 	dir += cam_right * topdown_movement.x
 	dir = dir.normalized()
-	# Save pivot transformation
+	# Save pivot transformation.
 	var pivot_transf = topdown_pivot.get_global_transform()
 	# Rotate player towards mouse position if clicked. Otherwise, rotate
 	# towards movement direction (camera is rotated in 180).
@@ -157,7 +166,7 @@ func process_topdown_input(delta):
 		
 	elif dir != Vector3():
 		self.look_at(self.translation + (dir * -1) , Vector3(0, 1, 0))
-	# Reset pivot transformation
+	# Reset pivot transformation.
 	topdown_pivot.set_global_transform(pivot_transf)
 	# -----------------------------
 	# Rotating topdown camera
@@ -170,23 +179,51 @@ func process_topdown_input(delta):
 	# Zoom camera
 	# -----------------------------
 	
-	
+	# -----------------------------
+	# Changing camera view
+	# -----------------------------
+	if Input.is_action_just_pressed("change_camera"):
+		is_head_view = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		head_camera.make_current()
+		
+	 
 func process_movement(delta):
+	# Velocity in the horizontal plane XZ
 	var hvel = vel
 	hvel.y = 0
-
-	var target = dir * MAX_SPEED
-
+	# -----------------------------
+	# Horizontal velocity target 
+	# -----------------------------
+	var hvel_target = dir
+	if is_sprinting:
+		hvel_target *= MAX_SPRINT_SPEED
+	else:
+		hvel_target *= MAX_SPEED
+	# -----------------------------
+	# Accel magnitude
+	# -----------------------------
 	var accel
 	if dir.dot(hvel) > 0:
-		accel = ACCEL
+		# The two vectors points towards the same direction.
+		if is_sprinting:
+			accel = SPRINT_ACCEL # Biggest
+		else:
+			accel = ACCEL # Smallest
 	else:
-		accel = DEACCEL
-
-	hvel = hvel.linear_interpolate(target, accel * delta)
+		# One is 0 or has a component in the opposite direction of the other.
+		# The change of velocity needs to be fast, otherwise "efecto patin".
+		accel = DEACCEL # Big
+	# -----------------------------
+	# Velocity adjustment
+	# -----------------------------
+	# Change the horizontal velocity to a fraction (determined by accel) 
+	# between the current and the target.
+	hvel = hvel.linear_interpolate(hvel_target, accel * delta)
 	vel.x = hvel.x
 	vel.z = hvel.z
 	vel.y += delta * GRAVITY
+	# Move the player and change the velocity according to the collisions.
 	vel = move_and_slide(vel, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
 
 	
