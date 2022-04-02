@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://pistol.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.2
@@ -55,6 +56,7 @@ transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228
 
 [node name="CameraArrow" type="MeshInstance" parent="TopDownPivot"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -25.1438, 3.01992 )
+cast_shadow = 0
 mesh = SubResource( 5 )
 material/0 = null
 
@@ -68,7 +70,12 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.7,
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="PlayerArrow" type="MeshInstance" parent="Model"]
-transform = Transform( 1, 0, 0, 0, 2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 9, 5.15116 )
+[node name="Gun" type="Spatial" parent="Model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 5.151 )
+script = ExtResource( 2 )
+
+[node name="PlayerArrow" type="MeshInstance" parent="Model/Gun"]
+transform = Transform( 1, 0, 0, 0, 2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 0, 0 )
 mesh = SubResource( 3 )
+skeleton = NodePath("../..")
 material/0 = null

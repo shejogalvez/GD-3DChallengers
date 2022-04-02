@@ -28,6 +28,11 @@ const GRAVITY = -56
 
 const MAX_SLOPE_ANGLE = 40
 
+onready var gun = $Model/Gun
+
+# cooldown for each bullet to fire
+var bullet_cd = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	head_pivot = $HeadPivot
@@ -64,6 +69,8 @@ func process_input(delta):
 			head_pivot.rotation_degrees = head_pivot_rot
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			topdown_camera.make_current()
+			# reset gun rotation(?)
+			gun.rotation_degrees.x = 0
 		else:
 			is_head_view = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -74,6 +81,15 @@ func process_input(delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			
+	
+	if Input.is_action_pressed("shot_main"):
+		if bullet_cd <= 0:
+			gun.fire_weapon()
+			bullet_cd = 0.3
+	
+	bullet_cd -= delta
+	
 	
 # Process input if current view is on head camera.
 func process_head_input(delta):
@@ -102,6 +118,7 @@ func process_head_input(delta):
 	dir += cam_front * topdown_movement.y
 	dir += cam_right * topdown_movement.x
 	dir = dir.normalized()
+	
 
 func process_topdown_input(delta):
 
@@ -137,6 +154,7 @@ func process_topdown_input(delta):
 		var mouse_dir = Vector3(mouse_pos.x, 0, mouse_pos.y).normalized()
 		mouse_dir = pivot_transf.xform(mouse_dir) - pivot_transf.origin
 		self.look_at(self.translation + mouse_dir, Vector3(0, 1, 0))
+		
 	elif dir != Vector3():
 		self.look_at(self.translation + (dir * -1) , Vector3(0, 1, 0))
 	# Reset pivot transformation
@@ -185,3 +203,11 @@ func _input(event):
 		var head_pivot_rot = head_pivot.rotation_degrees
 		head_pivot_rot.x = clamp(head_pivot_rot.x, -72, 72)
 		head_pivot.rotation_degrees = head_pivot_rot
+		
+		# testinggggggggg
+		gun.rotate_y(deg2rad(cursor_position.y * MOUSE_SENSITIVITY))
+		gun.rotate_x(deg2rad(cursor_position.x * MOUSE_SENSITIVITY * -1))
+		var gun_rot = head_pivot.rotation_degrees
+		gun_rot.x = clamp(gun_rot.x, -72, 72)
+		gun.rotation_degrees = gun_rot
+		
