@@ -20,17 +20,16 @@ var vel = Vector3()
 const MAX_SPEED = 28
 
 const ACCEL = 4.5
-const DEACCEL= 16
+const DEACCEL= 20
 
 const JUMP_SPEED = 32
 
 const GRAVITY = -56
 
 const MAX_SLOPE_ANGLE = 40
-
 # Sprinting
-const MAX_SPRINT_SPEED = 54
-const SPRINT_ACCEL = 18
+const MAX_SPRINT_SPEED = 42
+const SPRINT_ACCEL = 16
 var is_sprinting = false
 
 # Called when the node enters the scene tree for the first time.
@@ -60,9 +59,9 @@ func process_input(delta):
 	if is_on_floor():
 		if Input.is_action_just_pressed("movement_jump"):
 			vel.y = JUMP_SPEED
-	# ----------------------------------
+	# -----------------------------
 	# Sprinting
-	# ----------------------------------
+	# -----------------------------
 	if Input.is_action_pressed("movement_sprint"):
 		is_sprinting = true
 	else:
@@ -96,7 +95,6 @@ func process_head_input(delta):
 	if Input.is_action_pressed("movement_right"):
 		topdown_movement.x += 1
 	if Input.is_action_pressed("movement_forward"):
-		print("W");
 		topdown_movement.y -= 1
 	if Input.is_action_pressed("movement_backward"):
 		topdown_movement.y += 1
