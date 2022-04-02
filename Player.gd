@@ -96,6 +96,7 @@ func process_head_input(delta):
 	if Input.is_action_pressed("movement_right"):
 		topdown_movement.x += 1
 	if Input.is_action_pressed("movement_forward"):
+		print("W");
 		topdown_movement.y -= 1
 	if Input.is_action_pressed("movement_backward"):
 		topdown_movement.y += 1
@@ -170,30 +171,43 @@ func process_topdown_input(delta):
 		is_head_view = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		head_camera.make_current()
-	
+	 
 func process_movement(delta):
+	# Velocity in the horizontal plane XZ
 	var hvel = vel
 	hvel.y = 0
-
-	var target = dir
+	# -----------------------------
+	# Horizontal velocity target 
+	# -----------------------------
+	var hvel_target = dir
 	if is_sprinting:
-		target *= MAX_SPRINT_SPEED
+		hvel_target *= MAX_SPRINT_SPEED
 	else:
-		target *= MAX_SPEED
-
+		hvel_target *= MAX_SPEED
+	# -----------------------------
+	# Accel magnitude
+	# -----------------------------
 	var accel
 	if dir.dot(hvel) > 0:
+		# The two vectors points towards the same direction.
 		if is_sprinting:
-			accel = SPRINT_ACCEL
+			accel = SPRINT_ACCEL # Biggest
 		else:
-			accel = ACCEL
+			accel = ACCEL # Smallest
 	else:
-		accel = DEACCEL
-
-	hvel = hvel.linear_interpolate(target, accel * delta)
+		# One is 0 or has a component in the opposite direction of the other.
+		# The change of velocity needs to be fast, otherwise "efecto patin".
+		accel = DEACCEL # Big
+	# -----------------------------
+	# Velocity adjustment
+	# -----------------------------
+	# Change the horizontal velocity to a fraction (determined by accel) 
+	# between the current and the target.
+	hvel = hvel.linear_interpolate(hvel_target, accel * delta)
 	vel.x = hvel.x
 	vel.z = hvel.z
 	vel.y += delta * GRAVITY
+	# Move the player and change the velocity according to the collisions.
 	vel = move_and_slide(vel, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
 
 	
