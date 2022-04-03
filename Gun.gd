@@ -6,9 +6,6 @@ var is_weapon_enabled = false
 
 var bullet_scene = preload("Bullet_Scene.tscn")
 
-func _ready():
-	pass
-
 func fire_weapon():
 	var clone = bullet_scene.instance()
 	var scene_root = get_tree().root.get_children()[0]
