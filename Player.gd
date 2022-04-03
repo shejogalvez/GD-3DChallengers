@@ -4,6 +4,7 @@ var head_pivot: Spatial
 var head_camera : Camera
 var topdown_pivot : Spatial
 var topdown_camera : Camera
+var gun : Spatial
 # True if viewport is on head camera, false otherwise. 
 var is_head_view = true
 # The magnitude of grades per frame the topdown view will rotate if
@@ -32,15 +33,15 @@ const MAX_SPRINT_SPEED = 42
 const SPRINT_ACCEL = 16
 var is_sprinting = false
 
-onready var gun = $Model/Gun
 
-# cooldown for each bullet to fire
+# Cooldown for each bullet to fire
 var bullet_cd = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	head_pivot = $HeadPivot
 	head_camera = $HeadPivot/Camera
+	gun = $HeadPivot/Gun
 	topdown_pivot = $TopDownPivot
 	topdown_camera = $TopDownPivot/Camera
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -79,8 +80,9 @@ func process_input(delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			
-	
+	# -----------------------------
+	# Shoting
+	# -----------------------------
 	if Input.is_action_pressed("shot_main"):
 		if bullet_cd <= 0:
 			gun.fire_weapon()
@@ -126,8 +128,6 @@ func process_head_input(delta):
 		head_pivot.rotation_degrees = head_pivot_rot
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		topdown_camera.make_current()
-		# reset gun rotation(?)
-		gun.rotation_degrees.x = 0
 
 # Process input if current view is on topdown camera.
 func process_topdown_input(delta):
@@ -240,11 +240,3 @@ func _input(event):
 		var head_pivot_rot = head_pivot.rotation_degrees
 		head_pivot_rot.x = clamp(head_pivot_rot.x, -72, 72)
 		head_pivot.rotation_degrees = head_pivot_rot
-		
-		# testinggggggggg
-		gun.rotate_y(deg2rad(cursor_position.y * MOUSE_SENSITIVITY))
-		gun.rotate_x(deg2rad(cursor_position.x * MOUSE_SENSITIVITY * -1))
-		var gun_rot = head_pivot.rotation_degrees
-		gun_rot.x = clamp(gun_rot.x, -72, 72)
-		gun.rotation_degrees = gun_rot
-		
