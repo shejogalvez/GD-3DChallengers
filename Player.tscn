@@ -42,7 +42,7 @@ __meta__ = {
 }
 
 [node name="Gun" type="Spatial" parent="HeadPivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.4, 5.151 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.4, 5.2 )
 script = ExtResource( 2 )
 
 [node name="PlayerArrow" type="MeshInstance" parent="HeadPivot/Gun"]

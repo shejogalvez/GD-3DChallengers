@@ -35,7 +35,8 @@ var is_sprinting = false
 
 
 # Cooldown for each bullet to fire
-var bullet_cd = 0
+const BULLET_CD = 0.3 
+var current_bullet_cd = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,6 +49,7 @@ func _ready():
 
 # Called each frame
 func _physics_process(delta):
+	current_bullet_cd -= delta
 	process_input(delta)
 	process_movement(delta)
 
@@ -84,11 +86,9 @@ func process_input(delta):
 	# Shoting
 	# -----------------------------
 	if Input.is_action_pressed("shot_main"):
-		if bullet_cd <= 0:
+		if current_bullet_cd <= 0:
 			gun.fire_weapon()
-			bullet_cd = 0.3
-	
-	bullet_cd -= delta
+			current_bullet_cd = BULLET_CD
 	
 	
 # Process input if current view is on head camera.
