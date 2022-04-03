@@ -13,7 +13,7 @@ func fire_weapon():
 
 	bullet_clone.global_transform = self.global_transform
 	bullet_clone.translate(Vector3.BACK * 5)
-	bullet_clone.scale = Vector3(10,10,10)
+	bullet_clone.scale = Vector3(4, 4, 4)
 	bullet_clone.BULLET_DAMAGE = DAMAGE
 
 
