@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 100, 1, 100 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.0313726, 0.0862745, 0.262745, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 5 )
+size = Vector3( 200, 2, 200 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 50, 20, 1 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.92549, 0.811765, 0.0901961, 1 )
+
+[sub_resource type="CubeMesh" id=8]
+material = SubResource( 7 )
+size = Vector3( 100, 40, 2 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.92549, 0.0901961, 0.0901961, 1 )
+
+[sub_resource type="CubeMesh" id=4]
+material = SubResource( 6 )
+size = Vector3( 100, 40, 2 )
+
+[node name="BattleRoom" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="Ground" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Wall" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21, 50 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Wall"]
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="Wall2" type="StaticBody" parent="."]
+transform = Transform( -0.10878, 0, -0.994066, 0, 1, 0, 0.994066, 0, -0.10878, 46.7091, 21, -27.2109 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall2"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Wall2"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.991236, -0.132101, 0, 0.132101, -0.991236, 0, 29.6824, 0.440796 )
+light_energy = 0.35

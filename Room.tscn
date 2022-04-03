@@ -28,6 +28,14 @@ size = Vector3( 120, 0.4, 120 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0458008, -0.0237484, -0.0102372 )
 
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.91047, 78.9103, 10.2859 )
+light_energy = 8.486
+spot_range = 133.054
+spot_attenuation = 1.56917
+spot_angle = 54.23
+spot_angle_attenuation = 0.732042
+
 [node name="Ground" type="StaticBody" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Ground"]
@@ -39,7 +47,7 @@ mesh = SubResource( 4 )
 material/0 = null
 
 [node name="Ground2" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 62 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0515747, 0, 55.664 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -76,16 +84,6 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="Ground4"]
 mesh = SubResource( 2 )
 material/0 = null
-
-[node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.91047, 101.873, 10.2859 )
-light_energy = 8.339
-light_indirect_energy = 7.165
-shadow_enabled = true
-spot_range = 114.29
-spot_attenuation = 0.999999
-spot_angle = 58.21
-spot_angle_attenuation = 1.8025
 
 [node name="Cube" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 8, 13 )
