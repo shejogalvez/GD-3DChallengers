@@ -26,6 +26,7 @@ size = Vector3( 120, 0.4, 120 )
 [node name="Room" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0458008, -0.0237484, -0.0102372 )
 
 [node name="Ground" type="StaticBody" parent="."]
 
@@ -33,6 +34,7 @@ size = Vector3( 120, 0.4, 120 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2431, -9.39993, 4.22632 )
 mesh = SubResource( 4 )
 material/0 = null
 
@@ -123,3 +125,5 @@ shape = SubResource( 6 )
 [node name="MeshInstance" type="MeshInstance" parent="BigCube"]
 mesh = SubResource( 7 )
 material/0 = null
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
