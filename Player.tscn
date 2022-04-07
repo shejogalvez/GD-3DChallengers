@@ -53,7 +53,6 @@ material/0 = null
 
 [node name="Camera" type="Camera" parent="HeadPivot"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-current = true
 
 [node name="TopDownPivot" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 56, 0 )
@@ -63,6 +62,7 @@ __meta__ = {
 
 [node name="Camera" type="Camera" parent="TopDownPivot"]
 transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, 0 )
+current = true
 
 [node name="CameraArrow" type="MeshInstance" parent="TopDownPivot"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -25.1438, 3.01992 )
