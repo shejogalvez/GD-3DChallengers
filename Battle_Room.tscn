@@ -132,7 +132,7 @@ mesh = SubResource( 4 )
 material/0 = null
 
 [node name="BadBox" type="RigidBody" parent="." groups=["enemies"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.67937, -24.2777 )
+transform = Transform( 0.850077, 0, 0.526659, 0, 1, 0, -0.526659, 0, 0.850077, -0.976504, 7.67937, -24.2777 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -145,8 +145,36 @@ shape = SubResource( 9 )
 mesh = SubResource( 10 )
 material/0 = null
 
+[node name="BadBox3" type="RigidBody" parent="." groups=["enemies"]]
+transform = Transform( 0.952295, 0, -0.30518, 0, 1, 0, 0.30518, 0, 0.952295, 5.41146, 7.67937, -26.2522 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="BadBox3"]
+shape = SubResource( 9 )
+
+[node name="MeshInstance" type="MeshInstance" parent="BadBox3"]
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="BadBox4" type="RigidBody" parent="." groups=["enemies"]]
+transform = Transform( 0.963462, 0, 0.267844, 0, 1, 0, -0.267844, 0, 0.963462, 2.25811, 13.5376, -25.6766 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="BadBox4"]
+shape = SubResource( 9 )
+
+[node name="MeshInstance" type="MeshInstance" parent="BadBox4"]
+mesh = SubResource( 10 )
+material/0 = null
+
 [node name="BadBox2" type="RigidBody" parent="." groups=["enemies"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0065, 31.4653, -20.6574 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.57, 31.4653, -19.8168 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
