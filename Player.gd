@@ -43,6 +43,9 @@ func _ready():
 	if is_head_view:
 		head_camera.make_current()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else: 
+		topdown_camera.make_current()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 # Called each frame
 func _physics_process(delta):
