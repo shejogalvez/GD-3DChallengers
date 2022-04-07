@@ -6,7 +6,7 @@ var topdown_pivot : Spatial
 var topdown_camera : Camera
 var gun : Spatial
 # True if viewport is on head camera, false otherwise. 
-var is_head_view = true
+var is_head_view = false
 # The magnitude of grades per frame the topdown view will rotate if
 # player presses the correspondent key.
 const TOPDOWN_ROTATION_SPEED = 2
@@ -23,9 +23,9 @@ const MAX_SPEED = 28
 const ACCEL = 4.5
 const DEACCEL= 20
 
-const JUMP_SPEED = 32
+const JUMP_SPEED = 36
 
-const GRAVITY = -56
+const GRAVITY = -80
 
 const MAX_SLOPE_ANGLE = 40
 # Sprinting
@@ -40,7 +40,9 @@ func _ready():
 	gun = $HeadPivot/Gun
 	topdown_pivot = $TopDownPivot
 	topdown_camera = $TopDownPivot/Camera
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if is_head_view:
+		head_camera.make_current()
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 # Called each frame
 func _physics_process(delta):
