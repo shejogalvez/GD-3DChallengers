@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Box.gd" type="Script" id=2]
+[ext_resource path="res://Bad_Box.gd" type="Script" id=2]
 [ext_resource path="res://Battle_Room.gd" type="Script" id=3]
 
 [sub_resource type="BoxShape" id=1]
@@ -118,31 +118,31 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 0.0107855, 0.999942, 0, -0.999942, 0.0107855, 0, 47.5753, 0.440796 )
 light_energy = 1.2
 
-[node name="Box" type="RigidBody" parent="."]
+[node name="BadBox" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.67937, -24.2777 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape" type="CollisionShape" parent="Box"]
+[node name="CollisionShape" type="CollisionShape" parent="BadBox"]
 shape = SubResource( 9 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Box"]
+[node name="MeshInstance" type="MeshInstance" parent="BadBox"]
 mesh = SubResource( 10 )
 material/0 = null
 
-[node name="Box2" type="RigidBody" parent="."]
+[node name="BadBox2" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0065, 31.4653, -20.6574 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape" type="CollisionShape" parent="Box2"]
+[node name="CollisionShape" type="CollisionShape" parent="BadBox2"]
 shape = SubResource( 9 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Box2"]
+[node name="MeshInstance" type="MeshInstance" parent="BadBox2"]
 mesh = SubResource( 10 )
 material/0 = null
 
