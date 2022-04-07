@@ -5,6 +5,7 @@ var head_camera : Camera
 var topdown_pivot : Spatial
 var topdown_camera : Camera
 var gun : Spatial
+var crosshair : TextureRect
 # True if viewport is on head camera, false otherwise. 
 var is_head_view = false
 # The magnitude of grades per frame the topdown view will rotate if
@@ -37,6 +38,7 @@ var is_sprinting = false
 func _ready():
 	head_pivot = $HeadPivot
 	head_camera = $HeadPivot/Camera
+	crosshair = $HeadPivot/Camera/Crossshair
 	gun = $HeadPivot/Gun
 	topdown_pivot = $TopDownPivot
 	topdown_camera = $TopDownPivot/Camera
@@ -46,6 +48,8 @@ func _ready():
 	else: 
 		topdown_camera.make_current()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	crosshair.visible = is_head_view #settea visibilidad inicial de crosshair
 
 # Called each frame
 func _physics_process(delta):
@@ -124,6 +128,7 @@ func process_head_input(delta):
 		head_pivot_rot.x = 0
 		head_pivot.rotation_degrees = head_pivot_rot
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		crosshair.visible = false
 		topdown_camera.make_current()
 
 # Process input if current view is on topdown camera.
@@ -183,6 +188,7 @@ func process_topdown_input(delta):
 		is_head_view = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		head_camera.make_current()
+		crosshair.visible = true
 		
 	 
 func process_movement(delta):
