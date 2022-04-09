@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/skeleton.obj-e8358f5e8d2de32fb698440395589993.mesh"
+
+[deps]
+
+files=[ "res://.import/skeleton.obj-e8358f5e8d2de32fb698440395589993.mesh" ]
+
+source_file="res://Assets/VoxelDungeonSet/Obj/skeleton.obj"
+dest_files=[ "res://.import/skeleton.obj-e8358f5e8d2de32fb698440395589993.mesh", "res://.import/skeleton.obj-e8358f5e8d2de32fb698440395589993.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
