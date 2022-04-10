@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/armchair.obj-31ec7b2f7a580812121074c91be23050.mesh"
+
+[deps]
+
+files=[ "res://.import/armchair.obj-31ec7b2f7a580812121074c91be23050.mesh" ]
+
+source_file="res://Assets/VoxelDungeonSet/Obj/armchair.obj"
+dest_files=[ "res://.import/armchair.obj-31ec7b2f7a580812121074c91be23050.mesh", "res://.import/armchair.obj-31ec7b2f7a580812121074c91be23050.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
