@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bad_Box.gd" type="Script" id=2]
 [ext_resource path="res://Battle_Room.gd" type="Script" id=3]
 [ext_resource path="res://mesh_library_1.meshlib" type="MeshLibrary" id=4]
 [ext_resource path="res://mesh_library.meshlib" type="MeshLibrary" id=5]
+[ext_resource path="res://normal_mob.tscn" type="PackedScene" id=6]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 100, 1, 100 )
@@ -72,7 +73,7 @@ transform = Transform( 9.50972e-08, -1, 7.07265e-08, -0.809017, -3.53633e-08, 0.
 shadow_enabled = true
 
 [node name="Ground" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.605793, 0.201729, 0.00396609 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.64019, 0.191414, 12.9398 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -231,6 +232,7 @@ __meta__ = {
 shape = SubResource( 14 )
 
 [node name="MeshInstance" type="MeshInstance" parent="BigBadBox3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00295639, -0.0747299, -0.00769615 )
 mesh = SubResource( 16 )
 material/0 = null
 
@@ -336,3 +338,12 @@ __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, -3, 0 )
 }
+
+[node name="Normal" parent="." instance=ExtResource( 6 )]
+transform = Transform( 2, 0, 0, 0, 5, 0, 0, 0, 2, -16.1818, 13.9715, -22.8643 )
+
+[node name="Normal2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 2, 0, 0, 0, 5, 0, 0, 0, 2, -21.1271, 8.67374, -26.4802 )
+
+[node name="Normal3" parent="." instance=ExtResource( 6 )]
+transform = Transform( 2, 0, 0, 0, 5, 0, 0, 0, 2, -28.3693, 13.8593, -22.0966 )

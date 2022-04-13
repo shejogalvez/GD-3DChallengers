@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://normal_mob.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 0.984261, 1 )
+
+[sub_resource type="NoiseTexture" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.266667, 0.0470588, 0.0470588, 1 )
+albedo_texture = SubResource( 3 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 4 )
+
+[node name="Normal" type="KinematicBody"]
+transform = Transform( 2, 0, 0, 0, 5, 0, 0, 0, 2, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00218296, 0.0110681, -0.0166736 )
+mesh = SubResource( 2 )
+material/0 = null

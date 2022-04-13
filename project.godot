@@ -14,6 +14,10 @@ config/name="3DChallengers"
 run/main_scene="res://Battle_Room.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+manager="*res://manager.gd"
+
 [input]
 
 movement_forward={
