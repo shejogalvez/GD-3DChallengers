@@ -55,6 +55,8 @@ func _ready():
 func _physics_process(delta):
 	process_input(delta)
 	process_movement(delta)
+	
+	manager.player_position = self.global_transform.origin
 
 # Will be where we store all the code relating to player input. We want
 # to call it first, before anything else, so we have fresh player input
