@@ -2,15 +2,18 @@ extends KinematicBody
 
 var head_pivot: Spatial
 var head_camera : Camera
+var weapon_pivot : Spatial
 var topdown_pivot : Spatial
 var topdown_camera : Camera
-var gun : Spatial
+var weapon : Weapon
 var crosshair : TextureRect
 # True if viewport is on head camera, false otherwise. 
 var is_head_view = false
 # The magnitude of grades per frame the topdown view will rotate if
 # player presses the correspondent key.
 const TOPDOWN_ROTATION_SPEED = 2
+# The max distance the topdown camera is going to zoom
+const TOPDOWN_MAX_ZOOM = 20
 # Mouse sensitivity
 var MOUSE_SENSITIVITY = 0.05
 # The unitary direction vector pointing towards the next frame position
@@ -36,10 +39,12 @@ var is_sprinting = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Player_Manager.set_player(self)
 	head_pivot = $HeadPivot
+	weapon_pivot = $HeadPivot/WeaponPivot
+	weapon = $HeadPivot/WeaponPivot/Weapon
 	head_camera = $HeadPivot/Camera
 	crosshair = $HeadPivot/Camera/Crossshair
-	gun = $HeadPivot/Gun
 	topdown_pivot = $TopDownPivot
 	topdown_camera = $TopDownPivot/Camera
 	if is_head_view:
@@ -55,8 +60,6 @@ func _ready():
 func _physics_process(delta):
 	process_input(delta)
 	process_movement(delta)
-	
-	manager.player_position = self.global_transform.origin
 
 # Will be where we store all the code relating to player input. We want
 # to call it first, before anything else, so we have fresh player input
@@ -70,7 +73,7 @@ func process_input(delta):
 	# Jumping
 	# -----------------------------
 	if is_on_floor():
-		if Input.is_action_just_pressed("movement_jump"):
+		if Input.is_action_pressed("movement_jump"):
 			vel.y = JUMP_SPEED
 	# -----------------------------
 	# Sprinting
@@ -91,7 +94,7 @@ func process_input(delta):
 	# Shoting
 	# -----------------------------
 	if Input.is_action_pressed("shot_main"):
-		gun.fire_weapon()
+		weapon.fire_weapon()
 	
 	
 # Process input if current view is on head camera.
@@ -182,7 +185,11 @@ func process_topdown_input(delta):
 	# -----------------------------
 	# Zoom camera
 	# -----------------------------
-	
+	var topdown_zoom_distance = topdown_camera.translation.y
+	if Input.is_action_just_released("td_zoom_in") and topdown_zoom_distance > -TOPDOWN_MAX_ZOOM:
+		topdown_camera.global_translate(Vector3.DOWN)
+	if Input.is_action_just_released("td_zoom_out") and topdown_zoom_distance < 0:
+		topdown_camera.global_translate(Vector3.UP)
 	# -----------------------------
 	# Changing camera view
 	# -----------------------------
@@ -231,8 +238,6 @@ func process_movement(delta):
 	# Move the player and change the velocity according to the collisions.
 	vel = move_and_slide(vel, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
 
-	
-
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		# Cursor position relative to last frame
@@ -245,3 +250,8 @@ func _input(event):
 		var head_pivot_rot = head_pivot.rotation_degrees
 		head_pivot_rot.x = clamp(head_pivot_rot.x, -72, 72)
 		head_pivot.rotation_degrees = head_pivot_rot
+
+func set_weapon(new_weapon):
+	weapon.queue_free()
+	weapon_pivot.add_child(new_weapon)
+	weapon = new_weapon

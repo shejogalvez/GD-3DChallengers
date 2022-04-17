@@ -8,7 +8,7 @@ var current_bullet_cd = 0
 
 var is_weapon_enabled = false
 
-var bullet_scene = preload("Bullet_Scene.tscn")
+var bullet_scene = preload("res://Scenes/Bullet_Scene.tscn")
 
 # Called each frame
 func _physics_process(delta):

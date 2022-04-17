@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://normal_mob.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Normal_Mob.gd" type="Script" id=1]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 0.984261, 1 )

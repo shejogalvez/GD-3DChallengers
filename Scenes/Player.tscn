@@ -1,26 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://Gun.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Crosshair.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Weapons/Weapon.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.2
 height = 9.0
-
-[sub_resource type="SpatialMaterial" id=7]
-albedo_color = Color( 0.0705882, 0.345098, 0.933333, 1 )
-
-[sub_resource type="PrismMesh" id=3]
-material = SubResource( 7 )
-size = Vector3( 1, 5, 1 )
-
-[sub_resource type="SpatialMaterial" id=6]
-albedo_color = Color( 0.776471, 0.0588235, 0.0588235, 1 )
-
-[sub_resource type="PrismMesh" id=5]
-material = SubResource( 6 )
-size = Vector3( 0.7, 3, 0.5 )
 
 [sub_resource type="CapsuleMesh" id=4]
 radius = 1.2
@@ -42,18 +28,17 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Gun" type="Spatial" parent="HeadPivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.4, 5.2 )
-script = ExtResource( 2 )
+[node name="WeaponPivot" type="Spatial" parent="HeadPivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2877, -1.37043, 1.95475 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="PlayerArrow" type="MeshInstance" parent="HeadPivot/Gun"]
-transform = Transform( 1, 0, 0, 0, 2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 0, 0 )
-mesh = SubResource( 3 )
-skeleton = NodePath("../../../Model")
-material/0 = null
+[node name="Weapon" parent="HeadPivot/WeaponPivot" instance=ExtResource( 4 )]
 
 [node name="Camera" type="Camera" parent="HeadPivot"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+fov = 95.1
 
 [node name="Crossshair" type="TextureRect" parent="HeadPivot/Camera"]
 anchor_left = 0.485
@@ -75,12 +60,7 @@ __meta__ = {
 [node name="Camera" type="Camera" parent="TopDownPivot"]
 transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, 0 )
 current = true
-
-[node name="CameraArrow" type="MeshInstance" parent="TopDownPivot"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -25.1438, 3.01992 )
-cast_shadow = 0
-mesh = SubResource( 5 )
-material/0 = null
+fov = 50.0
 
 [node name="Model" type="Spatial" parent="."]
 __meta__ = {
