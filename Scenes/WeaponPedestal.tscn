@@ -1,0 +1,157 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/WeaponPedestal.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Meshes/WeaponMesh.tres" type="PrismMesh" id=2]
+[ext_resource path="res://Assets/Audio/magic-equip.wav" type="AudioStream" id=3]
+
+[sub_resource type="CylinderMesh" id=1]
+top_radius = 3.0
+bottom_radius = 3.6
+height = 2.4
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.94902, 0.694118, 0.14902, 1 )
+
+[sub_resource type="CylinderShape" id=6]
+radius = 3.0
+height = 2.4
+
+[sub_resource type="CylinderShape" id=5]
+radius = 3.0
+height = 4.0
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapon/Model:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 3.55042, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Weapon/Model:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -17.789, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "rotation"
+length = 6.0
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapon/Model:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.35, 2.65, 3, 3.35, 5.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.05, 0 ), Vector3( 0, 0.85, 0 ), Vector3( 0, 0.9, 0 ), Vector3( 0, 0.85, 0 ), Vector3( 0, 0.05, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Weapon/Model:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 3, 4.5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 270, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[sub_resource type="CylinderShape" id=7]
+radius = 12.0
+height = 16.0
+
+[node name="WeaponPedestal" type="Spatial"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Pedestal" type="StaticBody" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Model" type="MeshInstance" parent="Pedestal"]
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Pedestal"]
+shape = SubResource( 6 )
+
+[node name="Weapon" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PickupArea" type="Area" parent="Weapon"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Weapon/PickupArea"]
+shape = SubResource( 5 )
+
+[node name="Model" type="MeshInstance" parent="Weapon"]
+transform = Transform( 1, 0, 0, 0, 0.952188, 0.305513, 0, -0.305513, 0.952188, 0, 3.55042, 0 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 4 )
+anims/rotation = SubResource( 3 )
+
+[node name="DetailsArea" type="Area" parent="Weapon"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Weapon/DetailsArea"]
+shape = SubResource( 7 )
+
+[node name="Details" type="Control" parent="Weapon"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Weapon/Details"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 410.0
+margin_bottom = 170.0
+
+[node name="Name" type="Label" parent="Weapon/Details/Panel"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 360.0
+margin_bottom = 34.0
+text = "Object Name"
+
+[node name="Description" type="Label" parent="Weapon/Details/Panel"]
+margin_left = 20.0
+margin_top = 50.0
+margin_right = 360.0
+margin_bottom = 120.0
+text = "Object description, this is an object description used to describe an object that can be picked by the player. Please, try to delete this text when starting the game."
+align = 3
+autowrap = true
+
+[node name="WeaponPedestalAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
