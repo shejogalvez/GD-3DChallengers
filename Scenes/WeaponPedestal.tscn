@@ -135,20 +135,44 @@ margin_bottom = 40.0
 margin_left = 30.0
 margin_top = 30.0
 margin_right = 410.0
-margin_bottom = 170.0
+margin_bottom = 215.0
 
 [node name="Name" type="Label" parent="Weapon/Details/Panel"]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 360.0
-margin_bottom = 34.0
 text = "Object Name"
+
+[node name="DamageLabel" type="Label" parent="Weapon/Details/Panel"]
+margin_left = 20.0
+margin_top = 60.0
+margin_right = 76.0
+text = "Damage:"
+
+[node name="Damage" type="Label" parent="Weapon/Details/Panel"]
+margin_left = 120.0
+margin_top = 60.0
+margin_right = 175.0
+text = "0"
+
+[node name="ShotsLabel" type="Label" parent="Weapon/Details/Panel"]
+margin_left = 205.0
+margin_top = 60.0
+margin_right = 244.0
+text = "Shots:"
+
+[node name="Shots" type="Label" parent="Weapon/Details/Panel"]
+margin_left = 305.0
+margin_top = 60.0
+margin_right = 360.0
+margin_bottom = 74.0
+text = "0"
 
 [node name="Description" type="Label" parent="Weapon/Details/Panel"]
 margin_left = 20.0
-margin_top = 50.0
+margin_top = 95.0
 margin_right = 360.0
-margin_bottom = 120.0
+margin_bottom = 165.0
 text = "Object description, this is an object description used to describe an object that can be picked by the player. Please, try to delete this text when starting the game."
 align = 3
 autowrap = true

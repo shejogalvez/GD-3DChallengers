@@ -29,7 +29,7 @@ __meta__ = {
 }
 
 [node name="WeaponPivot" type="Spatial" parent="HeadPivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2877, -1.37043, 1.95475 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25614, -1.472, 2.3681 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -38,7 +38,7 @@ __meta__ = {
 
 [node name="Camera" type="Camera" parent="HeadPivot"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-fov = 95.1
+far = 300.0
 
 [node name="Crossshair" type="TextureRect" parent="HeadPivot/Camera"]
 anchor_left = 0.485
