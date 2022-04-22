@@ -4,7 +4,7 @@ class_name Weapon, "res://Assets/Classes/weapon_icon.png"
 # Weapon name
 export(String) var weapon_name = "Weapon"
 # Weapon damage (is a factor for the player attack)
-export(float, 0, 99) var damage_factor = 0
+export(float, 0, 99) var damage_factor = 0.1
 # Cooldown for fire
 export(float, 0, 99) var fire_cd = 1.0
 # Current cooldown for the next shot

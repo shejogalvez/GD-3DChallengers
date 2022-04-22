@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody",
+"class": "BossTest",
+"language": "GDScript",
+"path": "res://enemies/Boss weas/boss_script.gd"
+}, {
 "base": "Spatial",
 "class": "Projectile",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/WeaponPedestal.gd"
 } ]
 _global_script_class_icons={
+"BossTest": "",
 "Projectile": "res://Assets/Classes/projectile_icon.png",
 "Weapon": "res://Assets/Classes/weapon_icon.png",
 "WeaponPedestal": "res://Assets/Classes/weapon_pedestal_icon.png"
