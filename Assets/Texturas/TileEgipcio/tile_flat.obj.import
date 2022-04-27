@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/tile_flat.obj-38854148388c02e4eab12df0c21a4cc0.mesh"
+
+[deps]
+
+files=[ "res://.import/tile_flat.obj-38854148388c02e4eab12df0c21a4cc0.mesh" ]
+
+source_file="res://Assets/Texturas/TileEgipcio/tile_flat.obj"
+dest_files=[ "res://.import/tile_flat.obj-38854148388c02e4eab12df0c21a4cc0.mesh", "res://.import/tile_flat.obj-38854148388c02e4eab12df0c21a4cc0.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
