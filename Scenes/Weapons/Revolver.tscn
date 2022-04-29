@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Weapons/Weapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Weapons/Revolver.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Meshes/Revolver/Revolver.mesh" type="ArrayMesh" id=3]
+
+[node name="Revolver" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.7 )
+script = ExtResource( 2 )
+weapon_name = "Revolver"
+weapon_description = "This revolver belonged to the famous cowboy Dirty Jack. People says Jack was able to win more than one hundred duels with it."
+damage_factor = 1.8
+fire_cd = 1.5
+
+[node name="Barrel" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 1.75 )
+
+[node name="Model" parent="." index="1"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+mesh = ExtResource( 3 )
+material/1 = null
+material/2 = null
