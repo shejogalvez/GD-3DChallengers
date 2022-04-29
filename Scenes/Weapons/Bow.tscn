@@ -8,8 +8,8 @@
 [node name="Bow" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 weapon_name = "Bow"
+weapon_description = "A wooden bow used by hunters in the medieval age."
 damage_factor = 1.5
-projectiles = 7
 projectile_scene = ExtResource( 4 )
 
 [node name="Barrel" parent="." index="0"]
