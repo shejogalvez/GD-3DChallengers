@@ -10,6 +10,16 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Spatial",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Scripts/Items/Item.gd"
+}, {
+"base": "Spatial",
+"class": "ItemPedestal",
+"language": "GDScript",
+"path": "res://Scripts/ItemPedestal.gd"
+}, {
+"base": "Spatial",
 "class": "Projectile",
 "language": "GDScript",
 "path": "res://Scripts/Projectiles/Projectile.gd"
@@ -25,6 +35,8 @@ _global_script_classes=[ {
 "path": "res://Scripts/WeaponPedestal.gd"
 } ]
 _global_script_class_icons={
+"Item": "res://Assets/Classes/item_icon.png",
+"ItemPedestal": "res://Assets/Classes/weapon_pedestal_icon.png",
 "Projectile": "res://Assets/Classes/projectile_icon.png",
 "Weapon": "res://Assets/Classes/weapon_icon.png",
 "WeaponPedestal": "res://Assets/Classes/weapon_pedestal_icon.png"

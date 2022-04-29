@@ -44,5 +44,8 @@ func fire_weapon():
 		_fire()
 		audio.play()
 		current_fire_cd = fire_cd
-		
+
+# Adds a new projectile to the weapon
+func add_projectile():
+	projectiles += 1
 
