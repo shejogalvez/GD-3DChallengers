@@ -2,17 +2,17 @@
 
 [ext_resource path="res://mesh_library_1.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://mesh_library.meshlib" type="MeshLibrary" id=2]
-[ext_resource path="res://Scenes/Normal_Mob.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scripts/Battle_Room.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/Bad_Box.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/Weapons/Bow.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/WeaponPedestal.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Weapons/Railgun.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/WeaponPedestal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Weapons/AssaultRifle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Weapons/Railgun.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Items/JesusGloves.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/NormalMob.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/ItemPedestal.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Weapons/Revolver.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/Weapons/AssaultRifle.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Items/JesusGloves.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Scenes/ItemPedestal.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Weapons/Bow.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scripts/Bad_Box.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/Battle_Room.gd" type="Script" id=13]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 100, 1, 100 )
@@ -68,9 +68,9 @@ extents = Vector3( 3, 1, 3 )
 size = Vector3( 6, 2, 6 )
 
 [node name="BattleRoom" type="Node"]
-script = ExtResource( 5 )
+script = ExtResource( 13 )
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="Player" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, -0.819152, 30, 1, 36 )
 collision_layer = 3
 collision_mask = 3
@@ -146,7 +146,7 @@ material/0 = null
 
 [node name="BadBox" type="RigidBody" parent="." groups=["enemies"]]
 transform = Transform( 0.850077, 0, 0.526659, 0, 1, 0, -0.526659, 0, 0.850077, -0.976504, 7.67937, -24.2777 )
-script = ExtResource( 6 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -160,7 +160,7 @@ material/0 = null
 
 [node name="BadBox3" type="RigidBody" parent="." groups=["enemies"]]
 transform = Transform( 0.952295, 0, -0.30518, 0, 1, 0, 0.30518, 0, 0.952295, 5.41146, 7.67937, -26.2522 )
-script = ExtResource( 6 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -174,7 +174,7 @@ material/0 = null
 
 [node name="BadBox4" type="RigidBody" parent="." groups=["enemies"]]
 transform = Transform( 0.963462, 0, 0.267844, 0, 1, 0, -0.267844, 0, 0.963462, 2.25811, 13.5376, -25.6766 )
-script = ExtResource( 6 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -188,7 +188,7 @@ material/0 = null
 
 [node name="BadBox2" type="RigidBody" parent="." groups=["enemies"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.57, 31.4653, -19.8168 )
-script = ExtResource( 6 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -202,7 +202,7 @@ material/0 = null
 
 [node name="BigBadBox" type="RigidBody" parent="." groups=["enemies"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.3896, 9, -32.252 )
-script = ExtResource( 6 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -216,7 +216,7 @@ material/0 = null
 
 [node name="BigBadBox2" type="RigidBody" parent="." groups=["enemies"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53.3577, 9, 37.6221 )
-script = ExtResource( 6 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -230,7 +230,7 @@ material/0 = null
 
 [node name="BigBadBox3" type="RigidBody" parent="." groups=["enemies"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4977, 9, 25.6833 )
-script = ExtResource( 6 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -346,31 +346,31 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, -3, 0 )
 }
 
-[node name="Normal" parent="." instance=ExtResource( 3 )]
+[node name="Normal" parent="." instance=ExtResource( 8 )]
 transform = Transform( 2, 0, 0, 0, 5, 0, 0, 0, 2, -16.1818, 13.9715, -22.8643 )
 
-[node name="Normal2" parent="." instance=ExtResource( 3 )]
+[node name="Normal2" parent="." instance=ExtResource( 8 )]
 transform = Transform( 2, 0, 0, 0, 5, 0, 0, 0, 2, -21.1271, 8.67374, -26.4802 )
 
-[node name="Normal3" parent="." instance=ExtResource( 3 )]
+[node name="Normal3" parent="." instance=ExtResource( 8 )]
 transform = Transform( 2, 0, 0, 0, 5, 0, 0, 0, 2, -28.3693, 13.8593, -22.0966 )
 
-[node name="WeaponPedestal" parent="." instance=ExtResource( 8 )]
+[node name="WeaponPedestal" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0306, 2.94366, 103.563 )
-weapon_scene = ExtResource( 7 )
+weapon_scene = ExtResource( 11 )
 
-[node name="WeaponPedestal2" parent="." instance=ExtResource( 8 )]
+[node name="WeaponPedestal2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.506, 2.94366, 103.563 )
-weapon_scene = ExtResource( 9 )
+weapon_scene = ExtResource( 6 )
 
-[node name="WeaponPedestal3" parent="." instance=ExtResource( 8 )]
+[node name="WeaponPedestal3" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.30941, 2.69501, 103.457 )
 weapon_scene = ExtResource( 10 )
 
-[node name="WeaponPedestal4" parent="." instance=ExtResource( 8 )]
+[node name="WeaponPedestal4" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.26, 2.66609, 103.742 )
-weapon_scene = ExtResource( 11 )
+weapon_scene = ExtResource( 4 )
 
-[node name="ItemPedestal" parent="." instance=ExtResource( 13 )]
+[node name="ItemPedestal" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 83.2404, 2.94571, 81.4112 )
-item_scene = ExtResource( 12 )
+item_scene = ExtResource( 7 )
