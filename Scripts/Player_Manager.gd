@@ -9,6 +9,3 @@ func set_player(player_node):
 	
 func get_player_position():
 	return player.global_transform.origin
-
-func get_weapon():
-	return player.weapon

@@ -11,9 +11,6 @@ func _ready():
 	$Weapon/Model.scale = Vector3(1.6, 1.6, 1.6)
 	$Weapon/AnimationPlayer.play("rotation")
 	$Weapon/Details/Panel/Name.text = weapon_instance.weapon_name
-	$Weapon/Details/Panel/Damage.text = str(weapon_instance.damage_factor)
-	$Weapon/Details/Panel/Shots.text = str(weapon_instance.projectiles)
-	$Weapon/Details/Panel/Description.text = weapon_instance.weapon_description
 	$Weapon/Details.hide()
 	$Weapon/PickupArea.connect("body_entered", self, "give_weapon")
 	$Weapon/DetailsArea.connect("body_entered", self, "show_details")
