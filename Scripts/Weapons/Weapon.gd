@@ -3,8 +3,10 @@ class_name Weapon, "res://Assets/Classes/weapon_icon.png"
 
 # Weapon name
 export(String) var weapon_name = "Weapon"
+# Weapon description
+export(String) var weapon_description = "This is an standard weapon intended to be extended."
 # Weapon damage (is a factor for the player attack)
-export(float, 0, 99) var damage_factor = 0.1
+export(float, 0, 99) var damage_factor = 0
 # Cooldown for fire
 export(float, 0, 99) var fire_cd = 1.0
 # Current cooldown for the next shot
@@ -16,6 +18,8 @@ export(PackedScene) var projectile_scene = preload("res://Scenes/Projectiles/Pro
 
 # Barrel node
 onready var barrel = $Barrel 
+# Audio node
+onready var audio = $Audio
 
 # Called each frame
 func _physics_process(delta):
@@ -38,6 +42,10 @@ func _fire():
 func fire_weapon():
 	if current_fire_cd <= 0:
 		_fire()
+		audio.play()
 		current_fire_cd = fire_cd
-		
+
+# Adds a new projectile to the weapon
+func add_projectile():
+	projectiles += 1
 
