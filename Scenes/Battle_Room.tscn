@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://mesh_library_1.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://mesh_library.meshlib" type="MeshLibrary" id=2]
@@ -9,6 +9,10 @@
 [ext_resource path="res://Scenes/Weapons/Bow.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/WeaponPedestal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Weapons/Railgun.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Weapons/Revolver.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Weapons/AssaultRifle.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Items/JesusGloves.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/ItemPedestal.tscn" type="PackedScene" id=13]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 100, 1, 100 )
@@ -358,3 +362,15 @@ weapon_scene = ExtResource( 7 )
 [node name="WeaponPedestal2" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.506, 2.94366, 103.563 )
 weapon_scene = ExtResource( 9 )
+
+[node name="WeaponPedestal3" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.30941, 2.69501, 103.457 )
+weapon_scene = ExtResource( 10 )
+
+[node name="WeaponPedestal4" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.26, 2.66609, 103.742 )
+weapon_scene = ExtResource( 11 )
+
+[node name="ItemPedestal" parent="." instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 83.2404, 2.94571, 81.4112 )
+item_scene = ExtResource( 12 )
