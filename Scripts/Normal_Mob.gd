@@ -8,7 +8,7 @@ const CC_ATACK_TIME = 1.2
 const MAX_SLOPE_ANGLE = 40
 const GRAVITY = -80
 const ALERT_DISTANCE = 40
-const HIT_DISTANCE = 6
+const HIT_DISTANCE = 5
 
 var direction : Vector3
 var vel : Vector3

@@ -37,13 +37,6 @@ const MAX_SPRINT_SPEED = 42
 const SPRINT_ACCEL = 16
 var is_sprinting = false
 
-
-const UNTARGETABLE_TIME = 1
-var hp = 50
-var untargetable = false
-var invulnerability_time = 0
-onready var hp_bar = $Hud/hp_bar
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Player_Manager.set_player(self)
@@ -62,13 +55,6 @@ func _ready():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	crosshair.visible = is_head_view #settea visibilidad inicial de crosshair
-	hp_bar.update_hp(hp)
-
-func _process(delta):
-	if invulnerability_time > 0:
-		invulnerability_time -= delta
-	else:
-		untargetable = false
 
 # Called each frame
 func _physics_process(delta):
@@ -269,13 +255,3 @@ func set_weapon(new_weapon):
 	weapon.queue_free()
 	weapon_pivot.add_child(new_weapon)
 	weapon = new_weapon
-
-func recieve_damage(damage):
-	if not untargetable:
-		hp -= damage
-		untargetable = true
-		invulnerability_time = UNTARGETABLE_TIME
-		hp_bar.update_hp(hp)
-		print(hp)
-		if hp<=0:
-			print("GAME OVER")

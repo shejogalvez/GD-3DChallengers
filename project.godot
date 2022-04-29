@@ -9,10 +9,15 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "KinematicBody",
-"class": "BossTest",
+"base": "Spatial",
+"class": "Item",
 "language": "GDScript",
-"path": "res://enemies/Boss weas/boss_script.gd"
+"path": "res://Scripts/Items/Item.gd"
+}, {
+"base": "Spatial",
+"class": "ItemPedestal",
+"language": "GDScript",
+"path": "res://Scripts/ItemPedestal.gd"
 }, {
 "base": "Spatial",
 "class": "Projectile",
@@ -30,7 +35,8 @@ _global_script_classes=[ {
 "path": "res://Scripts/WeaponPedestal.gd"
 } ]
 _global_script_class_icons={
-"BossTest": "",
+"Item": "res://Assets/Classes/item_icon.png",
+"ItemPedestal": "res://Assets/Classes/weapon_pedestal_icon.png",
 "Projectile": "res://Assets/Classes/projectile_icon.png",
 "Weapon": "res://Assets/Classes/weapon_icon.png",
 "WeaponPedestal": "res://Assets/Classes/weapon_pedestal_icon.png"
