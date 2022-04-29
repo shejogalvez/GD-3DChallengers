@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/kel_hapi.tres" type="Texture" id=1]
 [ext_resource path="res://piso.tres" type="MeshLibrary" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://enemies/Boss weas/ZA HANDO/r_hand.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/hp_bar.gd" type="Script" id=8]
 [ext_resource path="res://Assets/kel_mad.tres" type="Texture" id=9]
+[ext_resource path="res://Scenes/WeaponPedestal.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Weapons/Bow.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SphereShape" id=11]
 
@@ -84,3 +86,7 @@ material/0 = SubResource( 17 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
+
+[node name="WeaponPedestal" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6492, 14.8321, -191.041 )
+weapon_scene = ExtResource( 11 )
