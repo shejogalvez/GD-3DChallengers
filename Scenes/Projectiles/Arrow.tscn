@@ -12,6 +12,7 @@ projectile_speed = 50
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.4 )
 
 [node name="Model" parent="." index="1"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0 )
 mesh = ExtResource( 3 )
 material/0 = null
 material/1 = null
