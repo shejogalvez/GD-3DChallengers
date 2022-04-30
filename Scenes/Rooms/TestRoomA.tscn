@@ -11,8 +11,8 @@
 [ext_resource path="res://Scenes/ItemPedestal.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Weapons/Revolver.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Weapons/Bow.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scripts/Bad_Box.gd" type="Script" id=12]
-[ext_resource path="res://Scripts/Battle_Room.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/TestRoomA.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/BadBox.gd" type="Script" id=13]
 [ext_resource path="res://MeshParedE.meshlib" type="MeshLibrary" id=14]
 [ext_resource path="res://MeshSueloE.meshlib" type="MeshLibrary" id=15]
 
@@ -70,7 +70,7 @@ extents = Vector3( 3, 1, 3 )
 size = Vector3( 6, 2, 6 )
 
 [node name="BattleRoom" type="Node"]
-script = ExtResource( 13 )
+script = ExtResource( 12 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, -0.819152, 30, 1, 36 )
@@ -148,7 +148,7 @@ material/0 = null
 
 [node name="BadBox" type="RigidBody" parent="." groups=["enemies"]]
 transform = Transform( 0.850077, 0, 0.526659, 0, 1, 0, -0.526659, 0, 0.850077, -0.976504, 7.67937, -24.2777 )
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -162,7 +162,7 @@ material/0 = null
 
 [node name="BadBox3" type="RigidBody" parent="." groups=["enemies"]]
 transform = Transform( 0.952295, 0, -0.30518, 0, 1, 0, 0.30518, 0, 0.952295, 5.41146, 7.67937, -26.2522 )
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -176,7 +176,7 @@ material/0 = null
 
 [node name="BadBox4" type="RigidBody" parent="." groups=["enemies"]]
 transform = Transform( 0.963462, 0, 0.267844, 0, 1, 0, -0.267844, 0, 0.963462, 2.25811, 13.5376, -25.6766 )
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -190,7 +190,7 @@ material/0 = null
 
 [node name="BadBox2" type="RigidBody" parent="." groups=["enemies"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.57, 31.4653, -19.8168 )
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -204,7 +204,7 @@ material/0 = null
 
 [node name="BigBadBox" type="RigidBody" parent="." groups=["enemies"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.3896, 9, -32.252 )
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -218,7 +218,7 @@ material/0 = null
 
 [node name="BigBadBox2" type="RigidBody" parent="." groups=["enemies"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53.3577, 9, 37.6221 )
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -232,7 +232,7 @@ material/0 = null
 
 [node name="BigBadBox3" type="RigidBody" parent="." groups=["enemies"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4977, 9, 25.6833 )
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
 }
