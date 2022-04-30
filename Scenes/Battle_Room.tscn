@@ -352,13 +352,6 @@ transform = Transform( 2, 0, 0, 0, 5, 0, 0, 0, 2, -21.1271, 8.67374, -26.4802 )
 [node name="Normal3" parent="." instance=ExtResource( 3 )]
 transform = Transform( 2, 0, 0, 0, 5, 0, 0, 0, 2, -28.3693, 13.8593, -22.0966 )
 
-[node name="WeaponPedestal" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0306, 2.94366, 103.563 )
-weapon_scene = ExtResource( 7 )
-
-[node name="WeaponPedestal2" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.506, 2.94366, 103.563 )
-
 [node name="ParedE" type="GridMap" parent="."]
 transform = Transform( 3.6, 0, 0, 0, 3.6, 0, 0, 0, 3.85, -0.051445, 0.177032, -0.000320435 )
 mesh_library = ExtResource( 9 )
@@ -394,3 +387,13 @@ __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 0, 0 )
 }
+
+[node name="WeaponPedestal2" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.506, 2.47696, 103.563 )
+
+[node name="WeaponPedestal" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0306, 2.32136, 103.563 )
+weapon_scene = ExtResource( 7 )
+
+[node name="WeaponPedestal3" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3559, 2.50951, 103.48 )
