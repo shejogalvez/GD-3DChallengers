@@ -1,12 +1,15 @@
 extends KinematicBody
 
-var head_pivot: Spatial
-var head_camera : Camera
-var weapon_pivot : Spatial
-var topdown_pivot : Spatial
-var topdown_camera : Camera
-var weapon : Weapon
-var crosshair : TextureRect
+# Player nodes
+onready var head_pivot: Spatial = $HeadPivot
+onready var head_camera : Camera = $HeadPivot/Camera
+onready var aimcast : RayCast = $HeadPivot/Camera/AimCast
+onready var weapon_pivot : Spatial = $HeadPivot/WeaponPivot
+onready var weapon : Weapon = $HeadPivot/WeaponPivot/Weapon
+onready var topdown_pivot : Spatial = $TopDownPivot
+onready var topdown_camera : Camera = $TopDownPivot/Camera
+onready var crosshair : TextureRect = $Hud/Crossshair
+onready var hp_bar : SmartBar = $Hud/HPBar
 # True if viewport is on head camera, false otherwise. 
 var is_head_view = false
 # The magnitude of grades per frame the topdown view will rotate if
@@ -20,18 +23,14 @@ var MOUSE_SENSITIVITY = 0.05
 # The unitary direction vector pointing towards the next frame position
 # the player is going to move.
 var dir = Vector3()
-
 var vel = Vector3()
-
+# XZ plane movement
 const MAX_SPEED = 28
-
 const ACCEL = 4.5
 const DEACCEL= 20
-
+# Jumping and gravity
 const JUMP_SPEED = 36
-
 const GRAVITY = -80
-
 const MAX_SLOPE_ANGLE = 40
 # Sprinting
 const MAX_SPRINT_SPEED = 42
@@ -39,39 +38,19 @@ const SPRINT_ACCEL = 16
 var is_sprinting = false
 
 
-const UNTARGETABLE_TIME = 1
-var hp = 50
-var untargetable = false
-var invulnerability_time = 0
-onready var hp_bar = $Hud/hp_bar
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Player_Manager.set_player(self)
-	head_pivot = $HeadPivot
-	weapon_pivot = $HeadPivot/WeaponPivot
-	weapon = $HeadPivot/WeaponPivot/Weapon
-	head_camera = $HeadPivot/Camera
-	crosshair = $HeadPivot/Camera/Crossshair
-	topdown_pivot = $TopDownPivot
-	topdown_camera = $TopDownPivot/Camera
+	PlayerManager.set_player(self)
 	if is_head_view:
 		head_camera.make_current()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else: 
 		topdown_camera.make_current()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
-	crosshair.visible = is_head_view #settea visibilidad inicial de crosshair
-	hp_bar.update_hp(hp)
+	crosshair.visible = is_head_view # set initial crosshair visibility
+	hp_bar.set_smart_value(PlayerManager.get_hp(), PlayerManager.get_total_hp())
 
-func _process(delta):
-	if invulnerability_time > 0:
-		invulnerability_time -= delta
-	else:
-		untargetable = false
-
-# Called each frame
+# Called each frame.
 func _physics_process(delta):
 	process_input(delta)
 	process_movement(delta)
@@ -108,7 +87,7 @@ func process_input(delta):
 	# -----------------------------
 	# Shoting
 	# -----------------------------
-	if Input.is_action_pressed("shot_main"):
+	if Input.is_action_pressed("shot_main") and aimcast.is_colliding():
 		weapon.fire_weapon()
 	
 	
@@ -185,7 +164,6 @@ func process_topdown_input(delta):
 		var mouse_dir = Vector3(mouse_pos.x, 0, mouse_pos.y).normalized()
 		mouse_dir = pivot_transf.xform(mouse_dir) - pivot_transf.origin
 		self.look_at(self.translation + mouse_dir, Vector3(0, 1, 0))
-		
 	elif dir != Vector3():
 		self.look_at(self.translation + (dir * -1) , Vector3(0, 1, 0))
 	# Reset pivot transformation.
@@ -214,9 +192,9 @@ func process_topdown_input(delta):
 		head_camera.make_current()
 		crosshair.visible = true
 		
-	 
+# Process player's movement.
 func process_movement(delta):
-	# Velocity in the horizontal plane XZ
+	# Velocity in the horizontal plane XZ.
 	var hvel = vel
 	hvel.y = 0
 	# -----------------------------
@@ -253,30 +231,26 @@ func process_movement(delta):
 	# Move the player and change the velocity according to the collisions.
 	vel = move_and_slide(vel, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
 
+# Called when an input is detected.
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		# Cursor position relative to last frame
+		# Cursor position relative to last frame.
 		var cursor_position = event.relative
-		# Rotate head pivot vertically
+		# Rotate head pivot vertically.
 		head_pivot.rotate_x(deg2rad(cursor_position.y * MOUSE_SENSITIVITY))
 		# Rotate player horizontally
 		self.rotate_y(deg2rad(cursor_position.x * MOUSE_SENSITIVITY * -1))
-		# Limit the vertical rotation angle
+		# Limit the vertical rotation angle.
 		var head_pivot_rot = head_pivot.rotation_degrees
 		head_pivot_rot.x = clamp(head_pivot_rot.x, -72, 72)
 		head_pivot.rotation_degrees = head_pivot_rot
 
-func set_weapon(new_weapon):
+# Changes the player weapon node.
+func change_weapon(weapon_node):
 	weapon.queue_free()
-	weapon_pivot.add_child(new_weapon)
-	weapon = new_weapon
+	weapon_pivot.add_child(weapon_node)
+	weapon = weapon_node
 
-func recieve_damage(damage):
-	if not untargetable:
-		hp -= damage
-		untargetable = true
-		invulnerability_time = UNTARGETABLE_TIME
-		hp_bar.update_hp(hp)
-		print(hp)
-		if hp<=0:
-			print("GAME OVER")
+
+func update_hp_bar():
+	hp_bar.set_smart_value(PlayerManager.get_hp(), PlayerManager.get_total_hp())

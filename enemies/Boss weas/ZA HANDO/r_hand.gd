@@ -40,7 +40,7 @@ func _set_projectile_transform(projectile, _projectile_id):
 	
 
 func _fire():
-	var dif = Player_Manager.get_player_position() - barrel.global_transform.origin
+	var dif = PlayerManager.get_player_position() - barrel.global_transform.origin
 	vec_dif = Vector3(dif[0], 0, dif[2])
 	for projectile_id in projectiles:
 		var projectile = projectile_scene.instance()

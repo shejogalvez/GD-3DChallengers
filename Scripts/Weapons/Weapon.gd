@@ -36,7 +36,7 @@ func _fire():
 		var scene_root = get_tree().root.get_children()[0]
 		scene_root.add_child(projectile)
 		_set_projectile_transform(projectile, projectile_id)
-		projectile.projectile_damage = damage_factor * Player_Manager.player_attack
+		projectile.projectile_damage = damage_factor * PlayerManager.player_attack
 
 # Tries to fire the weapon
 func fire_weapon():

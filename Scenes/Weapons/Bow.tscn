@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/Weapons/Weapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Weapons/Bow.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Meshes/BowWooden/Bow_Wooden.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Meshes/Bow/Bow.mesh" type="ArrayMesh" id=3]
 [ext_resource path="res://Scenes/Projectiles/Arrow.tscn" type="PackedScene" id=4]
 
 [node name="Bow" instance=ExtResource( 1 )]

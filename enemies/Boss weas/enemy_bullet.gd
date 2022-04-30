@@ -10,8 +10,8 @@ func _ready():
 	
 func impact(body):
 	if hit_something == false:
-		if body.get_name() == "Player":
-			body.recieve_damage(projectile_damage)
+		if body == PlayerManager.get_player():
+			PlayerManager.receive_damage(projectile_damage)
 			queue_free()
 	hit_something = true
 

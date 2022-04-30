@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Fonts/Atarian/italic.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Assets/Crosshair.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Actors/Player.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/UI/SmartBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/UI/Crosshair.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Weapons/Weapon.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scripts/hp_bar.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Themes/HPTheme.tres" type="Theme" id=6]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.2
@@ -30,29 +30,22 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="WeaponPivot" type="Spatial" parent="HeadPivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2877, -1.37043, 1.95475 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Weapon" parent="HeadPivot/WeaponPivot" instance=ExtResource( 4 )]
-
 [node name="Camera" type="Camera" parent="HeadPivot"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 fov = 90.0
 far = 500.0
 
-[node name="Crossshair" type="TextureRect" parent="HeadPivot/Camera"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_right = 30.0
-margin_bottom = 30.0
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 6
+[node name="AimCast" type="RayCast" parent="HeadPivot/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -200 )
+
+[node name="WeaponPivot" type="Spatial" parent="HeadPivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 1.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Weapon" parent="HeadPivot/WeaponPivot" instance=ExtResource( 4 )]
 
 [node name="TopDownPivot" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 90, 0 )
@@ -78,23 +71,22 @@ mesh = SubResource( 4 )
 material/0 = null
 
 [node name="Hud" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-[node name="hp_bar" type="ColorRect" parent="Hud"]
-anchor_right = 5.0
-margin_left = 30.0
-margin_top = 560.0
-margin_right = 30.0
-margin_bottom = 580.0
-color = Color( 1, 0.105882, 0.105882, 1 )
-script = ExtResource( 5 )
-factor = 10.0
+[node name="Crossshair" type="TextureRect" parent="Hud"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 4
 
-[node name="Label" type="Label" parent="Hud"]
-margin_left = 9.0
-margin_top = 562.0
-margin_right = 49.0
-margin_bottom = 579.0
-custom_fonts/font = ExtResource( 2 )
-text = "HP"
+[node name="HPBar" parent="Hud" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 54.0
+margin_top = -50.0
+margin_right = 374.0
+margin_bottom = -20.0
+theme = ExtResource( 6 )
+smart_label = "HP"

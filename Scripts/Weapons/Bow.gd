@@ -2,7 +2,6 @@ extends Weapon
 
 export(float, 0, 30) var SEPARATION_ANGLE = 10
 
-# Sets the 
 func _set_projectile_transform(projectile, projectile_id):
 	projectile.global_transform = barrel.global_transform
 	var total_spectrum = SEPARATION_ANGLE * (projectiles - 1)

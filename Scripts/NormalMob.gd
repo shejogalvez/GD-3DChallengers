@@ -19,7 +19,7 @@ var stun_timer = 0
 
 	
 func _physics_process(delta):
-	var distance_player = self.global_transform.origin - Player_Manager.get_player_position()
+	var distance_player = self.global_transform.origin - PlayerManager.get_player_position()
 	
 	if distance_player.length() < ALERT_DISTANCE:
 		alerted = true

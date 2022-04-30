@@ -31,5 +31,5 @@ func _process(delta):
 		var hitpoint = raycast.get_collision_point()
 		
 		if object!=null:
-			if object.has_method("recieve_damage"):
-				object.recieve_damage(damage)
+			if object == PlayerManager.get_player():
+				PlayerManager.receive_damage(damage)

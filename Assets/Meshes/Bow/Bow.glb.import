@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Bow_Wooden.glb-e9a0a655c9144710e33747d45cab282a.scn"
+path="res://.import/Bow.glb-cc0c5b63e8584aafb26fbdd427d8ce66.scn"
 
 [deps]
 
-source_file="res://Assets/Meshes/BowWooden/Bow_Wooden.glb"
-dest_files=[ "res://.import/Bow_Wooden.glb-e9a0a655c9144710e33747d45cab282a.scn" ]
+source_file="res://Assets/Meshes/Bow/Bow.glb"
+dest_files=[ "res://.import/Bow.glb-cc0c5b63e8584aafb26fbdd427d8ce66.scn" ]
 
 [params]
 

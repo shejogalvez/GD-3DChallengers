@@ -21,19 +21,19 @@ func _ready():
 
 # Gives the Item if area touched by a player.
 func give_item(body):
-	if body == Player_Manager.player:
+	if body == PlayerManager.get_player():
 		item_instance.use()
 		$ItemPedestalAudio.play()
 		$Item.queue_free()
 
 # Shows the Item details.
 func show_details(body):
-	if body == Player_Manager.player:
+	if body == PlayerManager.get_player():
 		$Item/Details.show()
 
 # Hides the Item details.
 func hide_details(body):
-	if body == Player_Manager.player:
+	if body == PlayerManager.get_player():
 		$Item/Details.hide()
 		
 # Removes the audioplayer node.
