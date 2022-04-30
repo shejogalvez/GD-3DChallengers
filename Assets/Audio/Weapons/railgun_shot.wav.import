@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/railgun_shot.wav-490bb2035c66c8d891c317c6c261523d.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Weapons/railgun_shot.wav"
+dest_files=[ "res://.import/railgun_shot.wav-490bb2035c66c8d891c317c6c261523d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
