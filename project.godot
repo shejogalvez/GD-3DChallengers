@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="3DChallengers"
-run/main_scene="res://Scenes/Battle_Room.tscn"
+run/main_scene="res://Scenes/Rooms/TestRoomA.tscn"
 config/icon="res://icon.png"
 
 [autoload]

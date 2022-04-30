@@ -17,3 +17,5 @@ material/0 = null
 
 [node name="Barrel" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6 )
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]

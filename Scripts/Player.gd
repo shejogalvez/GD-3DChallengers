@@ -13,7 +13,8 @@ var is_head_view = false
 # player presses the correspondent key.
 const TOPDOWN_ROTATION_SPEED = 2
 # The max distance the topdown camera is going to zoom
-const TOPDOWN_MAX_ZOOM = 20
+const TOPDOWN_MAX_ZOOM = 50
+var TOPDOWN_ZOOM_SPEED = 2
 # Mouse sensitivity
 var MOUSE_SENSITIVITY = 0.05
 # The unitary direction vector pointing towards the next frame position
@@ -201,9 +202,9 @@ func process_topdown_input(delta):
 	# -----------------------------
 	var topdown_zoom_distance = topdown_camera.translation.y
 	if Input.is_action_just_released("td_zoom_in") and topdown_zoom_distance > -TOPDOWN_MAX_ZOOM:
-		topdown_camera.global_translate(Vector3.DOWN)
+		topdown_camera.global_translate(Vector3.DOWN * TOPDOWN_ZOOM_SPEED)
 	if Input.is_action_just_released("td_zoom_out") and topdown_zoom_distance < 0:
-		topdown_camera.global_translate(Vector3.UP)
+		topdown_camera.global_translate(Vector3.UP * TOPDOWN_ZOOM_SPEED)
 	# -----------------------------
 	# Changing camera view
 	# -----------------------------

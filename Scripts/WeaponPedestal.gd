@@ -22,19 +22,19 @@ func _ready():
 
 # Gives the weapon if area touched by a player.
 func give_weapon(body):
-	if body.has_method("set_weapon"):
-		body.set_weapon(weapon_instance)
+	if body == Player_Manager.player:
+		Player_Manager.set_weapon(weapon_instance)
 		$WeaponPedestalAudio.play()
 		$Weapon.queue_free()
 
 # Shows the weapon details.
 func show_details(body):
-	if body.has_method("set_weapon"):
+	if body == Player_Manager.player:
 		$Weapon/Details.show()
 
 # Hides the weapon details.
 func hide_details(body):
-	if body.has_method("set_weapon"):
+	if body == Player_Manager.player:
 		$Weapon/Details.hide()
 		
 # Removes the audioplayer node.
