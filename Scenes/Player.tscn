@@ -40,8 +40,8 @@ __meta__ = {
 
 [node name="Camera" type="Camera" parent="HeadPivot"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-fov = 95.1
-far = 400.0
+fov = 90.0
+far = 500.0
 
 [node name="Crossshair" type="TextureRect" parent="HeadPivot/Camera"]
 anchor_left = 0.5
@@ -55,19 +55,17 @@ expand = true
 stretch_mode = 6
 
 [node name="TopDownPivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 56, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 90, 0 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Camera" type="Camera" parent="TopDownPivot"]
-transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 50, 0 )
+transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, 0 )
 keep_aspect = 0
 current = true
-fov = 74.0
 size = 150.0
-near = 39.74
-far = 679.5
+far = 800.0
 
 [node name="Model" type="Spatial" parent="."]
 __meta__ = {
