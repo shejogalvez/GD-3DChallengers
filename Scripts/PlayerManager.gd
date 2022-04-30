@@ -72,5 +72,6 @@ func receive_damage(damage):
 		untargetable = true
 		invulnerability_time = UNTARGETABLE_TIME
 		var true_damage = ceil(max(damage * 0.2, damage - player_defense))
-		set_hp(get_hp() - true_damage)
+		set_hp(player_hp - true_damage)
+		player.play_damage_audio()
 	

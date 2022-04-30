@@ -10,6 +10,7 @@ onready var topdown_pivot : Spatial = $TopDownPivot
 onready var topdown_camera : Camera = $TopDownPivot/Camera
 onready var crosshair : TextureRect = $Hud/Crossshair
 onready var hp_bar : SmartBar = $Hud/HPBar
+onready var damage_audio : AudioStreamPlayer = $DamageAudio
 # True if viewport is on head camera, false otherwise. 
 var is_head_view = false
 # The magnitude of grades per frame the topdown view will rotate if
@@ -251,6 +252,10 @@ func change_weapon(weapon_node):
 	weapon_pivot.add_child(weapon_node)
 	weapon = weapon_node
 
-
+# Updates the hp bar value.
 func update_hp_bar():
 	hp_bar.set_smart_value(PlayerManager.get_hp(), PlayerManager.get_total_hp())
+
+# Plays the damage audio.
+func play_damage_audio():
+	damage_audio.play()
