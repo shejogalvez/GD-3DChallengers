@@ -1,14 +1,14 @@
 extends KinematicBody
-
+class_name IEnemy
 
 var hp : int
 var alerted : bool
-# Called when the node enters the scene tree for the first time.
+
+var state : State
+
 func _ready():
 	pass # Replace with function body.
 
 func bullet_hit(damage, bullet_global_trans):
-	alerted = true
-	hp -= damage
-	if hp<=0:
-		self.queue_free()
+	state.bullet_hit(damage, bullet_global_trans)
+

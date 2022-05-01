@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sand_map/terrain.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://sand_map/terrain_shape.shape" type="Shape" id=2]
+[ext_resource path="res://sand_map/camera_control.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+
+[node name="sand_world" type="Spatial"]
+
+[node name="Terrain" type="Spatial" parent="."]
+transform = Transform( 5, 0, 0, 0, 3, 0, 0, 0, 5, -50, 0, 50 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Terrain"]
+mesh = ExtResource( 1 )
+skeleton = NodePath("../..")
+software_skinning_transform_normals = false
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Terrain/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain/MeshInstance/StaticBody"]
+visible = false
+shape = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="Terrain"]
+transform = Transform( 1, 0, 0, 0, 0.859085, 0.511833, 0, -0.511833, 0.859085, -1.92685, 18.773, 62.6752 )
+visible = false
+far = 1000.0
+script = ExtResource( 3 )
+max_speed = Vector3( 50, 50, 50 )
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( -0.988367, 0, 0.152089, 0, 1, 0, -0.152089, 0, -0.988367, 0, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.988367, 0, 0.152089, 0, 1, 0, -0.152089, 0, -0.988367, 0, 0, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.939693, -2.63612e-09, 0.34202, -0.34202, -1.49502e-08, 0.939693, 2.63612e-09, -1, -1.49502e-08, 42.2622, 8.61053, 50 )
+light_color = Color( 1, 0.992157, 0.815686, 1 )
+light_size = 1.0
+light_specular = 0.0
+directional_shadow_mode = 0
+directional_shadow_blend_splits = true
+directional_shadow_bias_split_scale = 1.0
+directional_shadow_max_distance = 8192.0

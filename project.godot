@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://enemies/Boss weas/boss_script.gd"
 }, {
+"base": "KinematicBody",
+"class": "IEnemy",
+"language": "GDScript",
+"path": "res://enemies/Ienemy.gd"
+}, {
 "base": "Spatial",
 "class": "Item",
 "language": "GDScript",
@@ -25,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://Scripts/ItemPedestal.gd"
 }, {
 "base": "Spatial",
+"class": "Laser",
+"language": "GDScript",
+"path": "res://enemies/Boss weas/Laser.gd"
+}, {
+"base": "Spatial",
 "class": "Projectile",
 "language": "GDScript",
 "path": "res://Scripts/Projectiles/Projectile.gd"
@@ -33,6 +43,11 @@ _global_script_classes=[ {
 "class": "SmartBar",
 "language": "GDScript",
 "path": "res://Scripts/UI/SmartBar.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://enemies/enemy_state.gd"
 }, {
 "base": "Spatial",
 "class": "Weapon",
@@ -46,10 +61,13 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BossTest": "",
+"IEnemy": "",
 "Item": "res://Assets/Classes/item_icon.png",
 "ItemPedestal": "res://Assets/Classes/weapon_pedestal_icon.png",
+"Laser": "",
 "Projectile": "res://Assets/Classes/projectile_icon.png",
 "SmartBar": "",
+"State": "",
 "Weapon": "res://Assets/Classes/weapon_icon.png",
 "WeaponPedestal": "res://Assets/Classes/weapon_pedestal_icon.png"
 }
@@ -57,12 +75,13 @@ _global_script_class_icons={
 [application]
 
 config/name="3DChallengers"
-run/main_scene="res://Scenes/Rooms/TestRoomA.tscn"
+run/main_scene="res://Scenes/Battle_Room.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 PlayerManager="*res://Scripts/PlayerManager.gd"
+Player_Manager="*res://Scripts/PlayerManager.gd"
 
 [input]
 

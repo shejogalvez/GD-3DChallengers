@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/kel_hapi-1.png-07b78cfda99798b055374cd72ddbac8c.s3tc.stex"
-path.etc2="res://.import/kel_hapi-1.png-07b78cfda99798b055374cd72ddbac8c.etc2.stex"
+path.s3tc="res://.import/sand_texture.jpg-b20b080fd31590306860fae31347cef3.s3tc.stex"
+path.etc2="res://.import/sand_texture.jpg-b20b080fd31590306860fae31347cef3.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/kel_hapi-1.png"
-dest_files=[ "res://.import/kel_hapi-1.png-07b78cfda99798b055374cd72ddbac8c.s3tc.stex", "res://.import/kel_hapi-1.png-07b78cfda99798b055374cd72ddbac8c.etc2.stex" ]
+source_file="res://sand_map/sand_texture.jpg"
+dest_files=[ "res://.import/sand_texture.jpg-b20b080fd31590306860fae31347cef3.s3tc.stex", "res://.import/sand_texture.jpg-b20b080fd31590306860fae31347cef3.etc2.stex" ]
 
 [params]
 
@@ -25,7 +25,7 @@ flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

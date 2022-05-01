@@ -13,6 +13,9 @@ var mode : Mode
 var frenzy_count = 0
 const INTRO_TIMER = 3
 
+var time = 0
+export (PackedScene) var magic_circle : PackedScene
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.set_mode(Mode.IntroMode.new())
@@ -30,7 +33,17 @@ func set_mode(mode):
 
 func _process(delta):
 	mode._process(delta)
+	if frenzy_count >= 0:
+		if time > 0.5:
+			var x = rand_range(-100, 100)
+			var z = rand_range(-200, -50)
+			var circ = magic_circle.instance()
+			circ.global_transform.origin = Vector3(x, 12, z)
+			var scene_root = get_tree().root.get_children()[0]
+			scene_root.add_child(circ)
+			time = 0
 		
+		time += delta
 # object behavior indicated by status machine
 class Mode:
 	var boss_node : BossTest
@@ -69,6 +82,7 @@ class Mode:
 	
 	class NormalMode extends Mode:
 		
+		var time = 0
 		func start(node):
 			.start(node)
 			boss_node.face.set_surface_material(0, boss_node.hapi)
@@ -76,6 +90,7 @@ class Mode:
 		func _process(delta):
 			lhand.fire_weapon()
 			rhand.fire_weapon()
+					
 		
 		func bullet_hit(damage):
 			.bullet_hit(damage)
@@ -116,8 +131,8 @@ class Mode:
 				var displace = smooth_angle(time_elapsed, delta*1.5) 
 				self.rotateAround(boss_node, pivot.global_transform.origin , Vector3.UP, pos)
 				
-			elif time_elapsed - pos > 0.001:
-				var displace = smooth_angle(time_elapsed, delta) 
+			elif time_elapsed - pos > 0.02:
+				var displace = smooth_angle(time_elapsed, delta*1.5) 
 				self.rotateAround(boss_node, pivot.global_transform.origin, Vector3.UP, pos)
 			
 			else:

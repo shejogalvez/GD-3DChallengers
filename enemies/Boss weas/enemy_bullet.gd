@@ -4,7 +4,7 @@ var initial_angle = Quat.IDENTITY
 var forward_dir = Vector3()
 
 func _ready():
-	projectile_damage = 4
+	projectile_damage = 18
 	projectile_speed = 40
 	kill_timer = 8
 	
