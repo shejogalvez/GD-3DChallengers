@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Weapons/AssaultRifle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Scenes/Weapons/Revolver.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/WeaponPedestal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Rooms/SmallTarget.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/ItemPedestal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Items/JesusGloves.tscn" type="PackedScene" id=9]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 220, 1, 120 )
@@ -64,6 +66,12 @@ weapon_scene = ExtResource( 5 )
 [node name="WeaponPedestal7" parent="WeaponsSection" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 86.793, 2.42552, 67.1111 )
 weapon_scene = ExtResource( 3 )
+
+[node name="ItemsSection" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -80.5191, 2.14488, 62.8121 )
+
+[node name="ItemPedestal" parent="ItemsSection" instance=ExtResource( 8 )]
+item_scene = ExtResource( 9 )
 
 [node name="Wall" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 50, 0 )

@@ -7,8 +7,7 @@ var item_instance =  item_scene.instance()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	item_instance = item_scene.instance()
-	$Item/Model.mesh = item_instance.get_node("Model").mesh
-	$Item/Model.scale = Vector3(1.6, 1.6, 1.6)
+	$Item/Model.get_surface_material(0).albedo_texture = item_instance.item_image
 	$Item/AnimationPlayer.play("float")
 	$Item/Details/Panel/Name.text = item_instance.item_name
 	$Item/Details/Panel/Effect.text = item_instance.item_effect

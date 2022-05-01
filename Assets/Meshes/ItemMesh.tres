@@ -1,5 +1,4 @@
-[gd_resource type="SphereMesh" format=2]
+[gd_resource type="QuadMesh" format=2]
 
 [resource]
-radius = 0.5
-height = 1.0
+size = Vector2( 5, 5 )
