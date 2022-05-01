@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/ItemPedestal.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Meshes/itemMesh.tres" type="QuadMesh" id=2]
+[ext_resource path="res://Assets/Audio/item-pickup.wav" type="AudioStream" id=3]
 
 [sub_resource type="CylinderMesh" id=4]
 top_radius = 3.0
@@ -50,7 +51,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 2.5, 3, 3.5, 5.5 ),
+"times": PoolRealArray( 0, 0.4, 2.6, 3, 3.4, 5.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.1, 0 ), Vector3( 0, 1.4, 0 ), Vector3( 0, 1.5, 0 ), Vector3( 0, 1.4, 0 ), Vector3( 0, 0.1, 0 ) ]
@@ -126,3 +127,4 @@ margin_bottom = 165.0
 text = "Item description."
 
 [node name="ItemPedestalAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
