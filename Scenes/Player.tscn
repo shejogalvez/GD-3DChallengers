@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/SmartBar.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Weapons/Weapon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Audio/damage_short.wav" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Themes/HPTheme.tres" type="Theme" id=6]
+[ext_resource path="res://Scripts/Actors/ADS.gd" type="Script" id=7]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.2
@@ -27,9 +28,12 @@ shape = SubResource( 1 )
 
 [node name="HeadPivot" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.4, 0 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }
+default_position = Vector3( -1.25, -0.85, 1.5 )
+ads_position = Vector3( 0, -0.75, 1.5 )
 
 [node name="Camera" type="Camera" parent="HeadPivot"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
