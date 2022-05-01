@@ -41,7 +41,7 @@ enabled = true
 cast_to = Vector3( 0, 0, -200 )
 
 [node name="WeaponPivot" type="Spatial" parent="HeadPivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 1.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, -0.85, 1.5 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -57,7 +57,6 @@ __meta__ = {
 [node name="Camera" type="Camera" parent="TopDownPivot"]
 transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, 0 )
 keep_aspect = 0
-cull_mask = 1048559
 current = true
 size = 150.0
 far = 800.0
@@ -86,10 +85,10 @@ stretch_mode = 4
 [node name="HPBar" parent="Hud" instance=ExtResource( 2 )]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 54.0
-margin_top = -50.0
-margin_right = 374.0
-margin_bottom = -20.0
+margin_left = 49.0
+margin_top = -54.0
+margin_right = 369.0
+margin_bottom = -23.0
 theme = ExtResource( 6 )
 smart_label = "HP"
 

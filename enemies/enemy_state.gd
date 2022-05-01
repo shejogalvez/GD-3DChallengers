@@ -15,4 +15,4 @@ func _process(delta):
 	pass
 
 func dir_to_player():
-	return Player_Manager.get_player_position() - enemy_node.global_transform.origin
+	return PlayerManager.get_player_position() - enemy_node.global_transform.origin

@@ -1,4 +1,5 @@
 extends KinematicBody
+class_name Player
 
 # Player nodes
 onready var head_pivot: Spatial = $HeadPivot
@@ -88,7 +89,13 @@ func process_input(delta):
 	# -----------------------------
 	# Shoting
 	# -----------------------------
-	if Input.is_action_pressed("shot_main") and aimcast.is_colliding():
+	if Input.is_action_pressed("shot_main"):
+		var weapon_barrel = weapon.get_barrel()
+		var shot_dir = aimcast.get_collision_point() - weapon_barrel.get_global_transform().origin
+		if aimcast.is_colliding():
+			# Look at "looks" with the negative z axis, and barrel head is positive
+			var inverted_shot_dir = weapon_barrel.get_global_transform().origin - shot_dir
+			weapon_barrel.look_at(inverted_shot_dir, Vector3.UP)
 		weapon.fire_weapon()
 	
 	
@@ -159,7 +166,7 @@ func process_topdown_input(delta):
 	# Save pivot transformation.
 	var pivot_transf = topdown_pivot.get_global_transform()
 	# Rotate player towards mouse position if clicked. Otherwise, rotate
-	# towards movement direction (camera is rotated in 180).
+	# towards movement direction.
 	if Input.is_action_pressed("shot_main"):
 		var mouse_pos = get_viewport().get_mouse_position() - get_viewport().get_visible_rect().size * 0.5
 		var mouse_dir = Vector3(mouse_pos.x, 0, mouse_pos.y).normalized()

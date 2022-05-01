@@ -9,5 +9,5 @@ func _ready():
 	
 func set_smart_value(value, max_value):
 	self.value = 100 * value / max_value
-	$Value.text = str(self.value * max_value / 100)
+	$Value.text = str(value)
 

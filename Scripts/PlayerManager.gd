@@ -9,7 +9,7 @@ const PLAYER_MAX_ATK = 99999
 const PLAYER_MIN_DEF = 1
 const PLAYER_MAX_DEF = 99999
 
-var player : KinematicBody
+var player : Player
 var player_total_hp = 300 # Total hp
 var player_hp = player_total_hp # Current hp
 var player_attack = 5

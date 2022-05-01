@@ -17,15 +17,19 @@ export(int, 0, 10) var projectiles = 1
 export(PackedScene) var projectile_scene = preload("res://Scenes/Projectiles/Projectile.tscn")
 
 # Barrel node
-onready var barrel = $Barrel 
+onready var barrel : Position3D = $Barrel 
 # Audio node
-onready var audio = $Audio
+onready var audio : AudioStreamPlayer = $Audio
 
 # Called each frame
 func _physics_process(delta):
 	current_fire_cd -= delta
 
-# Sets the 
+# Gets the barrel node
+func get_barrel():
+	return barrel
+
+# Sets the projectile transform
 func _set_projectile_transform(projectile, projectile_id):
 	projectile.global_transform = barrel.global_transform
 
