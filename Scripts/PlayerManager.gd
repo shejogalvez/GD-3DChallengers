@@ -12,7 +12,7 @@ const PLAYER_MAX_DEF = 99999
 var player : Player
 var player_total_hp = 300 # Total hp
 var player_hp = player_total_hp # Current hp
-var player_attack = 5
+var player_attack = 10
 var player_defense = 1
 
 # Combat variables

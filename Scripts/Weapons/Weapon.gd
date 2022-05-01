@@ -49,7 +49,8 @@ func fire_weapon():
 	if current_fire_cd <= 0:
 		_fire()
 		audio.play()
-		animation_player.play("fire")
+		if animation_player != null:
+			animation_player.play("fire")
 		current_fire_cd = fire_cd
 
 # Adds a new projectile to the weapon
