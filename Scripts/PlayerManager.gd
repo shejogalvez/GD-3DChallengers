@@ -34,8 +34,12 @@ func set_player(player_node):
 # Returns the player node
 func get_player():
 	return player
-	
+
 # Sets the current player global position
+func set_player_position(position):
+	player.global_transform.origin = position
+	
+# Gets the current player global position
 func get_player_position():
 	return player.global_transform.origin
 
