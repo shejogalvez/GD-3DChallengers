@@ -6,7 +6,7 @@ export var projectile_speed = 160
 # Projectile damage (calculated as weapon_factor * player_attack)
 var projectile_damage = 1
 # Duration in seconds of the projectile
-export var kill_timer = 2
+export var kill_timer = 5
 # Current projectile life in seconds
 var timer = 0
 # Boolean set to true when projectile hits something

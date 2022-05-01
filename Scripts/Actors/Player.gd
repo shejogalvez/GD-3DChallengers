@@ -39,7 +39,6 @@ const MAX_SPRINT_SPEED = 42
 const SPRINT_ACCEL = 16
 var is_sprinting = false
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	PlayerManager.set_player(self)
@@ -93,7 +92,7 @@ func process_input(delta):
 		var weapon_barrel = weapon.get_barrel()
 		var shot_dir = aimcast.get_collision_point() - weapon_barrel.get_global_transform().origin
 		if aimcast.is_colliding():
-			# Look at "looks" with the negative z axis, and barrel head is positive
+			# look_at() "looks" with the negative z axis, and barrel head is positive
 			var inverted_shot_dir = weapon_barrel.get_global_transform().origin - shot_dir
 			weapon_barrel.look_at(inverted_shot_dir, Vector3.UP)
 		weapon.fire_weapon()
@@ -172,6 +171,9 @@ func process_topdown_input(delta):
 		var mouse_dir = Vector3(mouse_pos.x, 0, mouse_pos.y).normalized()
 		mouse_dir = pivot_transf.xform(mouse_dir) - pivot_transf.origin
 		self.look_at(self.translation + mouse_dir, Vector3(0, 1, 0))
+		# Tries to shot instantly after the rotation (shot_main casts a fire), 
+		# so aimcast must be forced to changed in order to avoid bugs.
+		aimcast.force_raycast_update()
 	elif dir != Vector3():
 		self.look_at(self.translation + (dir * -1) , Vector3(0, 1, 0))
 	# Reset pivot transformation.
