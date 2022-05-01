@@ -6,7 +6,7 @@
 
 [node name="Bullet" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-projectile_speed = 120
+projectile_speed = 180
 
 [node name="CollisionShape" parent="Area" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.664886 )

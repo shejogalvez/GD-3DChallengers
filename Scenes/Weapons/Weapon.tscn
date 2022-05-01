@@ -18,3 +18,5 @@ mesh = ExtResource( 3 )
 material/0 = null
 
 [node name="Audio" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
