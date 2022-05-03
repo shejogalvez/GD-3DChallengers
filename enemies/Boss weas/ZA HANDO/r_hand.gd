@@ -1,4 +1,4 @@
-extends Weapon
+extends EnemyWeapon
 
 var BULLET_NUMBER = 1
 var ATTACK_CD = 7

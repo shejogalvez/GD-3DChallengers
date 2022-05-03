@@ -104,7 +104,6 @@ colors = PoolColorArray( 1, 1, 1, 1, 0.991211, 0.673714, 0.813239, 1, 0.752941, 
 [node name="effect_layer" type="MeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.072319, -2.48652, -12.6678 )
 mesh = SubResource( 20 )
-skeleton = NodePath("../../GridMap")
 material/0 = SubResource( 22 )
 script = SubResource( 28 )
 

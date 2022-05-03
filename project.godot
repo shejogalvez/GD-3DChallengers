@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://enemies/Boss weas/boss_script.gd"
 }, {
+"base": "Spatial",
+"class": "EnemyWeapon",
+"language": "GDScript",
+"path": "res://enemies/Boss weas/ZA HANDO/enemy_weapon.gd"
+}, {
 "base": "KinematicBody",
 "class": "IEnemy",
 "language": "GDScript",
@@ -71,6 +76,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BossTest": "",
+"EnemyWeapon": "res://Assets/Classes/weapon_icon.png",
 "IEnemy": "",
 "Item": "res://Assets/Classes/item_icon.png",
 "ItemPedestal": "res://Assets/Classes/weapon_pedestal_icon.png",
@@ -93,6 +99,7 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerManager="*res://Scripts/PlayerManager.gd"
+Player_Manager="*res://Scripts/PlayerManager.gd"
 
 [input]
 

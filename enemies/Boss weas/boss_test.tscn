@@ -21,6 +21,7 @@
 albedo_texture = ExtResource( 9 )
 
 [sub_resource type="SpatialMaterial" id=17]
+render_priority = 1
 next_pass = SubResource( 16 )
 albedo_texture = ExtResource( 1 )
 

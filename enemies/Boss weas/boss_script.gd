@@ -33,7 +33,7 @@ func set_mode(mode):
 
 func _process(delta):
 	mode._process(delta)
-	if frenzy_count >= 0:
+	if frenzy_count >= 2:
 		if time > 0.5:
 			var x = rand_range(-100, 100)
 			var z = rand_range(-200, -50)

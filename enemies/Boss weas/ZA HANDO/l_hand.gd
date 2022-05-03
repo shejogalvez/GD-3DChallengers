@@ -1,4 +1,4 @@
-extends Weapon
+extends EnemyWeapon
 
 var BULLET_SEPARATION = 9
 var BULLET_OFSET = 5

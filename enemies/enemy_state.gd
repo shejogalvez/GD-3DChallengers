@@ -1,10 +1,12 @@
 extends Node
 class_name State
 
-var enemy_node
+var enemy_node : IEnemy
+var alerted : bool
 
 func start(node):
-	enemy_node = node
+	self.enemy_node = node
+	self.alerted = false
 
 func bullet_hit(damage, global_trans):
 	enemy_node.hp -= damage
@@ -14,5 +16,6 @@ func bullet_hit(damage, global_trans):
 func _process(delta):
 	pass
 
-func dir_to_player():
-	return PlayerManager.get_player_position() - enemy_node.global_transform.origin
+func _physics_process(delta):
+	pass
+	

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sand_map/terrain.mesh" type="ArrayMesh" id=1]
 [ext_resource path="res://sand_map/terrain_shape.shape" type="Shape" id=2]
 [ext_resource path="res://sand_map/camera_control.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://enemies/sand_soldier.tscn" type="PackedScene" id=5]
 
 [node name="sand_world" type="Spatial"]
 
@@ -29,9 +30,6 @@ far = 1000.0
 script = ExtResource( 3 )
 max_speed = Vector3( 50, 50, 50 )
 
-[node name="Spatial" type="Spatial" parent="."]
-transform = Transform( -0.988367, 0, 0.152089, 0, 1, 0, -0.152089, 0, -0.988367, 0, 0, 0 )
-
 [node name="Player" parent="." instance=ExtResource( 4 )]
 transform = Transform( -0.988367, 0, 0.152089, 0, 1, 0, -0.152089, 0, -0.988367, 0, 0, 0 )
 
@@ -44,3 +42,21 @@ directional_shadow_mode = 0
 directional_shadow_blend_splits = true
 directional_shadow_bias_split_scale = 1.0
 directional_shadow_max_distance = 8192.0
+
+[node name="sand_soldier2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 221.215, 12.0544, -201.796 )
+
+[node name="sand_soldier3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 319.575, 2.64116, 8.97087 )
+
+[node name="sand_soldier4" parent="." instance=ExtResource( 5 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 12.2517, 7.93545, -117.054 )
+
+[node name="sand_soldier5" parent="." instance=ExtResource( 5 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 167.795, 7.93545, -76.3277 )
+
+[node name="sand_soldier6" parent="." instance=ExtResource( 5 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 127.109, 10.09, -212.999 )
+
+[node name="sand_soldier7" parent="." instance=ExtResource( 5 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 223.045, 9.95509, -55.4016 )

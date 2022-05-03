@@ -41,7 +41,9 @@ func set_player_position(position):
 	
 # Gets the current player global position
 func get_player_position():
-	return player.global_transform.origin
+	if player != null:
+		return player.global_transform.origin
+	return Vector3.ZERO
 
 # Sets the player weapon
 func set_weapon(weapon_node):
