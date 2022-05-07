@@ -3,8 +3,9 @@
 [ext_resource path="res://sand_map/terrain.mesh" type="ArrayMesh" id=1]
 [ext_resource path="res://sand_map/terrain_shape.shape" type="Shape" id=2]
 [ext_resource path="res://sand_map/camera_control.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://enemies/sand_soldier.tscn" type="PackedScene" id=5]
+
 
 [node name="sand_world" type="Spatial"]
 

@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Items/Scenes/Item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/Scripts/IronChestplate.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Icon19.png" type="Texture" id=3]
+
+[node name="IronChestplate" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+item_name = "Iron Chestplate"
+item_description = "Chestplate used by the spanish conquerors at medieval ages"
+item_effect = "+200 HP"
+item_image = ExtResource( 3 )

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Weapons/Scenes/Weapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapons/Scripts/Bow.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Meshes/Bow/Bow.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://Weapons/Projectiles/Scenes/Arrow.tscn" type="PackedScene" id=4]
+
+
+[node name="Bow" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+weapon_name = "Bow"
+weapon_description = "A wooden bow used by hunters in the medieval age."
+damage_factor = 1.5
+projectile_scene = ExtResource( 4 )
+
+[node name="Barrel" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.7, -0.7 )
+
+[node name="Model" parent="." index="1"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.15, 0.7, 0 )
+mesh = ExtResource( 3 )
+material/1 = null
+material/2 = null

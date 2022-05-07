@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Weapons/Projectiles/Scenes/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Meshes/Bullet/Bullet.tres" type="ArrayMesh" id=2]
+[ext_resource path="res://Weapons/Projectiles/Scripts/Bullet.gd" type="Script" id=3]
+
+[node name="Bullet" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+projectile_speed = 180
+
+[node name="CollisionShape" parent="Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.664886 )
+
+[node name="Model" parent="." index="1"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 2, 0, 0, 0.42 )
+mesh = ExtResource( 2 )
+material/0 = null

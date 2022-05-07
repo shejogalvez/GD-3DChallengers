@@ -27,12 +27,12 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Item",
 "language": "GDScript",
-"path": "res://Scripts/Items/Item.gd"
+"path": "res://Items/Scripts/Item.gd"
 }, {
 "base": "Spatial",
 "class": "ItemPedestal",
 "language": "GDScript",
-"path": "res://Scripts/ItemPedestal.gd"
+"path": "res://Rooms/Pedestals/ItemPedestal.gd"
 }, {
 "base": "Spatial",
 "class": "Laser",
@@ -42,17 +42,17 @@ _global_script_classes=[ {
 "base": "KinematicBody",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Scripts/Actors/Player.gd"
+"path": "res://Actors/Player.gd"
 }, {
 "base": "Spatial",
 "class": "Projectile",
 "language": "GDScript",
-"path": "res://Scripts/Projectiles/Projectile.gd"
+"path": "res://Weapons/Projectiles/Scripts/Projectile.gd"
 }, {
 "base": "ProgressBar",
 "class": "SmartBar",
 "language": "GDScript",
-"path": "res://Scripts/UI/SmartBar.gd"
+"path": "res://GUI/SmartBar.gd"
 }, {
 "base": "Node",
 "class": "State",
@@ -62,17 +62,17 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Teleport",
 "language": "GDScript",
-"path": "res://Teleport.gd"
+"path": "res://Rooms/Pedestals/Teleport.gd"
 }, {
 "base": "Spatial",
 "class": "Weapon",
 "language": "GDScript",
-"path": "res://Scripts/Weapons/Weapon.gd"
+"path": "res://Weapons/Scripts/Weapon.gd"
 }, {
 "base": "Spatial",
 "class": "WeaponPedestal",
 "language": "GDScript",
-"path": "res://Scripts/WeaponPedestal.gd"
+"path": "res://Rooms/Pedestals/WeaponPedestal.gd"
 } ]
 _global_script_class_icons={
 "BossTest": "",
@@ -85,7 +85,7 @@ _global_script_class_icons={
 "Projectile": "res://Assets/Classes/projectile_icon.png",
 "SmartBar": "",
 "State": "",
-"Teleport": "res://Assets/Classes/teleport_icon.png",
+"Teleport": "",
 "Weapon": "res://Assets/Classes/weapon_icon.png",
 "WeaponPedestal": "res://Assets/Classes/weapon_pedestal_icon.png"
 }
@@ -93,12 +93,12 @@ _global_script_class_icons={
 [application]
 
 config/name="3DChallengers"
-run/main_scene="res://Scenes/Rooms/TestRoomA.tscn"
+run/main_scene="res://Tests/TestRoomA.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-PlayerManager="*res://Scripts/PlayerManager.gd"
+PlayerManager="*res://Actors/PlayerManager.gd"
 
 [input]
 
