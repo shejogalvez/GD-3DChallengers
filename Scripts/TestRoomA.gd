@@ -16,5 +16,5 @@ func _process(delta):
 		get_tree().reload_current_scene()
 		
 	if get_tree().get_nodes_in_group("enemies").empty():
-		print("You have won! Total time: " + str(total_time))
+		print("You have killed all enemies! Total time: " + str(total_time))
 		get_tree().reload_current_scene()

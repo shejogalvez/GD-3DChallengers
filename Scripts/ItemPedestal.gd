@@ -7,7 +7,7 @@ var item_instance =  item_scene.instance()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	item_instance = item_scene.instance()
-	$Item/Model.get_surface_material(0).albedo_texture = item_instance.item_image
+	$Item/Model.set_surface_material(0, create_image_material(item_instance.item_image))
 	$Item/AnimationPlayer.play("float")
 	$Item/Details/Panel/Name.text = item_instance.item_name
 	$Item/Details/Panel/Effect.text = item_instance.item_effect
@@ -38,3 +38,17 @@ func hide_details(body):
 # Removes the audioplayer node.
 func remove_audio():
 	$ItemPedestalAudio.queue_free()
+
+# Creates a surface material with image texture propierties
+func create_image_material(image : StreamTexture) -> SpatialMaterial:
+	var material = SpatialMaterial.new()
+	# Always looks towards the camera
+	material.params_billboard_mode = SpatialMaterial.BILLBOARD_ENABLED
+	material.params_billboard_keep_scale = true
+	material.params_grow = true
+	material.params_grow_amount = 1
+	# Enable transparent color rendering
+	material.flags_transparent = true
+	# Sets the texture to be the image
+	material.albedo_texture = image
+	return material

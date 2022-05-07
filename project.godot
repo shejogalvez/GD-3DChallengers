@@ -99,7 +99,6 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerManager="*res://Scripts/PlayerManager.gd"
-Player_Manager="*res://Scripts/PlayerManager.gd"
 
 [input]
 

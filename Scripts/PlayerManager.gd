@@ -65,11 +65,16 @@ func get_hp():
 # Sets the player total hp
 func set_total_hp(total_hp):
 	player_total_hp = clamp(total_hp, PLAYER_MIN_TOTAL_HP, PLAYER_MAX_TOTAL_HP)
+	set_hp(min(player_hp, player_total_hp))
 	
 # Gets the player total hp
 func get_total_hp():
 	return player_total_hp
-	
+
+# Adds a value to the player total hp
+func add_total_hp(hp):
+	set_total_hp(player_total_hp + hp)
+
 # Substract the player the hp amount equivalent to the maximum
 # between the 20% of the income damage and the income damage minus
 # the player defense
