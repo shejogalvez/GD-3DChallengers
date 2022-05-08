@@ -18,6 +18,7 @@ onready var item_details = $Item/Details
 onready var item_details_name = $Item/Details/Panel/Name
 onready var item_details_effect = $Item/Details/Panel/Effect
 onready var item_details_description = $Item/Details/Panel/Description
+onready var item_details_sprite = $Item/Details/Panel/Sprite
 onready var item_pedestal_audio = $ItemPedestalAudio
 
 # Called when the node enters the scene tree for the first time.
@@ -29,7 +30,7 @@ func _ready():
 	item_details_name.text = item_instance.item_name
 	item_details_effect.text = item_instance.item_effect
 	item_details_description.text = item_instance.item_description
-	item_details.hide()
+	item_details_sprite.texture = item_instance.item_image
 	item_pickup_area.connect("body_entered", self, "give_item")
 	item_details_area.connect("body_entered", self, "show_details")
 	item_details_area.connect("body_exited", self, "hide_details")

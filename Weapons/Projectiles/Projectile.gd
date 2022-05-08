@@ -28,8 +28,8 @@ func _physics_process(delta):
 
 func impact(body):
 	if hit_something == false:
-		if body.has_method("bullet_hit"):
-			body.bullet_hit(projectile_damage, global_transform)
+		if body.has_method("projectile_hit"):
+			body.projectile_hit(projectile_damage, global_transform)
 
 	hit_something = true
 	queue_free()

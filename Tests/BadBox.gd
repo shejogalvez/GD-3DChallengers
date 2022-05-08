@@ -3,5 +3,5 @@ extends RigidBody
 func _ready():
 	pass
 
-func bullet_hit(damage, bullet_global_trans):
+func projectile_hit(damage, bullet_global_trans):
 	queue_free()

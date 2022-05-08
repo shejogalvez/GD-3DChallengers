@@ -42,7 +42,7 @@ func _physics_process(delta):
 	vel = move_and_slide(vel, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
 		
 		
-func bullet_hit(damage, bullet_global_trans):
+func projectile_hit(damage, bullet_global_trans):
 	alerted = true
 	# gets pushed_back a little
 	var direction_bullet = self.global_transform.origin - bullet_global_trans.origin

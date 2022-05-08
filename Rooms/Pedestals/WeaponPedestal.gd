@@ -14,7 +14,6 @@ func _ready():
 	$Weapon/Details/Panel/Damage.text = str(weapon_instance.damage_factor)
 	$Weapon/Details/Panel/Shots.text = str(weapon_instance.projectiles)
 	$Weapon/Details/Panel/Description.text = weapon_instance.weapon_description
-	$Weapon/Details.hide()
 	$Weapon/PickupArea.connect("body_entered", self, "give_weapon")
 	$Weapon/DetailsArea.connect("body_entered", self, "show_details")
 	$Weapon/DetailsArea.connect("body_exited", self, "hide_details")

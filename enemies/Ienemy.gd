@@ -9,8 +9,8 @@ var state
 func _ready():
 	pass # Replace with function body.
 
-func bullet_hit(damage, bullet_global_trans):
-	state.bullet_hit(damage, bullet_global_trans)
+func projectile_hit(damage, bullet_global_trans):
+	state.projectile_hit(damage, bullet_global_trans)
 
 func _process(delta):
 	state._process(delta)

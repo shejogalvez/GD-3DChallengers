@@ -23,8 +23,8 @@ func _ready():
 	angri = hapi.next_pass
 
 
-func bullet_hit(damage, transform):
-	mode.bullet_hit(damage)
+func projectile_hit(damage, transform):
+	mode.projectile_hit(damage)
 		
 func set_mode(mode):
 	self.mode = mode
@@ -53,7 +53,7 @@ class Mode:
 	
 	const frenzy_marks = [400, 200, -1] 
 	
-	func bullet_hit(damage):
+	func projectile_hit(damage):
 		boss_node.hp -= damage
 		boss_node.hp_bar.update_hp(boss_node.hp)
 		if boss_node.hp <= 0:
@@ -77,7 +77,7 @@ class Mode:
 				boss_node.set_mode(Mode.NormalMode.new())
 			time += delta
 			
-		func bullet_hit(damage):
+		func projectile_hit(damage):
 			pass
 	
 	class NormalMode extends Mode:
@@ -92,8 +92,8 @@ class Mode:
 			rhand.fire_weapon()
 					
 		
-		func bullet_hit(damage):
-			.bullet_hit(damage)
+		func projectile_hit(damage):
+			.projectile_hit(damage)
 			if boss_node.hp <= frenzy_marks[boss_node.frenzy_count]:
 				boss_node.set_mode(Mode.FrenzyMode.new())
 			

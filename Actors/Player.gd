@@ -9,6 +9,7 @@ onready var weapon_pivot : Spatial = $HeadPivot/WeaponPivot
 onready var weapon = $HeadPivot/WeaponPivot/Weapon
 onready var topdown_pivot : Spatial = $TopDownPivot
 onready var topdown_camera : Camera = $TopDownPivot/Camera
+onready var hud : Control = $Hud
 onready var crosshair : TextureRect = $Hud/Crossshair
 onready var hp_bar : SmartBar = $Hud/HPBar
 onready var damage_audio : AudioStreamPlayer = $DamageAudio
@@ -38,6 +39,13 @@ const MAX_SLOPE_ANGLE = 40
 const MAX_SPRINT_SPEED = 42
 const SPRINT_ACCEL = 16
 var is_sprinting = false
+# ADS
+const ADS_LERP = 20
+var default_position : Vector3 = Vector3(-1.25, -0.85, 1.5)
+var ads_position : Vector3 = Vector3(0, -0.75, 1.5)
+var default_fov : int = 90
+var ads_fov : int = 60
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -80,11 +88,6 @@ func process_input(delta):
 	# -----------------------------
 	# Capturing/Freeing the cursor
 	# -----------------------------
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# -----------------------------
 	# Shoting
 	# -----------------------------
@@ -126,6 +129,15 @@ func process_head_input(delta):
 	dir += cam_right * topdown_movement.x
 	dir = dir.normalized()
 	# -----------------------------
+	# ADS
+	# -----------------------------
+	if Input.is_action_pressed("aim_down_sights"):
+		weapon_pivot.transform.origin = weapon_pivot.transform.origin.linear_interpolate(ads_position, ADS_LERP * delta)
+		head_camera.fov = lerp(head_camera.fov, ads_fov, ADS_LERP * delta)
+	else:
+		weapon_pivot.transform.origin = weapon_pivot.transform.origin.linear_interpolate(default_position, ADS_LERP * delta)
+		head_camera.fov = lerp(head_camera.fov, default_fov, ADS_LERP * delta)
+	# -----------------------------
 	# Changing camera view
 	# -----------------------------
 	if Input.is_action_just_pressed("change_camera"):
@@ -135,6 +147,8 @@ func process_head_input(delta):
 		head_pivot.rotation_degrees = head_pivot_rot
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		crosshair.visible = false
+		weapon_pivot.transform.origin = ads_position
+		head_camera.fov = default_fov
 		topdown_camera.make_current()
 
 # Process input if current view is on topdown camera.

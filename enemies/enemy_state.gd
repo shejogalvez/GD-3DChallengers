@@ -8,7 +8,7 @@ func start(node):
 	self.enemy_node = node
 	self.alerted = false
 
-func bullet_hit(damage, global_trans):
+func projectile_hit(damage, global_trans):
 	enemy_node.hp -= damage
 	if enemy_node.hp <= 0:
 		enemy_node.queue_free()
