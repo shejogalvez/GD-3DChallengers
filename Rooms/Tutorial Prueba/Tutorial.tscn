@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scripts/Actors/Player.gd" type="Script" id=1]
+[ext_resource path="res://Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://Rooms/RoomBase1Puerta.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Rooms/TeleportENbase.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Rooms/Sala2x2Base2OP.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Rooms/RoomBasePOpuestas.tscn" type="PackedScene" id=6]
