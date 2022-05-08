@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/JesusGloves.png-f383b8747355104566ce31b343deeddc.stex"
+path="res://.import/helmet_01b.png-c124c4fa855ede3622e5fcb38705eeb9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/JesusGloves.png"
-dest_files=[ "res://.import/JesusGloves.png-f383b8747355104566ce31b343deeddc.stex" ]
+source_file="res://Assets/Sprites/helmet_01b.png"
+dest_files=[ "res://.import/helmet_01b.png-c124c4fa855ede3622e5fcb38705eeb9.stex" ]
 
 [params]
 
