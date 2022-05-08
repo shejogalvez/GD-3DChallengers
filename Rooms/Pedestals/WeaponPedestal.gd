@@ -1,7 +1,7 @@
 extends Spatial
 class_name WeaponPedestal, "res://Assets/Classes/weapon_pedestal_icon.png"
 
-export(PackedScene) var weapon_scene = preload("res://Weapons/Scenes/Weapon.tscn")
+export(PackedScene) var weapon_scene = preload("res://Weapons/Weapon.tscn")
 var weapon_instance =  weapon_scene.instance()
 
 # Called when the node enters the scene tree for the first time.

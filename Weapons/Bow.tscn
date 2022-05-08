@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Weapons/Scenes/Weapon.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Weapons/Scripts/Bow.gd" type="Script" id=2]
+[ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapons/Bow.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Meshes/Bow/Bow.mesh" type="ArrayMesh" id=3]
-[ext_resource path="res://Weapons/Projectiles/Scenes/Arrow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Weapons/Projectiles/Arrow.tscn" type="PackedScene" id=4]
+
 
 
 [node name="Bow" instance=ExtResource( 1 )]

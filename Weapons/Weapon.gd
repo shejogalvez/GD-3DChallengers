@@ -14,7 +14,7 @@ var current_fire_cd = 0.0
 # Projectile amount
 export(int, 0, 10) var projectiles = 1
 # Projectile scene
-export(PackedScene) var projectile_scene = preload("res://Weapons/Projectiles/Scenes/Projectile.tscn")
+export(PackedScene) var projectile_scene = preload("res://Weapons/Projectiles/Projectile.tscn")
 
 # Barrel node
 onready var barrel : Position3D = $Barrel 

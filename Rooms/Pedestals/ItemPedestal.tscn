@@ -1,9 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Rooms/Pedestals/ItemPedestal.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Meshes/itemMesh.tres" type="QuadMesh" id=2]
 [ext_resource path="res://Assets/Audio/item-pickup.wav" type="AudioStream" id=3]
-[ext_resource path="res://Assets/Icon19.png" type="Texture" id=4]
 
 [sub_resource type="CylinderMesh" id=4]
 top_radius = 3.0
@@ -73,24 +71,20 @@ shape = SubResource( 1 )
 [node name="Item" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0 )
 
+[node name="Model" type="MeshInstance" parent="Item"]
+
+[node name="SpriteViewport" type="Viewport" parent="Item/Model"]
+size = Vector2( 128, 128 )
+transparent_bg = true
+render_target_v_flip = true
+
+[node name="Sprite" type="Sprite" parent="Item/Model/SpriteViewport"]
+position = Vector2( 64, 64 )
+
 [node name="PickupArea" type="Area" parent="Item"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Item/PickupArea"]
 shape = SubResource( 2 )
-
-[node name="Model" type="MeshInstance" parent="Item"]
-mesh = ExtResource( 2 )
-material/0 = null
-
-[node name="Viewport" type="Viewport" parent="Item"]
-size = Vector2( 128, 128 )
-
-[node name="TextureRect" type="TextureRect" parent="Item/Viewport"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Item"]
 autoplay = "float"

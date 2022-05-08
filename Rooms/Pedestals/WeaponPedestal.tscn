@@ -106,16 +106,16 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="PickupArea" type="Area" parent="Weapon"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Weapon/PickupArea"]
-shape = SubResource( 5 )
-
 [node name="Model" type="MeshInstance" parent="Weapon"]
 transform = Transform( 1, 0, 0, 0, 0.952188, 0.305513, 0, -0.305513, 0.952188, 0, 3.55042, 0 )
 mesh = ExtResource( 2 )
 skeleton = NodePath("../..")
 material/0 = null
+
+[node name="PickupArea" type="Area" parent="Weapon"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Weapon/PickupArea"]
+shape = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon"]
 root_node = NodePath("../..")
