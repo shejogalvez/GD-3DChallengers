@@ -4,7 +4,7 @@
 [ext_resource path="res://MeshSueloE.meshlib" type="MeshLibrary" id=2]
 
 [node name="RBP4" type="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.986, 0.0109863, -289.477 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.99, 0.011, -289.477 )
 
 [node name="MeshSueloE" type="GridMap" parent="."]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -0.901337, 0, 0 )
@@ -16,7 +16,7 @@ data = {
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 997, 0 )
+"_editor_floor_": Vector3( 0, 1, 0 )
 }
 
 [node name="MeshParedE1" type="GridMap" parent="MeshSueloE"]
@@ -28,7 +28,7 @@ data = {
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
+"_editor_floor_": Vector3( 0, -1, 0 )
 }
 
 [node name="MeshParedE2" type="GridMap" parent="MeshSueloE"]
@@ -64,5 +64,5 @@ data = {
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 5, 0 )
+"_editor_floor_": Vector3( 0, -1, 0 )
 }
