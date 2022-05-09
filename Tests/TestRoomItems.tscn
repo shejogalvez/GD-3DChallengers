@@ -13,7 +13,7 @@
 [ext_resource path="res://Tests/SmallTarget.gd" type="Script" id=11]
 [ext_resource path="res://Tests/TestRoomItems.gd" type="Script" id=12]
 [ext_resource path="res://Items/JesusGloves.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Rooms/Misc/SmallPot.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Rooms/Misc/PotSmall.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Pickups/GoldCoin.tscn" type="PackedScene" id=15]
 
 [sub_resource type="BoxShape" id=3]
@@ -120,12 +120,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -86.0179, 2.06076, 0 )
 
 [node name="Pot" parent="." instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
-
-[node name="Pot2" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -16.0398 )
-
-[node name="Pot3" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1296, 6, -9.05795 )
 
 [node name="GoldCoin" parent="." instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 10.6773, 27.6426 )

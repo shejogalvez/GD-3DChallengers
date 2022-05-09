@@ -5,8 +5,8 @@
 [ext_resource path="res://Assets/Audio/coins-handling.wav" type="AudioStream" id=3]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 0.9
-height = 0.4
+radius = 1.1
+height = 0.6
 
 [node name="GoldCoin" type="RigidBody"]
 mass = 5.0

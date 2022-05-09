@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/small_pot.glb-6fa0481a66581b8b68293f82ef8207ed.scn"
+path="res://.import/pot_small.glb-e245d9573b17640b0d9945d519665e27.scn"
 
 [deps]
 
-source_file="res://Assets/Meshes/PotSmall/small_pot.glb"
-dest_files=[ "res://.import/small_pot.glb-6fa0481a66581b8b68293f82ef8207ed.scn" ]
+source_file="res://Assets/Meshes/PotSmall/pot_small.glb"
+dest_files=[ "res://.import/pot_small.glb-e245d9573b17640b0d9945d519665e27.scn" ]
 
 [params]
 
