@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Meshes/GoldCoin/gold_coin_Cylinder.mesh" type="ArrayMesh" id=1]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.9
+height = 0.4
+
+[node name="GoldCoin" type="RigidBody"]
+mass = 5.0
+gravity_scale = 2.0
+
+[node name="Model" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
