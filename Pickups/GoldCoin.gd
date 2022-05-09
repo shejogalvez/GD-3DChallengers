@@ -15,6 +15,6 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("shot_main"):
 		if (global_transform.origin - PlayerManager.get_player_position()).length() < 10:
-			$Model.queue_free()
+			$Model.queue_free() # bugged null instance
 			if not $PickupAudio.playing:
 				$PickupAudio.play()
