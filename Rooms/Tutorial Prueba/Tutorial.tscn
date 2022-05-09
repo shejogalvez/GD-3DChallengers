@@ -1,24 +1,32 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://Actors/Player.gd" type="Script" id=1]
+[ext_resource path="res://Rooms/Tutorial Prueba/Camera.gd" type="Script" id=1]
 [ext_resource path="res://Rooms/RoomBase1Puerta.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Rooms/TeleportENbase.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Rooms/Sala2x2Base2OP.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Rooms/RoomBasePOpuestas.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Weapons/Bow.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Weapons/AssaultRifle.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Weapons/Revolver.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Weapons/Railgun.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Items/JesusGloves.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Rooms/Pedestals/WeaponPedestal.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Rooms/Pedestals/ItemPedestal.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Rooms/Pedestals/Teleport.tscn" type="PackedScene" id=14]
+[ext_resource path="res://enemies/sand_soldier.tscn" type="PackedScene" id=15]
+[ext_resource path="res://enemies/Boss weas/Bossuwu.tscn" type="PackedScene" id=16]
 
 [node name="Tutorial" type="Spatial"]
-script = ExtResource( 1 )
 
 [node name="RBP4" parent="." instance=ExtResource( 2 )]
 
 [node name="TeleportENbase" parent="RBP4" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.432, -0.0109863, 192.027 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-transform = Transform( -1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 0, 1, 0 )
-collision_layer = 3
-collision_mask = 3
+[node name="Teleport" parent="RBP4/TeleportENbase" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -12 )
+teleport_position = Vector3( 0, 0, -236 )
 
 [node name="RB2X2OP" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -300 )
@@ -26,8 +34,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -300 )
 [node name="TeleportENbase" parent="RB2X2OP" instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.4, 0, 64 )
 
+[node name="Teleport" parent="RB2X2OP/TeleportENbase" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -13 )
+teleport_position = Vector3( 0, 0, -300 )
+
 [node name="TeleportENbase2" parent="RB2X2OP" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, -64 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, -64.1 )
+
+[node name="Teleport" parent="RB2X2OP/TeleportENbase2" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -13 )
+teleport_position = Vector3( 0, 0, -300 )
 
 [node name="RBPOpuestas" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.411, 0, -600 )
@@ -35,8 +51,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.411, 0, -600 )
 [node name="TeleportENbase" parent="RBPOpuestas" instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.7, 0, 94.1 )
 
+[node name="Teleport" parent="RBPOpuestas/TeleportENbase" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -13 )
+teleport_position = Vector3( 0, 0, -536 )
+
 [node name="TeleportENbase2" parent="RBPOpuestas" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, -97.8 )
+
+[node name="Teleport" parent="RBPOpuestas/TeleportENbase2" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -13 )
+
+[node name="sand_soldier" parent="RBPOpuestas" instance=ExtResource( 15 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 32, 1, 0 )
+
+[node name="sand_soldier2" parent="RBPOpuestas" instance=ExtResource( 15 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -32, 1, 0 )
+
+[node name="sand_soldier3" parent="RBPOpuestas" instance=ExtResource( 15 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0 )
 
 [node name="RB2X2OP2" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -900 )
@@ -44,5 +76,81 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -900 )
 [node name="TeleportENbase" parent="RB2X2OP2" instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 64.1 )
 
+[node name="Teleport" parent="RB2X2OP2/TeleportENbase" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -13 )
+
 [node name="TeleportENbase2" parent="RB2X2OP2" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, -64.01 )
+
+[node name="Teleport" parent="RB2X2OP2/TeleportENbase2" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -13 )
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="FPSLabel" type="Label" parent="GUI"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="PauseMenu" type="Control" parent="GUI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="GUI"]
+show_behind_parent = true
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -220.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 200, 200 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="GUI/Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -200.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Viewport" type="Viewport" parent="GUI/Panel/ViewportContainer"]
+size = Vector2( 200, 200 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Camera" type="Camera" parent="GUI/Panel/ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 500, 0 )
+current = true
+far = 500.0
+script = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 0, 1, 0 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="WeaponPedestal" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 2, -332 )
+weapon_scene = ExtResource( 7 )
+
+[node name="WeaponPedestal2" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 2, -316 )
+weapon_scene = ExtResource( 10 )
+
+[node name="WeaponPedestal3" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 2, -284 )
+weapon_scene = ExtResource( 9 )
+
+[node name="WeaponPedestal4" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 2, -268 )
+weapon_scene = ExtResource( 8 )
+
+[node name="ItemPedestal" parent="." instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 2, -300 )
+item_scene = ExtResource( 11 )
+
+[node name="Boss" parent="." instance=ExtResource( 16 )]
+transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 0.294, 30, -900 )

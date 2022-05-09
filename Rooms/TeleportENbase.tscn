@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Rooms/Pedestals/Teleport.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MeshSueloE.meshlib" type="MeshLibrary" id=2]
 [ext_resource path="res://MeshParedE.meshlib" type="MeshLibrary" id=3]
 
@@ -54,6 +53,3 @@ __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 2, 0 )
 }
-
-[node name="Teleport" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, -12.6 )

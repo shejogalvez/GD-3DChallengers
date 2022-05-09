@@ -2,6 +2,7 @@ extends Spatial
 class_name Teleport, "res://Assets/Classes/teleport_icon.png"
 
 export var teleport_position : Vector3
+export var teleport_relative_position : Vector3
 
 onready var teleport_area : Area = $TeleportArea
 
