@@ -1,13 +1,13 @@
 tool
 extends Node
 
-"""
-Handles destruction of the parent node
-
-When `destroy` is called, the parent node gets removed
-and shards are added to the `shard_container`. A `shard_template` is used
-to configure how the `shard_scene` will be converted to `RigidBodies`.
-"""
+# =========================================================================
+# Handles destruction of the parent node
+#
+# When `destroy` is called, the parent node gets removed
+# and shards are added to the `shard_container`. A `shard_template` is used
+# to configure how the `shard_scene` will be converted to `RigidBodies`.
+# =========================================================================
 
 export var shard_template : PackedScene = preload("res://Addons/Destruction/ShardTemplates/DefaultShardTemplate.tscn")
 export var shard_scene : PackedScene

@@ -101,6 +101,10 @@ config/icon="res://icon.png"
 PlayerManager="*res://Actors/PlayerManager.gd"
 Menu="*res://GUI/Menu.tscn"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/Destruction/plugin.cfg" )
+
 [input]
 
 movement_forward={
