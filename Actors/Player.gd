@@ -13,6 +13,7 @@ onready var hud : Control = $Hud
 onready var crosshair : TextureRect = $Hud/Crossshair
 onready var hp_bar : SmartBar = $Hud/HPBar
 onready var damage_audio : AudioStreamPlayer = $DamageAudio
+onready var hitbox = $BodyCollisionShape
 # True if viewport is on head camera, false otherwise. 
 var is_head_view = false
 # The magnitude of grades per frame the topdown view will rotate if

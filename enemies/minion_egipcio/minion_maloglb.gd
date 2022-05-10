@@ -1,6 +1,7 @@
 extends IEnemy
 
 onready var animator = $AnimationPlayer
+onready var face = $meshish/head
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,6 +11,16 @@ func _ready():
 func a(name):
 	state.alerted = false
 
+func look_up_face():
+	var dir : Vector3 = vec_to_player_face(self.face)
+	var angle;
+	if dir.y > 0:
+		angle = Vector3(dir.x, 0, dir.z).angle_to(dir)
+	else:
+		angle = -Vector3(dir.x, 0, dir.z).angle_to(dir)
+	#print(angle)
+	face.rotation.x = angle
+	
 
 class initial_state extends State:
 	
@@ -22,3 +33,4 @@ class initial_state extends State:
 			alerted = true
 		if alerted:
 			enemy_node.face_player()
+			enemy_node.look_up_face()

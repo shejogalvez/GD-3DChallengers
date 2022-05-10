@@ -44,7 +44,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/keys = PoolRealArray( 1.8, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1.9, 1, 0, 0, 0.8, 0, 0, 0, 1, 1, 1, 1, 2.1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
+tracks/2/keys = PoolRealArray( 1.8, 1, 0, 0, 0, 0, 1, 0, -4.37114e-08, 1, 1, 1, 1.9, 1, 0, 0, -0.8, 0, 1, 0, -4.37114e-08, 1, 1, 1, 2.1, 1, 0, 0, 0, 0, 1, 0, -4.37114e-08, 1, 1, 1 )
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "minion_maloglb_Sphere"
@@ -137,6 +137,7 @@ shape = SubResource( 6 )
 anims/fire_sequence = SubResource( 10 )
 
 [node name="meshish" type="Spatial" parent="."]
+transform = Transform( -1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 0, 0, 0 )
 
 [node name="head" type="MeshInstance" parent="meshish"]
 transform = Transform( 0.672205, 0, 0, 0, 0.672205, 0, 0, 0, 0.672205, 0, 2.16599, 0 )
@@ -165,7 +166,7 @@ material/0 = null
 [node name="firin_hand" type="Spatial" parent="meshish"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 1.172, 0 )
 script = ExtResource( 1 )
-BULLET_SEPARATION = 7.0
+BULLET_SEPARATION = 14.0
 BULLET_OFSET = 0.0
 BULLET_NUMBER = 1.0
 

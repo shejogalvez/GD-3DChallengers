@@ -44,7 +44,7 @@ func _physics_process(delta):
 	
 func set_fire(bullets):
 	self.projectiles = bullets
-	_fire()
+	_fire3d()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -52,6 +52,16 @@ func set_fire(bullets):
 func _fire():
 	var dif = PlayerManager.get_player_position() -self.global_transform.origin
 	vec_dif = Vector3(dif[0], 0, dif[2]).normalized()
+	for projectile_id in projectiles:
+		var projectile = projectile_scene.instance()
+		var scene_root = get_tree().root.get_children()[0]
+		scene_root.add_child(projectile)
+		_set_projectile_transform(projectile, projectile_id)
+
+
+func _fire3d():
+	var dif = PlayerManager.get_player_position() -self.global_transform.origin
+	vec_dif = dif.normalized()
 	for projectile_id in projectiles:
 		var projectile = projectile_scene.instance()
 		var scene_root = get_tree().root.get_children()[0]

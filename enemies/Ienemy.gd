@@ -30,6 +30,9 @@ func vec_to_player2d():
 	var vec3d = -(self.global_transform.origin - PlayerManager.get_player_position())
 	return Vector3(vec3d.x, 0, vec3d.z)
 	
+func vec_to_player_face(self_face):
+	return -(self_face.global_transform.origin - PlayerManager.get_player_face_position())
+	
 func face_player():
 	var dir : Vector3 = vec_to_player2d()
 	var angle;

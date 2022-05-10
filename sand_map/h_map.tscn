@@ -63,8 +63,8 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 127.109, 10.09, -212.999 )
 [node name="sand_soldier7" parent="." instance=ExtResource( 5 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 223.045, 9.95509, -55.4016 )
 
-[node name="Spatial" type="Spatial" parent="."]
-transform = Transform( -2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 115.653, 6.75829, -93.2858 )
+[node name="minion_maloglb" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1.45853, 0, -1.36846, 0, 2, 0, 1.36846, 0, 1.45853, 100.879, 18.3816, -139.497 )
 
-[node name="minion_maloglb" parent="Spatial" instance=ExtResource( 6 )]
-transform = Transform( 0.786202, 0, -0.617969, 0, 1, 0, 0.617969, 0, 0.786202, 0, 0, 0 )
+[node name="minion_maloglb2" parent="." instance=ExtResource( 6 )]
+transform = Transform( -1.5724, 0, 1.23594, 0, 2, 0, -1.23594, 0, -1.5724, 115.653, 6.75829, -93.2858 )
