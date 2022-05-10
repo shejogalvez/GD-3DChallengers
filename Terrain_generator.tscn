@@ -1,16 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://sand_map/Terrain.gd" type="Script" id=1]
+[ext_resource path="res://terrain_shape.shape" type="Shape" id=2]
 [ext_resource path="res://sand_map/camera_control.gd" type="Script" id=3]
-
-[sub_resource type="PlaneMesh" id=1]
+[ext_resource path="res://terrain.mesh" type="ArrayMesh" id=5]
 
 [node name="Terrain" type="Spatial"]
 transform = Transform( 5, 0, 0, 0, 3, 0, 0, 0, 5, 0, 0, 0 )
 script = ExtResource( 1 )
+MAX_HEIGHT = 50.0
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
+mesh = ExtResource( 5 )
 skeleton = NodePath("../..")
 software_skinning_transform_normals = false
 material/0 = null
@@ -18,8 +19,14 @@ material/0 = null
 [node name="StaticBody" type="StaticBody" parent="MeshInstance"]
 
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+shape = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.2, 0, 0, 0, 0.333333, 0, 0, 0, 0.2, -3.34414, 2.048, 0 )
 far = 1000.0
 script = ExtResource( 3 )
+max_speed = Vector3( 150, 150, 150 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 0.252301, 0.217842, 0, -0.130705, 0.151381, 0, 11.2438, 4.09528 )
+visible = false

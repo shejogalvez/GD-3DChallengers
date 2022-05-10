@@ -12,7 +12,7 @@ const DRAGGABLE = true
 const CUSTOM_BACKGROUND = false
 const BACKGROUND_COLOR = Color(0.15, 0.17, 0.23, 0.75) 
 
-const MAX_SPEED = 50
+const MAX_SPEED = 500
 #*******************************************************************************
 
 var camera

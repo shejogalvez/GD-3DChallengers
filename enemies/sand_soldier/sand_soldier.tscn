@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://enemies/sand_soldier.gd" type="Script" id=1]
+[ext_resource path="res://enemies/sand_soldier/sand_soldier.gd" type="Script" id=1]
 [ext_resource path="res://sand_map/material.tres" type="Material" id=2]
-[ext_resource path="res://enemies/spearV20.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/sand_soldier/spearV20.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Curve" id=14]
 _data = [ Vector2( 0, 0.0337423 ), 0.0, -0.0505785, 0, 0, Vector2( 0.124074, 0.941718 ), -6.41871, -6.41871, 0, 0, Vector2( 0.294444, 0.0214723 ), 1.19632, 1.19632, 0, 0, Vector2( 1, 0.0214723 ), 0.729442, 0.0, 0, 0 ]

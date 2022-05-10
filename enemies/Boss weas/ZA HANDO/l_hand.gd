@@ -1,9 +1,9 @@
 extends EnemyWeapon
 
-var BULLET_SEPARATION = 9
-var BULLET_OFSET = 5
-var BULLET_NUMBER = 15
-var ATTACK_CD = 1.5
+export (float) var BULLET_SEPARATION = 9
+export (float) var BULLET_OFSET = 5
+export (float) var BULLET_NUMBER = 15
+export (float) var ATTACK_CD = 1.5
 
 var accel = 0.5
 var time = 0
@@ -42,7 +42,9 @@ func _physics_process(delta):
 	pos += displace
 	time += delta
 	
-	self.transform.origin.y += sin(time)*0.005
+func set_fire(bullets):
+	self.projectiles = bullets
+	_fire()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

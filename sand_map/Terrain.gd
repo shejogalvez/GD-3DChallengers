@@ -1,8 +1,9 @@
 extends Spatial
 
-const MAX_HEIGHT = 15
+export (float, 0.01, 100) var MAX_HEIGHT = 15
+export (float, 1, 1000) var TEXTURE_SIZE = 10
 export (String) var height_map_path = "res://sand_map/Pond_of_Dunes_dev01.heightmap_mq.png"
-export (String) var texture_path = "res://sand_map/material.tres"
+export (Material) var mesh_material = null
 
 var width;
 var height;
@@ -38,7 +39,7 @@ func _ready():
 	
 	var st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	st.set_material(load(texture_path))
+	st.set_material(mesh_material)
 	
 	for v in vertices.size():
 		st.add_color(Color(1,0.5,0.5))
@@ -75,9 +76,9 @@ func createQuad(x,y):
 	vertices.push_back(vert2)
 	vertices.push_back(vert3)
 	
-	UVs.push_back(Vector2(vert1.x/10, -vert1.z/10))
-	UVs.push_back(Vector2(vert2.x/10, -vert2.z/10))
-	UVs.push_back(Vector2(vert3.x/10, -vert3.z/10))
+	UVs.push_back(Vector2(vert1.x/TEXTURE_SIZE, -vert1.z/TEXTURE_SIZE))
+	UVs.push_back(Vector2(vert2.x/TEXTURE_SIZE, -vert2.z/TEXTURE_SIZE))
+	UVs.push_back(Vector2(vert3.x/TEXTURE_SIZE, -vert3.z/TEXTURE_SIZE))
 	
 	side1 = vert2-vert1
 	side2 = vert2-vert3
@@ -94,9 +95,9 @@ func createQuad(x,y):
 	vertices.push_back(vert2)
 	vertices.push_back(vert3)
 	
-	UVs.push_back(Vector2(vert1.x/10, -vert1.z/10))
-	UVs.push_back(Vector2(vert2.x/10, -vert2.z/10))
-	UVs.push_back(Vector2(vert3.x/10, -vert3.z/10))
+	UVs.push_back(Vector2(vert1.x/TEXTURE_SIZE, -vert1.z/TEXTURE_SIZE))
+	UVs.push_back(Vector2(vert2.x/TEXTURE_SIZE, -vert2.z/TEXTURE_SIZE))
+	UVs.push_back(Vector2(vert3.x/TEXTURE_SIZE, -vert3.z/TEXTURE_SIZE))
 	
 	side1 = vert2-vert1
 	side2 = vert2-vert3

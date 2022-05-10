@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sand_map/terrain.mesh" type="ArrayMesh" id=1]
 [ext_resource path="res://sand_map/terrain_shape.shape" type="Shape" id=2]
 [ext_resource path="res://sand_map/camera_control.gd" type="Script" id=3]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://enemies/sand_soldier.tscn" type="PackedScene" id=5]
+[ext_resource path="res://enemies/sand_soldier/sand_soldier.tscn" type="PackedScene" id=5]
+[ext_resource path="res://enemies/minion_egipcio/minion_maloglb.tscn" type="PackedScene" id=6]
 
 [node name="sand_world" type="Spatial"]
 
@@ -12,6 +13,7 @@
 transform = Transform( 5, 0, 0, 0, 3, 0, 0, 0, 5, -50, 0, 50 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Terrain"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.239733, -2.43568, 0.352897 )
 mesh = ExtResource( 1 )
 skeleton = NodePath("../..")
 software_skinning_transform_normals = false
@@ -60,3 +62,9 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 127.109, 10.09, -212.999 )
 
 [node name="sand_soldier7" parent="." instance=ExtResource( 5 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 223.045, 9.95509, -55.4016 )
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( -2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 115.653, 6.75829, -93.2858 )
+
+[node name="minion_maloglb" parent="Spatial" instance=ExtResource( 6 )]
+transform = Transform( 0.786202, 0, -0.617969, 0, 1, 0, 0.617969, 0, 0.786202, 0, 0, 0 )
