@@ -1,3 +1,4 @@
+# Creates an spatial node with the rigid bodies instances.
 static func create_shards(object : Spatial, shard_template : PackedScene = preload("res://Addons/Destruction/ShardTemplates/DefaultShardTemplate.tscn")) -> Spatial:
 	var shards := Spatial.new()
 	shards.name = object.name + "Shards"
@@ -7,8 +8,7 @@ static func create_shards(object : Spatial, shard_template : PackedScene = prelo
 			continue
 		var new_shard : RigidBody = shard_template.instance()
 		new_shard.translation = shard_mesh.translation
-		new_shard.name = new_shard.name.format(
-				{name = object.name, number = shard_num})
+		new_shard.name = new_shard.name.format({name = object.name, number = shard_num})
 		
 		var mesh_instance : MeshInstance = new_shard.get_node("MeshInstance")
 		mesh_instance.mesh = shard_mesh.mesh
@@ -20,7 +20,7 @@ static func create_shards(object : Spatial, shard_template : PackedScene = prelo
 		shard_num += 1
 	return shards
 
-
+# Deprecated by Juanix.
 static func reposition_mesh_to_middle(mesh_instance : MeshInstance):
 	var mesh := mesh_instance.mesh
 	if mesh.get_faces().size() == 0:
@@ -37,7 +37,7 @@ static func reposition_mesh_to_middle(mesh_instance : MeshInstance):
 		mesh_tool.commit_to_surface(mesh_instance.mesh)
 	mesh_instance.translate(middle)
 
-
+# Deprecated by Juanix.
 static func get_middle(points : PoolVector3Array) -> Vector3:
 	if points.size() == 0:
 		return Vector3()

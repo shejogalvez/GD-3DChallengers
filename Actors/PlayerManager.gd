@@ -15,6 +15,10 @@ var player_hp = player_total_hp # Current hp
 var player_attack = 10
 var player_defense = 1
 
+# Money
+
+var current_money = 0
+
 # Combat variables
 const UNTARGETABLE_TIME = 1
 var untargetable = false
@@ -86,3 +90,5 @@ func receive_damage(damage):
 		set_hp(player_hp - true_damage)
 		player.play_damage_audio()
 	
+func add_money(amount):
+	current_money += amount

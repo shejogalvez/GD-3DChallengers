@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Rooms/Pedestals/ItemPedestal.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Audio/item-pickup.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Audio/item-obtained.wav" type="AudioStream" id=3]
 
 [sub_resource type="CylinderMesh" id=4]
 top_radius = 3.0

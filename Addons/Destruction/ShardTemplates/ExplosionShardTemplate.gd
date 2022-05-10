@@ -1,4 +1,5 @@
 extends RigidBody
 
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	apply_impulse(Vector3(randf(), .1, randf()) - Vector3.ONE * .5, -translation.normalized() / 10 + Vector3.UP * 6)
+	apply_central_impulse(translation * 10)

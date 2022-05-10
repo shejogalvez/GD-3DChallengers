@@ -5,16 +5,16 @@
 [ext_resource path="res://Assets/Audio/pot-break.wav" type="AudioStream" id=3]
 [ext_resource path="res://Addons/Destruction/Destruction.gd" type="Script" id=4]
 [ext_resource path="res://Rooms/Misc/PotSmallB.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Addons/Destruction/ShardTemplates/ExplosionShardTemplate.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Addons/Destruction/ShardTemplates/HeavyExplosionST.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 3.0
 height = 6.8
 
 [node name="PotSmall" type="RigidBody"]
-mass = 50.0
-gravity_scale = 15.0
+gravity_scale = 10.0
 script = ExtResource( 2 )
+break_audio = ExtResource( 3 )
 
 [node name="Model" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )
@@ -22,11 +22,6 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
-
-[node name="BreakAudio" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource( 3 )
-unit_db = 10.0
-unit_size = 30.0
 
 [node name="Destruction" type="Node" parent="."]
 script = ExtResource( 4 )

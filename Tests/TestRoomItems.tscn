@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Rooms/Pedestals/Teleport.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Items/IronChestplate.tscn" type="PackedScene" id=2]
@@ -14,7 +14,8 @@
 [ext_resource path="res://Tests/TestRoomItems.gd" type="Script" id=12]
 [ext_resource path="res://Items/JesusGloves.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Rooms/Misc/PotSmall.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Pickups/GoldCoin.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Pickups/MayaCoin.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/Audio/coins-pickup.wav" type="AudioStream" id=16]
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 1, 50, 70 )
@@ -119,7 +120,46 @@ item_scene = ExtResource( 13 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -86.0179, 2.06076, 0 )
 
 [node name="Pot" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5021, 6, 0 )
 
-[node name="GoldCoin" parent="." instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 10.6773, 27.6426 )
+[node name="Pot2" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8396, 6, 0 )
+
+[node name="Pot3" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3531, 6, 0 )
+
+[node name="MayaCoin" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.61222, 26.3816 )
+pickup_audio = ExtResource( 16 )
+
+[node name="MayaCoin2" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.20068, 6.61222, 26.3816 )
+pickup_audio = ExtResource( 16 )
+
+[node name="MayaCoin3" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.20068, 6.61222, 35.3743 )
+pickup_audio = ExtResource( 16 )
+
+[node name="MayaCoin4" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13121, 6.61222, 35.3743 )
+pickup_audio = ExtResource( 16 )
+
+[node name="MayaCoin5" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13121, 6.61222, 30.8371 )
+pickup_audio = ExtResource( 16 )
+
+[node name="MayaCoin6" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13121, 8.30546, 30.8371 )
+pickup_audio = ExtResource( 16 )
+
+[node name="MayaCoin7" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13121, 12.2893, 30.8371 )
+pickup_audio = ExtResource( 16 )
+
+[node name="MayaCoin8" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13121, 15.7062, 30.8371 )
+pickup_audio = ExtResource( 16 )
+
+[node name="MayaCoin9" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13121, 15.7062, 34.0625 )
+pickup_audio = ExtResource( 16 )

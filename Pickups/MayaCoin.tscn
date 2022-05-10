@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Pickups/Pickup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Pickups/MayaCoin.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Audio/item-obtained.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Meshes/GoldCoin/gold_coin_Cylinder.mesh" type="ArrayMesh" id=4]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 1.1
+height = 0.5
+
+[node name="MayaCoin" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+pickup_audio = ExtResource( 3 )
+
+[node name="Model" parent="." index="0"]
+mesh = ExtResource( 4 )
+material/1 = null
+material/2 = null
+
+[node name="CollisionShape" parent="." index="1"]
+shape = SubResource( 1 )
