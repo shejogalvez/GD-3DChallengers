@@ -7,7 +7,7 @@ onready var interaction : Interaction = $Interaction
 
 # Interact function used by the interaction node.
 func interact():
-	AudioStreamManager.play_3d(pickup_audio, global_transform.origin, get_parent())
+	AudioStreamManager.play(pickup_audio, get_parent())
 	_obtain()
 	queue_free()
 	
