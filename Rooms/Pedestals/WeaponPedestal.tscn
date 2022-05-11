@@ -113,6 +113,9 @@ skeleton = NodePath("../..")
 material/0 = null
 
 [node name="PickupArea" type="Area" parent="Weapon"]
+collision_layer = 0
+collision_mask = 64
+monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Weapon/PickupArea"]
 shape = SubResource( 5 )
@@ -123,6 +126,9 @@ anims/RESET = SubResource( 4 )
 anims/rotation = SubResource( 3 )
 
 [node name="DetailsArea" type="Area" parent="Weapon"]
+collision_layer = 0
+collision_mask = 64
+monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Weapon/DetailsArea"]
 shape = SubResource( 7 )

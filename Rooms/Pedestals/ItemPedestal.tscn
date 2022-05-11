@@ -83,6 +83,9 @@ render_target_v_flip = true
 position = Vector2( 64, 64 )
 
 [node name="PickupArea" type="Area" parent="Item"]
+collision_layer = 0
+collision_mask = 64
+monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Item/PickupArea"]
 shape = SubResource( 2 )
@@ -93,6 +96,9 @@ anims/RESET = SubResource( 7 )
 anims/float = SubResource( 6 )
 
 [node name="DetailsArea" type="Area" parent="Item"]
+collision_layer = 0
+collision_mask = 64
+monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Item/DetailsArea"]
 shape = SubResource( 3 )

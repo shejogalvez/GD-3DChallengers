@@ -6,7 +6,6 @@
 [ext_resource path="res://Assets/Meshes/GoldCoin/gold_coin_Cylinder.mesh" type="ArrayMesh" id=4]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 1.1
 height = 0.5
 
 [node name="MayaCoin" instance=ExtResource( 1 )]
@@ -20,3 +19,6 @@ material/2 = null
 
 [node name="CollisionShape" parent="." index="1"]
 shape = SubResource( 1 )
+
+[node name="Interaction" parent="." index="2"]
+interaction_message = "Pickup"

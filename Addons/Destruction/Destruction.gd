@@ -9,8 +9,8 @@ extends Node
 # to configure how the `shard_scene` will be converted to `RigidBodies`.
 # =========================================================================
 
-export var shard_template : PackedScene = preload("res://Addons/Destruction/ShardTemplates/DefaultShardTemplate.tscn")
-export var shard_scene : PackedScene
+export(PackedScene) var shard_template = preload("res://Addons/Destruction/ShardTemplates/DefaultShardTemplate.tscn")
+export(PackedScene) var shard_scene
 export var shard_container := @"../../" setget set_shard_container
 
 const DestructionUtils = preload("res://Addons/Destruction/DestructionUtils.gd")

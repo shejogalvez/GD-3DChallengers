@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://Addons/Interactions/Interaction.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Pickups/Pickup.gd" type="Script" id=2]
 
 [sub_resource type="CubeMesh" id=1]
@@ -17,3 +18,5 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 2 )
+
+[node name="Interaction" parent="." instance=ExtResource( 1 )]

@@ -1,20 +1,16 @@
 extends RigidBody
-class_name Pickup
+class_name Pickup, "res://Assets/Classes/pickup_icon.png"
 
 export(AudioStream) var pickup_audio
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("interact"):
-		if _is_pickable():
-			AudioStreamManager.play(pickup_audio, get_parent())
-			_obtain()
-			queue_free()
+onready var interaction : Interaction = $Interaction
 
-# Tells if the pickup is pickable or not
-func _is_pickable():
-	return true
-
-# Called when the players pick up the pickup
+# Interact function used by the interaction node.
+func interact():
+	AudioStreamManager.play_3d(pickup_audio, global_transform.origin, get_parent())
+	_obtain()
+	queue_free()
+	
+# Called when the player interacts with the pickup.
 func _obtain():
 	pass

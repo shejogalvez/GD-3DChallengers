@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://enemies/Ienemy.gd"
 }, {
+"base": "Area",
+"class": "Interaction",
+"language": "GDScript",
+"path": "res://Addons/Interactions/Interaction.gd"
+}, {
 "base": "Spatial",
 "class": "Item",
 "language": "GDScript",
@@ -83,10 +88,11 @@ _global_script_class_icons={
 "BossTest": "",
 "EnemyWeapon": "res://Assets/Classes/weapon_icon.png",
 "IEnemy": "",
+"Interaction": "",
 "Item": "res://Assets/Classes/item_icon.png",
 "ItemPedestal": "res://Assets/Classes/weapon_pedestal_icon.png",
 "Laser": "",
-"Pickup": "",
+"Pickup": "res://Assets/Classes/pickup_icon.png",
 "Player": "",
 "Projectile": "res://Assets/Classes/projectile_icon.png",
 "SmartBar": "",
@@ -104,6 +110,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
+AudioStreamManager="*res://Addons/AudioManager/AudioStreamManager.gd"
+InteractionsManager="*res://Addons/Interactions/InteractionsManager.gd"
 PlayerManager="*res://Actors/PlayerManager.gd"
 Menu="*res://GUI/Menu.tscn"
 
@@ -196,6 +204,15 @@ aim_down_sights={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+interact={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+3d_physics/layer_7="Player Layer"
 
 [physics]
 
