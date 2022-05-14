@@ -27,10 +27,6 @@ onready var animation_player : AnimationPlayer = $AnimationPlayer
 func _physics_process(delta):
 	current_fire_cd -= delta
 
-# Gets the barrel node
-func get_barrel():
-	return barrel
-
 # Sets the projectile transform
 func _set_projectile_transform(projectile, projectile_id):
 	projectile.global_transform = barrel.global_transform
@@ -52,6 +48,10 @@ func fire_weapon():
 		if animation_player != null:
 			animation_player.play("fire")
 		current_fire_cd = fire_cd
+		
+# Gets the barrel node
+func get_barrel():
+	return barrel
 
 # Adds a new projectile to the weapon
 func add_projectile():

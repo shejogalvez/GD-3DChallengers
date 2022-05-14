@@ -134,7 +134,6 @@ monitorable = false
 shape = SubResource( 7 )
 
 [node name="Details" type="Control" parent="Weapon"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 

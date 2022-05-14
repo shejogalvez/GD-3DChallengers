@@ -2,40 +2,50 @@ extends Spatial
 class_name WeaponPedestal, "res://Assets/Classes/weapon_pedestal_icon.png"
 
 export(PackedScene) var weapon_scene = preload("res://Weapons/Weapon.tscn")
-var weapon_instance =  weapon_scene.instance()
+
+var weapon_instance : Weapon
+
+onready var pedestal_model = $Pedestal/Model
+onready var pedestal_collision_shape = $Pedestal/CollisionShape
+onready var weapon = $Weapon
+onready var weapon_model = $Weapon/Model
+onready var weapon_pickup_area = $Weapon/PickupArea
+onready var weapon_animation_player= $Weapon/AnimationPlayer
+onready var weapon_details_area = $Weapon/DetailsArea
+onready var weapon_details = $Weapon/Details
+onready var weapon_details_name = $Weapon/Details/Panel/Name
+onready var weapon_details_damage = $Weapon/Details/Panel/Damage
+onready var weapon_details_shots = $Weapon/Details/Panel/Shots
+onready var weapon_details_description= $Weapon/Details/Panel/Description
+onready var weapon_pedestal_audio = $WeaponPedestalAudio
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pedestal_collision_shape.shape = pedestal_model.mesh.create_convex_shape()
 	weapon_instance = weapon_scene.instance()
-	$Weapon/Model.mesh = weapon_instance.get_node("Model").mesh
-	$Weapon/Model.scale = Vector3(1.6, 1.6, 1.6)
-	$Weapon/AnimationPlayer.play("rotation")
-	$Weapon/Details/Panel/Name.text = weapon_instance.weapon_name
-	$Weapon/Details/Panel/Damage.text = str(weapon_instance.damage_factor)
-	$Weapon/Details/Panel/Shots.text = str(weapon_instance.projectiles)
-	$Weapon/Details/Panel/Description.text = weapon_instance.weapon_description
-	$Weapon/PickupArea.connect("body_entered", self, "give_weapon")
-	$Weapon/DetailsArea.connect("body_entered", self, "show_details")
-	$Weapon/DetailsArea.connect("body_exited", self, "hide_details")
-	$WeaponPedestalAudio.connect("finished", self, "remove_audio")
+	weapon_model.mesh = weapon_instance.get_node("Model").mesh
+	weapon_model.scale = Vector3(1.6, 1.6, 1.6)
+	weapon_animation_player.play("rotation")
+	weapon_details_name.text = weapon_instance.weapon_name
+	weapon_details_damage.text = str(weapon_instance.damage_factor)
+	weapon_details_shots.text = str(weapon_instance.projectiles)
+	weapon_details_description.text = weapon_instance.weapon_description
+	weapon_details.hide()
+	weapon_pickup_area.connect("body_entered", self, "give_weapon")
+	weapon_details_area.connect("body_entered", self, "show_details")
+	weapon_details_area.connect("body_exited", self, "hide_details")
+	weapon_pedestal_audio.connect("finished", weapon_pedestal_audio, "queue_free")
 
 # Gives the weapon if area touched by a player.
 func give_weapon(body):
-	if body == PlayerManager.get_player():
-		PlayerManager.set_weapon(weapon_instance)
-		$WeaponPedestalAudio.play()
-		$Weapon.queue_free()
+	PlayerManager.set_weapon(weapon_instance)
+	weapon_pedestal_audio.play()
+	weapon.queue_free()
 
 # Shows the weapon details.
 func show_details(body):
-	if body == PlayerManager.get_player():
-		$Weapon/Details.show()
-
+	weapon_details.show()
+	
 # Hides the weapon details.
 func hide_details(body):
-	if body == PlayerManager.get_player():
-		$Weapon/Details.hide()
-		
-# Removes the audioplayer node.
-func remove_audio():
-	$WeaponPedestalAudio.queue_free()
+	weapon_details.hide()

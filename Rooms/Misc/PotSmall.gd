@@ -12,7 +12,7 @@ func _ready():
 
 # Called when a projectile hits the node.
 func projectile_hit(damage, bullet_global_trans):
-	AudioStreamManager.play_3d(break_audio, global_transform.origin, get_parent())
+	AudioStreamManager.play_3d(break_audio, global_transform.origin, get_parent(), 10.0, 20.0)
 	var xd = rng.randi_range(0, 5)
 	for i in range(xd):
 		var p = pickup_scene.instance()

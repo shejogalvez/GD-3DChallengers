@@ -102,7 +102,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 86.793, 2.42552, 67.1111 )
 weapon_scene = ExtResource( 7 )
 
 [node name="ItemsSection" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -80.5191, 2.14488, 62.8121 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -80.5191, 3.78437, 62.8121 )
 
 [node name="ItemPedestal" parent="ItemsSection" instance=ExtResource( 4 )]
 item_scene = ExtResource( 6 )

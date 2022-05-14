@@ -15,23 +15,24 @@ export var shard_container := @"../../" setget set_shard_container
 
 const DestructionUtils = preload("res://Addons/Destruction/DestructionUtils.gd")
 
+# Destroys the parent node and spawns shards in its position.
 func destroy() -> void:
 	var shards := DestructionUtils.create_shards(shard_scene.instance(), shard_template)
 	get_node(shard_container).add_child(shards)
 	shards.global_transform = get_parent().global_transform
 	get_parent().queue_free()
 
+
+# Destroys the parent node and spawns shards in its position, the shards
+# dispawn after the given amount of time.
 func destroy_with_shards(time : int) -> void:
 	var shards := DestructionUtils.create_shards(shard_scene.instance(), shard_template)
 	get_node(shard_container).add_child(shards)
 	shards.global_transform = get_parent().global_transform
 	get_parent().queue_free()
 	
-	var timer := Timer.new()
-	timer.wait_time = time
-	timer.connect("timeout", shards, "queue_free")
-	shards.add_child(timer)
-	timer.start()
+	var tree_timer := get_tree().create_timer(time)
+	tree_timer.connect("timeout", shards, "queue_free")
 
 # =========================================================================
 # Utility

@@ -6,7 +6,7 @@
 bg_color = Color( 0, 0, 0, 0.294118 )
 
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.815686, 0.0745098, 0.0745098, 1 )
+bg_color = Color( 0.960784, 0.290196, 0.290196, 1 )
 
 [resource]
 default_font = ExtResource( 1 )

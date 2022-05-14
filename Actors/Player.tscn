@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Actors/Player.gd" type="Script" id=1]
-[ext_resource path="res://GUI/SmartBar.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/GUI/Crosshair.png" type="Texture" id=3]
+[ext_resource path="res://GUI/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Audio/damage_short.wav" type="AudioStream" id=5]
-[ext_resource path="res://Assets/Themes/HPTheme.tres" type="Theme" id=6]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.2
@@ -22,7 +20,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="BodyCollisionShape" type="CollisionShape" parent="."]
+[node name="Hitbox" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.70016, 0 )
 shape = SubResource( 1 )
 
@@ -34,6 +32,7 @@ __meta__ = {
 
 [node name="Camera" type="Camera" parent="HeadPivot"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+current = true
 fov = 90.0
 far = 500.0
 
@@ -58,7 +57,6 @@ __meta__ = {
 [node name="Camera" type="Camera" parent="TopDownPivot"]
 transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, 0 )
 keep_aspect = 0
-current = true
 size = 150.0
 far = 800.0
 
@@ -72,26 +70,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.7,
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="Hud" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="Crossshair" type="TextureRect" parent="Hud"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 4
-
-[node name="HPBar" parent="Hud" instance=ExtResource( 2 )]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 49.0
-margin_top = -54.0
-margin_right = 369.0
-margin_bottom = -23.0
-theme = ExtResource( 6 )
-smart_label = "HP"
+[node name="HUD" parent="." instance=ExtResource( 2 )]
 
 [node name="DamageAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

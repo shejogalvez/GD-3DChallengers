@@ -90,7 +90,6 @@ margin_top = -54.0
 margin_right = 369.0
 margin_bottom = -23.0
 theme = ExtResource( 4 )
-smart_label = "HP"
 
 [node name="DamageAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )

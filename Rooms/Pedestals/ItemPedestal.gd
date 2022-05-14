@@ -2,7 +2,8 @@ extends Spatial
 class_name ItemPedestal, "res://Assets/Classes/weapon_pedestal_icon.png"
 
 export(PackedScene) var item_scene = preload("res://Items/Item.tscn")
-var item_instance =  item_scene.instance()
+
+var item_instance : Item
 
 const SPRITE_WIDTH = 640
 const SPRITE_HEIGHT = 640
@@ -31,31 +32,25 @@ func _ready():
 	item_details_effect.text = item_instance.item_effect
 	item_details_description.text = item_instance.item_description
 	item_details_sprite.texture = item_instance.item_image
+	item_details.hide()
 	item_pickup_area.connect("body_entered", self, "give_item")
 	item_details_area.connect("body_entered", self, "show_details")
 	item_details_area.connect("body_exited", self, "hide_details")
-	item_pedestal_audio.connect("finished", self, "remove_audio")
+	item_pedestal_audio.connect("finished", item_pedestal_audio, "queue_free")
 
 # Gives the Item if area touched by a player.
-func give_item(body):
-	if body == PlayerManager.get_player():
-		item_instance.use()
-		item_pedestal_audio.play()
-		item.queue_free()
-
-# Shows the Item details.
-func show_details(body):
-	if body == PlayerManager.get_player():
-		item_details.show()
-
-# Hides the Item details.
-func hide_details(body):
-	if body == PlayerManager.get_player():
-		item_details.hide()
-		
-# Removes the audioplayer node.
-func remove_audio():
-	item_pedestal_audio.queue_free()
+func give_item(body) -> void:
+	item_instance.use()
+	item_pedestal_audio.play()
+	item.queue_free()
+	
+# Shows the item details.
+func show_details(body) -> void:
+	item_details.show()
+	
+# Hides the item details.
+func hide_details(body) -> void:
+	item_details.hide()
 
 # Creates a surface material with image texture propierties
 func create_image_material(image : StreamTexture) -> SpatialMaterial:

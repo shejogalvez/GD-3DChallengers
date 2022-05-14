@@ -2,6 +2,7 @@ extends KinematicBody
 class_name Player
 
 # Player nodes
+onready var hitbox : CollisionShape = $Hitbox
 onready var head_pivot: Spatial = $HeadPivot
 onready var head_camera : Camera = $HeadPivot/Camera
 onready var aimcast : RayCast = $HeadPivot/Camera/AimCast
@@ -9,24 +10,16 @@ onready var weapon_pivot : Spatial = $HeadPivot/WeaponPivot
 onready var weapon = $HeadPivot/WeaponPivot/Weapon
 onready var topdown_pivot : Spatial = $TopDownPivot
 onready var topdown_camera : Camera = $TopDownPivot/Camera
-onready var hud : Control = $Hud
-onready var crosshair : TextureRect = $Hud/Crossshair
-onready var hp_bar : SmartBar = $Hud/HPBar
+onready var hud : CanvasLayer = $HUD
 onready var damage_audio : AudioStreamPlayer = $DamageAudio
-onready var hitbox = $BodyCollisionShape
-# True if viewport is on head camera, false otherwise. 
-var is_head_view = false
-# The magnitude of grades per frame the topdown view will rotate if
-# player presses the correspondent key.
-const TOPDOWN_ROTATION_SPEED = 2
-# The max distance the topdown camera is going to zoom
-const TOPDOWN_MAX_ZOOM = 50
-var TOPDOWN_ZOOM_SPEED = 2
-# Mouse sensitivity
-var MOUSE_SENSITIVITY = 0.05
-# The unitary direction vector pointing towards the next frame position
-# the player is going to move.
-var dir = Vector3()
+
+var is_head_view = true # True if viewport is on head camera, false otherwise
+const TOPDOWN_ROTATION_SPEED = 2 # Topdown grades of rotation
+const TOPDOWN_MAX_ZOOM = 50 # The max distance the topdown camera is going to zoom
+var TOPDOWN_ZOOM_SPEED = 2 
+var MOUSE_SENSITIVITY = 0.05 # Mouse sensitivity
+# Movement vectors
+var dir = Vector3() # The unitary direction vector
 var vel = Vector3()
 # XZ plane movement
 const MAX_SPEED = 28
@@ -53,26 +46,27 @@ func _ready():
 	PlayerManager.set_player(self)
 	if is_head_view:
 		head_camera.make_current()
+		hud.show_crosshair()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else: 
 		topdown_camera.make_current()
+		hud.hide_crosshair()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	crosshair.visible = is_head_view # set initial crosshair visibility
-	hp_bar.set_smart_value(PlayerManager.get_hp(), PlayerManager.get_total_hp())
-
+	hud.update_hp_bar()
+	
 # Called each frame.
 func _physics_process(delta):
-	process_input(delta)
-	process_movement(delta)
+	_process_input(delta)
+	_process_movement(delta)
 
 # Will be where we store all the code relating to player input. We want
 # to call it first, before anything else, so we have fresh player input
 # to work with.
-func process_input(delta):
+func _process_input(delta):
 	if is_head_view:
-		process_head_input(delta)
+		_process_head_input(delta)
 	else:
-		process_topdown_input(delta)
+		_process_topdown_input(delta)
 	# -----------------------------
 	# Jumping
 	# -----------------------------
@@ -87,9 +81,6 @@ func process_input(delta):
 	else:
 		is_sprinting = false
 	# -----------------------------
-	# Capturing/Freeing the cursor
-	# -----------------------------
-	# -----------------------------
 	# Shoting
 	# -----------------------------
 	if Input.is_action_pressed("shot_main"):
@@ -101,9 +92,8 @@ func process_input(delta):
 			weapon_barrel.look_at(inverted_shot_dir, Vector3.UP)
 		weapon.fire_weapon()
 	
-	
 # Process input if current view is on head camera.
-func process_head_input(delta):
+func _process_head_input(delta):
 	# -----------------------------
 	# Walking
 	# -----------------------------
@@ -146,14 +136,15 @@ func process_head_input(delta):
 		var head_pivot_rot = head_pivot.rotation_degrees
 		head_pivot_rot.x = 0
 		head_pivot.rotation_degrees = head_pivot_rot
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		crosshair.visible = false
 		weapon_pivot.transform.origin = ads_position
 		head_camera.fov = default_fov
 		topdown_camera.make_current()
+		hud.hide_crosshair()
+		PlayerManager.emit_signal("view_changed")
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 # Process input if current view is on topdown camera.
-func process_topdown_input(delta):
+func _process_topdown_input(delta):
 	# -----------------------------
 	# Walking
 	# -----------------------------
@@ -213,12 +204,13 @@ func process_topdown_input(delta):
 	# -----------------------------
 	if Input.is_action_just_pressed("change_camera"):
 		is_head_view = true
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		head_camera.make_current()
-		crosshair.visible = true
+		hud.show_crosshair()
+		PlayerManager.emit_signal("view_changed")
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
 # Process player's movement.
-func process_movement(delta):
+func _process_movement(delta):
 	# Velocity in the horizontal plane XZ.
 	var hvel = vel
 	hvel.y = 0
@@ -275,10 +267,6 @@ func change_weapon(weapon_node):
 	weapon.queue_free()
 	weapon_pivot.add_child(weapon_node)
 	weapon = weapon_node
-
-# Updates the hp bar value.
-func update_hp_bar():
-	hp_bar.set_smart_value(PlayerManager.get_hp(), PlayerManager.get_total_hp())
 
 # Plays the damage audio.
 func play_damage_audio():

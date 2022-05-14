@@ -1,23 +1,28 @@
 extends Node
 
+# Signal called when the view is changed.
+signal view_changed
+# Signal called when the hp changes.
+signal hp_changed
+
 const PLAYER_MIN_TOTAL_HP = 1 # Min total hp
 const PLAYER_MAX_TOTAL_HP = 99999 # Max total hp
 
-const PLAYER_MIN_AKT = 0
-const PLAYER_MAX_ATK = 99999
+const PLAYER_MIN_AKT = 0 # Min attack
+const PLAYER_MAX_ATK = 99999 # Max attack
 
-const PLAYER_MIN_DEF = 1
-const PLAYER_MAX_DEF = 99999
+const PLAYER_MIN_DEF = 1 # Min defense
+const PLAYER_MAX_DEF = 99999 # Max defense
 
-var player : Player
-var player_total_hp = 300 # Total hp
+const PLAYER_MIN_MONEY = 0
+const PLAYER_MAX_MONEY = 99999
+
+var player : Player # Player kinematic body node
+var player_total_hp = 300 # Current total hp
 var player_hp = player_total_hp # Current hp
-var player_attack = 10
-var player_defense = 1
-
-# Money
-
-var current_money = 0
+var player_attack = 10 # Current attack
+var player_defense = 1 # Current defense
+var player_money = 0 # Current money
 
 # Combat variables
 const UNTARGETABLE_TIME = 1
@@ -64,7 +69,7 @@ func get_weapon():
 # Sets the player current hp
 func set_hp(hp):
 	player_hp = clamp(hp, 0, player_total_hp)
-	player.update_hp_bar()
+	emit_signal("hp_changed")
 
 # Gets the player current hp
 func get_hp():
@@ -94,5 +99,6 @@ func receive_damage(damage):
 		set_hp(player_hp - true_damage)
 		player.play_damage_audio()
 	
-func add_money(amount):
-	current_money += amount
+# Adds money to the player money.
+func add_money(money):
+	player_money += money
