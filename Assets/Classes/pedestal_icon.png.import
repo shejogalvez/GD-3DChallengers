@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/weapon_pedestal_icon.png-5e0216f04de87f0320166f56158ba8de.stex"
+path="res://.import/pedestal_icon.png-300e20a7735565903f02ed651c10c95c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Classes/weapon_pedestal_icon.png"
-dest_files=[ "res://.import/weapon_pedestal_icon.png-5e0216f04de87f0320166f56158ba8de.stex" ]
+source_file="res://Assets/Classes/pedestal_icon.png"
+dest_files=[ "res://.import/pedestal_icon.png-300e20a7735565903f02ed651c10c95c.stex" ]
 
 [params]
 

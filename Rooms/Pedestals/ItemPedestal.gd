@@ -1,5 +1,5 @@
 extends Spatial
-class_name ItemPedestal, "res://Assets/Classes/weapon_pedestal_icon.png"
+class_name ItemPedestal, "res://Assets/Classes/pedestal_icon.png"
 
 export(PackedScene) var item_scene = preload("res://Items/Item.tscn")
 
@@ -37,6 +37,7 @@ func _ready():
 	item_details_area.connect("body_entered", self, "show_details")
 	item_details_area.connect("body_exited", self, "hide_details")
 	item_pedestal_audio.connect("finished", item_pedestal_audio, "queue_free")
+	item.add_child(item_instance)
 
 # Gives the Item if area touched by a player.
 func give_item(body) -> void:
@@ -52,7 +53,7 @@ func show_details(body) -> void:
 func hide_details(body) -> void:
 	item_details.hide()
 
-# Creates a surface material with image texture propierties
+# Creates a surface material with image texture propierties.
 func create_image_material(image : StreamTexture) -> SpatialMaterial:
 	var material = SpatialMaterial.new()
 	# Always looks towards the camera

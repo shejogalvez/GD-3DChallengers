@@ -14,6 +14,7 @@ onready var hud : CanvasLayer = $HUD
 onready var damage_audio : AudioStreamPlayer = $DamageAudio
 
 var is_head_view = true # True if viewport is on head camera, false otherwise
+
 const TOPDOWN_ROTATION_SPEED = 2 # Topdown grades of rotation
 const TOPDOWN_MAX_ZOOM = 50 # The max distance the topdown camera is going to zoom
 var TOPDOWN_ZOOM_SPEED = 2 

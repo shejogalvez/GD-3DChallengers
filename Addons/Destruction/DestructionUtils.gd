@@ -1,5 +1,5 @@
 # Creates an spatial node with the rigid bodies instances.
-static func create_shards(object : Spatial, shard_template : PackedScene = preload("res://Addons/Destruction/ShardTemplates/DefaultShardTemplate.tscn")) -> Spatial:
+static func create_shards(object : Spatial, shard_template : PackedScene = preload("res://Addons/Destruction/ShardTemplates/ShardTemplate.tscn")) -> Spatial:
 	var shards := Spatial.new()
 	shards.name = object.name + "Shards"
 	var shard_num := 0
@@ -18,6 +18,7 @@ static func create_shards(object : Spatial, shard_template : PackedScene = prelo
 		
 		shards.add_child(new_shard)
 		shard_num += 1
+	object.queue_free()
 	return shards
 
 # Deprecated by Juanix.

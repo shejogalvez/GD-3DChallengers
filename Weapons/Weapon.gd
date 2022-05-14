@@ -23,16 +23,16 @@ onready var audio : AudioStreamPlayer = $Audio
 # Animation player node
 onready var animation_player : AnimationPlayer = $AnimationPlayer
 
-# Called each frame
+# Called each frame.
 func _physics_process(delta):
 	current_fire_cd -= delta
 
-# Sets the projectile transform
-func _set_projectile_transform(projectile, projectile_id):
+# Sets the projectile transform.
+func _set_projectile_transform(projectile, projectile_id) -> void:
 	projectile.global_transform = barrel.global_transform
 
-# Fires the weapon
-func _fire():
+# Fires the weapon.
+func _fire() -> void:
 	for projectile_id in projectiles:
 		var projectile = projectile_scene.instance()
 		var scene_root = get_tree().root.get_children()[0]
@@ -40,8 +40,8 @@ func _fire():
 		_set_projectile_transform(projectile, projectile_id)
 		projectile.projectile_damage = damage_factor * PlayerManager.player_attack
 
-# Tries to fire the weapon
-func fire_weapon():
+# Tries to fire the weapon.
+func fire_weapon() -> void:
 	if current_fire_cd <= 0:
 		_fire()
 		audio.play()
@@ -49,11 +49,11 @@ func fire_weapon():
 			animation_player.play("fire")
 		current_fire_cd = fire_cd
 		
-# Gets the barrel node
-func get_barrel():
+# Gets the barrel node.
+func get_barrel() -> Position3D:
 	return barrel
 
-# Adds a new projectile to the weapon
-func add_projectile():
+# Adds a new projectile to the weapon.
+func add_projectile() -> void:
 	projectiles += 1
 

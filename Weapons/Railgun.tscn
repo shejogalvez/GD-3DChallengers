@@ -5,7 +5,6 @@
 [ext_resource path="res://Assets/Meshes/Railgun/Railgun.mesh" type="ArrayMesh" id=3]
 [ext_resource path="res://Assets/Audio/Weapons/railgun_shot.wav" type="AudioStream" id=4]
 
-
 [node name="Railgun" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.72 )
 script = ExtResource( 2 )

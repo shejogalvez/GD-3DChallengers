@@ -1,5 +1,5 @@
 extends Spatial
-class_name WeaponPedestal, "res://Assets/Classes/weapon_pedestal_icon.png"
+class_name WeaponPedestal, "res://Assets/Classes/pedestal_icon.png"
 
 export(PackedScene) var weapon_scene = preload("res://Weapons/Weapon.tscn")
 

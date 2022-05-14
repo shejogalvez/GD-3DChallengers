@@ -3,6 +3,6 @@
 [ext_resource path="res://Items/Item.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 
-[node name="Item" type="Spatial"]
+[node name="Item" type="Node"]
 script = ExtResource( 1 )
 item_image = ExtResource( 3 )

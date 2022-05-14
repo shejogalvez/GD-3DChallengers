@@ -24,6 +24,7 @@ margin_top = -54.0
 margin_right = 369.0
 margin_bottom = -23.0
 theme = ExtResource( 2 )
+smart_label_text = "HP"
 
 [node name="InteractionPanel" type="PanelContainer" parent="."]
 anchor_left = 0.5
