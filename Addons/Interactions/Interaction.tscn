@@ -1,15 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Addons/Interactions/Interaction.gd" type="Script" id=1]
 
-[sub_resource type="CylinderShape" id=1]
+[sub_resource type="SphereShape" id=1]
 radius = 8.0
-height = 4.0
-
-[sub_resource type="QuadMesh" id=2]
-size = Vector2( 6, 1.6 )
-
-[sub_resource type="SpatialMaterial" id=3]
 
 [node name="Interaction" type="Area"]
 collision_layer = 0
@@ -19,9 +13,3 @@ script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
-
-[node name="MessageModel" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.01993, 3.2819, 0 )
-visible = false
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )

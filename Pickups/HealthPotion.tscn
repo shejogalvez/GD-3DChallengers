@@ -19,3 +19,6 @@ material/2 = null
 
 [node name="CollisionShape" parent="." index="1"]
 shape = SubResource( 1 )
+
+[node name="Interaction" parent="." index="2"]
+interaction_message = "Health Potion"
