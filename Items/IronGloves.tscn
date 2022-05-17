@@ -8,5 +8,5 @@
 script = ExtResource( 2 )
 item_name = "Iron Gloves"
 item_description = "Take your weapon with confidence"
-item_effect = "+80 Attack"
+item_effect = "+5 Attack"
 item_image = ExtResource( 3 )

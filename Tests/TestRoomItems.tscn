@@ -1,6 +1,5 @@
 [gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://Rooms/Pedestals/Teleport.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Items/IronChestplate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Weapons/Bow.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Rooms/Pedestals/ItemPedestal.tscn" type="PackedScene" id=4]
@@ -20,6 +19,7 @@
 [ext_resource path="res://Items/GoldenChest.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Items/SmallChest.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Items/AlphaCore.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Items/Ruby Ring.tscn" type="PackedScene" id=21]
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 1, 50, 70 )
@@ -140,18 +140,20 @@ weapon_scene = ExtResource( 7 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -200.56, 3.78437, 26.8808 )
 
 [node name="ItemPedestal" parent="ItemsSection" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.2401 )
 item_scene = ExtResource( 6 )
 
 [node name="ItemPedestal2" parent="ItemsSection" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.2385 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 43.5448 )
 item_scene = ExtResource( 2 )
 
 [node name="ItemPedestal3" parent="ItemsSection" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.7972 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.46328 )
 item_scene = ExtResource( 13 )
 
-[node name="Teleport" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -202.519, 2.06076, -60.0489 )
+[node name="ItemPedestal4" parent="ItemsSection" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40.015 )
+item_scene = ExtResource( 21 )
 
 [node name="Pots" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -207.65, 3.82505, 194.118 )

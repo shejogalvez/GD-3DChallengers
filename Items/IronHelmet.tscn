@@ -8,5 +8,5 @@
 script = ExtResource( 2 )
 item_name = "Iron Helmet"
 item_description = "A common soldier helmet..."
-item_effect = "+100 HP"
+item_effect = "+6 Defense"
 item_image = ExtResource( 3 )

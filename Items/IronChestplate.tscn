@@ -8,5 +8,5 @@
 script = ExtResource( 2 )
 item_name = "Iron Chestplate"
 item_description = "Medieval protection!"
-item_effect = "+150 HP"
+item_effect = "+10 Defense"
 item_image = ExtResource( 3 )

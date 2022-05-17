@@ -188,6 +188,34 @@ func add_temporary_attack(attack : int, time : float) -> void:
 	tree_timer.connect("timeout", self, "remove_attack", [attack])
 
 # ========================
+# Defense
+# ========================
+
+# Sets the player defense.
+func set_defense(defense : int) -> void:
+	player_defense = clamp(defense, PLAYER_MIN_DEF, PLAYER_MAX_DEF)
+	emit_signal("attack_changed")
+
+# Gets the player defense.
+func get_defense() -> int:
+	return player_defense
+	
+# Adds a value to the player defense.
+func add_defense(defense : int) -> void:
+	set_defense(player_defense + defense)
+	
+# Removes a value to the player defense.
+func remove_defense(defense : int) -> void:
+	set_defense(player_defense - defense)
+
+# Adds defense temporarily.
+func add_temporary_defense(defense : int, time : float) -> void:
+	add_defense(defense)
+	var tree_timer := get_tree().create_timer(time)
+	tree_timer.connect("timeout", self, "remove_defense", [defense])
+
+
+# ========================
 # Money
 # ========================
 
