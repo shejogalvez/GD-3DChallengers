@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Weapons/Railgun.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Meshes/Railgun/Railgun.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Meshes/Railgun/Railgun_Cube196.mesh" type="ArrayMesh" id=3]
 [ext_resource path="res://Assets/Audio/Weapons/railgun_shot.wav" type="AudioStream" id=4]
 
 [node name="Railgun" instance=ExtResource( 1 )]

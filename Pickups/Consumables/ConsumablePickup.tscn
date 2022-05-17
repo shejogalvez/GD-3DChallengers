@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Pickups/Pickup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Pickups/Consumables/ConsumablePickup.gd" type="Script" id=2]
+[ext_resource path="res://Pickups/Consumables/Consumable.gd" type="Script" id=3]
+
+[node name="ConsumablePickup" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+consumable_class = ExtResource( 3 )

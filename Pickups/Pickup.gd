@@ -7,7 +7,7 @@ onready var interaction : Interaction = $Interaction
 
 # Interact function used by the interaction node.
 func interact():
-	AudioStreamManager.play(pickup_audio, get_parent())
+	AudioStreamManager.play(pickup_audio)
 	_obtain()
 	queue_free()
 	

@@ -2,10 +2,8 @@
 
 [ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Weapons/Bow.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Meshes/Bow/Bow.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Meshes/Bow/Bow_Cylinder014.mesh" type="ArrayMesh" id=3]
 [ext_resource path="res://Weapons/Projectiles/Arrow.tscn" type="PackedScene" id=4]
-
-
 
 [node name="Bow" instance=ExtResource( 1 )]
 script = ExtResource( 2 )

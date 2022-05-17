@@ -4,7 +4,7 @@ export(AudioStream) var break_audio
 export(PackedScene) var gold_coin_scene 
 export(PackedScene) var health_potion_scene
 
-enum Outcomes {NOTHING, COINS, HEALTH_POTION, SNAKE}
+enum Outcomes {NOTHING, COINS, HEALTH_POTION, ATTACK_POTION, SNAKE}
 
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -14,6 +14,7 @@ onready var destruction : Node = $Destruction
 func _ready():
 	rng.randomize()
 
+# Generates an array of random pickups.
 func _generate_random_pickups() -> Array:
 	var pickups = []
 	var outcome = rng.randi() % Outcomes.size()
@@ -33,7 +34,7 @@ func _generate_random_pickups() -> Array:
 
 # Called when a projectile hits the node.
 func projectile_hit(damage, bullet_global_trans):
-	AudioStreamManager.play_3d(break_audio, global_transform.origin, get_parent(), 10.0, 20.0)
+	AudioStreamManager.play_3d(break_audio, global_transform.origin, 10.0, 20.0)
 	var pickups = _generate_random_pickups()
 	for pickup in pickups:
 		get_tree().root.add_child(pickup)

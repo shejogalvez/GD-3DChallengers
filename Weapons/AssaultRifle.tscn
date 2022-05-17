@@ -2,8 +2,7 @@
 
 [ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Weapons/AssaultRifle.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Meshes/AssaultRifle/AssaultRifle.mesh" type="ArrayMesh" id=3]
-
+[ext_resource path="res://Assets/Meshes/AssaultRifle/AssaultRifle_Cube160.mesh" type="ArrayMesh" id=3]
 
 [node name="AssaultRifle" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.72 )

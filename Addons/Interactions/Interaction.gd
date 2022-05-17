@@ -1,7 +1,7 @@
 extends Area
 class_name Interaction
 
-export(StreamTexture) var interaction_icon
+export(StreamTexture) var interaction_icon 
 export(String) var interaction_message = "Interact"
 
 # Called when the node enters the scene tree for the first time.

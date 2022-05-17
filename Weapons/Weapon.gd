@@ -28,24 +28,23 @@ func _physics_process(delta):
 	current_fire_cd -= delta
 
 # Sets the projectile transform.
-func _set_projectile_transform(projectile, projectile_id) -> void:
+func _set_projectile_transform(projectile : Projectile, projectile_id : int) -> void:
 	projectile.global_transform = barrel.global_transform
 
 # Fires the weapon.
 func _fire() -> void:
 	for projectile_id in projectiles:
-		var projectile = projectile_scene.instance()
-		var scene_root = get_tree().root.get_children()[0]
-		scene_root.add_child(projectile)
+		var projectile : Projectile = projectile_scene.instance()
+		PlayerManager.get_player().get_parent().add_child(projectile)
 		_set_projectile_transform(projectile, projectile_id)
-		projectile.projectile_damage = damage_factor * PlayerManager.player_attack
+		projectile.projectile_damage = damage_factor * PlayerManager.get_attack()
 
 # Tries to fire the weapon.
 func fire_weapon() -> void:
 	if current_fire_cd <= 0:
 		_fire()
 		audio.play()
-		if animation_player != null:
+		if animation_player.has_animation("fire"):
 			animation_player.play("fire")
 		current_fire_cd = fire_cd
 		

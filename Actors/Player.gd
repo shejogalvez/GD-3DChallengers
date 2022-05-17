@@ -15,31 +15,31 @@ onready var damage_audio : AudioStreamPlayer = $DamageAudio
 
 var is_head_view = true # True if viewport is on head camera, false otherwise
 
-const TOPDOWN_ROTATION_SPEED = 2 # Topdown grades of rotation
-const TOPDOWN_MAX_ZOOM = 50 # The max distance the topdown camera is going to zoom
-var TOPDOWN_ZOOM_SPEED = 2 
-var MOUSE_SENSITIVITY = 0.05 # Mouse sensitivity
+const TOPDOWN_ROTATION_SPEED := 2 # Topdown grades of rotation
+const TOPDOWN_MAX_ZOOM := 50 # The max distance the topdown camera is going to zoom
+var TOPDOWN_ZOOM_SPEED := 2 
+var MOUSE_SENSITIVITY := 0.05 # Mouse sensitivity
 # Movement vectors
 var dir = Vector3() # The unitary direction vector
 var vel = Vector3()
 # XZ plane movement
-const MAX_SPEED = 28
-const ACCEL = 4.5
-const DEACCEL= 20
+const MAX_SPEED := 28
+const ACCEL := 4.5
+const DEACCEL := 20
 # Jumping and gravity
-const JUMP_SPEED = 36
-const GRAVITY = -80
-const MAX_SLOPE_ANGLE = 40
+const JUMP_SPEED := 36
+const GRAVITY := -80
+const MAX_SLOPE_ANGLE := 40
 # Sprinting
-const MAX_SPRINT_SPEED = 42
-const SPRINT_ACCEL = 16
-var is_sprinting = false
+const MAX_SPRINT_SPEED := 42
+const SPRINT_ACCEL := 16
+var is_sprinting := false
 # ADS
-const ADS_LERP = 20
-var default_position : Vector3 = Vector3(-1.25, -0.85, 1.5)
-var ads_position : Vector3 = Vector3(0, -0.75, 1.5)
-var default_fov : int = 90
-var ads_fov : int = 60
+const ADS_LERP := 20
+var default_position := Vector3(-1.25, -0.85, 1.5)
+var ads_position := Vector3(0, -0.75, 1.5)
+var default_fov := 90
+var ads_fov := 60
 
 
 # Called when the node enters the scene tree for the first time.
@@ -53,7 +53,6 @@ func _ready():
 		topdown_camera.make_current()
 		hud.hide_crosshair()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	hud.update_hp_bar()
 	
 # Called each frame.
 func _physics_process(delta):
@@ -63,7 +62,7 @@ func _physics_process(delta):
 # Will be where we store all the code relating to player input. We want
 # to call it first, before anything else, so we have fresh player input
 # to work with.
-func _process_input(delta):
+func _process_input(delta : float) -> void:
 	if is_head_view:
 		_process_head_input(delta)
 	else:
@@ -94,7 +93,7 @@ func _process_input(delta):
 		weapon.fire_weapon()
 	
 # Process input if current view is on head camera.
-func _process_head_input(delta):
+func _process_head_input(delta : float) -> void:
 	# -----------------------------
 	# Walking
 	# -----------------------------
@@ -145,7 +144,7 @@ func _process_head_input(delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 # Process input if current view is on topdown camera.
-func _process_topdown_input(delta):
+func _process_topdown_input(delta : float) -> void:
 	# -----------------------------
 	# Walking
 	# -----------------------------
@@ -211,7 +210,7 @@ func _process_topdown_input(delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
 # Process player's movement.
-func _process_movement(delta):
+func _process_movement(delta : float) -> void:
 	# Velocity in the horizontal plane XZ.
 	var hvel = vel
 	hvel.y = 0
@@ -264,11 +263,11 @@ func _input(event):
 		head_pivot.rotation_degrees = head_pivot_rot
 
 # Changes the player weapon node.
-func change_weapon(weapon_node):
+func change_weapon(weapon_node : Weapon) -> void:
 	weapon.queue_free()
 	weapon_pivot.add_child(weapon_node)
 	weapon = weapon_node
 
 # Plays the damage audio.
-func play_damage_audio():
+func play_damage_audio() -> void:
 	damage_audio.play()

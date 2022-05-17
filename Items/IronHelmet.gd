@@ -1,4 +1,5 @@
 extends Item
 
-func use():
+# Called when the player uses the item.
+func use() -> void:
 	PlayerManager.add_total_hp(200)
