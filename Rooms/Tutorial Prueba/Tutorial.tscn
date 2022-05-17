@@ -10,12 +10,13 @@
 [ext_resource path="res://Weapons/AssaultRifle.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Weapons/Revolver.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Weapons/Railgun.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Items/JesusGloves.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Items/IronGloves.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Rooms/Pedestals/WeaponPedestal.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Rooms/Pedestals/ItemPedestal.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Rooms/Pedestals/Teleport.tscn" type="PackedScene" id=14]
 [ext_resource path="res://enemies/sand_soldier/sand_soldier.tscn" type="PackedScene" id=15]
 [ext_resource path="res://enemies/Boss weas/Bossuwu.tscn" type="PackedScene" id=16]
+
 
 [node name="Tutorial" type="Spatial"]
 

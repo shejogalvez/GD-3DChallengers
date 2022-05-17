@@ -4,7 +4,7 @@
 [ext_resource path="res://Pickups/GoldCoin.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Audio/coins-pickup.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Meshes/GoldCoin/gold_coin_Cylinder.mesh" type="ArrayMesh" id=4]
-[ext_resource path="res://Assets/Sprites/Interactions/gold_coin.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Interactions/Item_281.png" type="Texture" id=5]
 
 [sub_resource type="CylinderShape" id=1]
 height = 0.5

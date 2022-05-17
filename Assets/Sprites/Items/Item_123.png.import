@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gold_coin.png-a2fc7d0adf24a7f52aafe0488ab23e92.stex"
+path="res://.import/Item_123.png-ef2cec6365c25c85d9e66e28b0474047.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Interactions/gold_coin.png"
-dest_files=[ "res://.import/gold_coin.png-a2fc7d0adf24a7f52aafe0488ab23e92.stex" ]
+source_file="res://Assets/Sprites/Items/Item_123.png"
+dest_files=[ "res://.import/Item_123.png-ef2cec6365c25c85d9e66e28b0474047.stex" ]
 
 [params]
 

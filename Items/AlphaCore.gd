@@ -2,4 +2,4 @@ extends Item
 
 # Called when the player uses the item.
 func use() -> void:
-	PlayerManager.get_weapon().add_projectile()
+	PlayerManager.add_consumable_multiplier(1.0)

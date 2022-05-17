@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gloves_01b.png-d6c07c8011a10a954ebe5c82962dfa8a.stex"
+path="res://.import/Item_267.png-57416cb381a5a43ed5cb4926582b3b90.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/gloves_01b.png"
-dest_files=[ "res://.import/gloves_01b.png-d6c07c8011a10a954ebe5c82962dfa8a.stex" ]
+source_file="res://Assets/Sprites/Items/Item_267.png"
+dest_files=[ "res://.import/Item_267.png-57416cb381a5a43ed5cb4926582b3b90.stex" ]
 
 [params]
 

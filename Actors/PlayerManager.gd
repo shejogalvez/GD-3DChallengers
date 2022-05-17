@@ -56,14 +56,19 @@ const PLAYER_MIN_MONEY := 0
 const PLAYER_MAX_MONEY := 99999
 
 var player : Player # Player kinematic body node
+
 var player_total_hp := 300 # Current total hp
 var player_hp := player_total_hp # Current hp
+
 var player_attack := 10 # Current attack
 var player_defense := 1 # Current defense
+
 var player_money := 0 # Current money
+var player_money_multiplier := 1.0
 
 # Consumables
 var consumable_inventory := ConsumableInventory.new()
+var player_consumable_multiplier := 1.0
 
 # Combat
 const UNTARGETABLE_TIME := 0.2
@@ -197,7 +202,12 @@ func get_money() -> int:
 
 # Adds money to the player money.
 func add_money(money : int) -> void:
-	set_money(player_money + money)
+	var money_added := money * player_money_multiplier
+	set_money(player_money + money_added)
+	
+# Adds multiplier to the player money multiplier.
+func add_money_multiplier(multiplier : float):
+	player_money_multiplier += multiplier
 	
 # ========================
 # Consumables
@@ -219,3 +229,11 @@ func consumables_empty() -> bool:
 # Adds maximum size to the consumable inventory.
 func add_consumables_size(size : int) -> void:
 	consumable_inventory.size += size
+	
+# Gets the player consumable multiplier.
+func get_consumable_multiplier() -> float:
+	return player_consumable_multiplier
+
+# Adds multiplier to the player consumable multiplier.
+func add_consumable_multiplier(multiplier : float):
+	player_consumable_multiplier += multiplier
