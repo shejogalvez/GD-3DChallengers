@@ -1,14 +1,14 @@
-extends CanvasLayer
+extends Control
 
 onready var crosshair : TextureRect = $Crossshair
 onready var hp_bar : SmartBar = $HPBar
 onready var money_panel = $MoneyPanel
 onready var money_label = $MoneyPanel/MoneyLabel
-onready var consumables_panel = $ConsumablesPanel
-onready var consumables_label = $ConsumablesPanel/ConsumableLabel
+onready var consumables_control = $ConsumablesControl
 onready var interaction_panel = $InteractionPanel
-onready var interaction_panel_message = $InteractionPanel/HBoxContainer/Label
-onready var interaction_panel_icon = $InteractionPanel/HBoxContainer/TextureRect
+onready var interaction_icon = $InteractionPanel/InteractionIcon
+onready var interaction_message = $InteractionPanel/InteractionMessage
+onready var animation_player = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,18 +40,25 @@ func _update_money_panel():
 # Updates the consumables panel.
 func _update_consumables_panel():
 	if (PlayerManager.consumables_empty()):
-		consumables_panel.hide()
+		consumables_control.hide()
 	else:
-		var consumable := PlayerManager.get_current_consumable()
-		consumables_label.text = consumable.consumable_name
-		consumables_panel.show()
+		for consumable_icon_id in consumables_control.get_child_count(): 
+			var consumable_icon : TextureRect = consumables_control.get_child(consumables_control.get_child_count() - consumable_icon_id - 1)
+			if PlayerManager.get_consumable(consumable_icon_id) != null:
+				consumable_icon.texture = PlayerManager.get_consumable(consumable_icon_id).consumable_icon
+				consumable_icon.show()
+			else:
+				consumable_icon.hide()
+		consumables_control.show()
 
 # Updates the interaction panel.
 func _update_interaction_panel():
 	if (InteractionsManager.interactions_empty()):
 		interaction_panel.hide()
+		animation_player.stop()
 	else:
 		var interaction = InteractionsManager.get_last_interaction()
-		interaction_panel_icon.texture = interaction.interaction_icon
-		interaction_panel_message.text = interaction.interaction_message
+		interaction_icon.texture = interaction.interaction_icon
+		interaction_message.text = interaction.interaction_message
 		interaction_panel.show()
+		animation_player.play("interaction_beat")

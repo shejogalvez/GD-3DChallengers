@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SF Atarian System Sample.jpg-29e64bcd463aba9c99e50a462cf685a7.stex"
+path="res://.import/Item_279.png-9413fb68881b1e9a1087652e8d415d2a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Fonts/Atarian/SF Atarian System Sample.jpg"
-dest_files=[ "res://.import/SF Atarian System Sample.jpg-29e64bcd463aba9c99e50a462cf685a7.stex" ]
+source_file="res://Assets/Sprites/Interactions/Item_279.png"
+dest_files=[ "res://.import/Item_279.png-9413fb68881b1e9a1087652e8d415d2a.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -98,17 +98,20 @@ monitorable = false
 [node name="CollisionShape" type="CollisionShape" parent="Item/DetailsArea"]
 shape = SubResource( 3 )
 
-[node name="Details" type="Control" parent="Item"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="DetailsModel" type="MeshInstance" parent="Item"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75092, 0, 6.83846 )
 
-[node name="Panel" type="Panel" parent="Item/Details"]
-margin_left = 30.0
-margin_top = 30.0
+[node name="DetailsViewport" type="Viewport" parent="Item/DetailsModel"]
+size = Vector2( 400, 240 )
+render_target_v_flip = true
+
+[node name="Details" type="Control" parent="Item/DetailsModel/DetailsViewport"]
+
+[node name="Panel" type="Panel" parent="Item/DetailsModel/DetailsViewport/Details"]
 margin_right = 410.0
 margin_bottom = 215.0
 
-[node name="Name" type="Label" parent="Item/Details/Panel"]
+[node name="Name" type="Label" parent="Item/DetailsModel/DetailsViewport/Details/Panel"]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 275.0
@@ -117,7 +120,7 @@ text = "Item Name"
 valign = 1
 max_lines_visible = 1
 
-[node name="Effect" type="Label" parent="Item/Details/Panel"]
+[node name="Effect" type="Label" parent="Item/DetailsModel/DetailsViewport/Details/Panel"]
 margin_left = 20.0
 margin_top = 60.0
 margin_right = 275.0
@@ -126,7 +129,7 @@ text = "Item effect"
 valign = 1
 max_lines_visible = 1
 
-[node name="Description" type="Label" parent="Item/Details/Panel"]
+[node name="Description" type="Label" parent="Item/DetailsModel/DetailsViewport/Details/Panel"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -138,7 +141,7 @@ text = "Item description"
 autowrap = true
 max_lines_visible = 3
 
-[node name="Sprite" type="TextureRect" parent="Item/Details/Panel"]
+[node name="Sprite" type="TextureRect" parent="Item/DetailsModel/DetailsViewport/Details/Panel"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -84.0

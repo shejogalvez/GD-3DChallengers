@@ -47,11 +47,9 @@ func _ready():
 	PlayerManager.set_player(self)
 	if is_head_view:
 		head_camera.make_current()
-		hud.show_crosshair()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else: 
 		topdown_camera.make_current()
-		hud.hide_crosshair()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 # Called each frame.
@@ -139,7 +137,6 @@ func _process_head_input(delta : float) -> void:
 		weapon_pivot.transform.origin = ads_position
 		head_camera.fov = default_fov
 		topdown_camera.make_current()
-		hud.hide_crosshair()
 		PlayerManager.emit_signal("view_changed")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
@@ -205,7 +202,6 @@ func _process_topdown_input(delta : float) -> void:
 	if Input.is_action_just_pressed("change_camera"):
 		is_head_view = true
 		head_camera.make_current()
-		hud.show_crosshair()
 		PlayerManager.emit_signal("view_changed")
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		

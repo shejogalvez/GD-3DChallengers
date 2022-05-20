@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/damage_short.wav-000991356ba51b172b2694099a72a61e.sample"
+path="res://.import/bomb-pickup.wav-d81fa698f9a575ee2e50db2756c1fb71.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/damage_short.wav"
-dest_files=[ "res://.import/damage_short.wav-000991356ba51b172b2694099a72a61e.sample" ]
+source_file="res://Assets/Audio/bomb-pickup.wav"
+dest_files=[ "res://.import/bomb-pickup.wav-d81fa698f9a575ee2e50db2756c1fb71.sample" ]
 
 [params]
 

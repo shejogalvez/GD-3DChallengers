@@ -13,7 +13,8 @@ class ConsumableInventory:
 		if not consumables.empty():
 			consumables[current_consumable_index].consume()
 			consumables.remove(current_consumable_index)
-	
+			switch_consumable()
+			
 	# Adds a consumable to the back of the list, if list is full,
 	# replaces the current consumable and throws it.
 	func add_consumable(consumable : Consumable) -> void:
@@ -26,10 +27,19 @@ class ConsumableInventory:
 			consumables[current_consumable_index].free()
 			consumables[current_consumable_index] = consumable
 
-	# Gets the current consumable.
-	func get_current_consumable() -> Consumable:
-		return consumables[current_consumable_index]
+	# Switch the current consumable.
+	func switch_consumable() -> void:
+		if not consumables.empty():
+			current_consumable_index = (current_consumable_index + 1) % consumables.size()
+		else:
+			current_consumable_index = 0
 
+	# Gets the consumable in the given index.
+	func get_consumable(index : int) -> Consumable:
+		if consumables.size() <= index:
+			return null
+		return consumables[(current_consumable_index + index) % consumables.size()]
+	
 # Signal called when the view is changed.
 signal view_changed
 # Signal called when the hp changes.
@@ -78,10 +88,19 @@ var current_untargetable_time := 0.0
 
 # Called each pseudo frame.
 func _process(delta):
-	if Input.is_action_just_pressed("use_consumable"):
+	# -----------------------------
+	# Using consumable
+	# -----------------------------
+	if Input.is_action_just_pressed("use_consumable") and not Input.is_action_pressed("switch_consumable"):
 		consumable_inventory.use_consumable()
 		emit_signal("consumables_updated")
-		
+	# -----------------------------
+	# Switching consumable
+	# -----------------------------
+	if Input.is_action_just_pressed("switch_consumable"):
+		consumable_inventory.switch_consumable()
+		emit_signal("consumables_updated")
+	
 	if current_untargetable_time > 0:
 		current_untargetable_time -= delta
 	else:
@@ -241,9 +260,9 @@ func add_money_multiplier(multiplier : float):
 # Consumables
 # ========================
 
-# Gets the current consumable.
-func get_current_consumable() -> Consumable:
-	return consumable_inventory.get_current_consumable()
+# Gets the consumable in the given index.
+func get_consumable(index : int) -> Consumable:
+	return consumable_inventory.get_consumable(index)
 	
 # Adds a consumable to the consumable inventory.
 func add_consumable(consumable : Consumable) -> void:
@@ -253,10 +272,14 @@ func add_consumable(consumable : Consumable) -> void:
 # Returns true if the consumable inventory is empty, false otherwise.
 func consumables_empty() -> bool:
 	return consumable_inventory.consumables.empty()
-	
+
+# Gets the current size of the consumable inventory.
+func get_consumables_size() -> int:
+	return consumable_inventory.consumables.size()
+
 # Adds maximum size to the consumable inventory.
-func add_consumables_size(size : int) -> void:
-	consumable_inventory.size += size
+func add_consumables_total_size(size : int) -> void:
+	consumable_inventory.size = min(consumable_inventory.size + size, 5)
 	
 # Gets the player consumable multiplier.
 func get_consumable_multiplier() -> float:

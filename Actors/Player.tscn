@@ -1,13 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://GUI/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Audio/damage_short.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Audio/damage-short.wav" type="AudioStream" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.2
 height = 9.0
+
+[sub_resource type="PlaneMesh" id=5]
+size = Vector2( 0.25, 0.25 )
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+albedo_color = Color( 0.627451, 0.470588, 0.878431, 0.12549 )
 
 [sub_resource type="CapsuleMesh" id=4]
 radius = 1.2
@@ -59,6 +66,12 @@ transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228
 keep_aspect = 0
 size = 150.0
 far = 800.0
+
+[node name="CameraFilter" type="MeshInstance" parent="TopDownPivot/Camera"]
+transform = Transform( -1, 0, 8.74228e-08, 8.74228e-08, -4.37114e-08, 1, 3.82137e-15, 1, 4.37114e-08, 0, 0, -0.1 )
+mesh = SubResource( 5 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 6 )
 
 [node name="Model" type="Spatial" parent="."]
 __meta__ = {

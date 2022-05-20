@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Pickups/Consumables/ConsumablePickup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Pickups/Consumables/Bomb.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Interactions/Item_279.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Audio/bomb-pickup.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Meshes/Bomb/bomb_Icosphere.mesh" type="ArrayMesh" id=5]
+[ext_resource path="res://Pickups/Consumables/Objects/ConsumableBomb.gd" type="Script" id=6]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( 0, -0.000208974, 1.39973, -0.822922, -0.000208974, 1.1325, -0.387089, -0.626162, 1.19088, 0.3678, -0.736224, 1.1325, 0.822661, -0.000208974, 1.1325, 0.386828, 0.626085, 1.19088, -0.36806, 0.735806, 1.1325, -1.01321, 0.626085, 0.735905, -1.33148, -0.000208974, 0.432498, -0.963682, -0.736224, 0.699726, -0.227561, -1.19112, 0.699726, 1.01295, -0.626162, 0.735905, 0.595361, -1.19112, 0.432498, 1.33148, -0.000208974, 0.432498, 0.963421, 0.735806, 0.699726, 0.277088, 1.11063, 0.852937, -0.0636024, 1.16038, 0.826625, -0.434791, 1.16038, 0.70603, -0.725694, 1.11063, 0.527056, -0.805979, 1.16038, 0.195145, -1.19098, 0.735806, -0.000274062, -1.33148, -0.000208974, -0.432772, -1.25224, -0.626162, -0.000274062, -0.73612, -1.19112, -0.000274062, 0, -1.4, -0.000274062, 1.19072, -0.736224, -0.000274062, 0.595361, -1.19112, -0.432772, 1.33148, -0.000208974, -0.432772, 1.25198, 0.626085, -0.000274062, -0.805979, 1.16038, -0.195419, -1.01321, 0.626085, -0.736179, -0.822922, -0.000208974, -1.13277, -0.963682, -0.736224, -0.7, -0.227561, -1.19112, -0.7, 1.01295, -0.626162, -0.736179, 0.3678, -0.736224, -1.13277, 0.822661, -0.000208974, -1.13277, 0.963421, 0.735806, -0.7, -0.725694, 1.11063, -0.52733, -0.36806, 0.735806, -1.13277, -0.434791, 1.16038, -0.706304, 0, -0.000208974, -1.4, -0.387089, -0.626162, -1.19115, 0.386828, 0.626085, -1.19115, 0.537232, 1.16038, -0.631754, 0.158, 2, 0.1, -0.0636024, 1.16038, -0.826899, 0.277088, 1.11063, -0.853211 )
+
+[node name="Bomb" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+pickup_audio = ExtResource( 4 )
+consumable_class = ExtResource( 6 )
+
+[node name="Model" parent="." index="0"]
+mesh = ExtResource( 5 )
+material/1 = null
+material/2 = null
+
+[node name="CollisionShape" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="Interaction" parent="." index="2"]
+interaction_icon = ExtResource( 3 )
+interaction_message = "Bomb"

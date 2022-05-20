@@ -1,8 +1,9 @@
 extends Consumable
 
-var potion_audio : AudioStream = load("res://Assets/Audio/potion_drink.wav")
+var potion_audio : AudioStream = load("res://Assets/Audio/bomb-equip.wav")
 
 # Consumes the consumable.
 func consume():
 	PlayerManager.heal(PlayerManager.get_consumable_multiplier() * 100)
 	AudioStreamManager.play(potion_audio)
+ 

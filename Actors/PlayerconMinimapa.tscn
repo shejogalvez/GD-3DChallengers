@@ -5,7 +5,7 @@
 [ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Themes/HPTheme.tres" type="Theme" id=4]
 [ext_resource path="res://Assets/GUI/Crosshair.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Audio/damage_short.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Audio/damage-short.wav" type="AudioStream" id=6]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.2
