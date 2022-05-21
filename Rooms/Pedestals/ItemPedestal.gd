@@ -5,8 +5,8 @@ export(PackedScene) var item_scene = preload("res://Items/Item.tscn")
 
 var item_instance : Item
 
-const SPRITE_WIDTH = 640
-const SPRITE_HEIGHT = 640
+const SPRITE_WIDTH := 640
+const SPRITE_HEIGHT := 640
 
 onready var item = $Item
 onready var item_model = $Item/ItemModel
@@ -42,6 +42,7 @@ func _ready():
 
 # Gives the Item if area touched by a player.
 func _use_item(_body) -> void:
+	item_details_animation_player.play("RESET")
 	item_instance.use()
 	item_pedestal_audio.play()
 	item.queue_free()
@@ -59,7 +60,7 @@ func _initialize_item_model(image : StreamTexture) -> void:
 	var material := SpatialMaterial.new()
 	# Always looks towards the camera
 	material.params_billboard_mode = SpatialMaterial.BILLBOARD_ENABLED
-	# Enable transparent color rendering
+	# Enables transparent color rendering
 	material.flags_transparent = true
 	# Sets the texture to be the image 
 	item_sprite.texture = image
