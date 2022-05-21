@@ -137,7 +137,17 @@ func set_weapon(weapon_node : Weapon) -> void:
 # Gets the player weapon.
 func get_weapon() -> Weapon:
 	return player.weapon
+
+# ========================
+# View
+# ========================
 	
+# Returns true if view is on head, false otherwise.
+func is_head_view() -> bool:
+	if is_instance_valid(player):
+		return player.is_head_view
+	return true
+
 # ========================
 # Health Points
 # ========================

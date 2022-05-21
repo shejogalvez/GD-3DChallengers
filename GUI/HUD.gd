@@ -12,22 +12,23 @@ onready var animation_player = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	_update_crosshair()
 	_update_hp_bar()
 	_update_money_panel()
 	_update_consumables_panel()
 	_update_interaction_panel()
+	PlayerManager.connect("view_changed", self, "_update_crosshair")
 	PlayerManager.connect("hp_changed", self, "_update_hp_bar")
 	PlayerManager.connect("money_changed", self, "_update_money_panel")
 	PlayerManager.connect("consumables_updated", self, "_update_consumables_panel")
 	InteractionsManager.connect("interactions_updated", self, "_update_interaction_panel")
 	
 # Shows the crosshair.
-func show_crosshair():
-	crosshair.show()
-	
-# Hides the crosshair.
-func hide_crosshair():
-	crosshair.hide()
+func _update_crosshair():
+	if PlayerManager.is_head_view():
+		crosshair.show()
+	else:
+		crosshair.hide()
 	
 # Updates the hp bar.
 func _update_hp_bar():

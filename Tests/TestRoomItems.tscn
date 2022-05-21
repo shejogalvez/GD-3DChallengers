@@ -119,7 +119,7 @@ shadow_enabled = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 55.3555 )
 
 [node name="WeaponsSection" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.4726, 0, -126.902 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.4726, -1.20856, -126.902 )
 
 [node name="WeaponPedestal4" parent="WeaponsSection" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.42552, 67.1111 )
@@ -141,19 +141,19 @@ weapon_scene = ExtResource( 7 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -200.56, 3.78437, 26.8808 )
 
 [node name="ItemPedestal" parent="ItemsSection" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.2401 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 17.2401 )
 item_scene = ExtResource( 6 )
 
 [node name="ItemPedestal2" parent="ItemsSection" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 43.5448 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 43.5448 )
 item_scene = ExtResource( 2 )
 
 [node name="ItemPedestal3" parent="ItemsSection" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.46328 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -9.46328 )
 item_scene = ExtResource( 13 )
 
 [node name="ItemPedestal4" parent="ItemsSection" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40.015 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -40.015 )
 item_scene = ExtResource( 21 )
 
 [node name="Pots" type="Spatial" parent="."]
@@ -192,11 +192,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9688, 0, -10.1026 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -163.489, 0.827824, 242.262 )
 
 [node name="ItemPedestal" parent="Coins" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.537, 2.46237, 0 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 25.537, 2.46237, 0 )
 item_scene = ExtResource( 18 )
 
 [node name="ItemPedestal2" parent="Coins" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.8915, 2.46237, 0 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 45.8915, 2.46237, 0 )
 item_scene = ExtResource( 19 )
 
 [node name="GoldCoin" parent="Coins" instance=ExtResource( 15 )]
@@ -268,11 +268,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.71025, 2.36128, 5.14401 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90.7412, 2.551, 172.048 )
 
 [node name="ItemPedestal" parent="Consumables" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.772579, -28.5937 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.772579, -28.5937 )
 item_scene = ExtResource( 17 )
 
 [node name="ItemPedestal2" parent="Consumables" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.772579, -54.1367 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.772579, -54.1367 )
 item_scene = ExtResource( 20 )
 
 [node name="HealthPotion" parent="Consumables" instance=ExtResource( 16 )]
