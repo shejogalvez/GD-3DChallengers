@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Rooms/Pedestals/ItemPedestal.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Themes/MainTheme.tres" type="Theme" id=5]
 [ext_resource path="res://Assets/Fonts/Atarian/SF Atarian System Extended Bold Italic.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Assets/Fonts/Atarian/SF Atarian System Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/Meshes/ItemPedestal/Material_002.material" type="Material" id=8]
 
 [sub_resource type="ConvexPolygonShape" id=8]
 points = PoolVector3Array( 4.22063, -1.96794, 0.962791, 4.03802, -0.990927, 0.921262, 3.23818, -0.990927, 2.58242, 3.38443, -1.96794, 2.69853, 4.22063, -1.96794, -0.963638, 2.6821, 1.95393, 2.13916, 4.03802, -0.990927, -0.92211, 3.34477, 1.95393, 0.762774, 1.79715, -0.990927, 3.73166, 1.87813, -1.96794, 3.90032, 3.38443, -1.96794, -2.69937, 3.23818, -0.990927, -2.58326, 1.48813, 1.95393, 3.09093, 3.34477, 1.95393, -0.763622, 2.6821, 1.95393, -2.14001, -0.000826359, 1.95393, 3.43079, -0.000826359, -0.990927, 4.14187, -0.000826359, -1.96794, 4.32832, 1.87813, -1.96794, -3.90117, 1.79715, -0.990927, -3.73251, 1.48813, 1.95393, -3.09178, -1.79798, -0.990927, 3.73166, -1.48895, 1.95393, 3.09093, -1.87896, -1.96794, 3.90032, 0, -1.96794, -4.32917, 0, -0.990927, -4.14271, 0, 1.95393, -3.43164, -2.68292, 1.95393, 2.13916, -3.23901, -0.990927, 2.58242, -3.38526, -1.96794, 2.69853, -1.87896, -1.96794, -3.90117, -1.79798, -0.990927, -3.73251, -1.48895, 1.95393, -3.09178, -3.3456, 1.95393, 0.762774, -4.03885, -0.990927, 0.921262, -4.22063, -1.96794, 0.962791, -3.38526, -1.96794, -2.69937, -3.23901, -0.990927, -2.58326, -2.68292, 1.95393, -2.14001, -3.3456, 1.95393, -0.763622, -4.03885, -0.990927, -0.92211, -4.22063, -1.96794, -0.963638 )
@@ -99,7 +100,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Pedestal/PedestalModel:mesh:surface_2/material:albedo_color")
+tracks/2/path = NodePath("Pedestal/PedestalModel:material/1:albedo_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -140,7 +141,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Pedestal/PedestalModel:mesh:surface_2/material:albedo_color")
+tracks/2/path = NodePath("Pedestal/PedestalModel:material/1:albedo_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -181,7 +182,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Pedestal/PedestalModel:mesh:surface_2/material:albedo_color")
+tracks/2/path = NodePath("Pedestal/PedestalModel:material/1:albedo_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -190,7 +191,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.349019, 0.211764, 1, 1 ), Color( 0.109333, 0.0672, 0.32, 1 ) ]
+"values": [ Color( 0.341667, 0.21, 1, 1 ), Color( 0.109804, 0.0666667, 0.321569, 1 ) ]
 }
 
 [node name="ItemPedestal" type="Spatial"]
@@ -202,7 +203,7 @@ script = ExtResource( 1 )
 transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -0.0233192, 0.0323238, -0.0113735 )
 mesh = ExtResource( 4 )
 material/0 = null
-material/1 = null
+material/1 = ExtResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Pedestal"]
 transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0 )

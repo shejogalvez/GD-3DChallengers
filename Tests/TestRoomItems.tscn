@@ -72,7 +72,7 @@ mesh = SubResource( 6 )
 material/0 = SubResource( 7 )
 
 [node name="Floor" type="StaticBody" parent="."]
-transform = Transform( 0.842663, 0, 0, 0, 0.435701, 0, 0, 0, 0.720528, -43.09, 0, 0 )
+transform = Transform( 0.842663, 0, 0, 0, 0.435701, 0, 0, 0, 0.720528, -40.3252, 0.697565, -3.23363 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -146,7 +146,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1
 item_scene = ExtResource( 6 )
 
 [node name="ItemPedestal2" parent="ItemsSection" instance=ExtResource( 4 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 43.5448 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 43.564 )
 item_scene = ExtResource( 2 )
 
 [node name="ItemPedestal3" parent="ItemsSection" instance=ExtResource( 4 )]

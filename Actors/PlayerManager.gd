@@ -262,7 +262,7 @@ func get_money() -> int:
 
 # Adds money to the player money.
 func add_money(money : int) -> void:
-	var money_added := int(money * player_money_multiplier)
+	var money_added := money * player_money_multiplier
 	set_money(player_money + money_added)
 	
 # Adds multiplier to the player money multiplier.
