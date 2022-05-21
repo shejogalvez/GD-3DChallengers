@@ -277,40 +277,24 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.77
 item_scene = ExtResource( 20 )
 
 [node name="HealthPotion" parent="Consumables" instance=ExtResource( 16 )]
-mass = 5.0
-gravity_scale = 2.0
 
 [node name="HealthPotion2" parent="Consumables" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.43207 )
-mass = 5.0
-gravity_scale = 2.0
 
 [node name="HealthPotion3" parent="Consumables" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06124, 0, 7.43207 )
-mass = 5.0
-gravity_scale = 2.0
 
 [node name="HealthPotion4" parent="Consumables" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06124, 0, -0.567932 )
-mass = 5.0
-gravity_scale = 2.0
 
 [node name="Bomb" parent="Consumables" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.8971 )
-mass = 5.0
-gravity_scale = 2.0
 
 [node name="Bomb2" parent="Consumables" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 19.8971 )
-mass = 5.0
-gravity_scale = 2.0
 
 [node name="Bomb3" parent="Consumables" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 28.8971 )
-mass = 5.0
-gravity_scale = 2.0
 
 [node name="Bomb4" parent="Consumables" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.373878, 0, 28.8971 )
-mass = 5.0
-gravity_scale = 2.0
