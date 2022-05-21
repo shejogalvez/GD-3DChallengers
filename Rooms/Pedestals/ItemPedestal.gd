@@ -17,10 +17,11 @@ onready var item_animation_player= $Item/AnimationPlayer
 onready var item_details_area = $Item/DetailsArea
 onready var item_details_model = $Item/DetailsModel
 onready var item_details_viewport = $Item/DetailsModel/DetailsViewport
+onready var item_details_sprite = $Item/DetailsModel/DetailsViewport/DetailsPanel/DetailsSprite
 onready var item_details_name = $Item/DetailsModel/DetailsViewport/DetailsPanel/DetailsHeader/DetailsName
 onready var item_details_description = $Item/DetailsModel/DetailsViewport/DetailsPanel/DetailsHeader/DetailsDescription
 onready var item_details_effect = $Item/DetailsModel/DetailsViewport/DetailsPanel/DetailsEffect
-onready var item_details_sprite = $Item/DetailsModel/DetailsViewport/DetailsPanel/DetailsSprite
+onready var item_details_animation_player = $Item/DetailsAnimationPlayer
 onready var item_pedestal_audio = $ItemPedestalAudio
 
 # Called when the node enters the scene tree for the first time.
@@ -41,18 +42,18 @@ func _ready():
 	item.add_child(item_instance)
 
 # Gives the Item if area touched by a player.
-func _give_item(body) -> void:
+func _give_item(_body) -> void:
 	item_instance.use()
 	item_pedestal_audio.play()
 	item.queue_free()
 	
 # Shows the item details.
-func _show_details(body) -> void:
-	item_details_model.show()
+func _show_details(_body) -> void:
+	item_details_animation_player.play("details_appear")
 	
 # Hides the item details.
-func _hide_details(body) -> void:
-	item_details_model.hide()
+func _hide_details(_body) -> void:
+	item_details_animation_player.play("details_disappear")
 
 # Creates a surface material with image texture propierties.
 func _create_image_material(image : StreamTexture) -> SpatialMaterial:

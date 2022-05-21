@@ -6,11 +6,11 @@ export(AudioStream) var pickup_audio
 onready var interaction : Interaction = $Interaction
 
 # Interact function used by the interaction node.
-func interact():
+func interact() -> void:
 	AudioStreamManager.play(pickup_audio)
 	_obtain()
 	queue_free()
 	
 # Called when the player interacts with the pickup.
-func _obtain():
+func _obtain() -> void:
 	pass

@@ -60,11 +60,11 @@ func _physics_process(delta):
 # Will be where we store all the code relating to player input. We want
 # to call it first, before anything else, so we have fresh player input
 # to work with.
-func _process_input(delta : float) -> void:
+func _process_input(_delta : float) -> void:
 	if is_head_view:
-		_process_head_input(delta)
+		_process_head_input(_delta)
 	else:
-		_process_topdown_input(delta)
+		_process_topdown_input(_delta)
 	# -----------------------------
 	# Jumping
 	# -----------------------------
@@ -91,7 +91,7 @@ func _process_input(delta : float) -> void:
 		weapon.fire_weapon()
 	
 # Process input if current view is on head camera.
-func _process_head_input(delta : float) -> void:
+func _process_head_input(_delta : float) -> void:
 	# -----------------------------
 	# Walking
 	# -----------------------------
@@ -121,11 +121,11 @@ func _process_head_input(delta : float) -> void:
 	# ADS
 	# -----------------------------
 	if Input.is_action_pressed("aim_down_sights"):
-		weapon_pivot.transform.origin = weapon_pivot.transform.origin.linear_interpolate(ads_position, ADS_LERP * delta)
-		head_camera.fov = lerp(head_camera.fov, ads_fov, ADS_LERP * delta)
+		weapon_pivot.transform.origin = weapon_pivot.transform.origin.linear_interpolate(ads_position, ADS_LERP * _delta)
+		head_camera.fov = lerp(head_camera.fov, ads_fov, ADS_LERP * _delta)
 	else:
-		weapon_pivot.transform.origin = weapon_pivot.transform.origin.linear_interpolate(default_position, ADS_LERP * delta)
-		head_camera.fov = lerp(head_camera.fov, default_fov, ADS_LERP * delta)
+		weapon_pivot.transform.origin = weapon_pivot.transform.origin.linear_interpolate(default_position, ADS_LERP * _delta)
+		head_camera.fov = lerp(head_camera.fov, default_fov, ADS_LERP * _delta)
 	# -----------------------------
 	# Changing camera view
 	# -----------------------------
@@ -141,7 +141,7 @@ func _process_head_input(delta : float) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 # Process input if current view is on topdown camera.
-func _process_topdown_input(delta : float) -> void:
+func _process_topdown_input(_delta : float) -> void:
 	# -----------------------------
 	# Walking
 	# -----------------------------

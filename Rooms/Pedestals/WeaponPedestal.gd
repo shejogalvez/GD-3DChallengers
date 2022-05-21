@@ -20,7 +20,7 @@ func _ready():
 	weapon_instance.queue_free()
 
 # Gives the weapon if area touched by a player.
-func give_weapon(body):
+func give_weapon(_body):
 	PlayerManager.set_weapon(weapon_scene.instance())
 	weapon_pedestal_audio.play()
 	weapon.queue_free()

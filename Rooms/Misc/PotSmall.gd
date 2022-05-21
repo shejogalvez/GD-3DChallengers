@@ -23,7 +23,7 @@ func _generate_random_pickups() -> Array:
 			continue
 		Outcomes.COINS:
 			var amount = rng.randi() % 5
-			for i in range(amount):
+			for _i in amount:
 				pickups.append(gold_coin_scene.instance())
 		Outcomes.HEALTH_POTION:
 			pickups.append(health_potion_scene.instance())
@@ -33,7 +33,7 @@ func _generate_random_pickups() -> Array:
 	
 
 # Called when a projectile hits the node.
-func projectile_hit(damage, bullet_global_trans):
+func projectile_hit(_damage, _bullet_global_trans):
 	AudioStreamManager.play_3d(break_audio, global_transform.origin, 10.0, 20.0)
 	var pickups = _generate_random_pickups()
 	for pickup in pickups:

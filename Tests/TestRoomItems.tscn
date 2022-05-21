@@ -112,8 +112,9 @@ material/0 = null
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.73021, 0.683223, 0, -0.683223, 0.73021, 0, 27.3068, 0 )
-light_color = Color( 0.898039, 0.482353, 0.14902, 1 )
+light_color = Color( 0.55, 0.298925, 0.0935, 1 )
 shadow_enabled = true
+directional_shadow_max_distance = 321.6
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 55.3555 )
@@ -276,24 +277,40 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.77
 item_scene = ExtResource( 20 )
 
 [node name="HealthPotion" parent="Consumables" instance=ExtResource( 16 )]
+mass = 5.0
+gravity_scale = 2.0
 
 [node name="HealthPotion2" parent="Consumables" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.43207 )
+mass = 5.0
+gravity_scale = 2.0
 
 [node name="HealthPotion3" parent="Consumables" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06124, 0, 7.43207 )
+mass = 5.0
+gravity_scale = 2.0
 
 [node name="HealthPotion4" parent="Consumables" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06124, 0, -0.567932 )
+mass = 5.0
+gravity_scale = 2.0
 
 [node name="Bomb" parent="Consumables" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.8971 )
+mass = 5.0
+gravity_scale = 2.0
 
 [node name="Bomb2" parent="Consumables" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 19.8971 )
+mass = 5.0
+gravity_scale = 2.0
 
 [node name="Bomb3" parent="Consumables" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 28.8971 )
+mass = 5.0
+gravity_scale = 2.0
 
 [node name="Bomb4" parent="Consumables" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.373878, 0, 28.8971 )
+mass = 5.0
+gravity_scale = 2.0

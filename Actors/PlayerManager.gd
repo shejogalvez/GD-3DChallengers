@@ -13,13 +13,15 @@ class ConsumableInventory:
 		if not consumables.empty():
 			consumables[current_consumable_index].consume()
 			consumables.remove(current_consumable_index)
-			switch_consumable()
+			if consumables.size() <= current_consumable_index:
+				current_consumable_index = 0
 			
 	# Adds a consumable to the back of the list, if list is full,
 	# replaces the current consumable and throws it.
 	func add_consumable(consumable : Consumable) -> void:
 		if consumables.size() < size:
-			consumables.append(consumable)
+			consumables.insert(current_consumable_index, consumable)
+			switch_consumable()
 		else:
 			var consumable_pickup : ConsumablePickup = consumables[current_consumable_index].pickup_scene.instance()
 			PlayerManager.get_player().get_parent().add_child(consumable_pickup)
@@ -77,6 +79,7 @@ var player_money := 0 # Current money
 var player_money_multiplier := 1.0
 
 # Consumables
+const CONSUMABLE_INVENTORY_MAX_SIZE := 5
 var consumable_inventory := ConsumableInventory.new()
 var player_consumable_multiplier := 1.0
 
@@ -259,7 +262,7 @@ func get_money() -> int:
 
 # Adds money to the player money.
 func add_money(money : int) -> void:
-	var money_added := money * player_money_multiplier
+	var money_added := int(money * player_money_multiplier)
 	set_money(player_money + money_added)
 	
 # Adds multiplier to the player money multiplier.
@@ -289,12 +292,12 @@ func get_consumables_size() -> int:
 
 # Adds maximum size to the consumable inventory.
 func add_consumables_total_size(size : int) -> void:
-	consumable_inventory.size = min(consumable_inventory.size + size, 5)
+	consumable_inventory.size = min(consumable_inventory.size + size, CONSUMABLE_INVENTORY_MAX_SIZE)
 	
 # Gets the player consumable multiplier.
 func get_consumable_multiplier() -> float:
 	return player_consumable_multiplier
 
 # Adds multiplier to the player consumable multiplier.
-func add_consumable_multiplier(multiplier : float):
+func add_consumable_multiplier(multiplier : float) -> void:
 	player_consumable_multiplier += multiplier

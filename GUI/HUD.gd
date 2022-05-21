@@ -1,14 +1,14 @@
 extends Control
 
-onready var crosshair : TextureRect = $Crossshair
-onready var hp_bar : SmartBar = $HPBar
-onready var money_panel = $MoneyPanel
-onready var money_label = $MoneyPanel/MoneyLabel
-onready var consumables_control = $ConsumablesControl
-onready var interaction_panel = $InteractionPanel
-onready var interaction_icon = $InteractionPanel/InteractionIcon
-onready var interaction_message = $InteractionPanel/InteractionMessage
-onready var animation_player = $AnimationPlayer
+onready var crosshair := $Crossshair
+onready var hp_bar := $HPBar
+onready var money_panel := $MoneyPanel
+onready var money_label := $MoneyPanel/MoneyLabel
+onready var consumables_control := $ConsumablesControl
+onready var interaction_panel := $InteractionPanel
+onready var interaction_icon := $InteractionPanel/InteractionIcon
+onready var interaction_message := $InteractionPanel/InteractionMessage
+onready var animation_player := $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

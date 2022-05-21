@@ -6,5 +6,5 @@ var consumable_name : String = "Consumable"
 var pickup_scene : PackedScene
 
 # Consumes the consumable.
-func consume():
+func consume() -> void:
 	pass
