@@ -16,7 +16,7 @@ bg_color = Color( 0.854902, 0.215686, 0.294118, 1 )
 bg_color = Color( 0, 0, 0, 0.313726 )
 shadow_color = Color( 0, 0, 0, 0.235294 )
 shadow_size = 2
-shadow_offset = Vector2( 2, 2 )
+shadow_offset = Vector2( 1.5, 1.5 )
 
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.121569, 0.0745098, 0.34902, 1 )
@@ -65,14 +65,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color( 0.6, 0.6, 0.6, 1 )
-border_blend = true
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-shadow_color = Color( 0.172549, 0.168627, 0.168627, 1 )
-shadow_size = 3
-shadow_offset = Vector2( 1.5, 1.5 )
 
 [sub_resource type="DynamicFont" id=13]
 size = 18
@@ -81,7 +77,7 @@ font_data = ExtResource( 7 )
 [sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("HUDControl/InteractionPanel:custom_styles/panel:bg_color")
+tracks/0/path = NodePath("HUDControl/InteractionPanel/InteractionKey:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -90,55 +86,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.121569, 0.0745098, 0.34902, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("HUDControl/InteractionPanel:theme")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ SubResource( 7 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("HUDControl/InteractionPanel/InteractionKey:custom_styles/panel:bg_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.87, 0.87, 0.87, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("HUDControl/InteractionPanel/InteractionKey:custom_styles/panel:shadow_color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.172549, 0.168627, 0.168627, 1 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("HUDControl/InteractionPanel/InteractionKey:custom_styles/panel:shadow_size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 3 ]
+"values": [ Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -146,16 +94,16 @@ resource_name = "interaction_beat"
 length = 1.5
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("HUDControl/InteractionPanel:custom_styles/panel:bg_color")
+tracks/0/path = NodePath("HUDControl/InteractionPanel/InteractionKey:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.7 ),
-"transitions": PoolRealArray( 1, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.121569, 0.0745098, 0.34902, 1 ), Color( 0.341667, 0.21, 1, 1 ) ]
+"values": [ Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
 }
 
 [node name="HUD" type="CanvasLayer"]
@@ -312,8 +260,11 @@ max_lines_visible = 1
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 19.0
-margin_right = 47.0
+margin_left = 13.0
+margin_right = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 14, 14 )
 custom_styles/panel = SubResource( 12 )
 __meta__ = {
 "_edit_group_": true
