@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://GUI/SmartBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/GUI/Crosshair.png" type="Texture" id=3]
@@ -45,18 +45,38 @@ default_font = SubResource( 6 )
 Panel/styles/panel = null
 
 [sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.206241, 0.126633, 0.599453, 1 )
+bg_color = Color( 0.121569, 0.0745098, 0.34902, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
-expand_margin_left = 8.0
-expand_margin_right = 8.0
-expand_margin_top = 8.0
-expand_margin_bottom = 8.0
+expand_margin_left = 6.0
+expand_margin_right = 6.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
 shadow_color = Color( 0, 0, 0, 0.235294 )
 shadow_size = 2
-shadow_offset = Vector2( 2, 2 )
+shadow_offset = Vector2( 1.5, 1.5 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.87, 0.87, 0.87, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.6, 0.6, 0.6, 1 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.172549, 0.168627, 0.168627, 1 )
+shadow_size = 3
+shadow_offset = Vector2( 1.5, 1.5 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 18
+font_data = ExtResource( 7 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -70,7 +90,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.206241, 0.126633, 0.599453, 1 ) ]
+"values": [ Color( 0.121569, 0.0745098, 0.34902, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("HUDControl/InteractionPanel:theme")
@@ -83,6 +103,42 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ SubResource( 7 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HUDControl/InteractionPanel/InteractionKey:custom_styles/panel:bg_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.87, 0.87, 0.87, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HUDControl/InteractionPanel/InteractionKey:custom_styles/panel:shadow_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.172549, 0.168627, 0.168627, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HUDControl/InteractionPanel/InteractionKey:custom_styles/panel:shadow_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -157,7 +213,8 @@ stretch_mode = 6
 anchor_right = 0.75
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 9 )
-text = "12038"
+text = "0
+"
 valign = 1
 max_lines_visible = 1
 
@@ -232,7 +289,7 @@ anchor_bottom = 0.5
 margin_left = 100.0
 margin_top = -20.0
 margin_right = 340.0
-margin_bottom = 12.0
+margin_bottom = 8.0
 theme = SubResource( 7 )
 custom_styles/panel = SubResource( 3 )
 
@@ -250,6 +307,26 @@ anchor_bottom = 1.0
 text = "Interaction"
 valign = 1
 max_lines_visible = 1
+
+[node name="InteractionKey" type="Panel" parent="HUDControl/InteractionPanel"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 19.0
+margin_right = 47.0
+custom_styles/panel = SubResource( 12 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="InteractionKeyLabel" type="Label" parent="HUDControl/InteractionPanel/InteractionKey"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 13 )
+text = "F"
+align = 1
+valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUDControl"]
 root_node = NodePath("../..")

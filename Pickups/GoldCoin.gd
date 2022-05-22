@@ -2,4 +2,4 @@ extends Pickup
 
 # Called when the player interacts with the pickup.
 func _obtain() -> void:
-	PlayerManager.add_money(10)
+	PlayerManager.add_money(1)

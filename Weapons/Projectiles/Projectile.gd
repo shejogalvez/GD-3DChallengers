@@ -1,15 +1,11 @@
 extends Spatial
 class_name Projectile, "res://Assets/Classes/projectile_icon.png"
 
-# Projectile speed
 export(int) var projectile_speed = 160
-# Projectile damage (calculated as weapon_factor * player_attack)
-var projectile_damage := 1
-# Duration in seconds of the projectile
 export(float) var kill_timer := 5.0
-# Current projectile life in seconds
+
+var projectile_damage := 1 # calculated as weapon_factor * player_attack
 var timer := 0.0
-# Boolean set to true when projectile hits something
 var hit_something := false
 
 onready var area : Area = $Area

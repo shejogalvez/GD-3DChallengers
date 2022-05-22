@@ -15,9 +15,9 @@ func interact() -> void:
 		get_parent().interact()
 
 # Adds this interaction to the interaction manager.
-func add_to_manager(body : KinematicBody) -> void:
+func add_to_manager(_body : KinematicBody) -> void:
 	InteractionsManager.add_interaction(self)
 	
 # Removes this interaction from the interaction manager.
-func remove_from_manager(body : KinematicBody) -> void:
+func remove_from_manager(_body : KinematicBody) -> void:
 	InteractionsManager.remove_interaction(self)

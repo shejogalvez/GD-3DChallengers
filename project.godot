@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Weapons/Projectiles/Projectile.gd"
 }, {
+"base": "Object",
+"class": "RandomFunctionCaller",
+"language": "GDScript",
+"path": "res://Addons/Randomizer/RandomFunctionCaller.gd"
+}, {
 "base": "ProgressBar",
 "class": "SmartBar",
 "language": "GDScript",
@@ -83,6 +88,11 @@ _global_script_classes=[ {
 "class": "Teleport",
 "language": "GDScript",
 "path": "res://Rooms/Pedestals/Teleport.gd"
+}, {
+"base": "Weapon",
+"class": "TemporaryWeapon",
+"language": "GDScript",
+"path": "res://Weapons/TemporaryWeapons/TemporaryWeapon.gd"
 }, {
 "base": "Spatial",
 "class": "Weapon",
@@ -107,9 +117,11 @@ _global_script_class_icons={
 "Pickup": "res://Assets/Classes/pickup_icon.png",
 "Player": "",
 "Projectile": "res://Assets/Classes/projectile_icon.png",
+"RandomFunctionCaller": "",
 "SmartBar": "",
 "State": "",
 "Teleport": "res://Assets/Classes/teleport_icon.png",
+"TemporaryWeapon": "",
 "Weapon": "res://Assets/Classes/weapon_icon.png",
 "WeaponPedestal": "res://Assets/Classes/pedestal_icon.png"
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Meshes/PotSmall/pot_small_Cylinder.mesh" type="ArrayMesh" id=1]
 [ext_resource path="res://Rooms/Misc/PotSmall.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Addons/Destruction/ShardTemplates/HExplosionShardTemplate.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Pickups/GoldCoin.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Pickups/Consumables/HealthPotion.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Pickups/Consumables/Bomb.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 3.0
@@ -19,6 +20,7 @@ script = ExtResource( 2 )
 break_audio = ExtResource( 3 )
 gold_coin_scene = ExtResource( 7 )
 health_potion_scene = ExtResource( 8 )
+bomb_scene = ExtResource( 9 )
 
 [node name="Model" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )

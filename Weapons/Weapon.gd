@@ -1,26 +1,17 @@
 extends Spatial
 class_name Weapon, "res://Assets/Classes/weapon_icon.png"
 
-# Weapon name
 export(String) var weapon_name = "Weapon"
-# Weapon description
 export(String) var weapon_description = "This is an standard weapon intended to be extended."
-# Weapon damage (is a factor for the player attack)
-export(float, 0, 99) var damage_factor = 1
-# Cooldown for fire
-export(float, 0, 99) var fire_cd = 1.0
-# Current cooldown for the next shot
-var current_fire_cd = 0.0
-# Projectile amount
-export(int, 0, 10) var projectiles = 1
-# Projectile scene
+export(float, 0, 99) var damage_factor := 1.0 # a factor for the player attack
+export(float, 0, 99) var fire_cd := 1.0
 export(PackedScene) var projectile_scene = preload("res://Weapons/Projectiles/Projectile.tscn")
+export(int, 0, 10) var projectiles := 1
 
-# Barrel node
+var current_fire_cd := 0.0
+
 onready var barrel : Position3D = $Barrel 
-# Audio node
 onready var audio : AudioStreamPlayer = $Audio
-# Animation player node
 onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 # Called each frame.
@@ -39,6 +30,10 @@ func _fire() -> void:
 		_set_projectile_transform(projectile, projectile_id)
 		projectile.projectile_damage = damage_factor * PlayerManager.get_attack()
 
+# Called after fire the weapon.
+func _post_fire() -> void:
+	return
+
 # Tries to fire the weapon.
 func fire_weapon() -> void:
 	if current_fire_cd <= 0:
@@ -47,6 +42,7 @@ func fire_weapon() -> void:
 		if animation_player.has_animation("fire"):
 			animation_player.play("fire")
 		current_fire_cd = fire_cd
+		_post_fire()
 		
 # Gets the barrel node.
 func get_barrel() -> Position3D:

@@ -14,4 +14,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.664886 )
 [node name="Model" parent="." index="1"]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 2, 0, 0, 0.42 )
 mesh = ExtResource( 2 )
-material/0 = null

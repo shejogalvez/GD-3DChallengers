@@ -133,6 +133,10 @@ func get_player_face_position() -> Vector3:
 		return player.head_camera.global_transform.origin
 	return Vector3.ZERO
 
+# ========================
+# Weapons
+# ========================
+
 # Sets the player weapon.
 func set_weapon(weapon_node : Weapon) -> void:
 	player.change_weapon(weapon_node)
@@ -140,6 +144,11 @@ func set_weapon(weapon_node : Weapon) -> void:
 # Gets the player weapon.
 func get_weapon() -> Weapon:
 	return player.weapon
+
+# Sets the player a temporary weapon.
+func set_temporary_weapon(temp_weapon_node : TemporaryWeapon) -> void:
+	temp_weapon_node.previous_weapon = player.weapon.duplicate()
+	player.change_weapon(temp_weapon_node)
 
 # ========================
 # View

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Weapons/TemporaryWeapons/TemporaryWeapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapons/TemporaryWeapons/BombWeapon.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Meshes/Bomb/bomb_Icosphere.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://Weapons/Projectiles/BombProjectile.tscn" type="PackedScene" id=4]
+
+[node name="BombWeapon" instance=ExtResource( 1 )]
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
+script = ExtResource( 2 )
+weapon_name = "Bomb"
+weapon_description = "One use bomb weapon"
+projectile_scene = ExtResource( 4 )
+
+[node name="Model" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = ExtResource( 3 )
+material/1 = null
+material/2 = null

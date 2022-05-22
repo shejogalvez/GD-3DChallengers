@@ -6,7 +6,7 @@
 
 [node name="GoldenChest" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-item_name = "Golden Chest"
-item_description = "More treasures in your adventure"
-item_effect = "+50% money earned"
 item_image = ExtResource( 3 )
+item_name = "Golden Chest"
+item_description = "Is your lucky day"
+item_effect = "Double your current money"

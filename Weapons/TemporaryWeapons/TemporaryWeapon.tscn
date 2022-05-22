@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapons/TemporaryWeapons/TemporaryWeapon.gd" type="Script" id=2]
+[ext_resource path="res://Weapons/Projectiles/Projectile.tscn" type="PackedScene" id=3]
+
+[node name="TemporaryWeapon" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+weapon_name = "Weapon"
+damage_factor = 1.0
+fire_cd = 1.0
+projectile_scene = ExtResource( 3 )
+projectiles = 1
