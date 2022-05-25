@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "State",
+"class": "Alerted",
+"language": "GDScript",
+"path": "res://enemies/States/alerted.gd"
+}, {
 "base": "KinematicBody",
 "class": "BossTest",
 "language": "GDScript",
@@ -79,10 +84,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://GUI/SmartBar.gd"
 }, {
+"base": "State",
+"class": "Standby",
+"language": "GDScript",
+"path": "res://enemies/States/standby.gd"
+}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
-"path": "res://enemies/enemy_state.gd"
+"path": "res://enemies/States/enemy_state.gd"
 }, {
 "base": "Spatial",
 "class": "Teleport",
@@ -105,6 +115,7 @@ _global_script_classes=[ {
 "path": "res://Rooms/Pedestals/WeaponPedestal.gd"
 } ]
 _global_script_class_icons={
+"Alerted": "",
 "BossTest": "",
 "Consumable": "",
 "ConsumablePickup": "",
@@ -119,6 +130,7 @@ _global_script_class_icons={
 "Projectile": "res://Assets/Classes/projectile_icon.png",
 "RandomFunctionCaller": "",
 "SmartBar": "",
+"Standby": "",
 "State": "",
 "Teleport": "res://Assets/Classes/teleport_icon.png",
 "TemporaryWeapon": "",
@@ -142,6 +154,8 @@ Menu="*res://GUI/Menu.tscn"
 [display]
 
 window/handheld/orientation="sensor_landscape"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 

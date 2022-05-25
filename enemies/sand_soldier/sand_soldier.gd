@@ -34,7 +34,7 @@ func weapon_hit(body):
 			PlayerManager.receive_damage(damage)
 			hit_player = true
 	
-class InitialState extends State:
+class InitialState extends Standby:
 	
 	const follow_distance = 50
 	

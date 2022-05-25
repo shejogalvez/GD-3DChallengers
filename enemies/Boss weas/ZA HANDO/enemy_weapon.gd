@@ -15,9 +15,9 @@ export(PackedScene) var projectile_scene = preload("res://enemies/Boss weas/enem
 # Barrel node
 onready var barrel : Position3D = $Barrel 
 # Audio node
-onready var audio : AudioStreamPlayer = $Audio
+# onready var audio : AudioStreamPlayer = $Audio
 # Animation player node
-onready var animation_player : AnimationPlayer = $AnimationPlayer
+# onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 # Called each frame
 func _physics_process(delta):

@@ -3,8 +3,10 @@ class_name IEnemy
 
 var hp : int
 var alerted : bool
+onready var raycast = $RayCast
 
 var state
+export (int) var alert_range = 50
 
 func _ready():
 	pass # Replace with function body.

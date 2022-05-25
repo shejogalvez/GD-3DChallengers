@@ -442,6 +442,7 @@ extents = Vector3( 4.51182, 0.883915, 4.63282 )
 
 [node name="sand_soldier" type="KinematicBody"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+collision_layer = 2
 script = ExtResource( 1 )
 dash_curve = SubResource( 14 )
 
@@ -496,3 +497,6 @@ transform = Transform( 0.1, 0, 0, 0, -8.74228e-09, -0.06, 0, 0.2, -2.62268e-09, 
 transform = Transform( 1, 1.78814e-07, 7.45058e-09, 7.45058e-08, 0.999999, -1.11759e-08, 7.45058e-09, 2.98023e-08, 0.999999, -1.1353, -0.399028, 0.486442 )
 shape = SubResource( 12 )
 disabled = true
+
+[node name="RayCast" type="RayCast" parent="."]
+cast_to = Vector3( 0, 0, 10 )

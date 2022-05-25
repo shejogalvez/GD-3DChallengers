@@ -178,3 +178,6 @@ material/0 = null
 
 [node name="Barrel" type="Position3D" parent="meshish/firin_hand"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.453516 )
+
+[node name="RayCast" type="RayCast" parent="."]
+cast_to = Vector3( 0, 0, 0 )
