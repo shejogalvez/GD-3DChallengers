@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://sand_map/terrain_shape.shape" type="Shape" id=1]
 [ext_resource path="res://sand_map/camera_control.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://enemies/sand_soldier/sand_soldier.tscn" type="PackedScene" id=5]
 [ext_resource path="res://enemies/minion_egipcio/minion_maloglb.tscn" type="PackedScene" id=6]
+[ext_resource path="res://enemies/bat/bat.tscn" type="PackedScene" id=7]
 
 [node name="sand_world" type="Spatial"]
 
@@ -52,7 +53,7 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 221.215, 12.0544, -201.796 )
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 319.575, 2.64116, 8.97087 )
 
 [node name="sand_soldier4" parent="." instance=ExtResource( 5 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 12.2517, 7.93545, -117.054 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 12.2517, 7.93545, -231.048 )
 
 [node name="sand_soldier5" parent="." instance=ExtResource( 5 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 167.795, 7.93545, -76.3277 )
@@ -68,3 +69,6 @@ transform = Transform( 1.45853, 0, -1.36846, 0, 2, 0, 1.36846, 0, 1.45853, 100.8
 
 [node name="minion_maloglb2" parent="." instance=ExtResource( 6 )]
 transform = Transform( -1.5724, 0, 1.23594, 0, 2, 0, -1.23594, 0, -1.5724, 115.653, 6.75829, -93.2858 )
+
+[node name="bat" parent="." instance=ExtResource( 7 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -4.42355, 14.8444, -107.75 )

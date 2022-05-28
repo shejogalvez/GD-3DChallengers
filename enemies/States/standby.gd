@@ -2,8 +2,10 @@ extends State
 class_name Standby
 
 func _process(delta):
-	var body = raycast.get_collider()
-	if body.get_type() == Player:
-		enemy_node.set_state(Alerted.new())
+	enemy_node.set_ray_castdir()
+	var object = raycast.get_collider()
+	if object!=null:
+		if object == PlayerManager.get_player():
+			enemy_node.set_state(Alerted.new())
 		
 	

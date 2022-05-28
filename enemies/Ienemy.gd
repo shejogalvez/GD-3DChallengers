@@ -3,12 +3,15 @@ class_name IEnemy
 
 var hp : int
 var alerted : bool
+export (int) var speed = 18
+export (int, -200, 0) var gravity = -80
 onready var raycast = $RayCast
 
 var state
 export (int) var alert_range = 50
 
 func _ready():
+	set_state(Standby.new())
 	pass # Replace with function body.
 
 func projectile_hit(damage, bullet_global_trans):
@@ -43,3 +46,7 @@ func face_player():
 	else:
 		angle = -Vector3.BACK.angle_to(dir)
 	self.rotation.y = angle
+
+func set_ray_castdir():
+	raycast.cast_to = vec_to_player().normalized() * alert_range
+	#print(raycast.cast_to)

@@ -1,19 +1,61 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://enemies/enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemies/bat/Scary-face-of-halloween-pumpkin-on-transparent-background-PNG.png" type="Texture" id=2]
+[ext_resource path="res://enemies/bat/black.gdshader" type="Shader" id=3]
+[ext_resource path="res://enemies/bat/bat_attack.tscn" type="PackedScene" id=4]
+[ext_resource path="res://enemies/bat/bat.gd" type="Script" id=5]
 
 [sub_resource type="SphereShape" id=1]
 
 [sub_resource type="SphereMesh" id=2]
 
+[sub_resource type="Shader" id=7]
+code = "// NOTE: Shader automatically converted from Godot Engine 3.4.4.stable's SpatialMaterial.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : hint_color;
+uniform sampler2D texture_albedo : hint_albedo;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = vec4(1) - texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/albedo = Color( 0.843137, 0.164706, 0.164706, 1 )
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/texture_albedo = ExtResource( 2 )
+
 [sub_resource type="CubeMesh" id=3]
 
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 3 )
+
 [sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = ExtResource( 3 )
 
 [sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Hitbox/body/Spatial2/MeshInstance2:rotation_degrees")
+tracks/0/path = NodePath("Hitbox/pivot_cara/body/Spatial2:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -22,10 +64,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 1.20742e-06, -7.95139e-14, 45 ) ]
+"values": [ Vector3( 15, 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Hitbox/body/Spatial:rotation_degrees")
+tracks/1/path = NodePath("Hitbox/pivot_cara/body/Spatial:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -37,7 +79,7 @@ tracks/1/keys = {
 "values": [ Vector3( 15, 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Hitbox/body/Spatial2:rotation_degrees")
+tracks/2/path = NodePath("Hitbox/pivot_cara/body/Spatial2/MeshInstance2:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -46,7 +88,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 15, 0, 0 ) ]
+"values": [ Vector3( 1.20742e-06, -7.95139e-14, 45 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Hitbox:translation")
@@ -61,33 +103,88 @@ tracks/3/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=12]
+resource_name = "attack"
+length = 3.16
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hitbox/pivot_cara/body/Spatial2:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36, 0.477633, 0.48, 0.597633, 0.717633, 0.837633, 0.957633, 1.02118, 1.20118, 1.38118, 1.56118, 1.73763, 1.74118, 1.91763, 2.09763, 2.3, 2.45763, 2.62237, 2.78 ),
+"transitions": PoolRealArray( 1, 1.7411, 1.8025, 1.86607, 1, 1.68179, 1.7411, 1.8025, 1.86607, 1.68179, 1, 1.7411, 1.8025, 1.86607, 1, 1.68179, 1.7411, 1.8025, 1.86607, 1.68179, 1.86607, 1.68179 ),
+"update": 0,
+"values": [ Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitbox/pivot_cara/body/Spatial:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36, 0.477633, 0.48, 0.597633, 0.717633, 0.837633, 0.957633, 1.02118, 1.20118, 1.38118, 1.56118, 1.73763, 1.74118, 1.91763, 2.09763, 2.27763, 2.45763, 2.6, 2.78 ),
+"transitions": PoolRealArray( 1.68179, 1.7411, 2.07053, 1.7411, 1.68179, 1.31951, 1.7411, 2.07053, 1.7411, 1.31951, 1.68179, 1.7411, 2.07053, 1.7411, 1.68179, 1.31951, 1.7411, 2.07053, 1.7411, 1.31951, 1.7411, 1.31951 ),
+"update": 0,
+"values": [ Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitbox:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.24, 0.477633, 0.48, 0.717633, 0.957633 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.96 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack"
+} ]
+}
+
 [sub_resource type="Animation" id=6]
 resource_name = "idle"
 length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Hitbox/body/Spatial:rotation_degrees")
+tracks/0/path = NodePath("Hitbox/pivot_cara/body/Spatial2:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1.68179, 1.7411, 2.07053, 1.7411, 1.31951 ),
+"transitions": PoolRealArray( 1, 1.7411, 1.8025, 1.86607, 1.68179 ),
 "update": 0,
-"values": [ Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ) ]
+"values": [ Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Hitbox/body/Spatial2:rotation_degrees")
+tracks/1/path = NodePath("Hitbox/pivot_cara/body/Spatial:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1.7411, 1.8025, 1.86607, 1.68179 ),
+"transitions": PoolRealArray( 1.68179, 1.7411, 2.07053, 1.7411, 1.31951 ),
 "update": 0,
-"values": [ Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ) ]
+"values": [ Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Hitbox:translation")
@@ -103,32 +200,51 @@ tracks/2/keys = {
 }
 
 [node name="bat" instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+gravity = 0
 
 [node name="Hitbox" parent="." index="0"]
 shape = SubResource( 1 )
+disabled = false
 
-[node name="body" type="MeshInstance" parent="Hitbox" index="0"]
+[node name="pivot_cara" type="Spatial" parent="Hitbox" index="0"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="body" type="MeshInstance" parent="Hitbox/pivot_cara" index="0"]
 mesh = SubResource( 2 )
-material/0 = null
+skeleton = NodePath("../..")
+material/0 = SubResource( 8 )
 
-[node name="Spatial" type="Spatial" parent="Hitbox/body" index="0"]
+[node name="Spatial" type="Spatial" parent="Hitbox/pivot_cara/body" index="0"]
 transform = Transform( 1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Hitbox/body/Spatial" index="0"]
+[node name="MeshInstance" type="MeshInstance" parent="Hitbox/pivot_cara/body/Spatial" index="0"]
 transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 0.01, 1.441, 0.235, 0 )
 mesh = SubResource( 3 )
 skeleton = NodePath("../..")
-material/0 = null
+material/0 = SubResource( 10 )
 
-[node name="Spatial2" type="Spatial" parent="Hitbox/body" index="1"]
+[node name="Spatial2" type="Spatial" parent="Hitbox/pivot_cara/body" index="1"]
 transform = Transform( 1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0 )
 
-[node name="MeshInstance2" type="MeshInstance" parent="Hitbox/body/Spatial2" index="0"]
-transform = Transform( 0.707107, -0.707107, -1.38778e-17, 0.707107, 0.707107, -2.10734e-10, 1.49012e-08, 1.49012e-08, 0.01, -1.441, 0.235, 1.49012e-08 )
+[node name="MeshInstance2" type="MeshInstance" parent="Hitbox/pivot_cara/body/Spatial2" index="0"]
+transform = Transform( 0.707107, -0.707107, -1.38778e-17, 0.707107, 0.707107, -2.10735e-10, 1.49012e-08, 1.49012e-08, 0.01, -1.441, 0.235, 1.49012e-08 )
 mesh = SubResource( 4 )
 skeleton = NodePath("../..")
-material/0 = null
+material/0 = SubResource( 11 )
+
+[node name="pivot" type="Spatial" parent="Hitbox/pivot_cara/body" index="2"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9.68234e-08, 0, -1.10753 )
+
+[node name="sound_wave" parent="Hitbox/pivot_cara/body/pivot" index="0" instance=ExtResource( 4 )]
 
 [node name="AnimationPlayer" parent="." index="1"]
+playback_speed = 1.5
 anims/RESET = SubResource( 5 )
+anims/attack = SubResource( 12 )
 anims/idle = SubResource( 6 )
+
+[node name="RayCast" parent="." index="2"]
+enabled = true
+debug_shape_custom_color = Color( 0.0470588, 0.490196, 0.960784, 1 )
+debug_shape_thickness = 5

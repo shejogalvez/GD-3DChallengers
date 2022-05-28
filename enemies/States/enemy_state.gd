@@ -1,7 +1,7 @@
 extends Node
 class_name State
 
-var enemy_node : IEnemy
+var enemy_node #: IEnemy
 var alerted : bool
 var raycast : RayCast 
 
