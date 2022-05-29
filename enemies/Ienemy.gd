@@ -5,6 +5,7 @@ var hp : int
 var alerted : bool
 export (int) var speed = 18
 export (int, -200, 0) var gravity = -80
+export (int, 0, 300) var attack_distance = 15
 onready var raycast = $RayCast
 
 var state
@@ -13,6 +14,9 @@ export (int) var alert_range = 50
 func _ready():
 	set_state(Standby.new())
 	pass # Replace with function body.
+	
+func attack():
+	pass
 
 func projectile_hit(damage, bullet_global_trans):
 	state.projectile_hit(damage, bullet_global_trans)

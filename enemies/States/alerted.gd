@@ -12,3 +12,11 @@ func _physics_process(delta):
 		
 		vel.y += enemy_node.gravity * delta
 		vel = enemy_node.move_and_slide(vel, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
+		
+func _process(delta):
+		if not alerted:
+			var dif = enemy_node.global_transform.origin - PlayerManager.get_player_position()
+			if dif.length() < enemy_node.attack_distance:
+				enemy_node.attack()
+				alerted = true
+		enemy_node.face_player()
