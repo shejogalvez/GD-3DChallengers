@@ -16,8 +16,7 @@ onready var damage_audio : AudioStreamPlayer = $DamageAudio
 var is_head_view = true # True if viewport is on head camera, false otherwise
 
 const TOPDOWN_ROTATION_SPEED := 2 # Topdown grades of rotation
-const TOPDOWN_MAX_ZOOM := 50 # The max distance the topdown camera is going to zoom
-var TOPDOWN_ZOOM_SPEED := 2 
+var TOPDOWN_ZOOM_SPEED := 4 
 var MOUSE_SENSITIVITY := 0.05 # Mouse sensitivity
 # Movement vectors
 var dir = Vector3() # The unitary direction vector
@@ -191,11 +190,11 @@ func _process_topdown_input(_delta : float) -> void:
 	# -----------------------------
 	# Zoom camera
 	# -----------------------------
-	var topdown_zoom_distance = topdown_camera.translation.y
-	if Input.is_action_just_released("td_zoom_in") and topdown_zoom_distance > -TOPDOWN_MAX_ZOOM:
-		topdown_camera.global_translate(Vector3.DOWN * TOPDOWN_ZOOM_SPEED)
-	if Input.is_action_just_released("td_zoom_out") and topdown_zoom_distance < 0:
-		topdown_camera.global_translate(Vector3.UP * TOPDOWN_ZOOM_SPEED)
+	if Input.is_action_just_released("td_zoom_in") and topdown_camera.size > 70:
+		topdown_camera.size -= TOPDOWN_ZOOM_SPEED
+	if Input.is_action_just_released("td_zoom_out") and topdown_camera.size < 200:
+		topdown_camera.size += TOPDOWN_ZOOM_SPEED
+	
 	# -----------------------------
 	# Changing camera view
 	# -----------------------------

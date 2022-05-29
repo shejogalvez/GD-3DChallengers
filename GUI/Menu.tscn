@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Themes/MainTheme.tres" type="Theme" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0, 0, 0.0627451, 0.470588 )
+bg_color = Color( 0.0313726, 0, 0.0627451, 0.470588 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -78,7 +78,7 @@ anchor_bottom = 1.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="MenuPanel" type="Panel" parent="MenuControl"]
-anchor_right = 0.3
+anchor_left = -0.3
 anchor_bottom = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
