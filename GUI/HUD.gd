@@ -1,9 +1,11 @@
 extends Control
 
 onready var crosshair := $Crossshair
-onready var hp_bar := $HPBar
-onready var money_panel := $MoneyPanel
-onready var money_label := $MoneyPanel/MoneyLabel
+onready var hp_bar := $StatsControl/HPBar
+onready var attack_label := $StatsControl/AttackLabel
+onready var defense_label := $StatsControl/DefenseLabel
+onready var speed_label := $StatsControl/SpeedLabel
+onready var money_label := $StatsControl/MoneyLabel
 onready var consumables_control := $ConsumablesControl
 onready var interaction_panel := $InteractionPanel
 onready var interaction_icon := $InteractionPanel/InteractionIcon
@@ -14,12 +16,18 @@ onready var animation_player := $AnimationPlayer
 func _ready():
 	_update_crosshair()
 	_update_hp_bar()
-	_update_money_panel()
+	_update_attack_label()
+	_update_defense_label()
+	_update_speed_label()
+	_update_money_label()
 	_update_consumables_panel()
 	_update_interaction_panel()
 	PlayerManager.connect("view_changed", self, "_update_crosshair")
 	PlayerManager.connect("hp_changed", self, "_update_hp_bar")
-	PlayerManager.connect("money_changed", self, "_update_money_panel")
+	PlayerManager.connect("attack_changed", self, "_update_attack_label")
+	PlayerManager.connect("defense_changed", self, "_update_defense_label")
+	# PlayerManager.connect("speed_changed", self, "_update_speed_label")
+	PlayerManager.connect("money_changed", self, "_update_money_label")
 	PlayerManager.connect("consumables_updated", self, "_update_consumables_panel")
 	InteractionsManager.connect("interactions_updated", self, "_update_interaction_panel")
 	
@@ -34,8 +42,20 @@ func _update_crosshair():
 func _update_hp_bar():
 	hp_bar.set_smart_value(PlayerManager.get_hp(), PlayerManager.get_total_hp())
 
-# Updates the money panel.
-func _update_money_panel():
+# Updates the attack label.
+func _update_attack_label():
+	attack_label.text = str(PlayerManager.get_attack())
+
+# Updates the defense label.
+func _update_defense_label():
+	defense_label.text = str(PlayerManager.get_defense())
+
+# Updates the speed label.
+func _update_speed_label():
+	pass
+
+# Updates the money label.
+func _update_money_label():
 	money_label.text = str(PlayerManager.get_money())
 
 # Updates the consumables panel.

@@ -235,7 +235,7 @@ func add_temporary_attack(attack : int, time : float) -> void:
 # Sets the player defense.
 func set_defense(defense : int) -> void:
 	player_defense = clamp(defense, PLAYER_MIN_DEF, PLAYER_MAX_DEF)
-	emit_signal("attack_changed")
+	emit_signal("defense_changed")
 
 # Gets the player defense.
 func get_defense() -> int:
