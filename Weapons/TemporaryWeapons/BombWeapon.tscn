@@ -12,6 +12,9 @@ weapon_name = "Bomb"
 weapon_description = "One use bomb weapon"
 projectile_scene = ExtResource( 4 )
 
+[node name="Barrel" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.38172 )
+
 [node name="Model" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = ExtResource( 3 )

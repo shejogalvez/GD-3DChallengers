@@ -81,7 +81,7 @@ func _process_input(_delta : float) -> void:
 	# -----------------------------
 	# Shoting
 	# -----------------------------
-	if Input.is_action_just_pressed("shot_main"):
+	if Input.is_action_pressed("shot_main"):
 		var weapon_barrel = weapon.get_barrel()
 		var shot_dir = aimcast.get_collision_point() - weapon_barrel.get_global_transform().origin
 		if aimcast.is_colliding():
