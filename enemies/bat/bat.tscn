@@ -106,7 +106,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=12]
 resource_name = "attack"
 length = 3.16
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hitbox/pivot_cara/body/Spatial2:rotation_degrees")
 tracks/0/interp = 1
@@ -150,12 +149,9 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.96 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack"
-} ]
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -200,6 +196,8 @@ tracks/2/keys = {
 }
 
 [node name="bat" instance=ExtResource( 1 )]
+axis_lock_motion_y = true
+move_lock_y = true
 script = ExtResource( 5 )
 gravity = 0
 
