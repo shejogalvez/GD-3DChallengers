@@ -13,7 +13,7 @@ func _ready():
 	area.connect("body_entered", self, "impact")
 
 func impact(body: Node) -> void:
-	print(body)
+	#print(body)
 	if hit_something == false:
 		if body == PlayerManager.get_player():
 			PlayerManager.receive_damage(damage)

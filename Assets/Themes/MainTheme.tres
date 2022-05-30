@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Fonts/Atarian/Atarian.tres" type="DynamicFont" id=1]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.164706, 0.109804, 0.501961, 1 )
+bg_color = Color( 0.121569, 0.0745098, 0.34902, 1 )
 
 [resource]
 default_font = ExtResource( 1 )

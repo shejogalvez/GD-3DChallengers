@@ -442,7 +442,6 @@ extents = Vector3( 4.51182, 0.883915, 4.63282 )
 
 [node name="sand_soldier" type="KinematicBody"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
-collision_layer = 2
 script = ExtResource( 1 )
 dash_curve = SubResource( 14 )
 

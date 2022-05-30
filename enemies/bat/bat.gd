@@ -29,8 +29,6 @@ func attack():
 	bat_attack.excecute()
 
 func back_to_idle(body):
-	print(self.speed)
 	animator.play("idle")
 	self.speed *= (1/slow_in_attack)
-	print(self.speed)
 	self.state.alerted = false

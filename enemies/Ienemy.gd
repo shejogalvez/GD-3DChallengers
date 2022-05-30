@@ -1,7 +1,7 @@
 extends KinematicBody
 class_name IEnemy
 
-var hp : int
+export (int) var hp = 0
 var alerted : bool
 export (int) var speed = 18
 export (int, -200, 0) var gravity = -80

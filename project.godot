@@ -154,6 +154,8 @@ Menu="*res://GUI/Menu.tscn"
 [display]
 
 window/handheld/orientation="sensor_landscape"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 

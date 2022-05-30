@@ -72,3 +72,6 @@ transform = Transform( -1.5724, 0, 1.23594, 0, 2, 0, -1.23594, 0, -1.5724, 115.6
 
 [node name="bat" parent="." instance=ExtResource( 7 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -4.42355, 14.8444, -107.75 )
+
+[node name="sand_soldier" parent="." instance=ExtResource( 5 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 62.3281, -0.653584, -14.2843 )
