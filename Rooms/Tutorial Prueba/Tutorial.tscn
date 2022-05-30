@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Rooms/Tutorial Prueba/Camera.gd" type="Script" id=1]
 [ext_resource path="res://Rooms/RoomBase1Puerta.tscn" type="PackedScene" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://Pickups/GoldCoin.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Pickups/Consumables/HealthPotion.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Pickups/Consumables/Bomb.tscn" type="PackedScene" id=24]
+[ext_resource path="res://enemies/bat/bat.tscn" type="PackedScene" id=25]
 
 [node name="Tutorial" type="Spatial"]
 
@@ -206,6 +207,12 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -32, 1, 0 )
 
 [node name="sand_soldier3" parent="RBPOpuestas" instance=ExtResource( 15 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0 )
+
+[node name="bat" parent="RBPOpuestas" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.3704, -46.4364 )
+
+[node name="bat2" parent="RBPOpuestas" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6625, 14.3704, -46.4364 )
 
 [node name="RB2X2OP2" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -900 )
