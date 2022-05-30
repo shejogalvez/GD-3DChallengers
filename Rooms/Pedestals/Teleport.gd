@@ -17,8 +17,8 @@ func get_teleport_position():
 	return teleport_position
 
 func set_teleport_relative_position(direction):
-	teleport_position = self.transform.origin + direction
+	teleport_relative_position = direction
 
 func teleport(body):
 	if body == PlayerManager.get_player():
-		PlayerManager.set_player_position(teleport_position)
+		PlayerManager.set_player_position(self.global_transform.origin + teleport_relative_position)

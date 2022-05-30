@@ -33,9 +33,11 @@ magic_circle = ExtResource( 4 )
 shape = SubResource( 11 )
 
 [node name="hp_bar" type="ColorRect" parent="."]
+anchor_top = 1.0
 anchor_right = 1.0
-margin_top = 10.0
-margin_bottom = 40.0
+anchor_bottom = 1.0
+margin_top = -64.0
+margin_bottom = -34.0
 color = Color( 0.501961, 0.0235294, 0.47451, 1 )
 script = ExtResource( 8 )
 factor = 500.0
