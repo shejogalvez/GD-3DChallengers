@@ -35,15 +35,15 @@ func _ready():
 	while(len(leaf_rooms) > 0):
 		#print(ocuppied_spots)
 		#print(leaf_rooms)
-		if (len(leaf_rooms) == 0):
-			print("me quee atascao??")
-			break
-		for room in leaf_rooms:
+		var actual_len = len(leaf_rooms)
+		for i in range(actual_len):
+			var room = leaf_rooms[0]
 			if (len(leaf_rooms) == 1):
 				rfc.update_weight(0, 0)
 			else:
 				rfc.update_weight(0, 1)
 			room.generate_rooms()
+	if (len(ocuppied_spots) <= self.number_of_rooms) : print("premature exit")
 	print(ocuppied_spots)
 	print(leaf_rooms)
 	
@@ -73,7 +73,7 @@ func construct_room(pos, angle):
 	ocuppied_spots.append(pos)
 	rfc.call_func()
 	leaf_rooms.append(actual_room)
-	print("room ", pos, "= ", actual_room)
+	#print("room ", pos, "= ", actual_room)
 	return actual_room
 
 func room_done(room):

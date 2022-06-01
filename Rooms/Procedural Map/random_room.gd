@@ -7,6 +7,7 @@ var pos = Vector2()
 export (Array, Vector2) var openings
 const size = 64.1
 const separation = 300
+const offset = 14
 
 export (PackedScene) var teleport : PackedScene = preload("res://Rooms/Procedural Map/TeleportENbase2.tscn")
 export (PackedScene) var wall : PackedScene = preload("res://Rooms/WALL.tscn")
@@ -23,17 +24,19 @@ func initialize(angle: float, father, pos: Vector2):
 	var back_tp = teleport.instance()
 	back_tp.translation = Vector3.FORWARD * size
 	back_tp.rotate_y(PI)
+	var orientation = Vector2(0, -1).rotated(-angle)
+	back_tp.set_distance(Vector3(orientation.x, 0, orientation.y), separation -  1.8*size, offset)
 	self.add_child(back_tp)
 	
 func generate_rooms():
 	for opening in openings:
 		var rel_opening = opening
-		var new_opening = opening.rotated(-angle)	
-		print(opening, angle, new_opening, self.rotation)
+		var new_opening = opening.rotated(-angle)
+		#print(opening, angle, new_opening, self.rotation)
 		var newpos = self.pos + new_opening
 		var newangle = -Vector2.DOWN.angle_to(new_opening)
 		var relangle = newangle - self.angle
-		print(self.pos, " creando sala en posicion " , newpos, ", angulo absoluto %f y relativo %f"  % [newangle, relangle])
+		#print(self.pos, " creando sala en posicion " , newpos, ", angulo absoluto %f y relativo %f"  % [newangle, relangle])
 		if father.is_valid_room(newpos):
 			var new_room : RandomRoom = father.construct_room(newpos, newangle)
 			#new_room.global_transform = self.global_transform
@@ -41,20 +44,21 @@ func generate_rooms():
 			new_room.rotate_y(relangle)
 			new_room.initialize(newangle, self.father, newpos)
 			self.add_child(new_room)
-			print("origin = ", new_room.global_transform.origin)
+			#print("origin = ", new_room.global_transform.origin)
 			var for_tp = teleport.instance()
 			for_tp.translation = Vector3(rel_opening.x, 0, rel_opening.y) * size
 			for_tp.rotate_y(relangle)
+			for_tp.set_distance(Vector3(new_opening.x, 0, new_opening.y), separation - 1.8*size, offset) 
 			self.add_child(for_tp)
 		else:
 			var index = openings.find(opening)
-			if index == -1:
-				push_warning("opening not found¿ error")
-			else:
-				openings.remove(index)
+#			if index == -1:
+#				push_warning("opening not found¿ error")
+#			else:
+#				openings.remove(index)
 			var block = wall.instance()
 			block.translation = Vector3(opening.x, 0, opening.y) * size
-			block.rotate_y(newangle)
+			block.rotate_y(relangle)
 			self.add_child(block)
 	father.room_done(self)
 	
