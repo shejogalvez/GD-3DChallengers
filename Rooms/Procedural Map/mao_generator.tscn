@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Rooms/Procedural Map/map_generator.gd" type="Script" id=1]
+[ext_resource path="res://sand_map/camera_control.gd" type="Script" id=5]
+
+[node name="main" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.34414, 67.4022, -138.118 )
+far = 1000.0
+script = ExtResource( 5 )
+max_speed = Vector3( 150, 150, 150 )

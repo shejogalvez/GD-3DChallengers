@@ -79,6 +79,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Addons/Randomizer/RandomFunctionCaller.gd"
 }, {
+"base": "Spatial",
+"class": "RandomRoom",
+"language": "GDScript",
+"path": "res://Rooms/Procedural Map/random_room.gd"
+}, {
+"base": "Spatial",
+"class": "RoomGenerator",
+"language": "GDScript",
+"path": "res://Rooms/Procedural Map/map_generator.gd"
+}, {
 "base": "ProgressBar",
 "class": "SmartBar",
 "language": "GDScript",
@@ -129,6 +139,8 @@ _global_script_class_icons={
 "Player": "",
 "Projectile": "res://Assets/Classes/projectile_icon.png",
 "RandomFunctionCaller": "",
+"RandomRoom": "",
+"RoomGenerator": "",
 "SmartBar": "",
 "Standby": "",
 "State": "",

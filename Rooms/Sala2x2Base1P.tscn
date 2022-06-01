@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://MeshParedE.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://MeshSueloE.meshlib" type="MeshLibrary" id=2]
+[ext_resource path="res://Rooms/Procedural Map/random_room.gd" type="Script" id=3]
 
 [node name="RB2X21P" type="Spatial"]
+script = ExtResource( 3 )
 
 [node name="MeshSueloE" type="GridMap" parent="."]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )

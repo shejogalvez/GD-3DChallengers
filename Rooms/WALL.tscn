@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://MeshParedE.meshlib" type="MeshLibrary" id=1]
+
+[node name="Spatial" type="Spatial"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="MeshParedE2" type="GridMap" parent="."]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -1.753, 7.10191 )
+mesh_library = ExtResource( 1 )
+cell_size = Vector3( 1.6, 3.2, 1.6 )
+data = {
+"cells": PoolIntArray( 0, 65531, 1, 1, 65531, 1, 65534, 65531, 1, 65535, 65531, 1, 65536, 65531, 1, 65537, 65531, 1, 131070, 65531, 1, 131071, 65531, 1, 131072, 65531, 1, 131073, 65531, 1, 196606, 65531, 1, 196607, 65531, 1 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 2, 0 )
+}
