@@ -5,7 +5,7 @@ class_name RoomGenerator
 
 var ocuppied_spots = Array()
 var rfc : RandomFunctionCaller
-export (int) var number_of_rooms = 10
+export (int) var number_of_rooms = 7
 var initial_room : PackedScene = preload("res://Rooms/Procedural Map/initial_room.tscn"  )
 var room1p : PackedScene = preload("res://Rooms/Sala2x2Base1P.tscn"  )
 var room2pad : PackedScene = preload( "res://Rooms/Sala2x2Base2ADY.tscn" )
@@ -32,7 +32,7 @@ func _ready():
 	self.add_child(init)
 	leaf_rooms.append(init)
 	ocuppied_spots.append(Vector2(0, 0))
-	while(len(ocuppied_spots) < number_of_rooms):
+	while(len(leaf_rooms) > 0):
 		#print(ocuppied_spots)
 		#print(leaf_rooms)
 		if (len(leaf_rooms) == 0):
@@ -72,12 +72,11 @@ func is_valid_room(pos:Vector2) -> bool:
 func construct_room(pos, angle):
 	ocuppied_spots.append(pos)
 	rfc.call_func()
-	actual_room.rotate_y(angle)
 	leaf_rooms.append(actual_room)
+	print("room ", pos, "= ", actual_room)
 	return actual_room
 
 func room_done(room):
-	print(room, "done", room.pos)
 	var index = leaf_rooms.find(room)
 	if index == -1:
 		push_warning("room_done error")

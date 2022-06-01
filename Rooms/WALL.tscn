@@ -6,7 +6,7 @@
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="MeshParedE2" type="GridMap" parent="."]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -1.753, 7.10191 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -1.91062e-06, -6.61073, 28.9569 )
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 1.6, 3.2, 1.6 )
 data = {
