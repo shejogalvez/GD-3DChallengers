@@ -25,7 +25,7 @@ func initialize(angle: float, father, pos: Vector2):
 	back_tp.translation = Vector3.FORWARD * size
 	back_tp.rotate_y(PI)
 	var orientation = Vector2(0, -1).rotated(-angle)
-	back_tp.set_distance(Vector3(orientation.x, 0, orientation.y), separation -  1.8*size, offset)
+	back_tp.set_distance(Vector3(orientation.x, 0, orientation.y), separation -  2*size, offset)
 	self.add_child(back_tp)
 	
 func generate_rooms():
@@ -48,7 +48,7 @@ func generate_rooms():
 			var for_tp = teleport.instance()
 			for_tp.translation = Vector3(rel_opening.x, 0, rel_opening.y) * size
 			for_tp.rotate_y(relangle)
-			for_tp.set_distance(Vector3(new_opening.x, 0, new_opening.y), separation - 1.8*size, offset) 
+			for_tp.set_distance(Vector3(new_opening.x, 0, new_opening.y), separation - 2*size, offset) 
 			self.add_child(for_tp)
 		else:
 			var index = openings.find(opening)

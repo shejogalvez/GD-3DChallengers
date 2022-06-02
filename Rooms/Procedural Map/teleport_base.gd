@@ -10,7 +10,7 @@ func _ready():
 func set_distance(direction: Vector3, distance, offset):
 	var tp = teleport.instance()
 	self.add_child(tp)
-	tp.translate(Vector3.FORWARD * offset)
+	tp.translate(Vector3.FORWARD * 15)
 	tp.set_teleport_relative_position(direction * distance)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

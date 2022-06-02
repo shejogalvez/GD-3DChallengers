@@ -16,17 +16,17 @@ var room4p : PackedScene = preload("res://Rooms/Sala2x2Base4P.tscn" )
 
 var leaf_rooms = Array()
 var actual_room = null
-const orientations = [Vector2(0, 1), Vector2(0, -1), Vector2(1, 0), Vector2(-1, 0)]
+const orientations = [Vector2(0, 1), Vector2(1, 0), Vector2(-1, 0)]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rfc = RandomFunctionCaller.new()
 	rfc.put_func(0, self, "set_room", [room1p])
-	rfc.put_func(1, self, "set_room", [room2pad])
-	rfc.put_func(1, self, "set_room", [room2pad])
-	rfc.put_func(1, self, "set_room", [room2pop])
-	rfc.put_func(1, self, "set_room", [room3p])
-	rfc.put_func(1, self, "set_room", [room4p])
+	rfc.put_func(1, self, "set_room", [room2pad]) #(-1, 0)
+	rfc.put_func(1, self, "set_room", [room2pad]) #(1, 0)
+	rfc.put_func(1, self, "set_room", [room2pop]) #(0, 1)
+	rfc.put_func(1, self, "set_room", [room3p])   #(1, 0), (0, 1)
+	rfc.put_func(1, self, "set_room", [room4p])   #(-1, 0), (1, 0), (0, 1)
 	var init = initial_room.instance()
 	init.initialize(0, self, Vector2.ZERO)
 	self.add_child(init)
@@ -71,8 +71,12 @@ func is_valid_room(pos:Vector2) -> bool:
 
 func construct_room(pos, angle):
 	ocuppied_spots.append(pos)
+	set_avaliable_rooms(pos, angle)
+	
 	rfc.call_func()
 	leaf_rooms.append(actual_room)
+	return_pool_values()
+	print(actual_room)
 	#print("room ", pos, "= ", actual_room)
 	return actual_room
 
@@ -83,7 +87,40 @@ func room_done(room):
 		return
 	leaf_rooms.remove(index)
 
-
+func set_avaliable_rooms(pos, angle):
+	var results = [false, false, false]
+	for i in range(3):
+		var dir = orientations[i].rotated(angle) + pos
+		for spot in ocuppied_spots:
+			if (spot - (pos + dir)).length() < 0.1:
+				results[i] = true
+				break
+	update_room_pool(results)
+	
+	
+# orientations = [(0, 1), (1, 0), (-1, 0)]
+#	rfc.put_func(0, self, "set_room", [room1p])
+#	rfc.put_func(1, self, "set_room", [room2pad]) #(-1, 0)  1
+#	rfc.put_func(1, self, "set_room", [room2pad]) #(1, 0)  2 
+#	rfc.put_func(1, self, "set_room", [room2pop]) #(0, 1)  3
+#	rfc.put_func(1, self, "set_room", [room3p])   #(1, 0), (0, 1)  4
+#	rfc.put_func(1, self, "set_room", [room4p])   #(-1, 0), (1, 0), (0, 1)  5
+func update_room_pool(bool_array):
+	if bool_array[0]:
+		rfc.update_weight(3, 0)
+		rfc.update_weight(4, 0)
+		rfc.update_weight(5, 0)
+	if bool_array[1]:
+		rfc.update_weight(2, 0)
+		rfc.update_weight(4, 0)
+		rfc.update_weight(5, 0)
+	if bool_array[2]:
+		rfc.update_weight(1, 0)
+		rfc.update_weight(5, 0)
+		
+func return_pool_values():
+	for i in range(6):
+		rfc.update_weight(i, 1)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
