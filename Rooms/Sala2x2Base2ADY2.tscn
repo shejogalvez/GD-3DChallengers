@@ -6,7 +6,7 @@
 
 [sub_resource type="PrismMesh" id=1]
 
-[node name="RB2X2ADY" type="Spatial"]
+[node name="RB2X2ADY2" type="Spatial"]
 script = ExtResource( 3 )
 openings = [ Vector2( 1, 0 ) ]
 
