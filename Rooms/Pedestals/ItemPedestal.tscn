@@ -62,15 +62,18 @@ corner_radius_bottom_left = 12
 
 [sub_resource type="DynamicFont" id=12]
 size = 26
+use_filter = true
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=14]
 size = 18
+use_filter = true
 extra_spacing_char = 1
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=13]
 size = 24
+use_filter = true
 font_data = ExtResource( 6 )
 
 [sub_resource type="Animation" id=15]

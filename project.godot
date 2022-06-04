@@ -153,6 +153,7 @@ Menu="*res://GUI/Menu.tscn"
 
 [display]
 
+window/size/resizable=false
 window/handheld/orientation="sensor_landscape"
 
 [editor_plugins]

@@ -1,10 +1,47 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://GUI/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Themes/MainTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Assets/logo2.png" type="Texture" id=3]
+[ext_resource path="res://GUI/Settings.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI/Credits.tscn" type="PackedScene" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.0313726, 0, 0.0627451, 0.470588 )
+bg_color = Color( 0.0313726, 0, 0.0627451, 0.627451 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0, 0, 0, 0 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -18,7 +55,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -0.3 ]
+"values": [ -0.36 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("MenuControl/MenuPanel:anchor_right")
@@ -30,7 +67,19 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.0 ]
+"values": [ -0.18 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MenuControl/MenuPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -47,7 +96,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.25 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -0.3, 0.0 ]
+"values": [ -0.36, 0.05 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("MenuControl/MenuPanel:anchor_right")
@@ -59,7 +108,19 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.25 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.3 ]
+"values": [ -0.18, 0.23 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MenuControl/MenuPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Menu" type="CanvasLayer"]
@@ -78,8 +139,74 @@ anchor_bottom = 1.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="MenuPanel" type="Panel" parent="MenuControl"]
-anchor_left = -0.3
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = -0.36
+anchor_right = -0.18
 anchor_bottom = 1.0
+
+[node name="GameLogo" type="TextureRect" parent="MenuControl/MenuPanel"]
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 0.35
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="MenuControl/MenuPanel"]
+anchor_left = 0.1
+anchor_top = 0.35
+anchor_right = 0.9
+anchor_bottom = 0.85
+custom_constants/separation = 24
+
+[node name="ResumeButton" type="Button" parent="MenuControl/MenuPanel/ButtonsContainer"]
+margin_right = 147.0
+margin_bottom = 37.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 7 )
+text = "Resume"
+clip_text = true
+
+[node name="SettingsButton" type="Button" parent="MenuControl/MenuPanel/ButtonsContainer"]
+margin_top = 61.0
+margin_right = 147.0
+margin_bottom = 98.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 7 )
+text = "Settings"
+clip_text = true
+
+[node name="CreditsButton" type="Button" parent="MenuControl/MenuPanel/ButtonsContainer"]
+margin_top = 122.0
+margin_right = 147.0
+margin_bottom = 159.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 7 )
+text = "Credits"
+clip_text = true
+
+[node name="MainMenuButton" type="Button" parent="MenuControl/MenuPanel/ButtonsContainer"]
+margin_top = 183.0
+margin_right = 147.0
+margin_bottom = 220.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 7 )
+text = "Main Menu"
+clip_text = true
+
+[node name="Settings" parent="MenuControl" instance=ExtResource( 4 )]
+visible = false
+
+[node name="Credits" parent="MenuControl" instance=ExtResource( 5 )]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
