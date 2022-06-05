@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Themes/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://GUI/Credits.gd" type="Script" id=2]
+
+[node name="Credits" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="CreditsControl" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.8
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsControl"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+
+[node name="AndresLabel" type="Label" parent="CreditsControl/VBoxContainer"]
+margin_right = 492.0
+margin_bottom = 17.0
+text = "Andres Bravo"
+
+[node name="JuanLabel" type="Label" parent="CreditsControl/VBoxContainer"]
+margin_top = 21.0
+margin_right = 492.0
+margin_bottom = 38.0
+text = "Juan Flores"
+
+[node name="SergioLabel" type="Label" parent="CreditsControl/VBoxContainer"]
+margin_top = 42.0
+margin_right = 492.0
+margin_bottom = 59.0
+text = "Sergio Galvez"
+
+[node name="RodrigoLabel" type="Label" parent="CreditsControl/VBoxContainer"]
+margin_top = 63.0
+margin_right = 492.0
+margin_bottom = 80.0
+text = "Rodrigo Ortiz"
+
+[node name="BackButton" type="Button" parent="." groups=["resizable_gui"]]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = -63.0
+margin_right = 132.0
+margin_bottom = -40.0
+rect_pivot_offset = Vector2( 0, 23 )
+text = "Back to menu"

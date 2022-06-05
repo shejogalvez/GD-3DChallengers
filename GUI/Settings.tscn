@@ -1,0 +1,232 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Themes/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://GUI/Settings.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/UI/Item_285.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/UI/Item_286.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/UI/Item_285_p.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/UI/Item_286_p.png" type="Texture" id=6]
+
+[node name="Settings" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="TabContainer" type="TabContainer" parent="." groups=["resizable_gui"]]
+anchor_left = 0.5
+anchor_top = 0.08
+anchor_right = 0.5
+anchor_bottom = 0.92
+margin_left = -320.0
+margin_right = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 307.2, 0 )
+
+[node name="Gameplay" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 27.0
+
+[node name="GameplayGrid" type="Control" parent="TabContainer/Gameplay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 70.0
+margin_top = 20.0
+margin_right = -70.0
+margin_bottom = -20.0
+
+[node name="FOVRow" type="Control" parent="TabContainer/Gameplay/GameplayGrid"]
+anchor_right = 1.0
+anchor_bottom = 0.1
+
+[node name="Label" type="Label" parent="TabContainer/Gameplay/GameplayGrid/FOVRow"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "FOV"
+valign = 1
+
+[node name="FullscreenToggle" type="CheckButton" parent="TabContainer/Gameplay/GameplayGrid/FOVRow"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -20.0
+margin_bottom = 20.0
+custom_icons/on = ExtResource( 3 )
+expand_icon = true
+
+[node name="Graphics" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 27.0
+
+[node name="GraphicsGrid" type="Control" parent="TabContainer/Graphics"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 70.0
+margin_top = 20.0
+margin_right = -70.0
+margin_bottom = -20.0
+
+[node name="DisplayRow" type="Control" parent="TabContainer/Graphics/GraphicsGrid"]
+anchor_right = 1.0
+anchor_bottom = 0.15
+
+[node name="DisplayLabel" type="Label" parent="TabContainer/Graphics/GraphicsGrid/DisplayRow"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Display Mode"
+valign = 1
+
+[node name="DisplayButtonsControl" type="Control" parent="TabContainer/Graphics/GraphicsGrid/DisplayRow"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="FullscreenButton" type="TextureButton" parent="TabContainer/Graphics/GraphicsGrid/DisplayRow/DisplayButtonsControl"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -34.0
+margin_top = -17.0
+margin_bottom = 17.0
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+texture_focused = ExtResource( 5 )
+expand = true
+
+[node name="WindowButton" type="TextureButton" parent="TabContainer/Graphics/GraphicsGrid/DisplayRow/DisplayButtonsControl"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -34.0
+margin_top = -17.0
+margin_bottom = 17.0
+toggle_mode = true
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+expand = true
+
+[node name="ResolutionRow" type="Control" parent="TabContainer/Graphics/GraphicsGrid"]
+anchor_top = 0.15
+anchor_right = 1.0
+anchor_bottom = 0.3
+
+[node name="ResolutionLabel" type="Label" parent="TabContainer/Graphics/GraphicsGrid/ResolutionRow"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Resolution"
+valign = 1
+
+[node name="ResolutionDropdownControl" type="Control" parent="TabContainer/Graphics/GraphicsGrid/ResolutionRow"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ResolutionDropdown" type="OptionButton" parent="TabContainer/Graphics/GraphicsGrid/ResolutionRow/ResolutionDropdownControl"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -156.3
+margin_top = -11.5
+margin_right = -3.70001
+margin_bottom = 11.5
+custom_constants/hseparation = 20
+custom_constants/arrow_margin = 0
+text = "1920x1080"
+items = [ "1920x1080", null, false, 0, null, "1600x900", null, false, 1, null, "1280x720", null, false, 2, null, "1024x600", null, false, 3, null ]
+selected = 0
+
+[node name="GUISizeRow" type="Control" parent="TabContainer/Graphics/GraphicsGrid"]
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 0.6
+
+[node name="GUISizeLabel" type="Label" parent="TabContainer/Graphics/GraphicsGrid/GUISizeRow"]
+anchor_right = 0.5
+anchor_bottom = 0.5
+text = "GUI Size"
+valign = 1
+
+[node name="GUISizeButtonsControl" type="Control" parent="TabContainer/Graphics/GraphicsGrid/GUISizeRow"]
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SmallGUIButton" type="Button" parent="TabContainer/Graphics/GraphicsGrid/GUISizeRow/GUISizeButtonsControl"]
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.1
+anchor_bottom = 0.5
+margin_left = -23.0
+margin_top = -12.0
+margin_right = 23.0
+margin_bottom = 12.0
+rect_scale = Vector2( 0.8, 0.8 )
+rect_pivot_offset = Vector2( 23, 12 )
+toggle_mode = true
+text = "Small"
+
+[node name="MediumGUIButton" type="Button" parent="TabContainer/Graphics/GraphicsGrid/GUISizeRow/GUISizeButtonsControl"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -28.0
+margin_top = -12.0
+margin_right = 28.0
+margin_bottom = 12.0
+toggle_mode = true
+text = "Medium"
+
+[node name="BigGUIButton" type="Button" parent="TabContainer/Graphics/GraphicsGrid/GUISizeRow/GUISizeButtonsControl"]
+anchor_left = 0.9
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.5
+margin_left = -28.0
+margin_top = -12.0
+margin_right = 28.0
+margin_bottom = 12.0
+rect_scale = Vector2( 1.2, 1.2 )
+rect_pivot_offset = Vector2( 28, 12 )
+toggle_mode = true
+text = "Big"
+
+[node name="Sound" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 27.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Controls" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 27.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="BackButton" type="Button" parent="." groups=["resizable_gui"]]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = -63.0
+margin_right = 132.0
+margin_bottom = -40.0
+rect_pivot_offset = Vector2( 0, 23 )
+text = "Back to menu"

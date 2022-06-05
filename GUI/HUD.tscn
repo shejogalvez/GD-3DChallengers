@@ -6,8 +6,9 @@
 [ext_resource path="res://GUI/HUD.gd" type="Script" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Themes/MainTheme.tres" type="Theme" id=6]
-[ext_resource path="res://Assets/Fonts/Atarian/SF Atarian System Extended Bold Italic.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/Fonts/Atarian/AtarianWide.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Assets/Sprites/Interactions/Item_281.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Fonts/Atarian/AtarianBorder.tres" type="DynamicFont" id=9]
 [ext_resource path="res://Assets/Sprites/UI/Item_190.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Sprites/UI/Item_156.png" type="Texture" id=11]
 
@@ -21,7 +22,7 @@ shadow_size = 2
 shadow_offset = Vector2( 1.5, 1.5 )
 
 [sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.164706, 0.109804, 0.501961, 1 )
+bg_color = Color( 0.12549, 0.0470588, 0.352941, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
@@ -33,11 +34,6 @@ expand_margin_bottom = 4.0
 shadow_color = Color( 0, 0, 0, 0.235294 )
 shadow_size = 2
 shadow_offset = Vector2( 1.5, 1.5 )
-
-[sub_resource type="DynamicFont" id=13]
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 7 )
 
 [sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0.87, 0.87, 0.87, 1 )
@@ -98,7 +94,7 @@ texture = ExtResource( 3 )
 expand = true
 stretch_mode = 4
 
-[node name="StatsControl" type="Control" parent="HUDControl"]
+[node name="StatsControl" type="Control" parent="HUDControl" groups=["resizable_gui"]]
 
 [node name="HPBar" parent="HUDControl/StatsControl" instance=ExtResource( 1 )]
 margin_left = 20.0
@@ -124,6 +120,7 @@ margin_left = 48.0
 margin_top = 70.0
 margin_right = 168.0
 margin_bottom = 90.0
+custom_fonts/font = ExtResource( 9 )
 text = "0"
 valign = 1
 max_lines_visible = 1
@@ -142,6 +139,7 @@ margin_left = 48.0
 margin_top = 102.0
 margin_right = 168.0
 margin_bottom = 122.0
+custom_fonts/font = ExtResource( 9 )
 text = "0"
 valign = 1
 max_lines_visible = 1
@@ -160,6 +158,7 @@ margin_left = 48.0
 margin_top = 134.0
 margin_right = 168.0
 margin_bottom = 154.0
+custom_fonts/font = ExtResource( 9 )
 text = "0"
 valign = 1
 max_lines_visible = 1
@@ -178,17 +177,18 @@ margin_left = 52.0
 margin_top = 170.0
 margin_right = 172.0
 margin_bottom = 194.0
+custom_fonts/font = ExtResource( 9 )
 text = "0"
 valign = 1
 max_lines_visible = 1
 
-[node name="MapPanel" type="Control" parent="HUDControl"]
+[node name="MapPanel" type="Control" parent="HUDControl" groups=["resizable_gui"]]
 margin_left = 876.0
 margin_top = 30.0
 margin_right = 997.0
 margin_bottom = 142.0
 
-[node name="ConsumablesControl" type="Control" parent="HUDControl"]
+[node name="ConsumablesControl" type="Control" parent="HUDControl" groups=["resizable_gui"]]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -251,7 +251,7 @@ texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 
-[node name="InteractionPanel" type="Panel" parent="HUDControl"]
+[node name="InteractionPanel" type="Panel" parent="HUDControl" groups=["resizable_gui"]]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -273,7 +273,7 @@ stretch_mode = 6
 anchor_left = 0.25
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = ExtResource( 7 )
 text = "Interaction"
 valign = 1
 max_lines_visible = 1
@@ -296,6 +296,7 @@ __meta__ = {
 [node name="InteractionKeyLabel" type="Label" parent="HUDControl/InteractionPanel/InteractionKey"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 9 )
 text = "F"
 align = 1
 valign = 1
