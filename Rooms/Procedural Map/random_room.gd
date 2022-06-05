@@ -23,7 +23,7 @@ func _ready():
 func set_openings(openings_set):
 	openings = openings_set
 
-func initialize(angle: float, father, pos: Vector2):
+func initialize(angle: float, father, pos: Vector2, father_size = 0):
 	self.father = father
 	self.angle = angle
 	self.pos = pos
@@ -37,7 +37,8 @@ func initialize(angle: float, father, pos: Vector2):
 	back_tp.translation = Vector3.FORWARD * size
 	back_tp.rotate_y(PI)
 	var orientation = Vector2(0, -1).rotated(-angle)
-	back_tp.set_distance(Vector3(orientation.x, 0, orientation.y), separation -  2*size, offset)
+	var orient_v3 = Vector3(orientation.x, 0, orientation.y) 
+	back_tp.set_distance(orient_v3, separation - size - father_size, -orient_v3 * father_size * 0.2)
 	self.add_child(back_tp)
 	
 func generate_rooms():
@@ -52,7 +53,8 @@ func generate_rooms():
 		
 		var check_in = false
 		for op in self.openings:
-			if (opening - op).length() > 0.1:
+			if (opening - op).length() < 0.1:
+				#print(self, opening)
 				check_in = true
 				break
 		if check_in and father.is_valid_room(newpos):
@@ -61,13 +63,14 @@ func generate_rooms():
 			
 			new_room.translation = self.separation/scale_factor * Vector3(rel_opening.x, 0, rel_opening.y)
 			new_room.rotate_y(relangle)
-			new_room.initialize(newangle, self.father, newpos)
+			new_room.initialize(newangle, self.father, newpos, self.size)
 			self.add_child(new_room)
 			#print("origin = ", new_room.global_transform.origin)
 			var for_tp = teleport.instance()
 			for_tp.translation = Vector3(rel_opening.x, 0, rel_opening.y) * size
 			for_tp.rotate_y(relangle)
-			for_tp.set_distance(Vector3(new_opening.x, 0, new_opening.y), separation - 2*global_size, offset) 
+			var new_op_v3 = Vector3(new_opening.x, 0, new_opening.y)
+			for_tp.set_distance(new_op_v3, separation - size - new_room.size, -new_op_v3 * new_room.size * 0.2) 
 			self.add_child(for_tp)
 		else:
 			var index = openings.find(opening)

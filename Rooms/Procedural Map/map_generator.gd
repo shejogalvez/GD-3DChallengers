@@ -3,7 +3,8 @@ class_name RoomGenerator
 
 """class that keeps track of and manages every global aspect of the procedural dungeon"""
 
-var ocuppied_spots = Array()
+var reserved_spots = Array()
+var occupied_spots = Array()
 var rfc : RandomFunctionCaller
 var rfc_rooms : RandomFunctionCaller
 export (int) var number_of_rooms = 7
@@ -51,42 +52,45 @@ func _ready():
 	init.initialize(0, self, Vector2.ZERO)
 	self.add_child(init)
 	leaf_rooms.append(init)
-	ocuppied_spots.append(Vector2(0, 0))
-	ocuppied_spots.append(Vector2(0, 1))
+	reserved_spots.append(Vector2(0, 0))
+	reserved_spots.append(Vector2(0, 1))
 	while(len(leaf_rooms) > 0):
-		#print(ocuppied_spots)
+		#print(reserved_spots)
 		print(leaf_rooms)
 		var actual_len = len(leaf_rooms)
 		for i in range(actual_len):
 			var room = leaf_rooms[0]
 			room.generate_rooms()
 	if (constructed_rooms <= self.number_of_rooms) : print("premature exit")
-	print(ocuppied_spots)
+	print(reserved_spots)
 	print(constructed_rooms)
 	
 func set_room(preset):
 	actual_room = preset.instance()
 	
 func set_orientation(orientation):
+	print(orientation)
 	actual_orientations = orientation
 
 func is_valid_room(pos:Vector2) -> bool:
 	if constructed_rooms > number_of_rooms:
 		print("done")
 		return false
-#	for spot in ocuppied_spots:
-#		if (spot - pos).length() < 0.1:
-#			print(pos, "collsion")
-#			return false
+	for spot in occupied_spots:
+		if (spot - pos).length() < 0.1:
+			print(pos, "collsion")
+			return false
 	return true
 
 func construct_room(pos, angle):
-	#ocuppied_spots.append(pos)
+	#reserved_spots.append(pos)
 	set_avaliable_rooms(pos, angle)
 	constructed_rooms += 1
+	occupied_spots.append(pos)
 	rooms_tomake -= 1
 	#print(rfc.weights)
 	var prev = actual_room
+	var prev_or = actual_orientations
 	if constructed_rooms > number_of_rooms:
 		actual_room = end_room.instance() 
 	else:
@@ -98,10 +102,10 @@ func construct_room(pos, angle):
 	rooms_tomake += len(actual_room.openings)
 	for orientation in actual_room.openings:
 		var dir = orientation.rotated(-angle)
-		ocuppied_spots.append(pos + dir)
+		reserved_spots.append(pos + dir)
 	reset_pool_values()
 	print("room ", pos, "= ", actual_room)
-	#print(ocuppied_spots)
+	#print(reserved_spots)
 	return actual_room
 
 func room_done(room):
@@ -116,7 +120,7 @@ func set_avaliable_rooms(pos, angle):
 	for i in range(3):
 		var dir = orientations[i].rotated(-angle)
 		#print(pos, dir)
-		for spot in ocuppied_spots:
+		for spot in reserved_spots:
 			if (spot - (pos + dir)).length() < 0.1:
 				print(spot, " already taken ", i)
 				results[i] = true
