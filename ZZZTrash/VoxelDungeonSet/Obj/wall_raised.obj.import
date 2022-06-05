@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/wall_raised.obj-815cad7d9e87996b0639b39854d0569b.mesh"
+
+[deps]
+
+files=[ "res://.import/wall_raised.obj-815cad7d9e87996b0639b39854d0569b.mesh" ]
+
+source_file="res://ZZZTrash/VoxelDungeonSet/Obj/wall_raised.obj"
+dest_files=[ "res://.import/wall_raised.obj-815cad7d9e87996b0639b39854d0569b.mesh", "res://.import/wall_raised.obj-815cad7d9e87996b0639b39854d0569b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

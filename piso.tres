@@ -1,7 +1,7 @@
 [gd_resource type="MeshLibrary" load_steps=12 format=2]
 
-[ext_resource path="res://Assets/VoxelDungeonSet/Obj/tile_flat.png" type="Texture" id=1]
-[ext_resource path="res://Assets/VoxelDungeonSet/Obj/tile_raised.png" type="Texture" id=2]
+[ext_resource path="res://ZZZTrash/VoxelDungeonSet/Obj/tile_flat.png" type="Texture" id=1]
+[ext_resource path="res://ZZZTrash/VoxelDungeonSet/Obj/tile_raised.png" type="Texture" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
