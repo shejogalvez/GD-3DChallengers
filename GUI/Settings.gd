@@ -17,6 +17,7 @@ onready var back_button := $BackButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Grouping.
 	fullscreen_button.group = display_buttongroup
 	windows_button.group = display_buttongroup
 	
@@ -24,6 +25,12 @@ func _ready():
 	medium_gui_button.group = gui_size_buttongroup
 	big_gui_button.group = gui_size_buttongroup
 	
+	# Updating from game data.
+	display_buttongroup.get_buttons()[GameManager.game_data["settings"]["display_mode"]].pressed = true
+	resolution_dropdown.select(GameManager.game_data["settings"]["resolution"])
+	gui_size_buttongroup.get_buttons()[GameManager.game_data["settings"]["gui_size"]].pressed = true
+	
+	# Deleting the radio button from dropdown.
 	var items_menu : PopupMenu = resolution_dropdown.get_popup()
 	for index in items_menu.get_item_count():
 		if items_menu.is_item_radio_checkable(index):
@@ -42,30 +49,18 @@ func _input(event):
 
 # Changes the display mode.
 func _change_display_mode(_button : Object) -> void:
-	if fullscreen_button.pressed: 
-		OS.window_fullscreen = true
-	elif windows_button.pressed:
-		OS.window_fullscreen = false
-
+	GameManager.game_data["settings"]["display_mode"] = display_buttongroup.get_buttons().find(display_buttongroup.get_pressed_button())
+	GameManager.update_graphics_settings()
+	GameManager.save_data()
+	
 # Changes the resolution of the screen.
-func _change_resolution(index : int) -> void:
-	OS.set_window_maximized(false)
-	match index:
-		0 : OS.set_window_size(Vector2(1920, 1080))
-		1 : OS.set_window_size(Vector2(1600, 900))
-		2 : OS.set_window_size(Vector2(1280, 720))
-		3 : OS.set_window_size(Vector2(1024, 600))
-		
+func _change_resolution(resolution_index : int) -> void:
+	GameManager.game_data["settings"]["resolution"] = resolution_index
+	GameManager.update_graphics_settings()
+	GameManager.save_data()
+	
 # Changes the resizable GUI scale.
 func _change_gui_size(_button : Object) -> void:
-	var gui_scale : Vector2
-	if small_gui_button.pressed:
-		gui_scale = Vector2(0.8, 0.8)
-	elif medium_gui_button.pressed:
-		gui_scale = Vector2(1.0, 1.0)
-	elif big_gui_button.pressed:
-		gui_scale = Vector2(1.2, 1.2)
-		
-	for node in get_tree().get_nodes_in_group("resizable_gui"):
-		node.rect_scale = gui_scale
-
+	GameManager.game_data["settings"]["gui_size"] = gui_size_buttongroup.get_buttons().find(gui_size_buttongroup.get_pressed_button())
+	GameManager.update_graphics_settings()
+	GameManager.save_data()

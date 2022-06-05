@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Meshes/initroom/fffttccbbbaaaddddxxxd.tres" type="MeshLibrary" id=1]
+[ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 9, 3, 9 )
+
+[node name="MainHub" type="Spatial"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5387, 49.3062, 0 )
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+cell_size = Vector3( 15, 15, 15 )
+data = {
+"cells": PoolIntArray( 0, 0, 1441793, 1, 0, 1441792, 2, 0, 1441793, 3, 0, 655362, 65535, 0, 2, 0, 1, 1441793, 1, 1, 1441793, 2, 1, 1441793, 3, 1, 655362, 65535, 1, 2, 0, 2, 1048578, 1, 2, 1048578, 2, 2, 1048578, 3, 2, 655363, 65535, 2, 1048579, 0, 65534, 1441794, 1, 65534, 1441794, 2, 65534, 1441794, 3, 65534, 1441795, 65535, 65534, 3, 0, 65535, 1441793, 1, 65535, 1441793, 2, 65535, 1441793, 3, 65535, 655362, 65535, 65535, 2 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -54.21 )
+mesh = SubResource( 1 )
+material/0 = null

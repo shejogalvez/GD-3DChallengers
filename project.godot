@@ -141,11 +141,12 @@ _global_script_class_icons={
 [application]
 
 config/name="3DChallengers"
-run/main_scene="res://Tests/TestRoomA.tscn"
+run/main_scene="res://Game/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
+GameManager="*res://Game/GameManager.gd"
 AudioStreamManager="*res://Addons/AudioStreamManager/AudioStreamManager.gd"
 InteractionsManager="*res://Addons/Interactions/InteractionsManager.gd"
 PlayerManager="*res://Actors/PlayerManager.gd"
