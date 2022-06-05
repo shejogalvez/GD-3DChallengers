@@ -6,9 +6,9 @@
 
 [sub_resource type="PrismMesh" id=1]
 
-[node name="RB2X23P" type="Spatial"]
+[node name="RB2X23P2" type="Spatial"]
 script = ExtResource( 3 )
-openings = [ Vector2( 0, 1 ), Vector2( 1, 0 ) ]
+openings = [ Vector2( 0, 1 ), Vector2( -1, 0 ) ]
 
 [node name="MeshSueloE2" type="GridMap" parent="."]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
@@ -36,7 +36,7 @@ __meta__ = {
 }
 
 [node name="MeshParedE2" type="GridMap" parent="MeshSueloE2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1.1, 1.6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 34.427, 1.1, 1.6 )
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 1.6, 1.6, 1.6 )
 data = {
@@ -60,7 +60,7 @@ __meta__ = {
 }
 
 [node name="MeshParedE4" type="GridMap" parent="MeshSueloE2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1.1, 1.6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4694, 1.1, 1.6 )
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 1.6, 1.6, 1.6 )
 data = {
