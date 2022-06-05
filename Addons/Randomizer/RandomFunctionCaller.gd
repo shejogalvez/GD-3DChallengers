@@ -34,6 +34,7 @@ func update_weight(index : int, new_weight : int):
 	weights[index] = new_weight
 
 # Calls a random function from the functions list.
+# [0                                                   ]
 func call_func() -> void:
 	rng.randomize()
 	var outcome := rng.randi_range(0, total_weight - 1)
