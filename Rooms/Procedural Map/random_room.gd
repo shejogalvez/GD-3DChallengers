@@ -4,12 +4,13 @@ class_name RandomRoom
 var angle = 0
 var father
 var pos = Vector2()
+export (float) var size = 64.1
 export (Array, Vector2) var openings
-const size = 64.1
-var global_size = 64.1
+var global_size = size
 const separation = 300
 const offset = 14
 const size_variation = 2
+const possible_openings = [Vector2(-1, 0), Vector2(1, 0), Vector2(0, 1)]
 var scale_factor = 1
 
 export (PackedScene) var teleport : PackedScene = preload("res://Rooms/Procedural Map/TeleportENbase2.tscn")
@@ -18,6 +19,9 @@ export (PackedScene) var wall : PackedScene = preload("res://Rooms/WALL.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	
+func set_openings(openings_set):
+	openings = openings_set
 
 func initialize(angle: float, father, pos: Vector2):
 	self.father = father
@@ -37,7 +41,7 @@ func initialize(angle: float, father, pos: Vector2):
 	self.add_child(back_tp)
 	
 func generate_rooms():
-	for opening in openings:
+	for opening in possible_openings:
 		var rel_opening = opening
 		var new_opening = opening.rotated(-angle)
 		#print(opening, angle, new_opening, self.rotation)
@@ -45,7 +49,14 @@ func generate_rooms():
 		var newangle = -Vector2.DOWN.angle_to(new_opening)
 		var relangle = newangle - self.angle
 		#print(self,self.pos, " creando sala en posicion " , newpos, ", angulo absoluto %f y relativo %f"  % [newangle, relangle])
-		if father.is_valid_room(newpos):
+		
+		var check_in = false
+		for op in self.openings:
+			if (opening - op).length() > 0.1:
+				check_in = true
+				break
+		if check_in and father.is_valid_room(newpos):
+			#print(self,self.pos, " creando sala en posicion " , newpos, ", angulo absoluto %f y relativo %f"  % [newangle, relangle])
 			var new_room : RandomRoom = father.construct_room(newpos, newangle)
 			
 			new_room.translation = self.separation/scale_factor * Vector3(rel_opening.x, 0, rel_opening.y)
@@ -68,6 +79,7 @@ func generate_rooms():
 			block.translation = Vector3(opening.x, 0, opening.y) * size
 			block.rotate_y(relangle)
 			self.add_child(block)
+			
 	father.room_done(self)
 	
 func set_teleport(teleport, dir):

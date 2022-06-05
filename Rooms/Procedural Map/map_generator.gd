@@ -5,7 +5,12 @@ class_name RoomGenerator
 
 var ocuppied_spots = Array()
 var rfc : RandomFunctionCaller
+var rfc_rooms : RandomFunctionCaller
 export (int) var number_of_rooms = 7
+var packed_rooms = [
+	[preload("res://Rooms/Sala2x2Base4P.tscn"), 1] ,
+	[preload("res://Rooms/Sala2x2Base4Pbig.tscn"), 1] 
+]
 var initial_room : PackedScene = preload("res://Rooms/Procedural Map/initial_room.tscn"  )
 var end_room : PackedScene = preload("res://Rooms/Procedural Map/end_room.tscn"  )
 var room1p : PackedScene = preload("res://Rooms/Sala2x2Base1P.tscn"  )
@@ -17,26 +22,31 @@ var room3p2 : PackedScene = preload( "res://Rooms/Sala2x2Base3P2.tscn" )
 var room3p3 : PackedScene = preload( "res://Rooms/Sala2x2Base3P3.tscn" )
 var room4p : PackedScene = preload("res://Rooms/Sala2x2Base4P.tscn" )
 
+const front = Vector2.DOWN
+const right = Vector2.LEFT
+const left = Vector2.RIGHT
+
+var possible_orientations = [
+	[], [right], [left], [front], [left, front], [right, front], [left, right], [right, left, front]
+]
+var unique_orientations = len(possible_orientations)
+const initial_weights = [10, 3, 3, 5, 4, 4, 3, 6]
+
 var leaf_rooms = Array()
 var actual_room = null
+var actual_orientations = null
 var constructed_rooms = 0
 var rooms_tomake = 1
 const orientations = [Vector2(0, 1), Vector2(1, 0), Vector2(-1, 0)]
-const unique_rooms_n = 8
-const initial_weights = [10, 3, 3, 5, 4, 4, 3, 6]
-#const initial_weights = [10, 3, 3, 5, 4, 4, 3, 6]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rfc = RandomFunctionCaller.new()
-	rfc.put_func(initial_weights[0], self, "set_room", [room1p])
-	rfc.put_func(initial_weights[1], self, "set_room", [room2pad]) #(-1, 0)
-	rfc.put_func(initial_weights[2], self, "set_room", [room2pad2]) #(1, 0)
-	rfc.put_func(initial_weights[3], self, "set_room", [room2pop]) #(0, 1)
-	rfc.put_func(initial_weights[4], self, "set_room", [room3p])   #(1, 0), (0, 1)
-	rfc.put_func(initial_weights[5], self, "set_room", [room3p2])   #(-1, 0), (0, 1)
-	rfc.put_func(initial_weights[6], self, "set_room", [room3p3])   #(1, 0), (-1, 0)
-	rfc.put_func(initial_weights[7], self, "set_room", [room4p])   #(-1, 0), (1, 0), (0, 1)
+	rfc_rooms = RandomFunctionCaller.new()
+	for i in range(unique_orientations):
+		rfc.put_func(initial_weights[i], self, "set_orientation", [possible_orientations[i]])
+	for room in packed_rooms:
+		rfc_rooms.put_func(room[1], self, "set_room", [room[0]])
 	var init = initial_room.instance()
 	init.initialize(0, self, Vector2.ZERO)
 	self.add_child(init)
@@ -56,6 +66,9 @@ func _ready():
 	
 func set_room(preset):
 	actual_room = preset.instance()
+	
+func set_orientation(orientation):
+	actual_orientations = orientation
 
 func is_valid_room(pos:Vector2) -> bool:
 	if constructed_rooms > number_of_rooms:
@@ -78,7 +91,9 @@ func construct_room(pos, angle):
 		actual_room = end_room.instance() 
 	else:
 		while (prev == actual_room):
+			rfc_rooms.call_func()
 			rfc.call_func()
+	actual_room.set_openings(actual_orientations)
 	leaf_rooms.append(actual_room)
 	rooms_tomake += len(actual_room.openings)
 	for orientation in actual_room.openings:
@@ -100,7 +115,7 @@ func set_avaliable_rooms(pos, angle):
 	var results = [false, false, false]
 	for i in range(3):
 		var dir = orientations[i].rotated(-angle)
-		print(pos, dir)
+		#print(pos, dir)
 		for spot in ocuppied_spots:
 			if (spot - (pos + dir)).length() < 0.1:
 				print(spot, " already taken ", i)
@@ -140,7 +155,7 @@ func update_room_pool(bool_array):
 		rfc.update_weight(7, 0)
 		
 func reset_pool_values():
-	for i in range(unique_rooms_n):
+	for i in range(unique_orientations):
 		rfc.update_weight(i, initial_weights[i])
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
