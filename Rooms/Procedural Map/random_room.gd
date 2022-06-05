@@ -5,10 +5,10 @@ var angle = 0
 var father
 var pos = Vector2()
 export (float) var size = 64.1
+export (float) var tp_offset = 13
 export (Array, Vector2) var openings
 var global_size = size
 const separation = 300
-const offset = 14
 const size_variation = 2
 const possible_openings = [Vector2(-1, 0), Vector2(1, 0), Vector2(0, 1)]
 var scale_factor = 1
@@ -23,7 +23,7 @@ func _ready():
 func set_openings(openings_set):
 	openings = openings_set
 
-func initialize(angle: float, father, pos: Vector2, father_size = 0):
+func initialize(angle: float, father, pos: Vector2, father_node : RandomRoom = null):
 	self.father = father
 	self.angle = angle
 	self.pos = pos
@@ -38,7 +38,7 @@ func initialize(angle: float, father, pos: Vector2, father_size = 0):
 	back_tp.rotate_y(PI)
 	var orientation = Vector2(0, -1).rotated(-angle)
 	var orient_v3 = Vector3(orientation.x, 0, orientation.y) 
-	back_tp.set_distance(orient_v3, separation - size - father_size, -orient_v3 * father_size * 0.2)
+	back_tp.set_distance(orient_v3, separation - size - father_node.size, -orient_v3 * father_node.tp_offset)
 	self.add_child(back_tp)
 	
 func generate_rooms():
@@ -63,14 +63,14 @@ func generate_rooms():
 			
 			new_room.translation = self.separation/scale_factor * Vector3(rel_opening.x, 0, rel_opening.y)
 			new_room.rotate_y(relangle)
-			new_room.initialize(newangle, self.father, newpos, self.size)
+			new_room.initialize(newangle, self.father, newpos, self)
 			self.add_child(new_room)
 			#print("origin = ", new_room.global_transform.origin)
 			var for_tp = teleport.instance()
 			for_tp.translation = Vector3(rel_opening.x, 0, rel_opening.y) * size
 			for_tp.rotate_y(relangle)
 			var new_op_v3 = Vector3(new_opening.x, 0, new_opening.y)
-			for_tp.set_distance(new_op_v3, separation - size - new_room.size, -new_op_v3 * new_room.size * 0.2) 
+			for_tp.set_distance(new_op_v3, separation - size - new_room.size, -new_op_v3 * new_room.tp_offset) 
 			self.add_child(for_tp)
 		else:
 			var index = openings.find(opening)

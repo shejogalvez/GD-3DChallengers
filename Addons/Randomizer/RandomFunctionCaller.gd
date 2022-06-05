@@ -31,6 +31,7 @@ func put_func(weight : int, object : Object, function_name : String, argument : 
 	arguments.append(argument)
 
 func update_weight(index : int, new_weight : int):
+	total_weight += new_weight - weights[index]
 	weights[index] = new_weight
 
 # Calls a random function from the functions list.
