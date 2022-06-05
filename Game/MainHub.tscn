@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Assets/Meshes/FutureMesh/future_mesh_library.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Game/MainHub.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Meshes/FutureMesh/Pod/Props_Pod_GD_Cube003.mesh" type="ArrayMesh" id=5]
 [ext_resource path="res://Assets/Meshes/FutureMesh/ComputerSmall/Props_ComputerSmall_GD_Cube032.mesh" type="ArrayMesh" id=6]
+[ext_resource path="res://Assets/Meshes/FutureMesh/ComputerLarge/Props_Computer_GD_Cube028.mesh" type="ArrayMesh" id=7]
+[ext_resource path="res://Assets/Meshes/FutureMesh/Shelf/Props_Shelf_GD_Cube001.mesh" type="ArrayMesh" id=8]
+[ext_resource path="res://Assets/Meshes/FutureMesh/Crate/Props_Crate_GD_Cube.mesh" type="ArrayMesh" id=9]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.77, 0.595852, 0.3157, 1 )
@@ -32,6 +35,15 @@ data = PoolVector3Array( 3.3486, 2.0388, -1.2624, 1.6647, 2.6066, -2.9463, 2.901
 
 [sub_resource type="ConvexPolygonShape" id=8]
 points = PoolVector3Array( -2.81706, 7.28879, 0.684464, -2.81706, 8.01019, 2.18248, -2.81706, 10.2906, -0.769661, -2.17677, -0.0312671, -0.838346, -2.11721, -0.0312671, 2.39658, -2.27493, 7.52135, 2.41802, -2.68304, 8.17501, 2.10307, -2.81706, 11.0132, 0.728356, -2.27493, 11.502, 0.492814, -2.27493, 10.7795, -1.00487, -1.90157, 1.65311, -0.879557, 2.17622, -0.0312671, -0.838346, 2.11665, -0.0312671, 2.39658, 2.27438, 7.52135, 2.41802, 2.68249, 8.17501, 2.10307, 2.27438, 11.502, 0.492814, 2.27438, 10.7795, -1.00487, 1.90102, 1.65311, -0.879557, 2.81651, 10.2906, -0.769661, 2.81651, 7.28879, 0.684464, 2.81706, 7.92664, 2.00825, 2.81706, 8.01019, 2.18248, 2.81706, 11.0132, 0.728356, 2.81706, 10.9285, 0.553794 )
+
+[sub_resource type="ConvexPolygonShape" id=9]
+points = PoolVector3Array( 0.774661, 8.6492, 3.01839, 1.31667, 9.13772, 2.78291, 1.31667, 15.0763, -0.0792085, -0.775087, 8.6492, 3.01839, 2.11647, -0.0312671, 2.3966, 1.95924, 9.52396, 1.63012, 1.85228, 12.1208, 0.684434, 1.95924, 11.7223, 0.684434, 1.95924, 11.7223, -0.684921, 1.31667, 14.3542, -1.57718, 0.774661, 15.5649, -0.314685, -1.31709, 15.0763, -0.0792085, -1.31709, 9.13772, 2.78291, -2.11689, -0.0312671, 2.3966, 2.17612, -0.0312671, -0.838122, 2.148, 2.27396, 0.758197, 2.148, 2.88767, 0.758197, 2.148, 3.27391, 0.37283, 2.148, 3.27391, -0.609739, 2.01378, 9.07971, -0.790838, 0.774661, 14.8428, -1.81218, -0.775087, 15.5649, -0.314685, -1.31709, 14.3542, -1.57718, -1.95966, 11.7223, -0.684921, -1.95966, 11.7223, 0.684434, -1.85271, 12.1208, 0.684434, -1.95966, 9.52396, 1.63012, -2.14843, 2.88767, 0.758197, -2.14843, 2.27396, 0.758197, -2.17655, -0.0312671, -0.838122, 2.12968, 3.42352, -0.782327, -0.775087, 14.8428, -1.81218, -2.0142, 9.07971, -0.790838, -2.14843, 3.27391, -0.609739, -2.14843, 3.27391, 0.37283, -2.1301, 3.42352, -0.782327 )
+
+[sub_resource type="ConvexPolygonShape" id=10]
+points = PoolVector3Array( -6.70874, 2.86569, -2.88213, -6.52355, 1.12389, -3.04046, -6.52355, 0.0263107, -1.94285, -6.70874, 2.86569, 2.88154, -6.70874, 16.8846, -2.88213, 6.52224, 1.12389, -3.04046, -6.52355, 17.6774, -3.04046, 6.52224, 0.0263107, -1.94285, -6.52355, 0.0263107, 1.94225, -6.52355, 1.12389, 3.03987, -6.70874, 16.8846, 2.88154, -6.52355, 18.7769, -1.94285, 6.70874, 2.86569, -2.88213, 6.52224, 17.6774, -3.04046, 6.52224, 0.0263107, 1.94225, 6.52224, 1.12389, 3.03987, -6.52355, 17.6774, 3.03987, -6.52355, 18.7769, 1.94225, 6.52224, 18.7769, -1.94285, 6.70874, 2.86569, 2.88154, 6.70874, 16.8846, -2.88213, 6.52224, 17.6774, 3.03987, 6.52224, 18.7769, 1.94225, 6.70874, 16.8846, 2.88154 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 3, 3, 3 )
 
 [node name="MainHub" type="Spatial"]
 script = ExtResource( 4 )
@@ -169,17 +181,67 @@ material/2 = null
 material/3 = null
 material/4 = null
 
-[node name="SmallComputer" type="StaticBody" parent="."]
+[node name="ComputerSmall" type="StaticBody" parent="."]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -23.0375, 4.06842, 143.929 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape" type="CollisionShape" parent="SmallComputer"]
+[node name="CollisionShape" type="CollisionShape" parent="ComputerSmall"]
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="SmallComputer"]
+[node name="MeshInstance" type="MeshInstance" parent="ComputerSmall"]
 mesh = ExtResource( 6 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="ComputerLarge" type="StaticBody" parent="."]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.73511, 4.06842, 143.929 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="ComputerLarge"]
+shape = SubResource( 9 )
+
+[node name="MeshInstance" type="MeshInstance" parent="ComputerLarge"]
+mesh = ExtResource( 7 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="Shelf" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.3755, 0, 41.7629 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Shelf"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.30815, 4.32526, 0 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Shelf"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.30815, 4.32526, 0 )
+mesh = ExtResource( 8 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="Crate" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.22257, 6.22694, 82.7864 )
+gravity_scale = 3.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Crate"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+shape = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Crate"]
+mesh = ExtResource( 9 )
 material/0 = null
 material/1 = null
 material/2 = null
