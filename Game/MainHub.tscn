@@ -316,6 +316,9 @@ material/0 = null
 material/1 = null
 material/2 = null
 
+[node name="Interaction" parent="Hall/Phone" instance=ExtResource( 17 )]
+interaction_message = "Phone"
+
 [node name="Cactus" type="StaticBody" parent="Hall"]
 transform = Transform( 0.767635, 0, 0.640887, 0, 1, 0, -0.640887, 0, 0.767635, -18.1291, 9.03898, 63.6466 )
 __meta__ = {
@@ -352,7 +355,7 @@ material/4 = null
 
 [node name="Interaction" parent="ComputerLarge" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 1.6 )
-interaction_message = "Turn On"
+interaction_message = "Room Terminal"
 
 [node name="Shelf" type="StaticBody" parent="."]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.8297, 0, 130.535 )
@@ -369,7 +372,7 @@ material/1 = null
 material/2 = null
 
 [node name="DoorSingleDynamic" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.2749, 4.12742, 104.371 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.2, 4.127, 104.371 )
 
 [node name="DoorSingleDynamicBody" type="StaticBody" parent="DoorSingleDynamic"]
 
