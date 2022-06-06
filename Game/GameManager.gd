@@ -50,21 +50,19 @@ func load_data() -> void:
 	var openFile := File.new()
 	
 	if not openFile.file_exists(GAME_DATA_PATH):
-		print("D:")
 		return
 	
 	openFile.open(GAME_DATA_PATH, File.READ)
 	
 	# while not necessary 
 	while openFile.get_position() < openFile.get_len():
-		print("Parsing...")
 		game_data = parse_json(openFile.get_line())
-		print("Game data parsed:" + str(game_data))
 
 	openFile.close()
 	
 func update_graphics_settings() -> void:
 	OS.window_fullscreen = DISPLAY_MODES[game_data["settings"]["display_mode"]]
 	OS.window_size = RESOLUTIONS[game_data["settings"]["resolution"]]
+	OS.window_position = (OS.get_screen_size() - OS.window_size) * 0.5
 	for node in get_tree().get_nodes_in_group("resizable_gui"):
 		node.rect_scale = GUI_SIZES[game_data["settings"]["gui_size"]]
