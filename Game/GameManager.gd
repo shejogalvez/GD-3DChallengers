@@ -31,7 +31,6 @@ var game_data := {
 func _ready():
 	load_data()
 	update_graphics_settings()
-	pass
 
 
 func _notification(what):
@@ -51,13 +50,16 @@ func load_data() -> void:
 	var openFile := File.new()
 	
 	if not openFile.file_exists(GAME_DATA_PATH):
+		print("D:")
 		return
 	
 	openFile.open(GAME_DATA_PATH, File.READ)
 	
 	# while not necessary 
 	while openFile.get_position() < openFile.get_len():
+		print("Parsing...")
 		game_data = parse_json(openFile.get_line())
+		print("Game data parsed:" + str(game_data))
 
 	openFile.close()
 	

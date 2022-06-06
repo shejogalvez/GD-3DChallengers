@@ -26,6 +26,7 @@ func _ready():
 	big_gui_button.group = gui_size_buttongroup
 	
 	# Updating from game data.
+	print(GameManager.game_data)
 	display_buttongroup.get_buttons()[GameManager.game_data["settings"]["display_mode"]].pressed = true
 	resolution_dropdown.select(GameManager.game_data["settings"]["resolution"])
 	gui_size_buttongroup.get_buttons()[GameManager.game_data["settings"]["gui_size"]].pressed = true
