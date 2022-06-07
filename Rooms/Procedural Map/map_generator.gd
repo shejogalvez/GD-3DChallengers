@@ -46,6 +46,7 @@ var leaf_rooms = Array()
 var actual_room = null
 var actual_orientations = null
 var constructed_rooms = 0
+var constructed_rooms_array = Array()
 var rooms_tomake = 1
 const orientations = [Vector2(0, 1), Vector2(1, 0), Vector2(-1, 0)]
 
@@ -58,34 +59,35 @@ func _ready():
 		rfc.put_func(initial_weights[i], self, "set_orientation", [possible_orientations[i]])
 	for room in random_rooms:
 		rfc_rooms.put_func(room[1], self, "set_room", [room[0]])
-	var done = false
-	while not done:
-		reset_pool_values()
-		var init = initial_room.instance()
-		init.initialize(0, self, Vector2.ZERO)
-		self.add_child(init)
-		leaf_rooms.append(init)
-		reserved_spots.append(Vector2(0, 0))
-		reserved_spots.append(Vector2(0, 1))
-		occupied_spots.append(Vector2(0, 0))
-		set_obligatory_rooms()
-		while(len(leaf_rooms) > 0):
-			if (rooms_tomake <= 1):
-				rfc.update_weight(0, 0)
-			else:
-				rfc.update_weight(0, initial_weights[0])
-			#print(reserved_spots)
-			print(leaf_rooms)
-			var actual_len = len(leaf_rooms)
-			for i in range(actual_len):
-				var room = leaf_rooms[0]
-				room.generate_rooms()
-		done = true
-		if (constructed_rooms <= self.number_of_rooms) :
+		
+	reset_pool_values()
+	var init = initial_room.instance()
+	init.initialize(0, self, Vector2.ZERO)
+	self.add_child(init)
+	constructed_rooms_array.append(init)
+	leaf_rooms.append(init)
+	reserved_spots.append(Vector2(0, 0))
+	reserved_spots.append(Vector2(0, 1))
+	occupied_spots.append(Vector2(0, 0))
+	set_obligatory_rooms()
+	while(len(leaf_rooms) > 0):
+		if (rooms_tomake <= 1):
+			rfc.update_weight(0, 0)
+		else:
+			rfc.update_weight(0, initial_weights[0])
+		#print(reserved_spots)
+		print(leaf_rooms)
+		var actual_len = len(leaf_rooms)
+		for i in range(actual_len):
+			var room = leaf_rooms[0]
+			room.generate_rooms()
+		if (constructed_rooms < self.number_of_rooms) and len(leaf_rooms) == 0:
 			print("premature exit")
-			init.queue_free()
-			reset()
-			done = false
+			var i = 1
+			while not create_emergency_exit(constructed_rooms - i):
+				i+=1
+			#init.queue_free()
+			#reset()
 	print(reserved_spots)
 	print(constructed_rooms)
 	
@@ -98,6 +100,12 @@ func reset():
 	constructed_rooms = 0
 	rooms_tomake = 1
 	obligatory_rooms_queue = []
+
+# tries to create a new teleport/room on indexth room created, return true if succeed
+func create_emergency_exit(index) -> bool:
+	var room = constructed_rooms_array[index]
+	print(room, room.pos)
+	return room.open_exit()
 	
 func set_initial_weights():
 	initial_weights = [nonew, rightw, leftw, frontw, left_frontw, right_frontw, left_rightw, right_left_frontw]
@@ -137,8 +145,7 @@ func construct_room(pos, angle):
 	occupied_spots.append(pos)
 	rooms_tomake -= 1
 	var prev = actual_room
-	var prev_or = actual_orientations
-	
+	# checks if is turn for obligatory room
 	if(len(obligatory_rooms_queue)) > 0 and constructed_rooms >= obligatory_rooms_queue[0][1]:
 		actual_room = (obligatory_rooms_queue[0][0]).instance() 
 		actual_room.possible_openings = actual_room.openings
@@ -149,6 +156,7 @@ func construct_room(pos, angle):
 			while obligatory_rooms_queue[0][1] == last_room[1]:
 				push_warning("repeated hints for obligatory rooms")
 				last_room = obligatory_rooms_queue.pop_front()
+	# else creates a random room
 	else:
 		while (prev == actual_room):
 			set_avaliable_rooms(pos, angle)
@@ -163,6 +171,7 @@ func construct_room(pos, angle):
 		reserved_spots.append(pos + dir)
 	reset_pool_values()
 	print("room ", pos, "= ", actual_room)
+	constructed_rooms_array.append(actual_room)
 	#print(reserved_spots)
 	return actual_room
 

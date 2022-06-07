@@ -16,9 +16,8 @@ void fragment(){
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 4 )
 
-[node name="RB2X2OP" type="Spatial"]
+[node name="ITEM" type="Spatial"]
 script = ExtResource( 3 )
-openings = [ Vector2( 0, 1 ) ]
 
 [node name="MeshSueloE2" type="GridMap" parent="."]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
