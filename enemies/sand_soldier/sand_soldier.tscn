@@ -498,4 +498,5 @@ shape = SubResource( 12 )
 disabled = true
 
 [node name="RayCast" type="RayCast" parent="."]
+enabled = true
 cast_to = Vector3( 0, 0, 10 )

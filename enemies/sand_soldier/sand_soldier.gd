@@ -10,8 +10,7 @@ var hit_player = false
 const damage = 15
 
 func _ready():
-	self.state = InitialState.new()
-	state.start(self)
+	._ready()
 	hp = 0
 	weapon_area.connect("body_entered", self, "weapon_hit")
 
@@ -20,6 +19,10 @@ func awake():
 	state.start(self)
 	weapon.visible = true
 	hit_player = false
+	
+func found_player():
+	set_state(Wait.new())
+	animator.play("emerge")
 	
 func set_dash():
 	set_state(Attacking.new())
@@ -34,15 +37,6 @@ func weapon_hit(body):
 			PlayerManager.receive_damage(damage)
 			hit_player = true
 	
-class InitialState extends Standby:
-	
-	const follow_distance = 50
-	
-	func _process(delta):
-		var dif = enemy_node.global_transform.origin - PlayerManager.get_player_position()
-		if dif.length() < follow_distance and not alerted:
-			enemy_node.animator.play("emerge")
-			alerted = true
 
 class Follow extends State:
 	

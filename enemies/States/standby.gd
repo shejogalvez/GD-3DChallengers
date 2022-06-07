@@ -6,6 +6,6 @@ func _process(delta):
 	var object = raycast.get_collider()
 	if object!=null:
 		if object == PlayerManager.get_player():
-			enemy_node.set_state(Alerted.new())
+			enemy_node.found_player()
 		
 	

@@ -21,5 +21,4 @@ func set_teleport_relative_position(direction):
 
 func teleport(body):
 	if body == PlayerManager.get_player():
-		print(self.global_transform.origin, teleport_relative_position)	
 		PlayerManager.set_player_position(self.global_transform.origin + teleport_relative_position)
