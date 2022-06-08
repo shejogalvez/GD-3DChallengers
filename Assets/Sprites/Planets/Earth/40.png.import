@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Item_285_p2.png-1c7713013da9a97731671030aa718123.stex"
+path="res://.import/40.png-5dc113ffc4f54da1217a5add600dfcd5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/UI/Item_285_p2.png"
-dest_files=[ "res://.import/Item_285_p2.png-1c7713013da9a97731671030aa718123.stex" ]
+source_file="res://Assets/Sprites/Planets/Earth/40.png"
+dest_files=[ "res://.import/40.png-5dc113ffc4f54da1217a5add600dfcd5.stex" ]
 
 [params]
 

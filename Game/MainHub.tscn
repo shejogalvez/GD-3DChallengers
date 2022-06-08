@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=163 format=2]
 
 [ext_resource path="res://Assets/Meshes/FutureMesh/future_mesh_library.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=2]
@@ -17,6 +17,129 @@
 [ext_resource path="res://Assets/Meshes/FutureMesh/Plant5/Plant_5_GD_Cylinder021.mesh" type="ArrayMesh" id=15]
 [ext_resource path="res://Assets/Environments/dark_environment.tres" type="Environment" id=16]
 [ext_resource path="res://Addons/Interactions/Interaction.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Assets/Meshes/FutureMesh/Table/Table_GD_Cube007.mesh" type="ArrayMesh" id=18]
+[ext_resource path="res://Assets/Meshes/FutureMesh/Capsule/Props_Capsule_GD_Cylinder014.mesh" type="ArrayMesh" id=19]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/102.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/103.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/43.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/88.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/45.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/104.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/83.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/97.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/62.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/87.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/75.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/95.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/59.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/71.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/78.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/73.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/81.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/93.png" type="Texture" id=37]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/55.png" type="Texture" id=38]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/50.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/53.png" type="Texture" id=40]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/57.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/96.png" type="Texture" id=42]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/44.png" type="Texture" id=43]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/68.png" type="Texture" id=44]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/70.png" type="Texture" id=45]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/84.png" type="Texture" id=46]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/60.png" type="Texture" id=47]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/79.png" type="Texture" id=48]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/100.png" type="Texture" id=49]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/48.png" type="Texture" id=50]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/61.png" type="Texture" id=51]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/64.png" type="Texture" id=52]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/72.png" type="Texture" id=53]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/86.png" type="Texture" id=54]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/90.png" type="Texture" id=55]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/66.png" type="Texture" id=56]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/69.png" type="Texture" id=57]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/92.png" type="Texture" id=58]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/51.png" type="Texture" id=59]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/89.png" type="Texture" id=60]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/42.png" type="Texture" id=61]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/56.png" type="Texture" id=62]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/41.png" type="Texture" id=63]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/54.png" type="Texture" id=64]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/47.png" type="Texture" id=65]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/63.png" type="Texture" id=66]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/46.png" type="Texture" id=67]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/65.png" type="Texture" id=68]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/77.png" type="Texture" id=69]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/82.png" type="Texture" id=70]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/85.png" type="Texture" id=71]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/91.png" type="Texture" id=72]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/58.png" type="Texture" id=73]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/52.png" type="Texture" id=74]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/67.png" type="Texture" id=75]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/76.png" type="Texture" id=76]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/94.png" type="Texture" id=77]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/80.png" type="Texture" id=78]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/98.png" type="Texture" id=79]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/49.png" type="Texture" id=80]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/74.png" type="Texture" id=81]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/99.png" type="Texture" id=82]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/101.png" type="Texture" id=83]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/106.png" type="Texture" id=84]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/107.png" type="Texture" id=85]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/108.png" type="Texture" id=86]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/109.png" type="Texture" id=87]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/110.png" type="Texture" id=88]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/105.png" type="Texture" id=89]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/15.png" type="Texture" id=90]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/22.png" type="Texture" id=91]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/11.png" type="Texture" id=92]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/13.png" type="Texture" id=93]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/20.png" type="Texture" id=94]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/16.png" type="Texture" id=95]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/25.png" type="Texture" id=96]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/26.png" type="Texture" id=97]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/27.png" type="Texture" id=98]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/28.png" type="Texture" id=99]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/29.png" type="Texture" id=100]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/30.png" type="Texture" id=101]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/32.png" type="Texture" id=102]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/1.png" type="Texture" id=103]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/14.png" type="Texture" id=104]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/31.png" type="Texture" id=105]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/9.png" type="Texture" id=106]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/23.png" type="Texture" id=107]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/33.png" type="Texture" id=108]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/10.png" type="Texture" id=109]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/18.png" type="Texture" id=110]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/19.png" type="Texture" id=111]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/21.png" type="Texture" id=112]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/24.png" type="Texture" id=113]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/34.png" type="Texture" id=114]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/5.png" type="Texture" id=115]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/4.png" type="Texture" id=116]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/12.png" type="Texture" id=117]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/8.png" type="Texture" id=118]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/2.png" type="Texture" id=119]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/6.png" type="Texture" id=120]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/7.png" type="Texture" id=121]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/17.png" type="Texture" id=122]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/3.png" type="Texture" id=123]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/37.png" type="Texture" id=124]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/36.png" type="Texture" id=125]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/38.png" type="Texture" id=126]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/35.png" type="Texture" id=127]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/39.png" type="Texture" id=128]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/40.png" type="Texture" id=129]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/119.png" type="Texture" id=130]
+[ext_resource path="res://Assets/Sprites/Planets/std_bg.png" type="Texture" id=131]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/115.png" type="Texture" id=132]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/112.png" type="Texture" id=133]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/120.png" type="Texture" id=134]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/111.png" type="Texture" id=135]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/116.png" type="Texture" id=136]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/118.png" type="Texture" id=137]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/113.png" type="Texture" id=138]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/114.png" type="Texture" id=139]
+[ext_resource path="res://Assets/Sprites/Planets/Earth/117.png" type="Texture" id=140]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.77, 0.595852, 0.3157, 1 )
@@ -58,6 +181,24 @@ data = PoolVector3Array( -0.5142, -1.3655, 0.087, 0.5725, -1.3473, 0.087, 0.5142
 radius = 0.8
 height = 3.0
 
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 3, 3, 3 )
+
+[sub_resource type="SpatialMaterial" id=24]
+flags_unshaded = true
+
+[sub_resource type="QuadMesh" id=21]
+material = SubResource( 24 )
+size = Vector2( 10.8, 16.2 )
+
+[sub_resource type="SpriteFrames" id=23]
+animations = [ {
+"frames": [ ExtResource( 103 ), ExtResource( 119 ), ExtResource( 123 ), ExtResource( 116 ), ExtResource( 115 ), ExtResource( 120 ), ExtResource( 121 ), ExtResource( 118 ), ExtResource( 106 ), ExtResource( 109 ), ExtResource( 92 ), ExtResource( 117 ), ExtResource( 93 ), ExtResource( 104 ), ExtResource( 90 ), ExtResource( 95 ), ExtResource( 122 ), ExtResource( 110 ), ExtResource( 111 ), ExtResource( 94 ), ExtResource( 112 ), ExtResource( 91 ), ExtResource( 107 ), ExtResource( 113 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 98 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 101 ), ExtResource( 105 ), ExtResource( 102 ), ExtResource( 108 ), ExtResource( 114 ), ExtResource( 127 ), ExtResource( 125 ), ExtResource( 124 ), ExtResource( 126 ), ExtResource( 128 ), ExtResource( 129 ), ExtResource( 63 ), ExtResource( 61 ), ExtResource( 22 ), ExtResource( 43 ), ExtResource( 24 ), ExtResource( 67 ), ExtResource( 65 ), ExtResource( 50 ), ExtResource( 80 ), ExtResource( 39 ), ExtResource( 59 ), ExtResource( 74 ), ExtResource( 40 ), ExtResource( 64 ), ExtResource( 38 ), ExtResource( 62 ), ExtResource( 41 ), ExtResource( 73 ), ExtResource( 32 ), ExtResource( 47 ), ExtResource( 51 ), ExtResource( 28 ), ExtResource( 66 ), ExtResource( 52 ), ExtResource( 68 ), ExtResource( 56 ), ExtResource( 75 ), ExtResource( 44 ), ExtResource( 57 ), ExtResource( 45 ), ExtResource( 33 ), ExtResource( 53 ), ExtResource( 35 ), ExtResource( 81 ), ExtResource( 30 ), ExtResource( 76 ), ExtResource( 69 ), ExtResource( 34 ), ExtResource( 48 ), ExtResource( 78 ), ExtResource( 36 ), ExtResource( 70 ), ExtResource( 26 ), ExtResource( 46 ), ExtResource( 71 ), ExtResource( 54 ), ExtResource( 29 ), ExtResource( 23 ), ExtResource( 60 ), ExtResource( 55 ), ExtResource( 72 ), ExtResource( 58 ), ExtResource( 37 ), ExtResource( 77 ), ExtResource( 31 ), ExtResource( 42 ), ExtResource( 27 ), ExtResource( 79 ), ExtResource( 82 ), ExtResource( 49 ), ExtResource( 83 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 25 ), ExtResource( 89 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 86 ), ExtResource( 87 ), ExtResource( 88 ), ExtResource( 135 ), ExtResource( 133 ), ExtResource( 138 ), ExtResource( 139 ), ExtResource( 132 ), ExtResource( 136 ), ExtResource( 140 ), ExtResource( 137 ), ExtResource( 130 ), ExtResource( 134 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [sub_resource type="SphereShape" id=6]
 radius = 18.0
 
@@ -67,11 +208,15 @@ data = PoolVector3Array( 3.3486, 2.0388, -1.2624, 1.6647, 2.6066, -2.9463, 2.901
 [sub_resource type="ConvexPolygonShape" id=10]
 points = PoolVector3Array( -6.70874, 2.86569, -2.88213, -6.52355, 1.12389, -3.04046, -6.52355, 0.0263107, -1.94285, -6.70874, 2.86569, 2.88154, -6.70874, 16.8846, -2.88213, 6.52224, 1.12389, -3.04046, -6.52355, 17.6774, -3.04046, 6.52224, 0.0263107, -1.94285, -6.52355, 0.0263107, 1.94225, -6.52355, 1.12389, 3.03987, -6.70874, 16.8846, 2.88154, -6.52355, 18.7769, -1.94285, 6.70874, 2.86569, -2.88213, 6.52224, 17.6774, -3.04046, 6.52224, 0.0263107, 1.94225, 6.52224, 1.12389, 3.03987, -6.52355, 17.6774, 3.03987, -6.52355, 18.7769, 1.94225, 6.52224, 18.7769, -1.94285, 6.70874, 2.86569, 2.88154, 6.70874, 16.8846, -2.88213, 6.52224, 17.6774, 3.03987, 6.52224, 18.7769, 1.94225, 6.70874, 16.8846, 2.88154 )
 
+[sub_resource type="ConvexPolygonShape" id=19]
+points = PoolVector3Array( 5.31863, 6.18965, 9.75025, 4.6689, 6.18965, 10.4258, 5.31863, 5.52146, 9.75025, 5.31863, 6.18965, -9.75229, -4.66994, 6.18965, 10.4258, 4.6689, 5.52146, 10.4258, 4.12225, 0.00643645, 8.60724, 5.31863, 5.52146, -9.75229, 4.6689, 6.18965, -10.4258, -4.66994, 5.52146, 10.4258, -5.31863, 6.18965, 9.75025, -4.12329, 0.00643645, 8.60724, 4.12225, 0.00643645, -8.61949, 4.6689, 5.52146, -10.4258, -4.66994, 6.18965, -10.4258, -5.31863, 5.52146, 9.75025, -5.31863, 6.18965, -9.75229, -4.12329, 0.00643645, -8.61949, -4.66994, 5.52146, -10.4258, -5.31863, 5.52146, -9.75229 )
+
 [sub_resource type="ConvexPolygonShape" id=8]
 points = PoolVector3Array( -2.81706, 7.28879, 0.684464, -2.81706, 8.01019, 2.18248, -2.81706, 10.2906, -0.769661, -2.17677, -0.0312671, -0.838346, -2.11721, -0.0312671, 2.39658, -2.27493, 7.52135, 2.41802, -2.68304, 8.17501, 2.10307, -2.81706, 11.0132, 0.728356, -2.27493, 11.502, 0.492814, -2.27493, 10.7795, -1.00487, -1.90157, 1.65311, -0.879557, 2.17622, -0.0312671, -0.838346, 2.11665, -0.0312671, 2.39658, 2.27438, 7.52135, 2.41802, 2.68249, 8.17501, 2.10307, 2.27438, 11.502, 0.492814, 2.27438, 10.7795, -1.00487, 1.90102, 1.65311, -0.879557, 2.81651, 10.2906, -0.769661, 2.81651, 7.28879, 0.684464, 2.81706, 7.92664, 2.00825, 2.81706, 8.01019, 2.18248, 2.81706, 11.0132, 0.728356, 2.81706, 10.9285, 0.553794 )
 
-[sub_resource type="BoxShape" id=11]
-extents = Vector3( 3, 3, 3 )
+[sub_resource type="CylinderShape" id=20]
+radius = 3.2
+height = 12.0
 
 [node name="MainHub" type="Spatial"]
 script = ExtResource( 4 )
@@ -96,7 +241,7 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 30, 19 )
 light_energy = 2.0
 light_indirect_energy = 0.1
-light_specular = 0.8
+light_specular = 1.2
 shadow_enabled = true
 shadow_bias = 5.0
 omni_range = 40.0
@@ -106,7 +251,7 @@ omni_attenuation = 1.7
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 30, 49 )
 light_energy = 2.0
 light_indirect_energy = 0.1
-light_specular = 0.8
+light_specular = 1.2
 shadow_enabled = true
 shadow_bias = 5.0
 omni_range = 40.0
@@ -116,7 +261,7 @@ omni_attenuation = 1.7
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 30, 79 )
 light_energy = 2.0
 light_indirect_energy = 0.1
-light_specular = 0.8
+light_specular = 1.2
 shadow_enabled = true
 shadow_bias = 5.0
 omni_range = 40.0
@@ -126,7 +271,7 @@ omni_attenuation = 1.7
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 30, -11 )
 light_energy = 2.0
 light_indirect_energy = 0.1
-light_specular = 0.8
+light_specular = 1.2
 shadow_enabled = true
 shadow_bias = 5.0
 omni_range = 40.0
@@ -136,13 +281,16 @@ omni_attenuation = 1.7
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 30, 110 )
 light_energy = 2.0
 light_indirect_energy = 0.1
-light_specular = 0.8
+light_specular = 1.2
 shadow_enabled = true
 shadow_bias = 5.0
 omni_range = 40.0
 omni_attenuation = 1.7
 
 [node name="DoorExtraMeshes" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="DoorExtraMesh" type="MeshInstance" parent="DoorExtraMeshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6538, 15.0098, 101.402 )
@@ -164,6 +312,9 @@ material/0 = null
 
 [node name="WindowExtraMeshes" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100.461 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="WindowExtraMesh" type="MeshInstance" parent="WindowExtraMeshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.08876, 15.0894, 0.822708 )
@@ -337,6 +488,152 @@ material/1 = null
 material/2 = null
 material/3 = null
 
+[node name="Crates" type="Spatial" parent="Hall"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.61888, 0, 90.6709 )
+
+[node name="Crate" type="RigidBody" parent="Hall/Crates"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66988, 4.63034, 2.61356 )
+gravity_scale = 3.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Hall/Crates/Crate"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+shape = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Hall/Crates/Crate"]
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="Crate2" type="RigidBody" parent="Hall/Crates"]
+transform = Transform( 0.99692, 0, 0.0784243, 0, 1, 0, -0.0784243, 0, 0.99692, 2.15353, 4.63034, -4.6147 )
+gravity_scale = 3.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Hall/Crates/Crate2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+shape = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Hall/Crates/Crate2"]
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="Crate3" type="RigidBody" parent="Hall/Crates"]
+transform = Transform( 0.969599, 0, -0.244698, 0, 1, 0, 0.244698, 0, 0.969599, 4.68391, 10.6896, 4.2411 )
+gravity_scale = 3.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Hall/Crates/Crate3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+shape = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Hall/Crates/Crate3"]
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="Crate4" type="RigidBody" parent="Hall/Crates"]
+transform = Transform( 0.990878, 0, 0.134764, 0, 1, 0, -0.134764, 0, 0.990878, 8.58603, 4.63034, 4.30602 )
+gravity_scale = 3.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Hall/Crates/Crate4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+shape = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Hall/Crates/Crate4"]
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="Crate5" type="RigidBody" parent="Hall/Crates"]
+transform = Transform( 0.944915, 0, -0.327317, 0, 1, 0, 0.327317, 0, 0.944915, 0.893646, 4.63034, -11.2615 )
+gravity_scale = 3.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Hall/Crates/Crate5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+shape = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Hall/Crates/Crate5"]
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="Crate6" type="RigidBody" parent="Hall/Crates"]
+transform = Transform( 0.989354, 0, -0.14553, 0, 1, 0, 0.14553, 0, 0.989354, 0.249832, 11.0983, -3.07194 )
+gravity_scale = 3.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Hall/Crates/Crate6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+shape = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Hall/Crates/Crate6"]
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="EarthPoster" type="MeshInstance" parent="Hall"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19.25, 19.5, 72 )
+mesh = SubResource( 21 )
+material/0 = null
+
+[node name="Viewport" type="Viewport" parent="Hall/EarthPoster"]
+size = Vector2( 72, 108 )
+render_target_v_flip = true
+
+[node name="SpaceBackground" type="TextureRect" parent="Hall/EarthPoster/Viewport"]
+margin_right = 72.0
+margin_bottom = 108.0
+texture = ExtResource( 131 )
+
+[node name="EarthAnimatedSprite" type="AnimatedSprite" parent="Hall/EarthPoster/Viewport/SpaceBackground"]
+position = Vector2( 36, 54 )
+frames = SubResource( 23 )
+frame = 47
+playing = true
+
+[node name="EarthPosterLight" type="OmniLight" parent="Hall/EarthPoster"]
+transform = Transform( 1, 0, -2.4869e-14, 0, 1, 0, 2.4869e-14, 0, 1, 0, 0, 3.25 )
+light_color = Color( 0.34902, 0.603922, 1, 1 )
+light_specular = 1.0
+shadow_enabled = true
+shadow_bias = 3.0
+omni_range = 40.0
+omni_attenuation = 3.0
+
 [node name="DoorSingleDynamic" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.2, 4.127, 104.371 )
 
@@ -390,7 +687,8 @@ omni_range = 40.0
 omni_attenuation = 1.8
 
 [node name="Shelf" type="StaticBody" parent="."]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.8, 4.36, 138 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.8, 4.36, 142 )
+visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Shelf"]
 shape = SubResource( 10 )
@@ -400,6 +698,17 @@ mesh = ExtResource( 8 )
 material/0 = null
 material/1 = null
 material/2 = null
+
+[node name="Table" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4.36, 123 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Table"]
+shape = SubResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Table"]
+mesh = ExtResource( 18 )
+material/0 = null
+material/1 = null
 
 [node name="ComputerSmall" type="StaticBody" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 4.32, 157.5 )
@@ -418,79 +727,60 @@ material/2 = null
 material/3 = null
 material/4 = null
 
-[node name="Crates" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -39.2361, 0, 159.71 )
+[node name="Capsules" type="Spatial" parent="."]
+transform = Transform( -0.0541659, 0, -0.998532, 0, 1, 0, 0.998532, 0, -0.0541659, -35.7308, 2.26225, 162.901 )
 
-[node name="Crate" type="RigidBody" parent="Crates"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66988, 4.63034, 2.61356 )
-gravity_scale = 3.0
+[node name="Capsule" type="RigidBody" parent="Capsules"]
+transform = Transform( 0.418707, 0, 0.908121, 0, 1, 0, -0.908121, 0, 0.418707, 0, 8.44449, 0 )
+gravity_scale = 15.0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape" type="CollisionShape" parent="Crates/Crate"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-shape = SubResource( 11 )
+[node name="CollisionShape" type="CollisionShape" parent="Capsules/Capsule"]
+shape = SubResource( 20 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Crates/Crate"]
-mesh = ExtResource( 9 )
+[node name="MeshInstance" type="MeshInstance" parent="Capsules/Capsule"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.91581, 0 )
+mesh = ExtResource( 19 )
 material/0 = null
 material/1 = null
 material/2 = null
 material/3 = null
 material/4 = null
 
-[node name="Crate2" type="RigidBody" parent="Crates"]
-transform = Transform( 0.99692, 0, 0.0784243, 0, 1, 0, -0.0784243, 0, 0.99692, 2.15353, 4.63034, -3.79605 )
-gravity_scale = 3.0
+[node name="Capsule2" type="RigidBody" parent="Capsules"]
+transform = Transform( 0.0236989, 0, 0.999719, 0, 1, 0, -0.999719, 0, 0.0236989, -7.60788, 8.44449, 1.39545 )
+gravity_scale = 15.0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape" type="CollisionShape" parent="Crates/Crate2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-shape = SubResource( 11 )
+[node name="CollisionShape" type="CollisionShape" parent="Capsules/Capsule2"]
+shape = SubResource( 20 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Crates/Crate2"]
-mesh = ExtResource( 9 )
+[node name="MeshInstance" type="MeshInstance" parent="Capsules/Capsule2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.91581, 0 )
+mesh = ExtResource( 19 )
 material/0 = null
 material/1 = null
 material/2 = null
 material/3 = null
 material/4 = null
 
-[node name="Crate3" type="RigidBody" parent="Crates"]
-transform = Transform( 0.969599, 0, -0.244698, 0, 1, 0, 0.244698, 0, 0.969599, 4.68391, 10.6896, 4.2411 )
-gravity_scale = 3.0
+[node name="Capsule3" type="RigidBody" parent="Capsules"]
+transform = Transform( -0.397692, 0, 0.917518, 0, 1, 0, -0.917518, 0, -0.397692, -0.268784, 8.44449, -7.26554 )
+gravity_scale = 15.0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape" type="CollisionShape" parent="Crates/Crate3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-shape = SubResource( 11 )
+[node name="CollisionShape" type="CollisionShape" parent="Capsules/Capsule3"]
+shape = SubResource( 20 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Crates/Crate3"]
-mesh = ExtResource( 9 )
-material/0 = null
-material/1 = null
-material/2 = null
-material/3 = null
-material/4 = null
-
-[node name="Crate4" type="RigidBody" parent="Crates"]
-transform = Transform( 0.990878, 0, 0.134764, 0, 1, 0, -0.134764, 0, 0.990878, 8.58603, 4.63034, 4.30602 )
-gravity_scale = 3.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape" type="CollisionShape" parent="Crates/Crate4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-shape = SubResource( 11 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Crates/Crate4"]
-mesh = ExtResource( 9 )
+[node name="MeshInstance" type="MeshInstance" parent="Capsules/Capsule3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.91581, 0 )
+mesh = ExtResource( 19 )
 material/0 = null
 material/1 = null
 material/2 = null
@@ -499,8 +789,7 @@ material/4 = null
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
-light_color = Color( 0.901961, 0.392157, 0.333333, 1 )
-light_energy = 0.5
+light_energy = 0.15
 shadow_enabled = true
 shadow_reverse_cull_face = true
 directional_shadow_blend_splits = true

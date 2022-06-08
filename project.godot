@@ -178,6 +178,14 @@ enabled=PoolStringArray( "res://addons/Destruction/plugin.cfg" )
 texture={
 "flags/filter": false
 }
+texture_array={
+"flags/filter": false,
+"flags/mipmaps": false
+}
+texture_3d={
+"flags/filter": false,
+"flags/mipmaps": false
+}
 
 [input]
 
