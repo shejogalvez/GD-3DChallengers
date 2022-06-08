@@ -21,14 +21,19 @@ func _ready():
 	fullscreen_button.group = display_buttongroup
 	windows_button.group = display_buttongroup
 	
+	print(gui_size_buttongroup.get_buttons())
 	small_gui_button.group = gui_size_buttongroup
+	print(gui_size_buttongroup.get_buttons())
 	medium_gui_button.group = gui_size_buttongroup
+	print(gui_size_buttongroup.get_buttons())
 	big_gui_button.group = gui_size_buttongroup
+	print(gui_size_buttongroup.get_buttons())
+	print("==================================")
 	
 	# Updating from game data.
-	display_buttongroup.get_buttons()[GameManager.game_data["settings"]["display_mode"]].pressed = true
+	display_buttongroup.get_buttons()[GameManager.game_data["settings"]["display_mode"]].set_pressed_no_signal(true)
 	resolution_dropdown.select(GameManager.game_data["settings"]["resolution"])
-	gui_size_buttongroup.get_buttons()[GameManager.game_data["settings"]["gui_size"]].pressed = true
+	gui_size_buttongroup.get_buttons()[GameManager.game_data["settings"]["gui_size"]].set_pressed_no_signal(true)
 	
 	# Deleting the radio button from dropdown.
 	var items_menu : PopupMenu = resolution_dropdown.get_popup()

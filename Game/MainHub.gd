@@ -13,6 +13,8 @@ onready var door_single_dynamic_area := $DoorSingleDynamic/Area
 onready var earth_poster := $Hall/EarthPoster
 onready var earth_poster_viewport := $Hall/EarthPoster/Viewport
 
+onready var animation_player := $AnimationPlayer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

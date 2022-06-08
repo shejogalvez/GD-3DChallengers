@@ -1,7 +1,7 @@
 [gd_scene load_steps=163 format=2]
 
 [ext_resource path="res://Assets/Meshes/FutureMesh/future_mesh_library.tres" type="MeshLibrary" id=1]
-[ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Actors/MainHubPlayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Meshes/FutureMesh/DoorSingle/Door_Single_GD_Plane024.mesh" type="ArrayMesh" id=3]
 [ext_resource path="res://Game/MainHub.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Meshes/FutureMesh/Pod/Props_Pod_GD_Cube003.mesh" type="ArrayMesh" id=5]
@@ -221,8 +221,7 @@ height = 12.0
 [node name="MainHub" type="Spatial"]
 script = ExtResource( 4 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
+[node name="MainHubPlayer" parent="." instance=ExtResource( 2 )]
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 1 )
@@ -622,7 +621,7 @@ texture = ExtResource( 131 )
 [node name="EarthAnimatedSprite" type="AnimatedSprite" parent="Hall/EarthPoster/Viewport/SpaceBackground"]
 position = Vector2( 36, 54 )
 frames = SubResource( 23 )
-frame = 47
+frame = 32
 playing = true
 
 [node name="EarthPosterLight" type="OmniLight" parent="Hall/EarthPoster"]
@@ -796,3 +795,9 @@ directional_shadow_blend_splits = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 16 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0

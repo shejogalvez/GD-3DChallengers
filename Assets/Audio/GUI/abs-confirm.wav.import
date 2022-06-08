@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/abs-confirm.wav-78a29a251ec91c7c5a566ed0783602c4.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/GUI/abs-confirm.wav"
+dest_files=[ "res://.import/abs-confirm.wav-78a29a251ec91c7c5a566ed0783602c4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

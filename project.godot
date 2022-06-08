@@ -162,7 +162,6 @@ AudioStreamManager="*res://Addons/AudioStreamManager/AudioStreamManager.gd"
 InteractionsManager="*res://Addons/Interactions/InteractionsManager.gd"
 GameManager="*res://Game/GameManager.gd"
 PlayerManager="*res://Actors/PlayerManager.gd"
-Menu="*res://GUI/Menu.tscn"
 
 [display]
 

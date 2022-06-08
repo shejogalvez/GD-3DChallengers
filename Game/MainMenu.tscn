@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Game/MainHubBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/GUI/game_logo_double_shadow.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Themes/MainTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/Audio/Music/horizon_meditative.mp3" type="AudioStream" id=4]
+[ext_resource path="res://GUI/Credits.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI/Settings.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Game/MainMenu.gd" type="Script" id=7]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
+script = ExtResource( 7 )
 
 [node name="MainHubBackground" parent="." instance=ExtResource( 1 )]
 
@@ -59,3 +64,13 @@ anchor_top = 0.8
 anchor_right = 0.7
 anchor_bottom = 0.9
 text = "Exit"
+
+[node name="Settings" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="Credits" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="MainTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
