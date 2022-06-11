@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Fonts/Monogram/Monogram.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0313726, 0, 0.0156863, 1 )
+
+[resource]
+default_font = ExtResource( 1 )
+Label/colors/font_color = Color( 0.18, 1, 0.508, 1 )
+Panel/styles/panel = SubResource( 1 )

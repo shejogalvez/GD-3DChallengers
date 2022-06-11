@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/logo2.png-adaec5b9173f24a3902f96e17f37e53a.stex"
+path="res://.import/workstation_time_machine.png-bd212218f01bcf4a7abef619649236bd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GUI/logo2.png"
-dest_files=[ "res://.import/logo2.png-adaec5b9173f24a3902f96e17f37e53a.stex" ]
+source_file="res://Assets/GUI/workstation_time_machine.png"
+dest_files=[ "res://.import/workstation_time_machine.png-bd212218f01bcf4a7abef619649236bd.stex" ]
 
 [params]
 

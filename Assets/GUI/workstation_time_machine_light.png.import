@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/game_logo.png-40ed1bcd782f297de35a5ba6746cb2be.stex"
+path="res://.import/workstation_time_machine_light.png-161f5e6eafe8d6da447117c7bfea2229.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GUI/game_logo.png"
-dest_files=[ "res://.import/game_logo.png-40ed1bcd782f297de35a5ba6746cb2be.stex" ]
+source_file="res://Assets/GUI/workstation_time_machine_light.png"
+dest_files=[ "res://.import/workstation_time_machine_light.png-161f5e6eafe8d6da447117c7bfea2229.stex" ]
 
 [params]
 

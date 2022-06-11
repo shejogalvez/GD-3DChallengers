@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/GUI/workstation_time_machine_body.png" type="Texture" id=1]
+[ext_resource path="res://Assets/GUI/workstation_time_machine_light.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Themes/WorkstationTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/Fonts/Monogram/MonogramBig.tres" type="DynamicFont" id=4]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TimeMachineLight:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "light_pulse"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TimeMachineLight:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 3.13834, 0.287175, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0.12549 ), Color( 1, 1, 1, 0.501961 ) ]
+}
+
+[node name="Workstation" type="CanvasLayer"]
+
+[node name="WorkstationControl" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+
+[node name="BackgroundPanel" type="Panel" parent="WorkstationControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TimeMachine" type="TextureRect" parent="WorkstationControl"]
+anchor_left = 0.414
+anchor_top = 0.203
+anchor_right = 0.586
+anchor_bottom = 0.797
+margin_left = 0.0639648
+margin_top = 0.199997
+margin_right = -0.0640259
+margin_bottom = -0.200043
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TimeMachineLight" type="TextureRect" parent="WorkstationControl/TimeMachine"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WorkstationControl/TimeMachine"]
+autoplay = "light_pulse"
+anims/RESET = SubResource( 1 )
+anims/light_pulse = SubResource( 2 )
+
+[node name="TimeMachineName" type="Label" parent="WorkstationControl"]
+anchor_left = 0.5
+anchor_top = 0.793
+anchor_right = 0.5
+anchor_bottom = 0.793
+margin_left = -49.0
+margin_top = 34.2
+margin_right = 49.0
+margin_bottom = 64.2
+custom_fonts/font = ExtResource( 4 )
+text = "JASR-22"
