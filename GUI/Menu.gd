@@ -37,6 +37,7 @@ func _input(event):
 		
 # Pauses the game.
 func _pause_game() -> void:
+	AudioStreamManager.play_button_hover()
 	previous_mouse_mode = Input.get_mouse_mode()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	menu_control.show()
