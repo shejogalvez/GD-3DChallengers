@@ -4,6 +4,8 @@ extends KinematicBody
 onready var hitbox : CollisionShape = $Hitbox
 onready var head_pivot: Spatial = $HeadPivot
 onready var head_camera : Camera = $HeadPivot/Camera
+onready var skeleton : Skeleton = $Model/PlayerModel/Main/Skeleton
+onready var animation_player : AnimationPlayer = $Model/PlayerModel/AnimationPlayer
 
 var MOUSE_SENSITIVITY := 0.05 # Mouse sensitivity
 # Movement vectors
@@ -37,6 +39,7 @@ func _ready():
 func _physics_process(delta):
 	_process_input(delta)
 	_process_movement(delta)
+	_process_animations(delta)
 
 # Will be where we store all the code relating to player input. We want
 # to call it first, before anything else, so we have fresh player input
@@ -131,6 +134,23 @@ func _process_movement(delta : float) -> void:
 	# Move the player and change the velocity according to the collisions.
 	vel = move_and_slide(vel, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
 
+# Process player's animations.
+func _process_animations(_delta : float) -> void:
+	
+	if dir:
+		if is_sprinting:
+			animation_player.play("Correr estatico Retarget")
+		else:
+			if dir[0]:
+				animation_player.play("Caminar Retarget")
+			elif dir[1] < 0:
+				animation_player.play("Caminata izquierda Retarget")
+			else:
+				animation_player.play("Caminata derecha Retarget")
+	else:
+		animation_player.play("Idle Retarget")
+
+
 # Called when an input is detected.
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -142,6 +162,6 @@ func _input(event):
 		self.rotate_y(deg2rad(cursor_position.x * MOUSE_SENSITIVITY * -1))
 		# Limit the vertical rotation angle.
 		var head_pivot_rot = head_pivot.rotation_degrees
-		head_pivot_rot.x = clamp(head_pivot_rot.x, -72, 72)
+		head_pivot_rot.x = clamp(head_pivot_rot.x, -64, 64)
 		head_pivot.rotation_degrees = head_pivot_rot
 

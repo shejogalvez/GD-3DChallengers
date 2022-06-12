@@ -3,14 +3,11 @@
 [ext_resource path="res://Actors/MainHubPlayer.gd" type="Script" id=1]
 [ext_resource path="res://GUI/Menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/MainHubHUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actors/PlayerModel.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.2
 height = 9.0
-
-[sub_resource type="CapsuleMesh" id=4]
-radius = 1.2
-mid_height = 9.0
 
 [node name="MainHubPlayer" type="KinematicBody"]
 collision_layer = 65
@@ -24,7 +21,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.70
 shape = SubResource( 1 )
 
 [node name="HeadPivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.4, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -40,10 +37,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CapsuleMesh" type="MeshInstance" parent="Model"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.7, 0 )
-mesh = SubResource( 4 )
-material/0 = null
+[node name="PlayerModel" parent="Model" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8 )
 
 [node name="Menu" parent="." instance=ExtResource( 2 )]
 

@@ -13,13 +13,9 @@ onready var door_single_dynamic_area := $DoorSingleDynamic/Area
 onready var earth_poster := $Hall/EarthPoster
 onready var earth_poster_viewport := $Hall/EarthPoster/Viewport
 
-onready var workstation_screen := $Workstation/WorkstationScreen
-onready var workstation_screen_viewport := $Workstation/WorkstationScreen/Viewport
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	earth_poster.mesh.surface_get_material(0).albedo_texture = earth_poster_viewport.get_texture()
-	workstation_screen.mesh.surface_get_material(0).albedo_texture = workstation_screen_viewport.get_texture()
 	door_single_dynamic_area.connect("body_entered", self, "_open_door_single_dynamic_body")
 	door_single_dynamic_area.connect("body_exited", self, "_close_door_single_dynamic_body")
 
