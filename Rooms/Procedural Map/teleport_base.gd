@@ -7,11 +7,11 @@ export (PackedScene) var teleport : PackedScene = preload("res://Rooms/Pedestals
 func _ready():
 	pass # Replace with function body.
 
-func set_distance(direction: Vector3, distance, offset):
+func set_distance(direction: Vector3, distance : float, offset : float):
 	var tp = teleport.instance()
 	self.add_child(tp)
-	tp.translate(Vector3.FORWARD * 15)
-	tp.set_teleport_relative_position(direction * distance + offset)
+	tp.translate(Vector3.FORWARD * offset)
+	tp.set_teleport_relative_position(direction * distance - (offset) * direction)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

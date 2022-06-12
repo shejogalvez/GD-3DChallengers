@@ -5,7 +5,7 @@ var angle = 0
 var father
 var pos = Vector2()
 export (float) var size = 64.1
-export (float) var tp_offset = -13
+export (float) var tp_offset = 15
 export (Array, Vector2) var openings
 var global_size = size
 const separation = 300
@@ -40,10 +40,11 @@ func initialize(angle: float, father, pos: Vector2, father_node : RandomRoom = n
 	back_tp.rotate_y(PI)
 	var orientation = Vector2(0, -1).rotated(-angle)
 	var orient_v3 = Vector3(orientation.x, 0, orientation.y) 
-	back_tp.set_distance(orient_v3, separation - size - father_node.size, orient_v3 * father_node.tp_offset)
+	back_tp.set_distance(orient_v3, separation - size - father_node.size, tp_offset)
 	self.add_child(back_tp)
 	
 func generate_rooms():
+	possible_openings.shuffle()
 	for opening in possible_openings:
 		var rel_opening = opening
 		var new_opening = opening.rotated(-angle)
@@ -61,19 +62,8 @@ func generate_rooms():
 				break
 		if check_in and father.is_valid_room(newpos):
 			#print(self,self.pos, " creando sala en posicion " , newpos, ", angulo absoluto %f y relativo %f"  % [newangle, relangle])
-			var new_room : RandomRoom = father.construct_room(newpos, newangle)
+			add_childroom(rel_opening, new_opening, relangle, newangle, newpos)
 			
-			new_room.translation = self.separation/scale_factor * Vector3(rel_opening.x, 0, rel_opening.y)
-			new_room.rotate_y(relangle)
-			new_room.initialize(newangle, self.father, newpos, self)
-			self.add_child(new_room)
-			#print("origin = ", new_room.global_transform.origin)
-			var for_tp = teleport.instance()
-			for_tp.translation = Vector3(rel_opening.x, 0, rel_opening.y) * size
-			for_tp.rotate_y(relangle)
-			var new_op_v3 = Vector3(new_opening.x, 0, new_opening.y)
-			for_tp.set_distance(new_op_v3, separation - size - new_room.size, new_op_v3 * new_room.tp_offset) 
-			self.add_child(for_tp)
 		else:
 			var block = wall.instance()
 			block.translation = Vector3(opening.x, 0, opening.y) * size
@@ -82,32 +72,32 @@ func generate_rooms():
 			self.add_child(block)
 			
 	father.room_done(self)
+
+func add_childroom(rel_opening, new_opening, relangle, newangle, newpos):
+	var new_room : RandomRoom = father.construct_room(newpos, newangle)
+	new_room.translation = self.separation/scale_factor * Vector3(rel_opening.x, 0, rel_opening.y)
+	new_room.rotate_y(relangle)
+	new_room.initialize(newangle, self.father, newpos, self)
+	self.add_child(new_room)
+	#print("origin = ", new_room.global_transform.origin)
+	var for_tp = teleport.instance()
+	for_tp.translation = Vector3(rel_opening.x, 0, rel_opening.y) * size
+	for_tp.rotate_y(relangle)
+	var new_op_v3 = Vector3(new_opening.x, 0, new_opening.y)
+	for_tp.set_distance(new_op_v3, separation - size - new_room.size, tp_offset) 
+	self.add_child(for_tp)
 	
 func open_exit() -> bool:
 	for opening in unused_openings:
 		var rel_opening = opening[0]
 		var new_opening = rel_opening.rotated(-angle)
-		print("emergency exit  ", opening, angle, new_opening, self.rotation)
 		var newpos = self.pos + new_opening
+		print("emergency exit  ", opening, angle, newpos, self)
 		var newangle = -Vector2.DOWN.angle_to(new_opening)
 		var relangle = newangle - self.angle
 		if father.is_valid_room(newpos):
-			var new_room : RandomRoom = father.construct_room(newpos, newangle)
-			
-			new_room.translation = self.separation/scale_factor * Vector3(rel_opening.x, 0, rel_opening.y)
-			new_room.rotate_y(relangle)
-			new_room.initialize(newangle, self.father, newpos, self)
-			opening[1].replace_by(new_room)
-			print(opening[1])
 			opening[1].queue_free()
-			print("EMERGENCY ROOM IN ", new_room.pos)
-			var for_tp = teleport.instance()
-			for_tp.translation = Vector3(rel_opening.x, 0, rel_opening.y) * size
-			for_tp.rotate_y(relangle)
-			var new_op_v3 = Vector3(new_opening.x, 0, new_opening.y)
-			for_tp.set_distance(new_op_v3, separation - size - new_room.size, new_op_v3 * new_room.tp_offset) 
-			self.add_child(for_tp)
-			return true
+			add_childroom(rel_opening, new_opening, relangle, newangle, newpos)
 	return false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

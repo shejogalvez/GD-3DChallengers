@@ -11,9 +11,10 @@ var random_rooms = [
 	[preload("res://Rooms/Sala2x2Base4Pbig.tscn"), 1] 
 ]
 
+# end_room SIMPRE VA PRIMERO!!
 var obligatory_rooms = [
 	[preload("res://Rooms/Procedural Map/end_room.tscn"), [12]],
-	[preload("res://Rooms/Procedural Map/item_room.tscn"), [3, 7]],
+	[preload("res://Rooms/Procedural Map/item_room.tscn"), [2,3,7]],
 ]
 var obligatory_rooms_queue = Array()
 export (PackedScene) var initial_room : PackedScene = preload("res://Rooms/Procedural Map/initial_room.tscn"  )
@@ -76,20 +77,18 @@ func _ready():
 		else:
 			rfc.update_weight(0, initial_weights[0])
 		#print(reserved_spots)
-		print(leaf_rooms)
 		var actual_len = len(leaf_rooms)
 		for i in range(actual_len):
 			var room = leaf_rooms[0]
 			room.generate_rooms()
 		if (constructed_rooms < self.number_of_rooms) and len(leaf_rooms) == 0:
 			print("premature exit")
-			var i = 1
+			var i = 0
 			while not create_emergency_exit(constructed_rooms - i):
 				i+=1
 			#init.queue_free()
 			#reset()
-	print(reserved_spots)
-	print(constructed_rooms)
+	print(constructed_rooms, constructed_rooms_array)
 	
 func reset():
 	reserved_spots = []
@@ -117,6 +116,7 @@ class MyCustomSorter:
 		return false
 
 func set_obligatory_rooms():
+	obligatory_rooms[0][1] = [number_of_rooms]
 	for room in obligatory_rooms:
 		for hint in room[1]:
 			obligatory_rooms_queue.append([room[0], hint])
@@ -130,7 +130,7 @@ func set_orientation(orientation):
 	actual_orientations = orientation
 
 func is_valid_room(pos:Vector2) -> bool:
-	if constructed_rooms > number_of_rooms:
+	if constructed_rooms >= number_of_rooms:
 		print("done")
 		return false
 	for spot in occupied_spots:
@@ -149,8 +149,9 @@ func construct_room(pos, angle):
 	if(len(obligatory_rooms_queue)) > 0 and constructed_rooms >= obligatory_rooms_queue[0][1]:
 		actual_room = (obligatory_rooms_queue[0][0]).instance() 
 		actual_room.possible_openings = actual_room.openings
-		set_available_from_openings(pos, angle, actual_room.openings)
-		rfc.call_func()
+		actual_orientations = actual_room.openings
+		#set_available_from_openings(pos, angle, actual_room.openings)
+		#rfc.call_func()
 		var last_room = obligatory_rooms_queue.pop_front()
 		if(len(obligatory_rooms_queue)) > 0:
 			while obligatory_rooms_queue[0][1] == last_room[1]:
@@ -159,18 +160,18 @@ func construct_room(pos, angle):
 	# else creates a random room
 	else:
 		while (prev == actual_room):
-			set_avaliable_rooms(pos, angle)
+			#set_avaliable_rooms(pos, angle)
 			rfc_rooms.call_func()
 			rfc.call_func()
 	#print(actual_orientations)
 	actual_room.set_openings(actual_orientations)
 	leaf_rooms.append(actual_room)
 	rooms_tomake += len(actual_room.openings)
-	for orientation in actual_room.openings:
-		var dir = orientation.rotated(-angle)
-		reserved_spots.append(pos + dir)
-	reset_pool_values()
-	print("room ", pos, "= ", actual_room)
+#	for orientation in actual_room.openings:
+#		var dir = orientation.rotated(-angle)
+#		reserved_spots.append(pos + dir)
+#	reset_pool_values()
+	#print("room ", pos, "= ", actual_room)
 	constructed_rooms_array.append(actual_room)
 	#print(reserved_spots)
 	return actual_room
@@ -181,6 +182,12 @@ func room_done(room):
 		push_warning("room_done error")
 		return
 	leaf_rooms.remove(index)
+	
+	
+	
+##################### UNUSED #############################
+##################### UNUSED #############################
+##################### UNUSED #############################
 
 func set_avaliable_rooms(pos, angle):
 	var results = [false, false, false]
@@ -193,6 +200,7 @@ func set_avaliable_rooms(pos, angle):
 				results[i] = true
 				break
 	update_room_pool(results)
+	
 	
 func set_available_from_openings(pos, angle, hint):
 	var results = [false, false, false]

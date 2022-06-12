@@ -11,3 +11,5 @@ func initialize(angle: float, father, pos: Vector2,  father_node : RandomRoom = 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func open_exit() -> bool:
+	return true
