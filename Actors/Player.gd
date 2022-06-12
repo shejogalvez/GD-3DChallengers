@@ -10,7 +10,6 @@ onready var weapon_pivot : Spatial = $HeadPivot/WeaponPivot
 onready var weapon : Weapon = $HeadPivot/WeaponPivot/Weapon
 onready var topdown_pivot : Spatial = $TopDownPivot
 onready var topdown_camera : Camera = $TopDownPivot/Camera
-onready var hud : CanvasLayer = $HUD
 onready var damage_audio : AudioStreamPlayer = $DamageAudio
 
 var is_head_view = true # True if viewport is on head camera, false otherwise

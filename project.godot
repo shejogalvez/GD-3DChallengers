@@ -162,7 +162,6 @@ AudioStreamManager="*res://Addons/AudioStreamManager/AudioStreamManager.gd"
 InteractionsManager="*res://Addons/Interactions/InteractionsManager.gd"
 GameManager="*res://Game/GameManager.gd"
 PlayerManager="*res://Actors/PlayerManager.gd"
-Menu="*res://GUI/Menu.tscn"
 
 [display]
 
@@ -177,6 +176,14 @@ enabled=PoolStringArray( "res://addons/Destruction/plugin.cfg" )
 
 texture={
 "flags/filter": false
+}
+texture_array={
+"flags/filter": false,
+"flags/mipmaps": false
+}
+texture_3d={
+"flags/filter": false,
+"flags/mipmaps": false
 }
 
 [input]

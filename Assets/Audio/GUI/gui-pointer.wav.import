@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/gui-pointer.wav-cac1847ecb50760fa0a1d6a8dbbde1fd.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/GUI/gui-pointer.wav"
+dest_files=[ "res://.import/gui-pointer.wav-cac1847ecb50760fa0a1d6a8dbbde1fd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

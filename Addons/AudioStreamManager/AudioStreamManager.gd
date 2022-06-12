@@ -18,3 +18,17 @@ static func play_3d(audio : AudioStream, position : Vector3, audio_db : float = 
 	audio_player. unit_size = audio_size
 	audio_player.connect("finished", audio_player, "queue_free")
 	audio_player.play()
+
+# Plays the default button hover audio.
+static func play_button_hover() -> void:
+	var button_hover_audio := load("res://Assets/Audio/GUI/button-pointer.wav")
+	play(button_hover_audio)
+	
+# Plays the default button clicked audio.
+static func play_button_pressed() -> void:
+	var button_pressed_audio := load("res://Assets/Audio/GUI/button-confirm.wav")
+	play(button_pressed_audio)
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	self.pause_mode = PAUSE_MODE_PROCESS
