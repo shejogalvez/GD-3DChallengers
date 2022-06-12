@@ -114,6 +114,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Weapons/TemporaryWeapons/TemporaryWeapon.gd"
 }, {
+"base": "State",
+"class": "Wait",
+"language": "GDScript",
+"path": "res://enemies/States/wait.gd"
+}, {
 "base": "Spatial",
 "class": "Weapon",
 "language": "GDScript",
@@ -146,6 +151,7 @@ _global_script_class_icons={
 "State": "",
 "Teleport": "res://Assets/Classes/teleport_icon.png",
 "TemporaryWeapon": "",
+"Wait": "",
 "Weapon": "res://Assets/Classes/weapon_icon.png",
 "WeaponPedestal": "res://Assets/Classes/pedestal_icon.png"
 }
