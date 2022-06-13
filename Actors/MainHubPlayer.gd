@@ -9,8 +9,9 @@ onready var animation_player : AnimationPlayer = $Model/PlayerModel/AnimationPla
 
 var MOUSE_SENSITIVITY := 0.05 # Mouse sensitivity
 # Movement vectors
-var dir = Vector3() # The unitary direction vector
-var vel = Vector3()
+var topdown_movement := Vector2()
+var dir := Vector3() # The unitary direction vector
+var vel := Vector3()
 # XZ plane movement
 const MAX_SPEED := 28
 const ACCEL := 4.5
@@ -25,11 +26,13 @@ const SPRINT_ACCEL := 16
 var is_sprinting := false
 # ADS
 const ADS_LERP := 20
-var default_position := Vector3(-1.25, -0.85, 1.5)
-var ads_position := Vector3(0, -0.75, 1.5)
 var default_fov := 90
 var ads_fov := 60
-
+# Animations
+const HEAD_ANIMATION_LERP := 4
+var default_head_camera_position := Vector3(0, 11, 0)
+var sprinting_head_camera_position := Vector3(0, 11, 2.8)
+var jumping_head_camera_position := Vector3(0, 8, 10.2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -74,7 +77,7 @@ func _process_head_input(_delta : float) -> void:
 	cam_front.y = 0
 	cam_front = cam_front.normalized()
 	# The 2D vector representing the player topdown movement.
-	var topdown_movement = Vector2()
+	topdown_movement = Vector2()
 	if Input.is_action_pressed("movement_left"):
 		topdown_movement.x -= 1
 	if Input.is_action_pressed("movement_right"):
@@ -136,17 +139,24 @@ func _process_movement(delta : float) -> void:
 
 # Process player's animations.
 func _process_animations(_delta : float) -> void:
-	
-	if dir:
+	head_pivot.transform.origin = head_pivot.transform.origin.linear_interpolate(default_head_camera_position, HEAD_ANIMATION_LERP * _delta)
+	if !is_on_floor() and not is_on_wall():
+		animation_player.play("Salto Retarget001")
+		if vel.y >= 0:
+			head_pivot.transform.origin = head_pivot.transform.origin.linear_interpolate(jumping_head_camera_position, HEAD_ANIMATION_LERP * _delta)
+		else:
+			head_pivot.transform.origin = head_pivot.transform.origin.linear_interpolate(default_head_camera_position, HEAD_ANIMATION_LERP * _delta)
+	elif topdown_movement:
 		if is_sprinting:
 			animation_player.play("Correr estatico Retarget")
+			head_pivot.transform.origin = head_pivot.transform.origin.linear_interpolate(sprinting_head_camera_position, HEAD_ANIMATION_LERP * _delta)
 		else:
-			if dir[0]:
-				animation_player.play("Caminar Retarget")
-			elif dir[1] < 0:
+			if topdown_movement[0] < 0:
 				animation_player.play("Caminata izquierda Retarget")
-			else:
+			elif topdown_movement[0] > 0:
 				animation_player.play("Caminata derecha Retarget")
+			else:
+				animation_player.play("Caminar Retarget")
 	else:
 		animation_player.play("Idle Retarget")
 
