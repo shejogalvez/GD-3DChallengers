@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Weapons/Projectiles/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemies/attack_patterns/remi_bullet.gd" type="Script" id=2]
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.0950919 ), 0.0, 0.156254, 0, 0, Vector2( 0.170673, 0.0950919 ), 2.87117, 2.87117, 0, 0, Vector2( 0.959135, 0.45092 ), 0.450379, 0.0, 0, 0 ]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.197894
+height = 1.0051
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.0666667, 1, 0.941176, 1 )
+emission_enabled = true
+emission = Color( 0.823529, 0.301961, 0.929412, 1 )
+emission_energy = 0.8
+emission_operator = 0
+emission_on_uv2 = false
+
+[node name="Projectile" instance=ExtResource( 1 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+script = ExtResource( 2 )
+projectile_speed = 40
+kill_timer = 8.0
+bullet_speed_curve = SubResource( 3 )
+
+[node name="CollisionShape" parent="Area" index="0"]
+shape = SubResource( 1 )
+
+[node name="Model" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0 )
+material/0 = SubResource( 2 )
