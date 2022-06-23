@@ -22,11 +22,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -202.5, 11.5, 127.5 )
 mesh_library = ExtResource( 2 )
 cell_size = Vector3( 15, 10, 15 )
 data = {
-"cells": PoolIntArray( 131091, 65525, 4, 65555, 65529, 1048580 )
+"cells": PoolIntArray( 131091, 65525, 4, 196631, 65525, 4, 393235, 65525, 4, 458775, 65525, 4, 655379, 65525, 4, 720919, 65525, 4, 65555, 65529, 1048580, 262167, 65529, 4, 327699, 65529, 4, 524311, 65529, 4, 589843, 65529, 4, 786455, 65529, 4, 851987, 65529, 4 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 2, 0 )
+"_editor_floor_": Vector3( 0, 13, 0 )
 }
 
 [node name="MainHubPlayer" parent="." instance=ExtResource( 1 )]
