@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://sand_map/terrain_shape.shape" type="Shape" id=1]
 [ext_resource path="res://sand_map/camera_control.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://enemies/sand_soldier/sand_soldier.tscn" type="PackedScene" id=5]
 [ext_resource path="res://enemies/minion_egipcio/minion_maloglb.tscn" type="PackedScene" id=6]
 [ext_resource path="res://enemies/bat/bat.tscn" type="PackedScene" id=7]
+[ext_resource path="res://enemies/attack_patterns/Remiel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://enemies/attack_patterns/bullet_scenes/remi_bullet.tscn" type="PackedScene" id=9]
 
 [node name="sand_world" type="Spatial"]
 
@@ -73,5 +75,9 @@ transform = Transform( -1.5724, 0, 1.23594, 0, 2, 0, -1.23594, 0, -1.5724, 115.6
 [node name="bat" parent="." instance=ExtResource( 7 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -4.42355, 14.8444, -107.75 )
 
-[node name="sand_soldier" parent="." instance=ExtResource( 5 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 62.3281, -0.653584, -14.2843 )
+[node name="Remiel" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 207.949, 4.55348, 17.1202 )
+collision_layer = 2
+
+[node name="Projectile" parent="." instance=ExtResource( 9 )]
+transform = Transform( 3.77492, 0, 3.27871, 0, 5, 0, -3.27871, 0, 3.77492, 68.7411, 8.92467, 5.60233 )

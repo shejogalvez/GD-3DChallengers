@@ -11,10 +11,10 @@ var initial_y : float
 
 var timer = 0
 var vec_index = 0
-var bullet_scene : PackedScene = preload("res://enemies/attack_patterns/remi_bullet.tscn")
-var path_trail : PackedScene = preload("res://enemies/attack_patterns/path_tracer.tscn")
+var bullet_scene : PackedScene = preload("res://enemies/attack_patterns/bullet_scenes/remi_bullet.tscn")
+var path_trail : PackedScene = preload("res://enemies/attack_patterns/bullet_scenes/path_tracer.tscn")
 var particle_object : Spatial
-var prev
+var prev : Vector2
 var final_n_bullets = 30
 
 func _init(curve: Curve2D, time_offset : float, execution_time : float, initial_y : float):
@@ -28,8 +28,9 @@ func _init(curve: Curve2D, time_offset : float, execution_time : float, initial_
 	
 func _ready():
 	particle_object = path_trail.instance()
-	particle_object.set_ttl(time_offset + execution_time)
+	particle_object.set_ttl(time_offset,  execution_time)
 	get_parent().add_child(particle_object)
+	particle_object.global_transform.origin = Vector3(path_of_bullets[0].x, initial_y, path_of_bullets[0].y)
 	
 func _process(delta):
 	# mueve la weaita que marca el camino de las balas

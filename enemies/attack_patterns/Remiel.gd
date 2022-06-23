@@ -8,12 +8,15 @@ var bullet_density_inverse = 1
 var control_point_xoffset = 100
 
 var animator : AnimationPlayer
-var bullet_scene : PackedScene = preload("res://enemies/attack_patterns/remi_bullet.tscn")
+var bullet_scene : PackedScene = preload("res://enemies/attack_patterns/bullet_scenes/remi_bullet.tscn")
+var trail_bullet_scene : PackedScene = preload("res://enemies/attack_patterns/bullet_scenes/enemy_bullert.tscn"  )
+
+var explosion_circle_scene = preload("res://enemies/attack_patterns/bullet_scenes/explosion_circle.tscn")
+export (float) var ground_height = 12.25
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animator = $AnimationPlayer
-	play()
 
 func create_rand_forward_vec2(i, local_x, local_y, origin2d, x_init, x_offset):
 		var max_from_z = z_separation * gradient * i + x_offset
@@ -48,7 +51,20 @@ func bullet_lotus():
 	var path = create_curve_path_forward()
 	var attack = BulletLotus.new(path, 2, 1, self.global_transform.origin.y)
 	get_parent().add_child(attack)
-	
 
-func play():
-	animator.play("bullet_lotus")
+func trail_bullet():
+	var bullet = trail_bullet_scene.instance()
+	get_parent().add_child(bullet)
+	bullet.scale = Vector3(5,5,5)
+	bullet.global_transform = self.global_transform
+	bullet.set_dir_to_player((PlayerManager.get_player_position() - self.global_transform.origin).normalized())
+
+func set_explosion():
+	var bullet = explosion_circle_scene.instance()
+	get_parent().add_child(bullet)
+	bullet.scale = Vector3(2, 2, 2)
+	bullet.global_transform.origin = PlayerManager.get_player_position()
+	bullet.global_transform.origin.y = ground_height
+
+func play(animation_name):
+	animator.play(animation_name)

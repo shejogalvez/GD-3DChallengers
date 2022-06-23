@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Weapons/Projectiles/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemies/attack_patterns/bullet_scenes/gradient.png" type="Texture" id=2]
+[ext_resource path="res://enemies/attack_patterns/bullet_scripts/explosion_bullet.gd" type="Script" id=3]
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.0214723 ), 0.0, 12.9928, 0, 0, Vector2( 0.199519, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), -0.00959457, 0.0, 0, 0 ]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+
+render_mode blend_mix,unshaded;
+uniform sampler2D color_gradient : hint_black_albedo;
+uniform float emission_energy;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform float time_offset;
+uniform float pos_by_time;
+uniform float time;
+
+
+void vertex() {
+	vec3 final_offset = uv1_offset;
+	if (time > time_offset) {
+		final_offset.y = -(time - time_offset) * pos_by_time;
+	}
+	UV=-(UV*uv1_scale.xy+final_offset.xy);
+}
+
+void fragment() {
+	vec4 color = texture(color_gradient, UV);
+    ALBEDO = color.rgb;
+	ALPHA = 1.1836 - color.y;
+	//EMISSION = color *  (209.0 - color.g) / (256.0*256.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/emission_energy = null
+shader_param/uv1_scale = Vector3( 1, 0.2, 1 )
+shader_param/uv1_offset = Vector3( 0, 0.2, 0 )
+shader_param/time_offset = 1.0
+shader_param/pos_by_time = 0.2
+shader_param/time = null
+shader_param/color_gradient = ExtResource( 2 )
+
+[node name="Projectile" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
+script = ExtResource( 3 )
+damage = 30
+size_curve = SubResource( 3 )
+
+[node name="Model" parent="." index="1"]
+material/0 = SubResource( 2 )

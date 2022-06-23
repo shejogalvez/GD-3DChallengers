@@ -19,6 +19,15 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_R):
 		delete_children(self)
 		get_tree().reload_current_scene()
+		
+	if Input.is_key_pressed(KEY_1):
+		boss.play("bullet_lotus")
+		
+	if Input.is_key_pressed(KEY_2):
+		boss.play("trail_bullet")
+	
+	if Input.is_key_pressed(KEY_3):
+		boss.play("explosion")
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

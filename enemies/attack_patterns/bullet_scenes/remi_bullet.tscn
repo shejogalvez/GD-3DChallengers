@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Weapons/Projectiles/Projectile.tscn" type="PackedScene" id=1]
-[ext_resource path="res://enemies/attack_patterns/remi_bullet.gd" type="Script" id=2]
+[ext_resource path="res://enemies/attack_patterns/bullet_scripts/curvespeed_bullet.gd" type="Script" id=2]
 
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 0.0950919 ), 0.0, 0.156254, 0, 0, Vector2( 0.170673, 0.0950919 ), 2.87117, 2.87117, 0, 0, Vector2( 0.959135, 0.45092 ), 0.450379, 0.0, 0, 0 ]

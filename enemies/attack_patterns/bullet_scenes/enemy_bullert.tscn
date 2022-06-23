@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Weapons/Projectiles/Projectile.tscn" type="PackedScene" id=1]
-[ext_resource path="res://enemies/attack_patterns/remi_bullet.gd" type="Script" id=2]
+[ext_resource path="res://enemies/attack_patterns/bullet_scripts/bullet_trail_bullet.gd" type="Script" id=2]
 
 [sub_resource type="SpatialMaterial" id=4]
 emission_enabled = true
@@ -16,7 +16,7 @@ proximity_fade_distance = 1.0
 
 [sub_resource type="SpatialMaterial" id=6]
 flags_transparent = true
-albedo_color = Color( 1, 0.890196, 0.27451, 0.627451 )
+albedo_color = Color( 0.827451, 0.27451, 1, 0.627451 )
 emission_enabled = true
 emission = Color( 0.341176, 0.32549, 0.109804, 1 )
 emission_energy = 0.5
@@ -27,7 +27,7 @@ emission_on_uv2 = false
 
 [sub_resource type="SpatialMaterial" id=8]
 flags_transparent = true
-albedo_color = Color( 0.992157, 0.376471, 0.376471, 0.454902 )
+albedo_color = Color( 0.376471, 0.498039, 0.992157, 0.454902 )
 emission_enabled = true
 emission = Color( 0.937255, 0.278431, 0.278431, 1 )
 emission_energy = 0.5
@@ -36,6 +36,9 @@ emission_on_uv2 = false
 
 [node name="Projectile" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+projectile_speed = 70
+kill_timer = 2.5
+damage = 30
 
 [node name="Area" parent="." index="0"]
 visible = false

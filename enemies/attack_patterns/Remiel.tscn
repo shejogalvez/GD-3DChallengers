@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://enemies/attack_patterns/remi_model.tscn" type="PackedScene" id=1]
 [ext_resource path="res://enemies/attack_patterns/Remiel.gd" type="Script" id=2]
@@ -8,8 +8,7 @@ extents = Vector3( 0.925303, 1.43819, 0.853925 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "bullet_lotus"
-length = 2.5
-loop = true
+length = 0.6
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -17,14 +16,47 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 1, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "bullet_lotus"
-}, {
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "explosion"
+length = 0.3
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
 "args": [  ],
-"method": "bullet_lotus"
+"method": "set_explosion"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "trail_bullet"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "trail_bullet"
 } ]
 }
 
@@ -37,5 +69,7 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.2
 anims/bullet_lotus = SubResource( 2 )
+anims/explosion = SubResource( 4 )
+anims/trail_bullet = SubResource( 3 )
 
 [node name="remi" parent="." instance=ExtResource( 1 )]

@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/star.png" type="Texture" id=3]
+
+[sub_resource type="PlaneMesh" id=20]
+size = Vector2( 20, 20 )
+
+[sub_resource type="Shader" id=21]
+code = "// NOTE: Shader automatically converted from Godot Engine 3.4.4.stable's SpatialMaterial.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform sampler2D texture_emission : hint_black_albedo;
+uniform vec4 emission : hint_color;
+uniform float emission_energy;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+
+uniform vec3 circle_origin;
+const float circle_radius = 0.02;
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+void fragment() {
+	
+	vec2 base_uv = UV;
+	vec3 emission_tex = texture(texture_emission,base_uv).rgb;
+	
+	float result;
+	float xsqr = (UV.x - circle_origin.x) * (UV.x - circle_origin.x);
+	float zsqr = (UV.y - circle_origin.z) * (UV.y - circle_origin.z);
+	if (emission_tex.b > 0.0){
+		result = 1.0;
+		ALPHA = 256.0;
+	}
+	else{
+		result = 0.1;
+		ALPHA = 0.0;
+	}
+	float efactor = result;
+	
+	EMISSION = (emission.rgb)*emission_energy*efactor;
+	
+}
+"
+
+[sub_resource type="ShaderMaterial" id=22]
+shader = SubResource( 21 )
+shader_param/emission = Color( 0.00784314, 0.364706, 0.980392, 1 )
+shader_param/emission_energy = 0.2
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/circle_origin = null
+shader_param/texture_emission = ExtResource( 3 )
+
+[sub_resource type="GDScript" id=28]
+script/source = "extends MeshInstance
+
+export (PackedScene) var explosion_scene = preload( \"res://enemies/attack_patterns/bullet_scenes/explosion_bullet.tscn\" )
+var time = 0
+var explotion_time = 1.5
+var time_active = 3
+var created = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+	
+func _process(delta):
+	if time > explotion_time + time_active:
+		queue_free()
+	time += delta
+	if not created and time > explotion_time:
+		var explosion = explosion_scene.instance()
+		add_child(explosion)
+		explosion.global_transform = self.global_transform
+		explosion.kill_timer = time_active
+		created = true
+		
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="SpatialMaterial" id=26]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="SphereMesh" id=25]
+material = SubResource( 26 )
+radius = 0.1
+height = 0.15
+
+[sub_resource type="Gradient" id=27]
+offsets = PoolRealArray( 0.276786, 0.455357, 0.946429 )
+colors = PoolColorArray( 0.623409, 0.65663, 0.944336, 1, 0.759909, 0.673714, 0.991211, 1, 0.752941, 1, 0.988235, 0 )
+
+[node name="effect_layer" type="MeshInstance"]
+mesh = SubResource( 20 )
+material/0 = SubResource( 22 )
+script = SubResource( 28 )
+
+[node name="Particles" type="CPUParticles" parent="."]
+amount = 60
+randomness = 0.58
+draw_order = 1
+mesh = SubResource( 25 )
+emission_shape = 5
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 9.0
+emission_ring_height = 2.0
+emission_ring_axis = Vector3( 0, 1, 0 )
+direction = Vector3( 0, 1, 0 )
+spread = 20.0
+gravity = Vector3( 0, 5, 0 )
+initial_velocity = 24.14
+radial_accel = -24.65
+tangential_accel = 30.28
+scale_amount = 2.0
+scale_amount_random = 0.7
+color = Color( 0.996078, 0.996078, 0.996078, 1 )
+color_ramp = SubResource( 27 )

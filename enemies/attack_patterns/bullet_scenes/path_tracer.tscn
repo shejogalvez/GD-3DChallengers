@@ -1,26 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[sub_resource type="GDScript" id=3]
-script/source = "extends Spatial
-
-var ttl : float
-var timer : float = 0
-
-func _ready():
-	pass # Replace with function body.
-
-func set_ttl(ttl):
-	self.ttl = ttl
-
-func _process(delta):
-	if timer > ttl:
-		self.queue_free()
-	timer += delta
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-"
+[ext_resource path="res://enemies/attack_patterns/bullet_scenes/path_tracer.gd" type="Script" id=1]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_unshaded = true
@@ -30,7 +10,7 @@ material = SubResource( 1 )
 size = Vector3( 1, 1, 8 )
 
 [node name="Spatial" type="Spatial"]
-script = SubResource( 3 )
+script = ExtResource( 1 )
 
 [node name="CPUParticles" type="CPUParticles" parent="."]
 amount = 100

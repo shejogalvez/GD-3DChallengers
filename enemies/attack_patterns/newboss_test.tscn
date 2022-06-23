@@ -50,4 +50,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6492, 14.8321, -191.041 )
 weapon_scene = ExtResource( 11 )
 
 [node name="Boss" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 17.2676, -16.0425 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 17.1267, -16.042 )
