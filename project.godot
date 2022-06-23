@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://enemies/Boss weas/boss_script.gd"
 }, {
+"base": "Node",
+"class": "BulletLotus",
+"language": "GDScript",
+"path": "res://enemies/attack_patterns/bullet_scripts/bullet_lotus.gd"
+}, {
 "base": "Object",
 "class": "Consumable",
 "language": "GDScript",
@@ -28,6 +33,16 @@ _global_script_classes=[ {
 "class": "ConsumablePickup",
 "language": "GDScript",
 "path": "res://Pickups/Consumables/ConsumablePickup.gd"
+}, {
+"base": "EnemyBullet",
+"class": "CurveSpeedBullet",
+"language": "GDScript",
+"path": "res://enemies/attack_patterns/bullet_scripts/curvespeed_bullet.gd"
+}, {
+"base": "Projectile",
+"class": "EnemyBullet",
+"language": "GDScript",
+"path": "res://enemies/IEnemy_bullet.gd"
 }, {
 "base": "Spatial",
 "class": "EnemyWeapon",
@@ -128,12 +143,20 @@ _global_script_classes=[ {
 "class": "WeaponPedestal",
 "language": "GDScript",
 "path": "res://Rooms/Pedestals/WeaponPedestal.gd"
+}, {
+"base": "Spatial",
+"class": "particle_trail",
+"language": "GDScript",
+"path": "res://enemies/attack_patterns/bullet_scenes/path_tracer.gd"
 } ]
 _global_script_class_icons={
 "Alerted": "",
 "BossTest": "",
+"BulletLotus": "",
 "Consumable": "",
 "ConsumablePickup": "",
+"CurveSpeedBullet": "",
+"EnemyBullet": "",
 "EnemyWeapon": "res://Assets/Classes/weapon_icon.png",
 "IEnemy": "",
 "Interaction": "",
@@ -153,7 +176,8 @@ _global_script_class_icons={
 "TemporaryWeapon": "",
 "Wait": "",
 "Weapon": "res://Assets/Classes/weapon_icon.png",
-"WeaponPedestal": "res://Assets/Classes/pedestal_icon.png"
+"WeaponPedestal": "res://Assets/Classes/pedestal_icon.png",
+"particle_trail": ""
 }
 
 [application]
