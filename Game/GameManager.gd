@@ -32,7 +32,7 @@ func _ready():
 	load_data()
 	update_graphics_settings()
 
-
+# Called on a certain notification.
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		save_data()
@@ -60,9 +60,23 @@ func load_data() -> void:
 
 	openFile.close()
 	
-func update_graphics_settings() -> void:
+
+# Updates the window display mode.
+func update_display_mode() -> void:
 	OS.window_fullscreen = DISPLAY_MODES[game_data["settings"]["display_mode"]]
+
+# Updates the window resolution.
+func update_resolution() -> void:
 	OS.window_size = RESOLUTIONS[game_data["settings"]["resolution"]]
 	OS.window_position = (OS.get_screen_size() - OS.window_size) * 0.5
+
+# Updates the GUI size.
+func update_gui_size() -> void:
 	for node in get_tree().get_nodes_in_group("resizable_gui"):
 		node.rect_scale = GUI_SIZES[game_data["settings"]["gui_size"]]
+
+# Updates every graphic setting.
+func update_graphics_settings() -> void:
+	update_display_mode()
+	update_resolution()
+	update_gui_size()

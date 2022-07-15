@@ -17,7 +17,7 @@ const MAX_SPEED := 28
 const ACCEL := 4.5
 const DEACCEL := 20
 # Jumping and gravity
-const JUMP_SPEED := 60
+const JUMP_SPEED := 40
 const GRAVITY := -80
 const MAX_SLOPE_ANGLE := 40
 # Sprinting
@@ -30,9 +30,9 @@ var default_fov := 90
 var ads_fov := 60
 # Animations
 const HEAD_ANIMATION_LERP := 4
-var default_head_camera_position := Vector3(0, 11, 0)
-var sprinting_head_camera_position := Vector3(0, 11, 2.8)
-var jumping_head_camera_position := Vector3(0, 8, 10.2)
+var default_head_camera_position := Vector3(0, 11, 0.5)
+var sprinting_head_camera_position := Vector3(0, 11, 3.2)
+var jumping_head_camera_position := Vector3(0, 8, 0.5)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
