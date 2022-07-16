@@ -220,15 +220,15 @@ valign = 1
 anchor_top = 0.3
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = -20.0
 
 [node name="SmallGUIButton" type="Button" parent="TabContainer/Graphics/GraphicsGrid/GUISizeRow/GUISizeButtonsControl"]
-anchor_left = 0.1
 anchor_top = 0.5
-anchor_right = 0.1
 anchor_bottom = 0.5
-margin_left = -3.0
+margin_left = 10.0
 margin_top = -12.0
-margin_right = 43.0
+margin_right = 56.0
 margin_bottom = 12.0
 rect_pivot_offset = Vector2( 23, 12 )
 toggle_mode = true
@@ -247,13 +247,13 @@ toggle_mode = true
 text = "Medium"
 
 [node name="BigGUIButton" type="Button" parent="TabContainer/Graphics/GraphicsGrid/GUISizeRow/GUISizeButtonsControl"]
-anchor_left = 0.9
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.9
+anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -48.0
+margin_left = -66.0
 margin_top = -12.0
-margin_right = 8.0
+margin_right = -10.0
 margin_bottom = 12.0
 rect_pivot_offset = Vector2( 28, 12 )
 toggle_mode = true

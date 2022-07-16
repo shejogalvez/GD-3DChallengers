@@ -86,7 +86,9 @@ func _ready():
 	consumable_button.connect("pressed", self, "_show_key_input")
 	
 	back_button.connect("pressed", self, "hide")
+	back_button.connect("mouse_entered", AudioStreamManager, "play_button_hover")
 	default_button.connect("pressed", self, "_set_default")
+	default_button.connect("mouse_entered", AudioStreamManager, "play_button_hover")
 
 # Called on each input event.
 func _input(event):
