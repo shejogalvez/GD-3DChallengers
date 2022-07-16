@@ -2,6 +2,7 @@ extends Control
 
 export(String, FILE) var main_hub_scene_path = "res://Game/MainHub.tscn"
 
+onready var fps_label := $FPSLabel
 onready var menu := $Menu
 onready var new_game_button := $Menu/NewGameButton
 onready var continue_button := $Menu/ContinueButton
@@ -22,6 +23,10 @@ func _ready():
 	settings_button.connect("pressed", self, "_show_settings")
 	credits_button.connect("pressed", self, "_show_credits")
 	exit_button.connect("pressed", self, "_exit_game")
+
+# Called every frame.
+func _process(delta):
+	fps_label.text = str(Engine.get_frames_per_second()) + " FPS"
 
 # Called on each input event.
 func _input(event):

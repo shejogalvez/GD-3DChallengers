@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Themes/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://GUI/Settings.gd" type="Script" id=2]
@@ -6,12 +6,85 @@
 [ext_resource path="res://Assets/Sprites/UI/Item_286.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Sprites/UI/Item_285_p.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Sprites/UI/Item_286_p.png" type="Texture" id=6]
+[ext_resource path="res://Assets/GUI/back_icon.png" type="Texture" id=7]
+[ext_resource path="res://Assets/GUI/back_icon_p.png" type="Texture" id=8]
+[ext_resource path="res://Assets/GUI/default_icon.png" type="Texture" id=9]
+[ext_resource path="res://Assets/GUI/default_icon_p.png" type="Texture" id=10]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0.784314 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0504, 0.0312, 0.06, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 0.0196078 )
+border_width_left = 3
+border_color = Color( 1, 1, 1, 0.0705882 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.118933, 0.072, 0.2, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.226, 0.18, 0.3, 1 )
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 6.0
+expand_margin_right = 6.0
+expand_margin_top = 6.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="Theme" id=1]
+PopupMenu/styles/panel = SubResource( 2 )
 
 [node name="Settings" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
+
+[node name="KeyInputPopup" type="Popup" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="KeyInputBackground" type="Panel" parent="KeyInputPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="KeyInputPanel" type="Panel" parent="KeyInputPopup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -30.0
+margin_right = 100.0
+margin_bottom = 30.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="KeyInputLabel" type="Label" parent="KeyInputPopup/KeyInputPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.5
+margin_top = -8.5
+margin_right = 52.5
+margin_bottom = 8.5
+grow_horizontal = 2
+text = "Press a valid key"
+align = 1
+valign = 1
 
 [node name="TabContainer" type="TabContainer" parent="." groups=["resizable_gui"]]
 anchor_left = 0.5
@@ -24,60 +97,28 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 320, 0 )
 
-[node name="Gameplay" type="Tabs" parent="TabContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 27.0
-
-[node name="GameplayGrid" type="Control" parent="TabContainer/Gameplay"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 70.0
-margin_top = 20.0
-margin_right = -70.0
-margin_bottom = -20.0
-
-[node name="FOVRow" type="Control" parent="TabContainer/Gameplay/GameplayGrid"]
-anchor_right = 1.0
-anchor_bottom = 0.1
-
-[node name="Label" type="Label" parent="TabContainer/Gameplay/GameplayGrid/FOVRow"]
-anchor_right = 0.5
-anchor_bottom = 1.0
-text = "FOV"
-valign = 1
-
-[node name="FullscreenToggle" type="CheckButton" parent="TabContainer/Gameplay/GameplayGrid/FOVRow"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -20.0
-margin_bottom = 20.0
-custom_icons/on = ExtResource( 3 )
-expand_icon = true
-
 [node name="Graphics" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 27.0
 
 [node name="GraphicsGrid" type="Control" parent="TabContainer/Graphics"]
 anchor_right = 1.0
-anchor_bottom = 1.0
 margin_left = 70.0
 margin_top = 20.0
 margin_right = -70.0
-margin_bottom = -20.0
+margin_bottom = 457.0
 
-[node name="DisplayRow" type="Control" parent="TabContainer/Graphics/GraphicsGrid"]
+[node name="DisplayRow" type="Panel" parent="TabContainer/Graphics/GraphicsGrid"]
 anchor_right = 1.0
 anchor_bottom = 0.15
+custom_styles/panel = SubResource( 3 )
 
 [node name="DisplayLabel" type="Label" parent="TabContainer/Graphics/GraphicsGrid/DisplayRow"]
 anchor_right = 0.5
 anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = 20.0
 text = "Display Mode"
 valign = 1
 
@@ -85,6 +126,8 @@ valign = 1
 anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -20.0
+margin_right = -20.0
 
 [node name="FullscreenButton" type="TextureButton" parent="TabContainer/Graphics/GraphicsGrid/DisplayRow/DisplayButtonsControl"]
 anchor_left = 0.5
@@ -116,14 +159,19 @@ texture_hover = ExtResource( 6 )
 texture_focused = ExtResource( 6 )
 expand = true
 
-[node name="ResolutionRow" type="Control" parent="TabContainer/Graphics/GraphicsGrid"]
+[node name="ResolutionRow" type="Panel" parent="TabContainer/Graphics/GraphicsGrid"]
 anchor_top = 0.15
 anchor_right = 1.0
 anchor_bottom = 0.3
+margin_top = 10.0
+margin_bottom = 10.0
+custom_styles/panel = SubResource( 3 )
 
 [node name="ResolutionLabel" type="Label" parent="TabContainer/Graphics/GraphicsGrid/ResolutionRow"]
 anchor_right = 0.5
 anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = 20.0
 text = "Resolution"
 valign = 1
 
@@ -131,6 +179,10 @@ valign = 1
 anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -21.0
+margin_top = 3.45
+margin_right = -21.0
+margin_bottom = 3.45
 
 [node name="ResolutionDropdown" type="OptionButton" parent="TabContainer/Graphics/GraphicsGrid/ResolutionRow/ResolutionDropdownControl"]
 anchor_left = 1.0
@@ -141,20 +193,26 @@ margin_left = -156.3
 margin_top = -11.5
 margin_right = -3.70001
 margin_bottom = 11.5
+theme = SubResource( 1 )
 custom_constants/hseparation = 20
 custom_constants/arrow_margin = 0
 text = "1920x1080"
 items = [ "1920x1080", null, false, 0, null, "1600x900", null, false, 1, null, "1280x720", null, false, 2, null, "1024x600", null, false, 3, null ]
 selected = 0
 
-[node name="GUISizeRow" type="Control" parent="TabContainer/Graphics/GraphicsGrid"]
+[node name="GUISizeRow" type="Panel" parent="TabContainer/Graphics/GraphicsGrid"]
 anchor_top = 0.3
 anchor_right = 1.0
 anchor_bottom = 0.6
+margin_top = 20.0
+margin_bottom = 20.0
+custom_styles/panel = SubResource( 3 )
 
 [node name="GUISizeLabel" type="Label" parent="TabContainer/Graphics/GraphicsGrid/GUISizeRow"]
 anchor_right = 0.5
 anchor_bottom = 0.5
+margin_left = 19.0
+margin_right = 19.0
 text = "GUI Size"
 valign = 1
 
@@ -168,11 +226,10 @@ anchor_left = 0.1
 anchor_top = 0.5
 anchor_right = 0.1
 anchor_bottom = 0.5
-margin_left = -23.0
+margin_left = -3.0
 margin_top = -12.0
-margin_right = 23.0
+margin_right = 43.0
 margin_bottom = 12.0
-rect_scale = Vector2( 0.8, 0.8 )
 rect_pivot_offset = Vector2( 23, 12 )
 toggle_mode = true
 text = "Small"
@@ -194,39 +251,218 @@ anchor_left = 0.9
 anchor_top = 0.5
 anchor_right = 0.9
 anchor_bottom = 0.5
-margin_left = -28.0
+margin_left = -48.0
 margin_top = -12.0
-margin_right = 28.0
+margin_right = 8.0
 margin_bottom = 12.0
-rect_scale = Vector2( 1.2, 1.2 )
 rect_pivot_offset = Vector2( 28, 12 )
 toggle_mode = true
 text = "Big"
+
+[node name="ShowFPSRow" type="Panel" parent="TabContainer/Graphics/GraphicsGrid"]
+anchor_top = 0.6
+anchor_right = 1.0
+anchor_bottom = 0.75
+margin_top = 30.0
+margin_bottom = 30.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="ShowFPSLabel" type="Label" parent="TabContainer/Graphics/GraphicsGrid/ShowFPSRow"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = 20.0
+text = "Show FPS"
+valign = 1
+
+[node name="ShowFPSControl" type="Control" parent="TabContainer/Graphics/GraphicsGrid/ShowFPSRow"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_right = -20.0
+
+[node name="ShowFPSCheckBox" type="CheckBox" parent="TabContainer/Graphics/GraphicsGrid/ShowFPSRow/ShowFPSControl"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -8.5
+margin_bottom = 8.5
 
 [node name="Sound" type="Tabs" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
 margin_top = 27.0
-margin_right = -4.0
-margin_bottom = -4.0
+
+[node name="SoundGrid" type="Control" parent="TabContainer/Sound"]
+anchor_right = 1.0
+margin_left = 70.0
+margin_top = 20.0
+margin_right = -70.0
+margin_bottom = 457.0
+
+[node name="GlobalVolumeRow" type="Panel" parent="TabContainer/Sound/SoundGrid"]
+anchor_right = 1.0
+anchor_bottom = 0.15
+custom_styles/panel = SubResource( 3 )
+
+[node name="GlobalVolumeLabel" type="Label" parent="TabContainer/Sound/SoundGrid/GlobalVolumeRow"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = 20.0
+text = "Global Volume"
+valign = 1
+
+[node name="GlobalVolumeControl" type="Control" parent="TabContainer/Sound/SoundGrid/GlobalVolumeRow"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_right = -20.0
+
+[node name="GlobalVolumeSlider" type="HSlider" parent="TabContainer/Sound/SoundGrid/GlobalVolumeRow/GlobalVolumeControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+min_value = -25.0
+max_value = 0.0
+
+[node name="MusicVolumeRow" type="Panel" parent="TabContainer/Sound/SoundGrid"]
+anchor_top = 0.15
+anchor_right = 1.0
+anchor_bottom = 0.3
+margin_top = 10.0
+margin_bottom = 10.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="MusicVolumeLabel" type="Label" parent="TabContainer/Sound/SoundGrid/MusicVolumeRow"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = 20.0
+text = "Music Volume"
+valign = 1
+
+[node name="MusicVolumeControl" type="Control" parent="TabContainer/Sound/SoundGrid/MusicVolumeRow"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -21.0
+margin_top = 3.45
+margin_right = -21.0
+margin_bottom = 3.45
+
+[node name="MusicVolumeSlider" type="HSlider" parent="TabContainer/Sound/SoundGrid/MusicVolumeRow/MusicVolumeControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+min_value = -25.0
+max_value = 0.0
+
+[node name="SFXVolumeRow" type="Panel" parent="TabContainer/Sound/SoundGrid"]
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 0.45
+margin_top = 20.0
+margin_bottom = 20.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="SFXVolumeLabel" type="Label" parent="TabContainer/Sound/SoundGrid/SFXVolumeRow"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = 20.0
+text = "Sound Effects Volume"
+valign = 1
+
+[node name="SFXVolumeControl" type="Control" parent="TabContainer/Sound/SoundGrid/SFXVolumeRow"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -21.0
+margin_top = 3.45
+margin_right = -21.0
+margin_bottom = 3.45
+
+[node name="SFXVolumeSlider" type="HSlider" parent="TabContainer/Sound/SoundGrid/SFXVolumeRow/SFXVolumeControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+min_value = -25.0
+max_value = 0.0
 
 [node name="Controls" type="Tabs" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
 margin_top = 27.0
-margin_right = -4.0
-margin_bottom = -4.0
 
-[node name="BackButton" type="Button" parent="." groups=["resizable_gui"]]
+[node name="ControlsGrid" type="Control" parent="TabContainer/Controls"]
+anchor_right = 1.0
+margin_left = 70.0
+margin_top = 20.0
+margin_right = -70.0
+margin_bottom = 457.0
+
+[node name="ConsumableRow" type="Panel" parent="TabContainer/Controls/ControlsGrid"]
+anchor_right = 1.0
+anchor_bottom = 0.15
+custom_styles/panel = SubResource( 3 )
+
+[node name="ConsumableLabel" type="Label" parent="TabContainer/Controls/ControlsGrid/ConsumableRow"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = 20.0
+text = "Use Consumable"
+valign = 1
+
+[node name="ConsumableControl" type="Control" parent="TabContainer/Controls/ControlsGrid/ConsumableRow"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_right = -20.0
+
+[node name="ConsumableButton" type="Button" parent="TabContainer/Controls/ControlsGrid/ConsumableRow/ConsumableControl"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -30.0
+margin_top = -10.0
+margin_right = -10.0
+margin_bottom = 10.0
+
+[node name="BackButton" type="TextureButton" parent="." groups=["resizable_gui"]]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 40.0
-margin_top = -63.0
-margin_right = 132.0
-margin_bottom = -40.0
-rect_pivot_offset = Vector2( 0, 23 )
-text = "Back to menu"
+margin_left = 30.0
+margin_top = -60.0
+margin_right = 60.0
+margin_bottom = -30.0
+rect_pivot_offset = Vector2( 0, 30 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+texture_disabled = ExtResource( 7 )
+texture_focused = ExtResource( 8 )
+expand = true
+
+[node name="DefaultButton" type="TextureButton" parent="." groups=["resizable_gui"]]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -70.0
+margin_top = -70.0
+margin_right = -30.0
+margin_bottom = -30.0
+rect_pivot_offset = Vector2( 40, 40 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+texture_disabled = ExtResource( 9 )
+texture_focused = ExtResource( 10 )
+expand = true

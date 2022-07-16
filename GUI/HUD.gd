@@ -1,5 +1,6 @@
 extends Control
 
+onready var fps_label := $FPSLabel
 onready var crosshair := $Crossshair
 onready var hp_bar := $StatsControl/HPBar
 onready var attack_label := $StatsControl/AttackLabel
@@ -31,6 +32,10 @@ func _ready():
 	PlayerManager.connect("consumables_updated", self, "_update_consumables_panel")
 	InteractionsManager.connect("interactions_updated", self, "_update_interaction_panel")
 	
+# Called every frame.
+func _process(delta):
+	fps_label.text = str(Engine.get_frames_per_second()) + " FPS"
+
 # Shows the crosshair.
 func _update_crosshair():
 	if PlayerManager.is_head_view():

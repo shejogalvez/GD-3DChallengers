@@ -4,6 +4,7 @@ extends Node
 static func play(audio : AudioStream) -> void:
 	var audio_player := AudioStreamPlayer.new()
 	AudioStreamManager.add_child(audio_player)
+	audio_player.bus = "SFX"
 	audio_player.stream = audio
 	audio_player.connect("finished", audio_player, "queue_free")
 	audio_player.play()
@@ -12,6 +13,7 @@ static func play(audio : AudioStream) -> void:
 static func play_3d(audio : AudioStream, position : Vector3, audio_db : float = 0.0, audio_size : float = 1.0) -> void:
 	var audio_player := AudioStreamPlayer3D.new()
 	AudioStreamManager.add_child(audio_player)
+	audio_player.bus = "SFX"
 	audio_player.stream = audio
 	audio_player.global_transform.origin = position
 	audio_player.unit_db = audio_db

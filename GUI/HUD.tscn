@@ -87,6 +87,20 @@ anchor_bottom = 1.0
 theme = ExtResource( 6 )
 script = ExtResource( 4 )
 
+[node name="FPSLabel" type="Label" parent="HUDControl" groups=["fps_displayer", "resizable_gui"]]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -100.0
+margin_top = 17.0
+margin_right = -20.0
+margin_bottom = 34.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_pivot_offset = Vector2( 80, 0 )
+text = "0 FPS"
+align = 2
+valign = 1
+
 [node name="Crossshair" type="TextureRect" parent="HUDControl"]
 anchor_right = 1.0
 anchor_bottom = 1.0

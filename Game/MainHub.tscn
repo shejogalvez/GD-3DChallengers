@@ -617,7 +617,7 @@ texture = ExtResource( 131 )
 [node name="EarthAnimatedSprite" type="AnimatedSprite" parent="Hall/EarthPoster/Viewport/SpaceBackground"]
 position = Vector2( 36, 54 )
 frames = SubResource( 23 )
-frame = 63
+frame = 15
 playing = true
 
 [node name="EarthPosterLight" type="OmniLight" parent="Hall/EarthPoster"]
@@ -805,3 +805,4 @@ environment = ExtResource( 16 )
 stream = ExtResource( 8 )
 volume_db = -1.0
 autoplay = true
+bus = "Music"
