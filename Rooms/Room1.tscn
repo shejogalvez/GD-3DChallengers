@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://MeshParedE.meshlib" type="MeshLibrary" id=1]
-[ext_resource path="res://MeshSueloE.meshlib" type="MeshLibrary" id=2]
+[ext_resource path="res://ZZZTrash/MeshParedE.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://ZZZTrash/MeshSueloE.meshlib" type="MeshLibrary" id=2]
 
 [node name="Room1" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.3984, 15.165, -289.145 )

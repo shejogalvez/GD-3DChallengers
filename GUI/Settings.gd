@@ -63,6 +63,7 @@ func _ready():
 	resolution_dropdown.select(GameManager.game_data["settings"]["resolution"])
 	gui_size_buttonlist[GameManager.game_data["settings"]["gui_size"]].pressed = true
 	show_fps_checkbox.pressed = GameManager.game_data["settings"]["show_fps"]
+	_change_fps_display()
 	
 	# ================
 	# SOUND
@@ -85,7 +86,7 @@ func _ready():
 	
 	consumable_button.connect("pressed", self, "_show_key_input")
 	
-	back_button.connect("pressed", self, "hide")
+	back_button.connect("pressed", self, "_close")
 	back_button.connect("mouse_entered", AudioStreamManager, "play_button_hover")
 	default_button.connect("pressed", self, "_set_default")
 	default_button.connect("mouse_entered", AudioStreamManager, "play_button_hover")
@@ -162,22 +163,27 @@ func _set_default() -> void:
 	GameManager.set_default_settings()
 	GameManager.update_graphics_settings()
 	GameManager.update_volume_settings()
+	GameManager.save_data()
 	
 	# Updating from game data.
 	display_buttonlist[GameManager.game_data["settings"]["display_mode"]].set_pressed_no_signal(true)
 	resolution_dropdown.select(GameManager.game_data["settings"]["resolution"])
 	gui_size_buttonlist[GameManager.game_data["settings"]["gui_size"]].pressed = true
+	show_fps_checkbox.pressed = GameManager.game_data["settings"]["show_fps"]
 	
 	# Updating from game data.
 	global_volume_slider.value = GameManager.game_data["settings"]["global_volume"]
 	music_volume_slider.value = GameManager.game_data["settings"]["music_volume"]
 	sfx_volume_slider.value = GameManager.game_data["settings"]["sfx_volume"]
 	
-	GameManager.save_data()
+	AudioStreamManager.play_button_pressed()
 
 # Shows the key input popup.
 func _show_key_input() -> void:
 	key_input_popup.popup()
 	in_key_selection = true
 	
-		
+# Closes the window.
+func _close() -> void:
+	hide()
+	AudioStreamManager.play_button_pressed()

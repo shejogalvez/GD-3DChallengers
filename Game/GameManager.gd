@@ -19,6 +19,12 @@ const GUI_SIZES = [
 ]
 const GAME_DATA_PATH := "user://save_file.save"
 
+var new_game := {
+	"day": 1,
+	"money": 10,
+	"max_consumables" : 1
+}
+
 var default_settings := {
 	"display_mode" : 1,
 	"resolution" : 3,
@@ -30,6 +36,10 @@ var default_settings := {
 }
 
 var game_data := {
+	"meta" : {
+		"saved" : false,
+	},
+	"game" : new_game.duplicate(),
 	"settings" : default_settings.duplicate()
 }
 
@@ -76,6 +86,11 @@ func transfer_dictionary_data(receiver : Dictionary, sender : Dictionary) -> voi
 		elif key in sender and typeof(receiver[key]) == TYPE_DICTIONARY and typeof(sender[key]) == TYPE_DICTIONARY:
 			transfer_dictionary_data(receiver[key], sender[key])
 				
+
+# Sets a new game.
+func set_new_game() -> void:
+	game_data["meta"]["saved"] = true
+	game_data["game"] = new_game.duplicate()
 
 # Updates the window display mode.
 func update_display_mode() -> void:
@@ -129,4 +144,4 @@ func update_volume_settings() -> void:
 
 # Sets the default settings.
 func set_default_settings() -> void:
-	game_data["settings"] = default_settings
+	game_data["settings"] = default_settings.duplicate()

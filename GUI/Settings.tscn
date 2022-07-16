@@ -434,6 +434,8 @@ margin_left = -30.0
 margin_top = -10.0
 margin_right = -10.0
 margin_bottom = 10.0
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 20, 10 )
 
 [node name="BackButton" type="TextureButton" parent="." groups=["resizable_gui"]]
 anchor_top = 1.0

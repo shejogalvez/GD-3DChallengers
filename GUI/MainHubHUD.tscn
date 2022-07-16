@@ -1,9 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://GUI/MainHubHUD.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/Atarian/SF Atarian System Extended Bold Italic.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Sprites/UI/Item_0385.png" type="Texture" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Themes/MainTheme.tres" type="Theme" id=6]
 [ext_resource path="res://Assets/Fonts/Atarian/AtarianWide.tres" type="DynamicFont" id=7]
+
+[sub_resource type="DynamicFont" id=6]
+size = 80
+use_filter = true
+font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.0313726, 0, 0.0470588, 1 )
@@ -19,8 +26,51 @@ shadow_color = Color( 0, 0, 0, 0.235294 )
 shadow_size = 2
 shadow_offset = Vector2( 1.5, 1.5 )
 
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("HUDControl/DayLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "day_vanishment"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("HUDControl/DayLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [sub_resource type="Animation" id=4]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("HUDControl/DayLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "interaction_beat"
@@ -47,6 +97,44 @@ grow_vertical = 0
 rect_pivot_offset = Vector2( 80, 0 )
 text = "0 FPS"
 align = 2
+valign = 1
+
+[node name="DayLabel" type="Label" parent="HUDControl" groups=["resizable_gui"]]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -330.0
+margin_top = -130.0
+margin_right = -30.0
+margin_bottom = -20.0
+rect_pivot_offset = Vector2( 300, 110 )
+custom_fonts/font = SubResource( 6 )
+text = "Day 0"
+align = 2
+valign = 2
+
+[node name="MoneyControl" type="Control" parent="HUDControl" groups=["resizable_gui"]]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -52.0
+margin_right = 200.0
+margin_bottom = -20.0
+rect_pivot_offset = Vector2( 0, 36 )
+
+[node name="MoneyIcon" type="TextureRect" parent="HUDControl/MoneyControl"]
+anchor_right = 0.2
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="MoneyLabel" type="Label" parent="HUDControl/MoneyControl"]
+anchor_left = 0.22
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0"
 valign = 1
 
 [node name="InteractionPanel" type="Panel" parent="HUDControl" groups=["resizable_gui"]]
@@ -76,7 +164,13 @@ text = "Interaction"
 valign = 1
 max_lines_visible = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HUDControl"]
+[node name="DayAnimationPlayer" type="AnimationPlayer" parent="HUDControl"]
+root_node = NodePath("../..")
+autoplay = "day_vanishment"
+anims/RESET = SubResource( 8 )
+anims/day_vanishment = SubResource( 9 )
+
+[node name="InteractionAnimationPlayer" type="AnimationPlayer" parent="HUDControl"]
 root_node = NodePath("../..")
 anims/RESET = SubResource( 4 )
 anims/interaction_beat = SubResource( 5 )

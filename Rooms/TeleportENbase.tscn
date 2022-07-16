@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://MeshSueloE.meshlib" type="MeshLibrary" id=2]
-[ext_resource path="res://MeshParedE.meshlib" type="MeshLibrary" id=3]
+[ext_resource path="res://ZZZTrash/MeshSueloE.meshlib" type="MeshLibrary" id=2]
+[ext_resource path="res://ZZZTrash/MeshParedE.meshlib" type="MeshLibrary" id=3]
+
 
 [node name="TeleportENbase" type="Spatial"]
 

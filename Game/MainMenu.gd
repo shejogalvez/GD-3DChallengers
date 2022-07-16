@@ -23,6 +23,8 @@ func _ready():
 	settings_button.connect("pressed", self, "_show_settings")
 	credits_button.connect("pressed", self, "_show_credits")
 	exit_button.connect("pressed", self, "_exit_game")
+	
+	continue_button.disabled = !GameManager.game_data["meta"]["saved"]
 
 # Called every frame.
 func _process(delta):
@@ -35,6 +37,7 @@ func _input(event):
 
 # Starts a new game.
 func _start_new_game() -> void:
+	GameManager.set_new_game()
 	get_tree().change_scene(main_hub_scene_path)
 	AudioStreamManager.play_button_pressed()
 
