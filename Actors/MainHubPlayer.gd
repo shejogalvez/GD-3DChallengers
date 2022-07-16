@@ -17,7 +17,7 @@ const MAX_SPEED := 28
 const ACCEL := 4.5
 const DEACCEL := 20
 # Jumping and gravity
-const JUMP_SPEED := 40
+const JUMP_SPEED := 60
 const GRAVITY := -80
 const MAX_SLOPE_ANGLE := 40
 # Sprinting
