@@ -206,7 +206,7 @@ shape = SubResource( 1 )
 disabled = false
 
 [node name="pivot_cara" type="Spatial" parent="Hitbox" index="0"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 20, 0 )
 
 [node name="body" type="MeshInstance" parent="Hitbox/pivot_cara" index="0"]
 mesh = SubResource( 2 )
