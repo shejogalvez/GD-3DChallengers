@@ -22,6 +22,10 @@ export (PackedScene) var wall : PackedScene = preload("res://Rooms/WALL.tscn")
 func _ready():
 	pass # Replace with function body.
 	
+# Initializes the room.
+func _init_room():
+	pass
+	
 func set_openings(openings_set):
 	openings = openings_set
 
