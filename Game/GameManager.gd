@@ -74,7 +74,8 @@ func load_data() -> void:
 	# while not necessary 
 	while openFile.get_position() < openFile.get_len():
 		var possible_game_data = parse_json(openFile.get_line())
-		transfer_dictionary_data(game_data, possible_game_data)
+		if typeof(possible_game_data) == TYPE_DICTIONARY:
+			transfer_dictionary_data(game_data, possible_game_data)
 
 	openFile.close()
 	
