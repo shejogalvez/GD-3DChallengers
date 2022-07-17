@@ -7,7 +7,6 @@
 [ext_resource path="res://Rooms/Pedestals/WeaponPedestal.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Weapons/Revolver.tscn" type="PackedScene" id=11]
 
-
 [sub_resource type="Environment" id=6]
 ambient_light_color = Color( 0.462745, 0.207843, 0.207843, 1 )
 ambient_light_energy = 1.5
@@ -51,4 +50,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6492, 14.8321, -191.041 )
 weapon_scene = ExtResource( 11 )
 
 [node name="Boss" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 17.1267, -16.042 )
+transform = Transform( -4, 0, -6.03983e-07, 0, 4, 0, 6.03983e-07, 0, -4, 0.984802, 17.1267, -27.4863 )

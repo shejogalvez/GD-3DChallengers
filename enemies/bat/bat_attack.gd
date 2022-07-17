@@ -21,7 +21,6 @@ func impact(body: Node) -> void:
 
 func reset() -> void:
 	area.scale.y = 0.01
-	end_shape.translation.y = -2
 	collsion.disabled = true
 	hit_something = false
 	

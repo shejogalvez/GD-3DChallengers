@@ -17,14 +17,21 @@ var unused_openings = Array()
 
 export (PackedScene) var teleport : PackedScene = preload("res://Rooms/Procedural Map/TeleportENbase2.tscn")
 export (PackedScene) var wall : PackedScene = preload("res://Rooms/WALL.tscn")
+var filled : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-	
+
 # Initializes the room.
 func _init_room():
+	print("room ", self, " pos: ", pos, " initializated")
 	pass
+
+func attend_tp_signal(body):
+	if body == PlayerManager.get_player() and not filled:
+		self._init_room()
+		filled = true
 	
 func set_openings(openings_set):
 	openings = openings_set
@@ -88,7 +95,7 @@ func add_childroom(rel_opening, new_opening, relangle, newangle, newpos):
 	for_tp.translation = Vector3(rel_opening.x, 0, rel_opening.y) * size
 	for_tp.rotate_y(relangle)
 	var new_op_v3 = Vector3(new_opening.x, 0, new_opening.y)
-	for_tp.set_distance(new_op_v3, separation - size - new_room.size, tp_offset) 
+	for_tp.set_distance_and_signal(new_op_v3, separation - size - new_room.size, tp_offset, new_room) 
 	self.add_child(for_tp)
 	
 func open_exit() -> bool:
@@ -96,7 +103,7 @@ func open_exit() -> bool:
 		var rel_opening = opening[0]
 		var new_opening = rel_opening.rotated(-angle)
 		var newpos = self.pos + new_opening
-		print("emergency exit  ", opening, angle, newpos, self)
+		#print("emergency exit  ", opening, angle, newpos, self)
 		var newangle = -Vector2.DOWN.angle_to(new_opening)
 		var relangle = newangle - self.angle
 		if father.is_valid_room(newpos):

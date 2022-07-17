@@ -69,8 +69,10 @@ func generate_bullet():
 	scene_root.add_child(bullet)
 	return bullet
 	
-func _bullet_transform(bullet):
+func _bullet_transform(bullet : EnemyBullet):
 	var angle = rand_range(0, 2*PI)
 	bullet.rotate_y(angle)
 	bullet.scale = Vector3(3, 3, 3)
 	bullet.global_transform.origin = Vector3(path_of_bullets[vec_index].x, initial_y, path_of_bullets[vec_index].y)
+	bullet.kill_timer = 10
+	bullet.max_speed = 25

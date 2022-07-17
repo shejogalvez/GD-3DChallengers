@@ -4,7 +4,7 @@
 [ext_resource path="res://enemies/attack_patterns/bullet_scripts/curvespeed_bullet.gd" type="Script" id=2]
 
 [sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 0.0950919 ), 0.0, 0.156254, 0, 0, Vector2( 0.170673, 0.0950919 ), 2.87117, 2.87117, 0, 0, Vector2( 0.959135, 0.45092 ), 0.450379, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0.205521 ), 0.0, 0.156254, 0, 0, Vector2( 0.161058, 0.119632 ), 6.12515, 6.12515, 0, 0, Vector2( 0.276442, 0.966258 ), 0.349402, 0.349402, 0, 0, Vector2( 1, 0.990798 ), 0.0408345, 0.0, 0, 0 ]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.197894
@@ -23,6 +23,7 @@ transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
 script = ExtResource( 2 )
 projectile_speed = 40
 kill_timer = 8.0
+max_speed = 40
 bullet_speed_curve = SubResource( 3 )
 
 [node name="CollisionShape" parent="Area" index="0"]

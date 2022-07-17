@@ -22,7 +22,6 @@ func found_player():
 	set_state(Alerted.new())
 
 func projectile_hit(damage, bullet_global_trans):
-	print(state.get_class())
 	state.projectile_hit(damage, bullet_global_trans)
 
 func _process(delta):
@@ -34,6 +33,7 @@ func _physics_process(delta):
 func set_state(state):
 	self.state = state
 	state.start(self)
+	print(state, self)
 
 # useful functions
 func vec_to_player():

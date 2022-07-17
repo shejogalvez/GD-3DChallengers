@@ -14,7 +14,6 @@ var random_rooms = [
 # end_room SIMPRE VA PRIMERO!!
 var obligatory_rooms = [
 	[preload("res://Rooms/Procedural Map/end_room.tscn"), [12]],
-	[preload("res://Rooms/Procedural Map/item_room.tscn"), [2,3,7]],
 ]
 var obligatory_rooms_queue = Array()
 export (PackedScene) var initial_room : PackedScene = preload("res://Rooms/Procedural Map/initial_room.tscn"  )
@@ -88,7 +87,7 @@ func _ready():
 				i+=1
 			#init.queue_free()
 			#reset()
-	print(constructed_rooms, constructed_rooms_array)
+	#print(constructed_rooms, constructed_rooms_array)
 	
 func reset():
 	reserved_spots = []
@@ -103,7 +102,7 @@ func reset():
 # tries to create a new teleport/room on indexth room created, return true if succeed
 func create_emergency_exit(index) -> bool:
 	var room = constructed_rooms_array[index]
-	print(room, room.pos)
+	#print(room, room.pos)
 	return room.open_exit()
 	
 func set_initial_weights():
@@ -131,11 +130,11 @@ func set_orientation(orientation):
 
 func is_valid_room(pos:Vector2) -> bool:
 	if constructed_rooms >= number_of_rooms:
-		print("done")
+		#print("done")
 		return false
 	for spot in occupied_spots:
 		if (spot - pos).length() < 0.2:
-			print(pos, "collsion", (spot - pos).length())
+			#print(pos, "collsion", (spot - pos).length())
 			return false
 	return true
 

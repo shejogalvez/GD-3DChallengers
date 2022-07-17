@@ -235,6 +235,7 @@ material/0 = SubResource( 11 )
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9.68234e-08, 0, -1.10753 )
 
 [node name="sound_wave" parent="Hitbox/pivot_cara/body/pivot" index="0" instance=ExtResource( 4 )]
+transform = Transform( 1.3, 0, 0, 0, 1.5, 0, 0, 0, 1.3, 0, 0, 0 )
 
 [node name="AnimationPlayer" parent="." index="1"]
 playback_speed = 1.5

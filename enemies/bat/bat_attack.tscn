@@ -2,17 +2,13 @@
 
 [ext_resource path="res://enemies/bat/bat_attack.gd" type="Script" id=1]
 
-[sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.321569, 0.517647, 0.988235, 1 )
-emission_enabled = true
-emission = Color( 0.894118, 0.419608, 0.796078, 1 )
-emission_energy = 0.5
-emission_operator = 0
-emission_on_uv2 = false
+[sub_resource type="SpatialMaterial" id=5]
+flags_unshaded = true
+albedo_color = Color( 0.6, 0.392157, 0.72549, 1 )
 
 [sub_resource type="CylinderShape" id=2]
-radius = 1.2
-height = 4.0
+radius = 2.1
+height = 12.5
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -50,7 +46,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0, -2, 0 ) ]
+"values": [ Vector3( 0, -6.3, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -63,7 +59,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 1, 0.01, 1 ), Vector3( 1, 1, 1 ) ]
@@ -87,10 +83,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector3( 0, -2, 0 ), Vector3( 0, -3, 0 ), Vector3( 0, -4, 0 ), Vector3( 0, -5, 0 ), Vector3( 0, -6, 0 ) ]
+"values": [ Vector3( 0, -8, 0 ), Vector3( 0, -10, 0 ), Vector3( 0, -12, 0 ), Vector3( 0, -13, 0 ), Vector3( 0, -15, 0 ), Vector3( 0, -17.5, 0 ), Vector3( 0, -20, 0 ), Vector3( 0, -6.3, 0 ) ]
 }
 tracks/3/type = "method"
 tracks/3/path = NodePath(".")
@@ -118,42 +114,80 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0
 [node name="wave_cylinder" type="CSGCombiner" parent="pivot/CSGCombiner"]
 calculate_tangents = false
 
-[node name="CSGCylinder" type="CSGCylinder" parent="pivot/CSGCombiner/wave_cylinder"]
-radius = 1.5
-height = 8.0
-sides = 16
-cone = true
-material = SubResource( 1 )
+[node name="CSGTorus" type="CSGTorus" parent="pivot/CSGCombiner/wave_cylinder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.374944, -1.63893e-08 )
+inner_radius = 0.5
+outer_radius = 1.0
+sides = 12
+ring_sides = 8
+material = SubResource( 5 )
 
-[node name="CSGBox" type="CSGBox" parent="pivot/CSGCombiner/wave_cylinder"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-operation = 2
-width = 4.0
-height = 4.0
-depth = 4.0
+[node name="CSGTorus2" type="CSGTorus" parent="pivot/CSGCombiner/wave_cylinder"]
+transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -2, 0 )
+inner_radius = 0.5
+outer_radius = 1.0
+sides = 12
+ring_sides = 8
+material = SubResource( 5 )
 
-[node name="CSGCylinder2" type="CSGCylinder" parent="pivot/CSGCombiner/wave_cylinder"]
-operation = 2
-radius = 1.4
-height = 8.0
-sides = 16
-cone = true
+[node name="CSGTorus3" type="CSGTorus" parent="pivot/CSGCombiner/wave_cylinder"]
+transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, -4, 0 )
+inner_radius = 0.5
+outer_radius = 1.0
+sides = 12
+ring_sides = 8
+material = SubResource( 5 )
+
+[node name="CSGTorus4" type="CSGTorus" parent="pivot/CSGCombiner/wave_cylinder"]
+transform = Transform( 1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, -6, 0 )
+inner_radius = 0.5
+outer_radius = 1.0
+sides = 12
+ring_sides = 8
+material = SubResource( 5 )
+
+[node name="CSGTorus5" type="CSGTorus" parent="pivot/CSGCombiner/wave_cylinder"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -8, 0 )
+inner_radius = 0.5
+outer_radius = 1.0
+sides = 12
+ring_sides = 8
+material = SubResource( 5 )
+
+[node name="CSGTorus6" type="CSGTorus" parent="pivot/CSGCombiner/wave_cylinder"]
+transform = Transform( 2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0, -10, 0 )
+inner_radius = 0.5
+outer_radius = 1.0
+sides = 12
+ring_sides = 8
+material = SubResource( 5 )
+
+[node name="CSGTorus7" type="CSGTorus" parent="pivot/CSGCombiner/wave_cylinder"]
+transform = Transform( 2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, -12, 0 )
+inner_radius = 0.5
+outer_radius = 1.0
+sides = 12
+ring_sides = 8
+material = SubResource( 5 )
 
 [node name="end_shape" type="CSGBox" parent="pivot/CSGCombiner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.3, 0 )
 operation = 2
-width = 4.0
-height = 4.0
-depth = 4.0
+width = 5.2
+height = 13.0
+depth = 5.2
 
 [node name="Area" type="Area" parent="pivot/CSGCombiner"]
 transform = Transform( 1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="pivot/CSGCombiner/Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.10918e-08, -2.08394, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.25, 0 )
 shape = SubResource( 2 )
 disabled = true
 
+[node name="MeshInstance" type="MeshInstance" parent="pivot"]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 1.4
 anims/RESET = SubResource( 3 )
 anims/excecute = SubResource( 4 )
