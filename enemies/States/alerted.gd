@@ -19,4 +19,3 @@ func _process(delta):
 			if dif.length() < enemy_node.attack_distance:
 				enemy_node.attack()
 				alerted = true
-		enemy_node.face_player()

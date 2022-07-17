@@ -14,6 +14,7 @@ func _ready():
 	animator.connect("animation_finished", self, "back_to_idle")
 	attack_distance = 15
 	initial_speed = speed
+	alertedState = BatAlerted.new()
 	pass # Replace with function body.
 
 func look_up_face():
@@ -43,4 +44,8 @@ func back_to_idle(body):
 #func _physics_process(delta):
 #	if not attacking:
 #		face_player()
-
+class BatAlerted extends Alerted:
+	func _process(delta):
+		._process(delta)
+		if not enemy_node.attacking:
+			enemy_node.face_player()

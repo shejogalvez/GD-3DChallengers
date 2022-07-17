@@ -9,17 +9,19 @@ export (int, 0, 300) var attack_distance = 15
 onready var raycast = $RayCast
 
 var state
+var standbyState = Standby.new()
+var alertedState = Alerted.new()
 export (int) var alert_range = 25
 
 func _ready():
-	set_state(Standby.new())
+	set_state(standbyState)
 	pass # Replace with function body.
 	
 func attack():
 	pass
 	
 func found_player():
-	set_state(Alerted.new())
+	set_state(alertedState)
 
 func projectile_hit(damage, bullet_global_trans):
 	state.projectile_hit(damage, bullet_global_trans)

@@ -86,7 +86,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector3( 0, -8, 0 ), Vector3( 0, -10, 0 ), Vector3( 0, -12, 0 ), Vector3( 0, -13, 0 ), Vector3( 0, -15, 0 ), Vector3( 0, -17.5, 0 ), Vector3( 0, -20, 0 ), Vector3( 0, -6.3, 0 ) ]
+"values": [ Vector3( 0, -8, 0 ), Vector3( 0, -10, 0 ), Vector3( 0, -12, 0 ), Vector3( 0, -13, 0 ), Vector3( 0, -15.5, 0 ), Vector3( 0, -17.5, 0 ), Vector3( 0, -20, 0 ), Vector3( 0, -6.3, 0 ) ]
 }
 tracks/3/type = "method"
 tracks/3/path = NodePath(".")
@@ -188,6 +188,6 @@ disabled = true
 [node name="MeshInstance" type="MeshInstance" parent="pivot"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 1.4
+playback_speed = 1.6
 anims/RESET = SubResource( 3 )
 anims/excecute = SubResource( 4 )

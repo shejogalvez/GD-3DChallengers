@@ -24,7 +24,7 @@ func look_up_face():
 
 class initial_state extends State:
 	
-	const follow_distance = 50
+	const follow_distance = 80
 	
 	func _process(delta):
 		var dif = enemy_node.global_transform.origin - PlayerManager.get_player_position()
