@@ -1,4 +1,4 @@
-[gd_scene load_steps=165 format=2]
+[gd_scene load_steps=166 format=2]
 
 [ext_resource path="res://Assets/Meshes/FutureMesh/future_mesh_library.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://Actors/MainHubPlayer.tscn" type="PackedScene" id=2]
@@ -143,6 +143,7 @@
 [ext_resource path="res://Assets/Audio/Ambient/ambience_power_station.wav" type="AudioStream" id=141]
 [ext_resource path="res://Assets/Meshes/FutureMesh/Paper/Paper.tres" type="PlaneMesh" id=142]
 [ext_resource path="res://GUI/Workstation.tscn" type="PackedScene" id=143]
+[ext_resource path="res://Actors/Extra/Rat.tscn" type="PackedScene" id=144]
 [ext_resource path="res://Rooms/Misc/GUIDisplayer.tscn" type="PackedScene" id=145]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -617,7 +618,7 @@ texture = ExtResource( 131 )
 [node name="EarthAnimatedSprite" type="AnimatedSprite" parent="Hall/EarthPoster/Viewport/SpaceBackground"]
 position = Vector2( 36, 54 )
 frames = SubResource( 23 )
-frame = 84
+frame = 59
 playing = true
 
 [node name="EarthPosterLight" type="OmniLight" parent="Hall/EarthPoster"]
@@ -807,3 +808,6 @@ stream = ExtResource( 8 )
 volume_db = -1.0
 autoplay = true
 bus = "Music"
+
+[node name="Rat" parent="." instance=ExtResource( 144 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
