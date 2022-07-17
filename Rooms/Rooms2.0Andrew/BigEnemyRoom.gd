@@ -1,13 +1,20 @@
 extends RandomRoom
 
 export(PackedScene) var pot_small_scene : PackedScene
-
 export(PackedScene) var bat_enemy_scene : PackedScene
 export(PackedScene) var minion_enemy_scene : PackedScene
 export(PackedScene) var sand_soldier_scene : PackedScene
 export(PackedScene) var Itempedestal_scene : PackedScene
+export(PackedScene) var SmallChest_scene : PackedScene
+export(PackedScene) var RubyRing_scene : PackedScene
+export(PackedScene) var LeatherBackpack_scene : PackedScene
+export(PackedScene) var IronHelmet_scene : PackedScene
+export(PackedScene) var IronGloves_scene : PackedScene
+export(PackedScene) var IronChestplate_scene : PackedScene
+export(PackedScene) var GoldenChest_scene : PackedScene
+export(PackedScene) var AlphaCore_scene : PackedScene
 var rng := RandomNumberGenerator.new()
-
+var item_instance : Item
 var pot_positions := [
 	Vector3(129.5, 0.5, 129.5),
 	Vector3(124.5, 0.5, 129.5),
@@ -79,18 +86,21 @@ const MIN_ENEMY_AMOUNT := 8
 const MAX_ENEMY_AMOUNT := 12
 
 var enemies := []
-
+var items := []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
 	enemies = [bat_enemy_scene, minion_enemy_scene, sand_soldier_scene]
+	items = [SmallChest_scene.instance(), RubyRing_scene.instance(), LeatherBackpack_scene.instance(), IronHelmet_scene.instance(), IronGloves_scene.instance(), IronChestplate_scene.instance(), GoldenChest_scene.instance(), AlphaCore_scene.instance()]
 	_generate_random_pots()
 	_generate_random_enemies()
 	_generate_random_item()
 # Initializes the room with pots and enemies.
 func _init_room():
 	pass
+#Genera un item al azar en medio de la Sala 
 func _generate_random_item() -> void:
+	var item_instance = items[rng.randi_range(0, 8)]
 	var item_real_positions = []
 	var item_scene : PackedScene = Itempedestal_scene
 	var item : Spatial = item_scene.instance()
