@@ -5,53 +5,62 @@ export(PackedScene) var pot_small_scene : PackedScene
 export(PackedScene) var bat_enemy_scene : PackedScene
 export(PackedScene) var minion_enemy_scene : PackedScene
 export(PackedScene) var sand_soldier_scene : PackedScene
-
+export(PackedScene) var Itempedestal_scene : PackedScene
 var rng := RandomNumberGenerator.new()
 
 var pot_positions := [
-	Vector3(99.5, 0.5, 99.5),
-	Vector3(94.5, 0.5, 99.5),
-	Vector3(99.5, 0.5, 94.5),
-	Vector3(-99.5, 0.5, 99.5),
-	Vector3(-94.5, 0.5, 99.5),
-	Vector3(-99.5, 0.5, 94.5),
-	Vector3(99.5, 0.5, -99.5),
-	Vector3(94.5, 0.5, -99.5),
-	Vector3(99.5, 0.5, -94.5),
-	Vector3(-99.5, 0.5, -99.5),
-	Vector3(-94.5, 0.5, -99.5),
-	Vector3(-99.5, 0.5, -94.5),
-	Vector3(69.5, 0.5, 99.5),
-	Vector3(64.5, 0.5, 99.5),
-	Vector3(69.5, 0.5, 94.5),
-	Vector3(-99.5, 0.5, 69.5),
-	Vector3(-94.5, 0.5, 69.5),
-	Vector3(-99.5, 0.5, 64.5),
-	Vector3(99.5, 0.5, -69.5),
-	Vector3(94.5, 0.5, -69.5),
-	Vector3(99.5, 0.5, -64.5),
-	Vector3(-69.5, 0.5, -99.5),
-	Vector3(-64.5, 0.5, -99.5),
-	Vector3(-69.5, 0.5, -94.5),
-	Vector3(99.5, 0.5, 69.5),
-	Vector3(94.5, 0.5, 69.5),
-	Vector3(99.5, 0.5, 64.5),
-	Vector3(-69.5, 0.5, 99.5),
-	Vector3(-64.5, 0.5, 99.5),
-	Vector3(-69.5, 0.5, 94.5),
-	Vector3(69.5, 0.5, -99.5),
-	Vector3(64.5, 0.5, -99.5),
-	Vector3(69.5, 0.5, -94.5),
-	Vector3(-99.5, 0.5, -69.5),
-	Vector3(-94.5, 0.5, -69.5),
-	Vector3(-99.5, 0.5, -64.5),		
-]
+	Vector3(129.5, 0.5, 129.5),
+	Vector3(124.5, 0.5, 129.5),
+	Vector3(129.5, 0.5, 124.5),
+	
+	Vector3(-129.5, 0.5, 129.5),
+	Vector3(-124.5, 0.5, 129.5),
+	Vector3(-129.5, 0.5, 124.5),
+	
+	Vector3(129.5, 0.5, -129.5),
+	Vector3(124.5, 0.5, -129.5),
+	Vector3(129.5, 0.5, -124.5),
+	
+	Vector3(-129.5, 0.5, -129.5),
+	Vector3(-124.5, 0.5, -129.5),
+	Vector3(-129.5, 0.5, -124.5),
+	
+	Vector3(99.5, 0.5, 129.5),
+	Vector3(94.5, 0.5, 129.5),
+	Vector3(99.5, 0.5, 124.5),
+	
+	Vector3(-129.5, 0.5, 99.5),
+	Vector3(-124.5, 0.5, 99.5),
+	Vector3(-129.5, 0.5, 94.5),
+	
+	Vector3(129.5, 0.5, -99.5),
+	Vector3(124.5, 0.5, -99.5),
+	Vector3(129.5, 0.5, -94.5),
+	
+	Vector3(-99.5, 0.5, -129.5),
+	Vector3(-94.5, 0.5, -129.5),
+	Vector3(-99.5, 0.5, -124.5),
+	
+	Vector3(129.5, 0.5, 99.5),
+	Vector3(124.5, 0.5, 99.5),
+	Vector3(129.5, 0.5, 94.5),
+	
+	Vector3(-99.5, 0.5, 129.5),
+	Vector3(-94.5, 0.5, 129.5),
+	Vector3(-99.5, 0.5, 124.5),
+	
+	Vector3(99.5, 0.5, -129.5),
+	Vector3(94.5, 0.5, -129.5),
+	Vector3(99.5, 0.5, -124.5),
+	
+	Vector3(-129.5, 0.5, -99.5),
+	Vector3(-124.5, 0.5, -99.5),
+	Vector3(-129.5, 0.5, -94.5),]
 
 const MIN_POT_AMOUNT := 12
 const MAX_POT_AMOUNT := 24
 
 var enemies_positions := [
-	Vector3(0, 2.5, 0),
 	Vector3(30, 2.5, 0),
 	Vector3(0, 2.5, 30),
 	Vector3(-30, 2.5, 0),
@@ -60,10 +69,14 @@ var enemies_positions := [
 	Vector3(-60, 2.5, 60),
 	Vector3(-60, 2.5, -60),
 	Vector3(60, 2.5, -60),
+	Vector3(90, 2.5, 30),
+	Vector3(-90, 2.5, 30),
+	Vector3(-90, 2.5, -30),
+	Vector3(90, 2.5, -30)
 ]
 
-const MIN_ENEMY_AMOUNT := 6
-const MAX_ENEMY_AMOUNT := 8
+const MIN_ENEMY_AMOUNT := 8
+const MAX_ENEMY_AMOUNT := 12
 
 var enemies := []
 
@@ -71,12 +84,18 @@ var enemies := []
 func _ready():
 	rng.randomize()
 	enemies = [bat_enemy_scene, minion_enemy_scene, sand_soldier_scene]
-
-# Initializes the room with pots and enemies.
-func _init_room():
 	_generate_random_pots()
 	_generate_random_enemies()
-
+	_generate_random_item()
+# Initializes the room with pots and enemies.
+func _init_room():
+	pass
+func _generate_random_item() -> void:
+	var item_real_positions = []
+	var item_scene : PackedScene = Itempedestal_scene
+	var item : Spatial = item_scene.instance()
+	item.global_transform.origin = Vector3(0,0,0)
+	add_child(item)
 # Generates random pots around the room.
 func _generate_random_pots() -> void:
 	var pot_amount = rng.randi_range(MIN_POT_AMOUNT, MAX_POT_AMOUNT)

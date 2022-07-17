@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Meshes/AztecMesh/aztec_mesh_library.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://Rooms/Rooms2.0Andrew/MidEnemyRoom.gd" type="Script" id=2]
-[ext_resource path="res://Actors/MainHubPlayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://enemies/sand_soldier/sand_soldier.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Rooms/Misc/PotSmall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://enemies/bat/bat.tscn" type="PackedScene" id=6]
@@ -26,6 +25,3 @@ __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 0, 0 )
 }
-
-[node name="MainHubPlayer" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.01996, 1, 27.8576 )

@@ -70,7 +70,7 @@ var enemies := []
 func _ready():
 	rng.randomize()
 	enemies = [bat_enemy_scene, minion_enemy_scene, sand_soldier_scene]
-
+	
 # Initializes the room with pots and enemies.
 func _init_room():
 	_generate_random_pots()

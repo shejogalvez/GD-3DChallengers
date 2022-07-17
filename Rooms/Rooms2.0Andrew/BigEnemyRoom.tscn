@@ -1,14 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Meshes/AztecMesh/aztec_mesh_library.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://Rooms/Rooms2.0Andrew/BigEnemyRoom.gd" type="Script" id=2]
-[ext_resource path="res://Actors/MainHubPlayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/minion_egipcio/minion_maloglb.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Rooms/Misc/PotSmall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://enemies/bat/bat.tscn" type="PackedScene" id=6]
+[ext_resource path="res://enemies/sand_soldier/sand_soldier.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Rooms/Pedestals/ItemPedestal.tscn" type="PackedScene" id=8]
 
 [node name="BigEnemyRoom" type="Spatial"]
 script = ExtResource( 2 )
+pot_small_scene = ExtResource( 5 )
+bat_enemy_scene = ExtResource( 6 )
+minion_enemy_scene = ExtResource( 4 )
+sand_soldier_scene = ExtResource( 7 )
+Itempedestal_scene = ExtResource( 8 )
 
 [node name="GridMap" type="GridMap" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -157.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, -15, -157.5 )
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 15, 30, 15 )
 data = {
@@ -19,5 +29,5 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 0, 0 )
 }
 
-[node name="MainHubPlayer" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 165, 0 )
+[node name="Player" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 10, 0 )
