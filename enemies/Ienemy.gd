@@ -35,7 +35,6 @@ func _physics_process(delta):
 func set_state(state):
 	self.state = state
 	state.start(self)
-	print(state, self)
 
 # useful functions
 func vec_to_player():

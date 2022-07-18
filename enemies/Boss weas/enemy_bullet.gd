@@ -12,8 +12,8 @@ func impact(body):
 	if hit_something == false:
 		if body == PlayerManager.get_player():
 			PlayerManager.receive_damage(projectile_damage)
-			queue_free()
 	hit_something = true
+	queue_free()
 
 func _move_projectile(delta):
 	#var forward_dir = -global_transform.basis.z.normalized()

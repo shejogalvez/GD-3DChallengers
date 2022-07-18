@@ -54,7 +54,7 @@ func _fire():
 	vec_dif = Vector3(dif[0], 0, dif[2]).normalized()
 	for projectile_id in projectiles:
 		var projectile = projectile_scene.instance()
-		get_parent().add_child(projectile)
+		get_parent().get_parent().add_child(projectile)
 		_set_projectile_transform(projectile, projectile_id)
 
 
