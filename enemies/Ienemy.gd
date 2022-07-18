@@ -22,6 +22,9 @@ func attack():
 	
 func found_player():
 	set_state(alertedState)
+	
+func lose_player():
+	set_state(standbyState)
 
 func projectile_hit(damage, bullet_global_trans):
 	state.projectile_hit(damage, bullet_global_trans)
@@ -50,11 +53,16 @@ func vec_to_player_face(self_face):
 func face_player():
 	var dir : Vector3 = vec_to_player2d()
 	var angle;
-	if dir.x > 0:
-		angle = Vector3.BACK.angle_to(dir)
+	var back : Vector3 
+	if self.get_parent_spatial() != null:
+		back = -get_parent().global_transform.basis.z
 	else:
-		angle = -Vector3.BACK.angle_to(dir)
-	self.rotation.y = angle
+		back = Vector3.FORWARD
+	if dir.x > 0:
+		angle = -back.angle_to(dir)
+	else:
+		angle = back.angle_to(dir)
+	self.rotation.y = angle + PI
 
 func set_ray_castdir():
 	raycast.cast_to = vec_to_player().normalized() * alert_range

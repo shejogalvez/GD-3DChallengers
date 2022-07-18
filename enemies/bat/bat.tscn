@@ -91,7 +91,7 @@ tracks/2/keys = {
 "values": [ Vector3( 1.20742e-06, -7.95139e-14, 45 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Hitbox:translation")
+tracks/3/path = NodePath("Hitbox/pivot_cara/body:translation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -131,27 +131,16 @@ tracks/1/keys = {
 "values": [ Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Hitbox:translation")
+tracks/2/path = NodePath("Hitbox/pivot_cara/body:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.24, 0.477633, 0.48, 0.717633, 0.957633 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.48, 0.72, 0.96 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ) ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -183,7 +172,7 @@ tracks/1/keys = {
 "values": [ Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Hitbox:translation")
+tracks/2/path = NodePath("Hitbox/pivot_cara/body:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -202,11 +191,12 @@ script = ExtResource( 5 )
 gravity = 0
 
 [node name="Hitbox" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
 shape = SubResource( 1 )
 disabled = false
 
 [node name="pivot_cara" type="Spatial" parent="Hitbox" index="0"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 20, 0 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="body" type="MeshInstance" parent="Hitbox/pivot_cara" index="0"]
 mesh = SubResource( 2 )

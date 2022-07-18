@@ -1,6 +1,6 @@
 extends IEnemy
 
-onready var animator = $AnimationPlayer
+onready var animator : AnimationPlayer = $AnimationPlayer
 onready var collider = $CollisionShape
 onready var weapon = $weapon
 onready var weapon_area = $weapon/spearV20/Area
@@ -46,6 +46,7 @@ class Follow extends State:
 	const MAX_SLOPE_ANGLE = 40
 	const SPEED = 10
 	const ATTACK_DISTANCE = 30
+	const LOSE_DISTANCE = 150
 	
 	func _physics_process(delta):
 		var direction : Vector3 = enemy_node.vec_to_player().normalized()
@@ -61,6 +62,9 @@ class Follow extends State:
 			if dif.length() < ATTACK_DISTANCE:
 				enemy_node.animator.queue("attack")
 				alerted = true
+			if dif.length() >  LOSE_DISTANCE:
+				enemy_node.animator.play_backwards("emerge")
+				enemy_node.set_state(enemy_node.standbyState)
 		enemy_node.face_player()
 		
 class Attacking extends State:

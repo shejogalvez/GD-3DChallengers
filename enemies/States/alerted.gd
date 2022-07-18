@@ -19,3 +19,5 @@ func _process(delta):
 			if dif.length() < enemy_node.attack_distance:
 				enemy_node.attack()
 				alerted = true
+			elif dif.length() > enemy_node.lose_distance:
+				enemy_node.lose_player()

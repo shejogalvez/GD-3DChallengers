@@ -336,10 +336,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 4.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false, true, false ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Spatial/CPUParticles:lifetime")
@@ -415,6 +415,18 @@ tracks/10/keys = {
 "update": 2,
 "values": [ 0.0, -15.0 ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath("weapon:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="SpatialMaterial" id=4]
 flags_transparent = true
@@ -451,7 +463,7 @@ shape = SubResource( 1 )
 disabled = true
 
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
-transform = Transform( 1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 0.01, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 2 )
@@ -467,7 +479,7 @@ anims/emerge = SubResource( 3 )
 [node name="CPUParticles" type="CPUParticles" parent="Spatial"]
 emitting = false
 amount = 250
-lifetime = 2.0
+lifetime = 0.1
 mesh = SubResource( 5 )
 emission_shape = 5
 emission_ring_radius = 5.0
@@ -476,7 +488,7 @@ emission_ring_height = 0.0
 emission_ring_axis = Vector3( 0, 1, 0 )
 direction = Vector3( 0, 1, 0 )
 spread = 9.51
-gravity = Vector3( 0, 5, 0 )
+gravity = Vector3( 0, 1, 0 )
 initial_velocity = 9.0
 tangential_accel_random = 0.1
 damping_curve = SubResource( 8 )

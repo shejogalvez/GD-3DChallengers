@@ -15,6 +15,7 @@ func _ready():
 	attack_distance = 15
 	initial_speed = speed
 	alertedState = BatAlerted.new()
+	
 	pass # Replace with function body.
 
 func look_up_face():
