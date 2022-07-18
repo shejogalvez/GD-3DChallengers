@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/GUI/workstation_time_machine_body.png" type="Texture" id=1]
 [ext_resource path="res://Assets/GUI/workstation_time_machine_light.png" type="Texture" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Assets/GUI/workstation_memory.png" type="Texture" id=14]
 [ext_resource path="res://Assets/GUI/workstation_check_icon.png" type="Texture" id=15]
 [ext_resource path="res://Assets/GUI/workstation_check_icon_p.png" type="Texture" id=16]
+[ext_resource path="res://Assets/GUI/workstation_check_icon_b.png" type="Texture" id=17]
+[ext_resource path="res://Assets/GUI/workstation_check_icon_h.png" type="Texture" id=18]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -80,7 +82,24 @@ anchor_bottom = 1.0
 texture = ExtResource( 2 )
 expand = true
 
-[node name="MemoryButton" type="TextureButton" parent="TimeMachine"]
+[node name="MemoryButtonA" type="TextureButton" parent="TimeMachine"]
+anchor_left = -0.642
+anchor_top = 0.68
+anchor_right = -0.642
+anchor_bottom = 0.68
+margin_left = -14.0079
+margin_top = -14.0799
+margin_right = 13.992
+margin_bottom = 13.9201
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
+texture_disabled = ExtResource( 10 )
+texture_focused = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="MemoryButtonB" type="TextureButton" parent="TimeMachine"]
 anchor_left = 1.5
 anchor_top = 0.812
 anchor_right = 1.5
@@ -113,16 +132,16 @@ autoplay = "light_pulse"
 anims/RESET = SubResource( 1 )
 anims/light_pulse = SubResource( 2 )
 
-[node name="MemoryPopup" type="Popup" parent="."]
+[node name="MemoryPopupA" type="Popup" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="MemoryBackground" type="Panel" parent="MemoryPopup"]
+[node name="MemoryBackgroundA" type="Panel" parent="MemoryPopupA"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 4 )
 
-[node name="MemoryPanel" type="Panel" parent="MemoryPopup"]
+[node name="MemoryPanelA" type="Panel" parent="MemoryPopupA"]
 anchor_left = 0.187
 anchor_top = 0.167
 anchor_right = 0.812
@@ -132,16 +151,16 @@ margin_top = -0.200005
 margin_right = 0.511963
 margin_bottom = 0.199951
 
-[node name="MemoryTitle" type="Label" parent="MemoryPopup/MemoryPanel"]
+[node name="MemoryTitleA" type="Label" parent="MemoryPopupA/MemoryPanelA"]
 margin_left = 24.0
 margin_top = 16.0
-margin_right = 278.0
+margin_right = 349.0
 margin_bottom = 46.0
 custom_fonts/font = ExtResource( 4 )
-text = "MEMORY SEGMENT"
+text = "MEMORY SEGMENT (A)"
 valign = 1
 
-[node name="MemoryGrid" type="Control" parent="MemoryPopup/MemoryPanel"]
+[node name="MemoryGridA" type="Control" parent="MemoryPopupA/MemoryPanelA"]
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = 26.0
@@ -149,33 +168,237 @@ margin_top = 72.0
 margin_right = -24.0
 margin_bottom = -25.0
 
-[node name="MaxConsumablesRow" type="Control" parent="MemoryPopup/MemoryPanel/MemoryGrid"]
+[node name="TotalHPRow" type="Control" parent="MemoryPopupA/MemoryPanelA/MemoryGridA"]
 anchor_right = 1.0
-anchor_bottom = 0.4
+anchor_bottom = 0.33
 
-[node name="MaxConsumablesLabel" type="Label" parent="MemoryPopup/MemoryPanel/MemoryGrid/MaxConsumablesRow"]
+[node name="TotalHPLabel" type="Label" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/TotalHPRow"]
 anchor_right = 1.0
 anchor_bottom = 0.5
-text = "Max. Consumables:"
+text = "Total HP:"
 valign = 1
 
-[node name="MaxConsumablesControl" type="Control" parent="MemoryPopup/MemoryPanel/MemoryGrid/MaxConsumablesRow"]
+[node name="TotalHPControl" type="Control" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/TotalHPRow"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="MaxConsumablesButton" type="TextureButton" parent="MemoryPopup/MemoryPanel/MemoryGrid/MaxConsumablesRow/MaxConsumablesControl"]
+[node name="TotalHPButton" type="TextureButton" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/TotalHPRow/TotalHPControl"]
+anchor_top = 0.15
 anchor_right = 0.33
-anchor_bottom = 0.5
+anchor_bottom = 0.35
+margin_top = -9.2718
+margin_bottom = 9.696
+disabled = true
+toggle_mode = true
 texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 16 )
-texture_disabled = ExtResource( 10 )
-texture_focused = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 17 )
 expand = true
 stretch_mode = 5
 
-[node name="MaxConsumablesLabel" type="Label" parent="MemoryPopup/MemoryPanel/MemoryGrid/MaxConsumablesRow/MaxConsumablesControl"]
+[node name="TotalHPLabel" type="Label" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/TotalHPRow/TotalHPControl"]
+anchor_top = 0.5
+anchor_right = 0.33
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 9.53674e-06
+margin_right = 1.0
+text = "400"
+align = 1
+valign = 1
+
+[node name="TotalHPButton2" type="TextureButton" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/TotalHPRow/TotalHPControl"]
+anchor_left = 0.33
+anchor_top = 0.15
+anchor_right = 0.66
+anchor_bottom = 0.35
+margin_top = -9.0
+margin_bottom = 9.0
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+
+[node name="TotalHPLabel2" type="Label" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/TotalHPRow/TotalHPControl"]
+anchor_left = 0.33
+anchor_top = 0.5
+anchor_right = 0.66
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 9.53674e-06
+margin_right = 1.0
+margin_bottom = 1.14441e-05
+text = "550"
+align = 1
+valign = 1
+
+[node name="TotalHPButton3" type="TextureButton" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/TotalHPRow/TotalHPControl"]
+anchor_left = 0.66
+anchor_top = 0.15
+anchor_right = 0.99
+anchor_bottom = 0.35
+margin_top = -9.0
+margin_bottom = 9.0
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+
+[node name="TotalHPLabel3" type="Label" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/TotalHPRow/TotalHPControl"]
+anchor_left = 0.66
+anchor_top = 0.5
+anchor_right = 0.99
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 9.53674e-06
+margin_right = 1.0
+margin_bottom = 1.14441e-05
+text = "750"
+align = 1
+valign = 1
+
+[node name="AttackRow" type="Control" parent="MemoryPopupA/MemoryPanelA/MemoryGridA"]
+anchor_top = 0.33
+anchor_right = 1.0
+anchor_bottom = 0.66
+
+[node name="AttackLabel" type="Label" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/AttackRow"]
+anchor_right = 1.0
+anchor_bottom = 0.5
+text = "Attack:"
+valign = 1
+
+[node name="AttackControl" type="Control" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/AttackRow"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="AttackButton" type="TextureButton" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/AttackRow/AttackControl"]
+anchor_top = 0.15
+anchor_right = 0.33
+anchor_bottom = 0.35
+margin_top = -9.2718
+margin_bottom = 9.696
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+
+[node name="AttackLabel" type="Label" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/AttackRow/AttackControl"]
+anchor_top = 0.5
+anchor_right = 0.33
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 9.53674e-06
+margin_right = 1.0
+text = "12"
+align = 1
+valign = 1
+
+[node name="AttackButton2" type="TextureButton" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/AttackRow/AttackControl"]
+anchor_left = 0.33
+anchor_top = 0.15
+anchor_right = 0.66
+anchor_bottom = 0.35
+margin_top = -9.0
+margin_bottom = 9.0
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+
+[node name="AttackLabel2" type="Label" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/AttackRow/AttackControl"]
+anchor_left = 0.33
+anchor_top = 0.5
+anchor_right = 0.66
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 9.53674e-06
+margin_right = 1.0
+margin_bottom = 1.14441e-05
+text = "15"
+align = 1
+valign = 1
+
+[node name="AttackButton3" type="TextureButton" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/AttackRow/AttackControl"]
+anchor_left = 0.66
+anchor_top = 0.15
+anchor_right = 0.99
+anchor_bottom = 0.35
+margin_top = -9.0
+margin_bottom = 9.0
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+
+[node name="AttackLabel3" type="Label" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/AttackRow/AttackControl"]
+anchor_left = 0.66
+anchor_top = 0.5
+anchor_right = 0.99
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 9.53674e-06
+margin_right = 1.0
+margin_bottom = 1.14441e-05
+text = "20"
+align = 1
+valign = 1
+
+[node name="DefenseRow" type="Control" parent="MemoryPopupA/MemoryPanelA/MemoryGridA"]
+anchor_top = 0.66
+anchor_right = 1.0
+anchor_bottom = 0.99
+
+[node name="DefenseLabel" type="Label" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/DefenseRow"]
+anchor_right = 1.0
+anchor_bottom = 0.5
+text = "Defense:"
+valign = 1
+
+[node name="DefenseControl" type="Control" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/DefenseRow"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DefenseButton" type="TextureButton" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/DefenseRow/DefenseControl"]
+anchor_top = 0.15
+anchor_right = 0.33
+anchor_bottom = 0.35
+margin_top = -9.2718
+margin_bottom = 9.696
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+
+[node name="DefenseLabel" type="Label" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/DefenseRow/DefenseControl"]
 anchor_top = 0.5
 anchor_right = 0.33
 anchor_bottom = 1.0
@@ -186,19 +409,204 @@ text = "2"
 align = 1
 valign = 1
 
-[node name="MaxConsumablesButton2" type="TextureButton" parent="MemoryPopup/MemoryPanel/MemoryGrid/MaxConsumablesRow/MaxConsumablesControl"]
+[node name="DefenseButton2" type="TextureButton" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/DefenseRow/DefenseControl"]
 anchor_left = 0.33
+anchor_top = 0.15
 anchor_right = 0.66
-anchor_bottom = 0.5
+anchor_bottom = 0.35
+margin_top = -9.0
+margin_bottom = 9.0
+disabled = true
+toggle_mode = true
 texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 16 )
-texture_disabled = ExtResource( 10 )
-texture_focused = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 17 )
 expand = true
 stretch_mode = 5
 
-[node name="MaxConsumablesLabel2" type="Label" parent="MemoryPopup/MemoryPanel/MemoryGrid/MaxConsumablesRow/MaxConsumablesControl"]
+[node name="DefenseLabel2" type="Label" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/DefenseRow/DefenseControl"]
+anchor_left = 0.33
+anchor_top = 0.5
+anchor_right = 0.66
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 9.53674e-06
+margin_right = 1.0
+margin_bottom = 1.14441e-05
+text = "4"
+align = 1
+valign = 1
+
+[node name="DefenseButton3" type="TextureButton" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/DefenseRow/DefenseControl"]
+anchor_left = 0.66
+anchor_top = 0.15
+anchor_right = 0.99
+anchor_bottom = 0.35
+margin_top = -9.0
+margin_bottom = 9.0
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+
+[node name="DefenseLabel3" type="Label" parent="MemoryPopupA/MemoryPanelA/MemoryGridA/DefenseRow/DefenseControl"]
+anchor_left = 0.66
+anchor_top = 0.5
+anchor_right = 0.99
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 9.53674e-06
+margin_right = 1.0
+margin_bottom = 1.14441e-05
+text = "8"
+align = 1
+valign = 1
+
+[node name="MemoryImage" type="TextureRect" parent="MemoryPopupA/MemoryPanelA"]
+anchor_left = 0.5
+anchor_right = 0.988
+anchor_bottom = 1.0
+margin_top = 88.0
+margin_right = -56.0
+margin_bottom = -88.0
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
+[node name="MemoryCloseButtonA" type="TextureButton" parent="MemoryPopupA/MemoryPanelA"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -46.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 46.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 7 )
+texture_focused = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="MemoryPopupB" type="Popup" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MemoryBackgroundB" type="Panel" parent="MemoryPopupB"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="MemoryPanelB" type="Panel" parent="MemoryPopupB"]
+anchor_left = 0.187
+anchor_top = 0.167
+anchor_right = 0.812
+anchor_bottom = 0.833
+margin_left = 0.511993
+margin_top = -0.200005
+margin_right = 0.511963
+margin_bottom = 0.199951
+
+[node name="MemoryTitleB" type="Label" parent="MemoryPopupB/MemoryPanelB"]
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 349.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 4 )
+text = "MEMORY SEGMENT (B)"
+valign = 1
+
+[node name="MemoryGridB" type="Control" parent="MemoryPopupB/MemoryPanelB"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 26.0
+margin_top = 72.0
+margin_right = -24.0
+margin_bottom = -25.0
+
+[node name="MaxConsumablesRow" type="Control" parent="MemoryPopupB/MemoryPanelB/MemoryGridB"]
+anchor_right = 1.0
+anchor_bottom = 0.4
+
+[node name="MaxConsumablesLabel" type="Label" parent="MemoryPopupB/MemoryPanelB/MemoryGridB/MaxConsumablesRow"]
+anchor_right = 1.0
+anchor_bottom = 0.5
+text = "Max. Consumables:"
+valign = 1
+
+[node name="MaxConsumablesControl" type="Control" parent="MemoryPopupB/MemoryPanelB/MemoryGridB/MaxConsumablesRow"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MaxConsumablesButton" type="TextureButton" parent="MemoryPopupB/MemoryPanelB/MemoryGridB/MaxConsumablesRow/MaxConsumablesControl"]
+anchor_top = 0.15
+anchor_right = 0.33
+anchor_bottom = 0.35
+margin_top = -9.2718
+margin_bottom = 9.696
+disabled = true
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+
+[node name="MaxConsumablesImage" type="TextureRect" parent="MemoryPopupB/MemoryPanelB/MemoryGridB/MaxConsumablesRow/MaxConsumablesControl"]
+visible = false
+anchor_top = 0.15
+anchor_right = 0.33
+anchor_bottom = 0.35
+margin_top = -9.2718
+margin_bottom = 9.696
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="MaxConsumablesLabel" type="Label" parent="MemoryPopupB/MemoryPanelB/MemoryGridB/MaxConsumablesRow/MaxConsumablesControl"]
+anchor_top = 0.5
+anchor_right = 0.33
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 9.53674e-06
+margin_right = 1.0
+text = "2"
+align = 1
+valign = 1
+
+[node name="MaxConsumablesButton2" type="TextureButton" parent="MemoryPopupB/MemoryPanelB/MemoryGridB/MaxConsumablesRow/MaxConsumablesControl"]
+anchor_left = 0.33
+anchor_top = 0.15
+anchor_right = 0.66
+anchor_bottom = 0.35
+margin_top = -9.0
+margin_bottom = 9.0
+disabled = true
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+
+[node name="MaxConsumablesImage2" type="TextureRect" parent="MemoryPopupB/MemoryPanelB/MemoryGridB/MaxConsumablesRow/MaxConsumablesControl"]
+visible = false
+anchor_left = 0.33
+anchor_top = 0.15
+anchor_right = 0.66
+anchor_bottom = 0.35
+margin_top = -9.0
+margin_bottom = 9.0
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="MaxConsumablesLabel2" type="Label" parent="MemoryPopupB/MemoryPanelB/MemoryGridB/MaxConsumablesRow/MaxConsumablesControl"]
 anchor_left = 0.33
 anchor_top = 0.5
 anchor_right = 0.66
@@ -211,19 +619,34 @@ text = "3"
 align = 1
 valign = 1
 
-[node name="MaxConsumablesButton3" type="TextureButton" parent="MemoryPopup/MemoryPanel/MemoryGrid/MaxConsumablesRow/MaxConsumablesControl"]
+[node name="MaxConsumablesButton3" type="TextureButton" parent="MemoryPopupB/MemoryPanelB/MemoryGridB/MaxConsumablesRow/MaxConsumablesControl"]
 anchor_left = 0.66
+anchor_top = 0.15
 anchor_right = 0.99
-anchor_bottom = 0.5
+anchor_bottom = 0.35
+margin_top = -9.0
+margin_bottom = 9.0
+disabled = true
 texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 16 )
-texture_disabled = ExtResource( 10 )
-texture_focused = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 17 )
 expand = true
 stretch_mode = 5
 
-[node name="MaxConsumablesLabel3" type="Label" parent="MemoryPopup/MemoryPanel/MemoryGrid/MaxConsumablesRow/MaxConsumablesControl"]
+[node name="MaxConsumablesImage3" type="TextureRect" parent="MemoryPopupB/MemoryPanelB/MemoryGridB/MaxConsumablesRow/MaxConsumablesControl"]
+visible = false
+anchor_left = 0.66
+anchor_top = 0.15
+anchor_right = 0.99
+anchor_bottom = 0.35
+margin_top = -9.0
+margin_bottom = 9.0
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="MaxConsumablesLabel3" type="Label" parent="MemoryPopupB/MemoryPanelB/MemoryGridB/MaxConsumablesRow/MaxConsumablesControl"]
 anchor_left = 0.66
 anchor_top = 0.5
 anchor_right = 0.99
@@ -236,7 +659,7 @@ text = "4"
 align = 1
 valign = 1
 
-[node name="MemoryImage" type="TextureRect" parent="MemoryPopup/MemoryPanel"]
+[node name="MemoryImage" type="TextureRect" parent="MemoryPopupB/MemoryPanelB"]
 anchor_left = 0.5
 anchor_right = 0.988
 anchor_bottom = 1.0
@@ -247,7 +670,7 @@ texture = ExtResource( 14 )
 expand = true
 stretch_mode = 6
 
-[node name="MemoryCloseButton" type="TextureButton" parent="MemoryPopup/MemoryPanel"]
+[node name="MemoryCloseButtonB" type="TextureButton" parent="MemoryPopupB/MemoryPanelB"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -46.0
@@ -281,6 +704,10 @@ bus = "SFX"
 
 [node name="AudioConfirm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+bus = "SFX"
+
+[node name="AudioReject" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
 bus = "SFX"
 
 [node name="AudioPopup" type="AudioStreamPlayer" parent="."]

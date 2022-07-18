@@ -10,15 +10,24 @@ onready var interaction_animation_player := $InteractionAnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	day_label.text = "Day " + str(GameManager.game_data["game"]["day"])
-	money_label.text = str(GameManager.game_data["game"]["money"])
-	
+	_update_day_label()
+	_update_money_label()
 	_update_interaction_panel()
+	GameManager.connect("day_changed", self, "_update_day_label")
+	GameManager.connect("money_changed", self, "_update_money_label")
 	InteractionsManager.connect("interactions_updated", self, "_update_interaction_panel")
 	
 # Called every frame.
 func _process(delta):
 	fps_label.text = str(Engine.get_frames_per_second()) + " FPS"
+
+# Updates the day label.
+func _update_day_label():
+	day_label.text = "Day " + str(GameManager.get_day())
+
+# Updates the money label.
+func _update_money_label():
+	money_label.text = str(GameManager.get_money())
 
 # Updates the interaction panel.
 func _update_interaction_panel():

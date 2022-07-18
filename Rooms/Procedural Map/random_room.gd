@@ -8,7 +8,7 @@ export (float) var size = 64.1
 export (float) var tp_offset = 15
 export (Array, Vector2) var openings
 var global_size = size
-const separation = 300
+const separation = 400
 const size_variation = 2
 var possible_openings = [Vector2(-1, 0), Vector2(1, 0), Vector2(0, 1)]
 var scale_factor = 1

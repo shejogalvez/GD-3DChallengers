@@ -7,8 +7,9 @@ var rfc : RandomFunctionCaller
 var rfc_rooms : RandomFunctionCaller
 export (int) var number_of_rooms = 12
 var random_rooms = [
-	[preload("res://Rooms/Sala2x2Base4P.tscn"), 1] ,
-	[preload("res://Rooms/Sala2x2Base4Pbig.tscn"), 1] 
+	[preload("res://Rooms/Rooms2.0Andrew/SmallEnemyRoom.tscn"), 1] ,
+	[preload("res://Rooms/Rooms2.0Andrew/MidEnemyRoom.tscn"), 1] ,
+	[preload("res://Rooms/Rooms2.0Andrew/BigEnemyRoom.tscn"), 1] 
 ]
 
 # end_room SIMPRE VA PRIMERO!!

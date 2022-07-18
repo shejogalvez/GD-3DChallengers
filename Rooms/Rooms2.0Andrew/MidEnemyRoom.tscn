@@ -9,6 +9,7 @@
 
 [node name="MidEnemyRoom" type="Spatial"]
 script = ExtResource( 2 )
+size = 105.0
 pot_small_scene = ExtResource( 5 )
 bat_enemy_scene = ExtResource( 6 )
 minion_enemy_scene = ExtResource( 7 )

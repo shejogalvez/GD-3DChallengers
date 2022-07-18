@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Meshes/AztecMesh/aztec_mesh_library.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://Rooms/Rooms2.0Andrew/BigEnemyRoom.gd" type="Script" id=2]
-[ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://enemies/minion_egipcio/minion_maloglb.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Rooms/Misc/PotSmall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://enemies/bat/bat.tscn" type="PackedScene" id=6]
@@ -11,11 +10,11 @@
 
 [node name="BigEnemyRoom" type="Spatial"]
 script = ExtResource( 2 )
+size = 135.0
 pot_small_scene = ExtResource( 5 )
 bat_enemy_scene = ExtResource( 6 )
 minion_enemy_scene = ExtResource( 4 )
 sand_soldier_scene = ExtResource( 7 )
-Itempedestal_scene = ExtResource( 8 )
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, -15, -157.5 )
@@ -29,5 +28,5 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 0, 0 )
 }
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 10, 0 )
+[node name="ItemPedestal" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.26975, 0 )

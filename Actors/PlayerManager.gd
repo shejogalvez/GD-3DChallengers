@@ -1,11 +1,13 @@
 extends Node
 
+
+
 # ========================
 # Pickup inventory class
 # ========================
 class ConsumableInventory:
 	var consumables := []
-	var size := 1
+	var size := 0
 	var current_consumable_index := 0
 	
 	# Uses the consumable in the front of the list.
@@ -69,11 +71,11 @@ const PLAYER_MAX_MONEY := 99999
 
 var player : Player # Player kinematic body node
 
-var player_total_hp := 300 # Current total hp
-var player_hp := player_total_hp # Current hp
+var player_total_hp := 0 # Current total hp
+var player_hp := 1 # Current hp
 
-var player_attack := 10 # Current attack
-var player_defense := 1 # Current defense
+var player_attack := 0 # Current attack
+var player_defense := 0 # Current defense
 
 var player_money := 0 # Current money
 var player_money_multiplier := 1.0
@@ -88,6 +90,9 @@ const UNTARGETABLE_TIME := 0.2
 var untargetable := false
 var current_untargetable_time := 0.0
 
+# Called when the node enters the tree for the first time.
+func _ready():
+	reset_stats()
 
 # Called each pseudo frame.
 func _process(delta):
@@ -134,6 +139,18 @@ func get_player_face_position() -> Vector3:
 	return Vector3.ZERO
 
 # ========================
+# Stats
+# ========================
+
+# Reset the player stats based on the permanent game stats.
+func reset_stats() -> void:
+	set_total_hp(GameManager.get_total_hp())
+	set_hp(GameManager.get_total_hp())
+	set_attack(GameManager.get_attack())
+	set_defense(GameManager.get_defense())
+	set_consumables_total_size(GameManager.get_max_consumables())
+		
+# ========================
 # Weapons
 # ========================
 
@@ -167,7 +184,8 @@ func is_head_view() -> bool:
 # Sets the player total hp.
 func set_total_hp(total_hp : int) -> void:
 	player_total_hp = clamp(total_hp, PLAYER_MIN_TOTAL_HP, PLAYER_MAX_TOTAL_HP)
-	set_hp(min(player_hp, player_total_hp))
+	if player_hp > player_total_hp:
+		set_hp(min(player_hp, player_total_hp))
 	
 # Gets the player total hp.
 func get_total_hp() -> int:
@@ -180,6 +198,8 @@ func add_total_hp(hp : int) -> void:
 # Sets the player current hp.
 func set_hp(hp : int) -> void:
 	player_hp = clamp(hp, 0, player_total_hp)
+	if player_hp == 0:
+		GameManager.advance_day()
 	emit_signal("hp_changed")
 
 # Gets the player current hp.
@@ -299,9 +319,13 @@ func consumables_empty() -> bool:
 func get_consumables_size() -> int:
 	return consumable_inventory.consumables.size()
 
+# Sets maximum size to the consumable inventory.
+func set_consumables_total_size(size: int) -> void:
+	consumable_inventory.size = clamp(size, 0, CONSUMABLE_INVENTORY_MAX_SIZE)
+
 # Adds maximum size to the consumable inventory.
 func add_consumables_total_size(size : int) -> void:
-	consumable_inventory.size = min(consumable_inventory.size + size, CONSUMABLE_INVENTORY_MAX_SIZE)
+	set_consumables_total_size(consumable_inventory.size + size)
 	
 # Gets the player consumable multiplier.
 func get_consumable_multiplier() -> float:

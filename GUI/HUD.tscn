@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://GUI/SmartBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/UI/Item_005.png" type="Texture" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://Assets/Fonts/Atarian/AtarianWide.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Assets/Sprites/Interactions/Item_281.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Fonts/Atarian/AtarianBorder.tres" type="DynamicFont" id=9]
-[ext_resource path="res://Assets/Sprites/UI/Item_190.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Sprites/UI/Item_156.png" type="Texture" id=11]
 
 [sub_resource type="StyleBoxFlat" id=10]
@@ -153,25 +152,6 @@ margin_left = 48.0
 margin_top = 102.0
 margin_right = 168.0
 margin_bottom = 122.0
-custom_fonts/font = ExtResource( 9 )
-text = "0"
-valign = 1
-max_lines_visible = 1
-
-[node name="SpeedIcon" type="TextureRect" parent="HUDControl/StatsControl"]
-margin_left = 20.0
-margin_top = 134.0
-margin_right = 40.0
-margin_bottom = 154.0
-texture = ExtResource( 10 )
-expand = true
-stretch_mode = 6
-
-[node name="SpeedLabel" type="Label" parent="HUDControl/StatsControl"]
-margin_left = 48.0
-margin_top = 134.0
-margin_right = 168.0
-margin_bottom = 154.0
 custom_fonts/font = ExtResource( 9 )
 text = "0"
 valign = 1

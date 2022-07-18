@@ -1,7 +1,16 @@
 extends Spatial
 class_name ItemPedestal, "res://Assets/Classes/pedestal_icon.png"
 
-export(PackedScene) var item_scene = preload("res://Items/Item.tscn")
+export(PackedScene) var SmallChest_scene : PackedScene
+export(PackedScene) var RubyRing_scene : PackedScene
+export(PackedScene) var LeatherBackpack_scene : PackedScene
+export(PackedScene) var gloves = preload("res://Items/IronGloves.tscn")
+export(PackedScene) var helmet = preload("res://Items/IronHelmet.tscn")
+export(PackedScene) var chestplate = preload("res://Items/IronChestplate.tscn")
+
+var rng := RandomNumberGenerator.new()
+
+var items_pool := []
 
 var item_instance : Item
 
@@ -26,7 +35,9 @@ onready var item_pedestal_audio = $ItemPedestalAudio
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	item_instance = item_scene.instance()
+	rng.randomize()
+	items_pool = [gloves, helmet, chestplate]
+	item_instance = items_pool[rng.randi_range(0, items_pool.size() - 1)].instance()
 	_initialize_item_model(item_instance.item_image)
 	item_pickup_area.connect("body_entered", self, "_use_item")
 	item_details_area.connect("body_entered", self, "_show_details")

@@ -120,6 +120,7 @@ func _input(event):
 func _change_display_mode(_button : Object) -> void:
 	GameManager.game_data["settings"]["display_mode"] = display_buttonlist.find(display_buttongroup.get_pressed_button())
 	GameManager.update_display_mode()
+	GameManager.update_resolution()
 	GameManager.save_data()
 	
 # Changes the resolution of the screen.

@@ -141,7 +141,6 @@ toggle_mode = true
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 5 )
-texture_focused = ExtResource( 5 )
 expand = true
 
 [node name="WindowButton" type="TextureButton" parent="TabContainer/Graphics/GraphicsGrid/DisplayRow/DisplayButtonsControl"]
@@ -156,7 +155,6 @@ toggle_mode = true
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 6 )
-texture_focused = ExtResource( 6 )
 expand = true
 
 [node name="ResolutionRow" type="Panel" parent="TabContainer/Graphics/GraphicsGrid"]
