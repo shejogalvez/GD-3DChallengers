@@ -32,9 +32,9 @@ const GAME_DATA_PATH := "user://save_file.save"
 
 var new_game := {
 	"day": 1,
-	"money": 410,
+	"money": 9000,
 	"ingame": {
-		"total_hp": 300,
+		"total_hp": 80,
 		"attack": 10,
 		"defense": 1,
 		"max_consumables" : 1
@@ -131,7 +131,6 @@ func get_day() -> int:
 	
 # Advances to the next day.
 func advance_day() -> void:
-	print("Avanzo dia c:")
 	set_day(game_data["game"]["day"] + 1)
 	get_tree().change_scene(main_hub_scene_path)
 
