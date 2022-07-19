@@ -70,21 +70,21 @@ func _ready():
 	max_consumable_image_2.visible = false
 	
 	memory_button_a.connect("pressed", memory_popup_a, "popup")
-	memory_button_b.connect("pressed", memory_popup_b, "popup")
 	memory_button_a.connect("mouse_entered", audio_pointer, "play")
+	memory_button_b.connect("pressed", memory_popup_b, "popup")
 	memory_button_b.connect("mouse_entered", audio_pointer, "play")
 	
 	memory_popup_a.connect("about_to_show", audio_popup, 'play')
-	memory_popup_b.connect("about_to_show", audio_popup, "play")
 	memory_popup_a.connect("hide", self, "_hide_popup_safe")
+	memory_popup_b.connect("about_to_show", audio_popup, "play")
 	memory_popup_b.connect("hide", self, "_hide_popup_safe")
 
 	memory_close_button_a.connect("pressed", memory_popup_a, "hide")
-	memory_close_button_b.connect("pressed", memory_popup_b, "hide")
 	memory_close_button_a.connect("mouse_entered", audio_pointer, "play")
+	memory_close_button_b.connect("pressed", memory_popup_b, "hide")
 	memory_close_button_b.connect("mouse_entered", audio_pointer, "play")
-		
-	close_button.connect("pressed", get_parent(), "hide")
+	
+	close_button.connect("pressed", self, "_close")
 	close_button.connect("mouse_entered", audio_pointer, "play")
 
 	# Updating automatically based on Game Manager.
@@ -108,14 +108,37 @@ func _ready():
 
 # Called on each input event.
 func _input(event):
-	if event.is_action_pressed("ui_cancel") and get_parent().visible:
+	if event.is_action_pressed("ui_cancel") and self.visible:
 		if memory_popup_a.visible:
 			memory_popup_a.hide()
 		elif memory_popup_b.visible:
 			memory_popup_b.hide()
 		else:
-			get_parent().hide()
+			_close()
 		get_tree().set_input_as_handled()
+
+# Changes this node visibility safely.
+func better_show() -> void:
+	show()
+	audio_popup.play()
+
+# Closes the window.
+func _close() -> void:
+	hide()
+	audio_popdown.play()
+
+# Hides a popup safely.
+func _hide_popup_safe() -> void:
+	tooltip.hide()
+	audio_popdown.play()
+	
+# Shows the tooltip with the given information.
+func _show_tooltip(info : Dictionary) -> void:
+	tooltip_change_label.text = info["change"]
+	tooltip_cost_label.text = "Cost: $" + str(info["cost"])
+	tooltip.rect_position = get_viewport().get_mouse_position() + Vector2(20, 20)
+	tooltip.show()
+	audio_pointer.play()
 
 # Updates the wallets values.
 func _update_wallets() -> void:
@@ -133,32 +156,35 @@ func _update_memory_panels() -> void:
 func _update_total_hp_panel() -> void:
 	match GameManager.get_total_hp():
 		80:
+			if total_hp_button.disabled:
+				total_hp_button.connect("mouse_entered", self, "_show_tooltip", [{
+					"change": "80 HP -> 100 HP",
+					"cost" : TOTAL_HP_PRICES[0]
+				}])
+				total_hp_button.connect("mouse_exited", tooltip, "hide")
 			total_hp_button.disabled = false
-			total_hp_button.connect("mouse_entered", self, "_show_tooltip", [{
-				"change": "80 HP -> 100 HP",
-				"cost" : TOTAL_HP_PRICES[0]
-			}])
-			total_hp_button.connect("mouse_exited", tooltip, "hide")
 		100:
 			total_hp_button.visible = false
 			total_hp_image.visible = true
+			if total_hp_button_2.disabled:
+				total_hp_button_2.connect("mouse_entered", self, "_show_tooltip", [{
+					"change": "100 HP -> 150 HP",
+					"cost" : TOTAL_HP_PRICES[1]
+				}])
+				total_hp_button_2.connect("mouse_exited", tooltip, "hide")
 			total_hp_button_2.disabled = false
-			total_hp_button_2.connect("mouse_entered", self, "_show_tooltip", [{
-				"change": "100 HP -> 150 HP",
-				"cost" : TOTAL_HP_PRICES[1]
-			}])
-			total_hp_button_2.connect("mouse_exited", tooltip, "hide")
 		150:
 			total_hp_button.visible = false
 			total_hp_image.visible = true
 			total_hp_button_2.visible = false
 			total_hp_image_2.visible = true
+			if total_hp_button_3.disabled:
+				total_hp_button_3.connect("mouse_entered", self, "_show_tooltip", [{
+					"change": "150 HP -> 250 HP",
+					"cost" : TOTAL_HP_PRICES[2]
+				}])
+				total_hp_button_3.connect("mouse_exited", tooltip, "hide")
 			total_hp_button_3.disabled = false
-			total_hp_button_3.connect("mouse_entered", self, "_show_tooltip", [{
-				"change": "150 HP -> 250 HP",
-				"cost" : TOTAL_HP_PRICES[2]
-			}])
-			total_hp_button_3.connect("mouse_exited", tooltip, "hide")
 		250:
 			total_hp_button.visible = false
 			total_hp_image.visible = true
@@ -171,32 +197,35 @@ func _update_total_hp_panel() -> void:
 func _update_attack_panel() -> void:
 	match GameManager.get_attack():
 		10:
+			if attack_button.disabled:
+				attack_button.connect("mouse_entered", self, "_show_tooltip", [{
+					"change" : "10 ATK -> 12 ATK",
+					"cost" : ATTACK_PRICES[0]
+				}])
+				attack_button.connect("mouse_exited", tooltip, "hide")
 			attack_button.disabled = false
-			attack_button.connect("mouse_entered", self, "_show_tooltip", [{
-				"change" : "10 ATK -> 12 ATK",
-				"cost" : ATTACK_PRICES[0]
-			}])
-			attack_button.connect("mouse_exited", tooltip, "hide")
 		12:
 			attack_button.visible = false
 			attack_image.visible = true
+			if attack_button_2.disabled:
+				attack_button_2.connect("mouse_entered", self, "_show_tooltip", [{
+					"change" : "12 ATK -> 15 ATK",
+					"cost" : ATTACK_PRICES[1]
+				}])
+				attack_button_2.connect("mouse_exited", tooltip, "hide")
 			attack_button_2.disabled = false
-			attack_button_2.connect("mouse_entered", self, "_show_tooltip", [{
-				"change" : "12 ATK -> 15 ATK",
-				"cost" : ATTACK_PRICES[1]
-			}])
-			attack_button_2.connect("mouse_exited", tooltip, "hide")
 		15:
 			attack_button.visible = false
 			attack_image.visible = true
 			attack_button_2.visible = false
 			attack_image_2.visible = true
+			if attack_button_3.disabled:
+				attack_button_3.connect("mouse_entered", self, "_show_tooltip", [{
+					"change" : "15 ATK -> 20 ATK",
+					"cost" : ATTACK_PRICES[2]
+				}])
+				attack_button_3.connect("mouse_exited", tooltip, "hide")
 			attack_button_3.disabled = false
-			attack_button_3.connect("mouse_entered", self, "_show_tooltip", [{
-				"change" : "15 ATK -> 20 ATK",
-				"cost" : ATTACK_PRICES[2]
-			}])
-			attack_button_3.connect("mouse_exited", tooltip, "hide")
 		20:
 			attack_button.visible = false
 			attack_image.visible = true
@@ -209,32 +238,35 @@ func _update_attack_panel() -> void:
 func _update_defense_panel() -> void:
 	match GameManager.get_defense():
 		1:
+			if defense_button.disabled:
+				defense_button.connect("mouse_entered", self, "_show_tooltip", [{
+					"change" : "1 DEF -> 2 DEF",
+					"cost" : DEFENSE_PRICES[0]
+				}])
+				defense_button.connect("mouse_exited", tooltip, "hide")
 			defense_button.disabled = false
-			defense_button.connect("mouse_entered", self, "_show_tooltip", [{
-				"change" : "1 DEF -> 2 DEF",
-				"cost" : DEFENSE_PRICES[0]
-			}])
-			defense_button.connect("mouse_exited", tooltip, "hide")
 		2:
 			defense_button.visible = false
 			defense_image.visible = true
+			if defense_button_2.disabled:
+				defense_button_2.connect("mouse_entered", self, "_show_tooltip", [{
+					"change" : "2 DEF -> 4 DEF",
+					"cost" : DEFENSE_PRICES[1]
+				}])
+				defense_button_2.connect("mouse_exited", tooltip, "hide")
 			defense_button_2.disabled = false
-			defense_button_2.connect("mouse_entered", self, "_show_tooltip", [{
-				"change" : "2 DEF -> 4 DEF",
-				"cost" : DEFENSE_PRICES[1]
-			}])
-			defense_button_2.connect("mouse_exited", tooltip, "hide")
 		4:
 			defense_button.visible = false
 			defense_image.visible = true
 			defense_button_2.visible = false
 			defense_image_2.visible = true
+			if defense_button_3.disabled:
+				defense_button_3.connect("mouse_entered", self, "_show_tooltip", [{
+					"change" : "4 DEF -> 8 DEF",
+					"cost" : DEFENSE_PRICES[2]
+				}])
+				defense_button_3.connect("mouse_exited", tooltip, "hide")
 			defense_button_3.disabled = false
-			defense_button_3.connect("mouse_entered", self, "_show_tooltip", [{
-				"change" : "4 DEF -> 8 DEF",
-				"cost" : DEFENSE_PRICES[2]
-			}])
-			defense_button_3.connect("mouse_exited", tooltip, "hide")
 		8:
 			defense_button.visible = false
 			defense_image.visible = true
@@ -247,21 +279,23 @@ func _update_defense_panel() -> void:
 func _update_max_consumables_panel() -> void:		
 	match GameManager.get_max_consumables():
 		1:
+			if max_consumable_button.disabled:
+				max_consumable_button.connect("mouse_entered", self, "_show_tooltip", [{
+					"change" : "1 M.C. -> 2 M.C.",
+					"cost" : MAX_CONSUMABLE_PRICES[0]
+				}])
+				max_consumable_button.connect("mouse_exited", tooltip, "hide")
 			max_consumable_button.disabled = false
-			max_consumable_button.connect("mouse_entered", self, "_show_tooltip", [{
-				"change" : "1 M.C. -> 2 M.C.",
-				"cost" : MAX_CONSUMABLE_PRICES[0]
-			}])
-			max_consumable_button.connect("mouse_exited", tooltip, "hide")
 		2:
 			max_consumable_button.visible = false
 			max_consumable_image.visible = true
+			if max_consumable_button_2.disabled:
+				max_consumable_button_2.connect("mouse_entered", self, "_show_tooltip", [{
+					"change" : "2 M.C. -> 3 M.C.",
+					"cost" : MAX_CONSUMABLE_PRICES[1]
+				}])
+				max_consumable_button_2.connect("mouse_exited", tooltip, "hide")
 			max_consumable_button_2.disabled = false
-			max_consumable_button_2.connect("mouse_entered", self, "_show_tooltip", [{
-				"change" : "2 M.C. -> 3 M.C.",
-				"cost" : MAX_CONSUMABLE_PRICES[1]
-			}])
-			max_consumable_button_2.connect("mouse_exited", tooltip, "hide")
 		3: 
 			max_consumable_button.visible = false
 			max_consumable_image.visible = true
@@ -307,16 +341,3 @@ func _try_add_max_consumables(index : int) -> void:
 		audio_confirm.play()
 	else:
 		audio_reject.play()
-	
-# Hides a popup safely.
-func _hide_popup_safe() -> void:
-	tooltip.hide()
-	audio_popdown.play()
-	
-# Shows the tooltip with the given information.
-func _show_tooltip(info : Dictionary) -> void:
-	tooltip_change_label.text = info["change"]
-	tooltip_cost_label.text = "Cost: $" + str(info["cost"])
-	tooltip.rect_position = get_viewport().get_mouse_position() + Vector2(20, 20)
-	tooltip.show()
-	audio_pointer.play()

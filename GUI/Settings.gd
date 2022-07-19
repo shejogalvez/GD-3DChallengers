@@ -113,7 +113,7 @@ func _input(event):
 		key_input_label.text = "Press a valid key"
 	
 	if self.visible and event.is_action_pressed("ui_cancel"):
-		hide()
+		_close()
 		get_tree().set_input_as_handled()
 
 # Changes the display mode.

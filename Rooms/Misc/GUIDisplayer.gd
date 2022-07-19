@@ -4,11 +4,12 @@ export(StreamTexture) var interaction_icon : StreamTexture
 export(String) var interaction_message : String
 export(PackedScene) var gui_scene : PackedScene
 
-var previous_mouse_mode
-
 onready var collision_shape := $StaticBody/CollisionShape
 onready var interaction := $Interaction
-onready var gui_control := $CanvasLayer/GUIControl
+onready var gui_layer := $GUILayer
+
+var previous_mouse_mode
+var gui_control : Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,7 +17,8 @@ func _ready():
 	collision_shape.shape = mesh.create_trimesh_shape()
 	
 	# Configuring the GUI control.
-	gui_control.add_child(gui_scene.instance())
+	gui_control = gui_scene.instance()
+	gui_layer.add_child(gui_control)
 	gui_control.hide()
 	
 	# Connections.
@@ -35,11 +37,10 @@ func _input(event):
 
 # Interacts with the node.
 func interact() -> void:
-	_show_gui_control()
-
-# Shows the GUI contorl and pauses the game.
-func _show_gui_control() -> void:
-	gui_control.show()
+	if gui_control.has_method("better_show"):
+		gui_control.better_show()
+	else:
+		gui_control.show()
 	previous_mouse_mode = Input.get_mouse_mode()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
