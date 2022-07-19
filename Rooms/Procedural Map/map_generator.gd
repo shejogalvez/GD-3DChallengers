@@ -14,12 +14,10 @@ var random_rooms = [
 
 # end_room SIMPRE VA PRIMERO!!
 var obligatory_rooms = [
-	[preload("res://Rooms/Procedural Map/end_room.tscn"), [12]],
+	[preload("res://Rooms/Test Rooms Stuff/end_room.tscn"), [12]],
 ]
 var obligatory_rooms_queue = Array()
-export (PackedScene) var initial_room : PackedScene = preload("res://Rooms/Procedural Map/initial_room.tscn"  )
-
-
+export (PackedScene) var initial_room : PackedScene = preload("res://Rooms/Test Rooms Stuff/initial_room.tscn"  )
 
 
 const front = Vector2.DOWN
@@ -51,8 +49,15 @@ var constructed_rooms_array = Array()
 var rooms_tomake = 1
 const orientations = [Vector2(0, 1), Vector2(1, 0), Vector2(-1, 0)]
 
+onready var minimap = $GUI/Control/Panel/ViewportContainer/Viewport/minimap
+onready var minimap_camera = $GUI/Control/Panel/ViewportContainer/Viewport/minimap/Camera2D
+var minimap_door = preload("res://Rooms/Procedural Map/minimap/door.tscn")
+var actual_pos : Vector2 = Vector2.ZERO
+const minimap_separation = 120
+const real_separation = 400
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GameManager.current_level = self
 	set_initial_weights()
 	rfc = RandomFunctionCaller.new()
 	rfc_rooms = RandomFunctionCaller.new()
@@ -182,8 +187,23 @@ func room_done(room):
 		push_warning("room_done error")
 		return
 	leaf_rooms.remove(index)
-	
-	
+	add_to_minimap(room.sprite, room.pos)
+
+
+func add_to_minimap(sprite : Texture, pos : Vector2):
+	var room = Sprite.new()
+	room.texture = sprite
+	minimap.add_child(room)
+	room.translate(pos * minimap_separation)
+
+func center_minimap_in(pos : Vector2):
+	minimap_camera.offset = pos * minimap_separation
+	actual_pos = pos
+
+func add_door(pos : Vector2, room_size : float, opening : Vector2):
+	var door = minimap_door.instance()
+	minimap.add_child(door)
+	door.translate(pos * minimap_separation + opening * room_size)
 	
 ##################### UNUSED #############################
 ##################### UNUSED #############################

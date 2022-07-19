@@ -179,6 +179,8 @@ depth = 5.2
 
 [node name="Area" type="Area" parent="pivot/CSGCombiner"]
 transform = Transform( 1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 0
+collision_mask = 64
 
 [node name="CollisionShape" type="CollisionShape" parent="pivot/CSGCombiner/Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.25, 0 )

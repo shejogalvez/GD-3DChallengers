@@ -261,3 +261,5 @@ func update_volume_settings() -> void:
 # Sets the default settings.
 func set_default_settings() -> void:
 	game_data["settings"] = default_settings.duplicate(true)
+
+var current_level : RoomGenerator = null

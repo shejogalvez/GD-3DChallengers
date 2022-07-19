@@ -5,8 +5,9 @@
 [ext_resource path="res://enemies/Boss weas/magic_circle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://enemies/Boss weas/boss_script.gd" type="Script" id=6]
 [ext_resource path="res://HPBar.gd" type="Script" id=8]
-[ext_resource path="res://Assets/kel_hapi.tres" type="Texture" id=9]
-[ext_resource path="res://Assets/kel_mad.tres" type="Texture" id=10]
+[ext_resource path="res://Assets/Trash/kel_hapi.tres" type="Texture" id=9]
+[ext_resource path="res://Assets/Trash/kel_mad.tres" type="Texture" id=10]
+
 
 [sub_resource type="SphereShape" id=11]
 

@@ -18,11 +18,14 @@ func impact(body: Node) -> void:
 		if body == PlayerManager.get_player():
 			PlayerManager.receive_damage(damage)
 	hit_something = true
+	animator.stop()
+	reset()
 
 func reset() -> void:
 	area.scale.y = 0.01
 	collsion.disabled = true
 	hit_something = false
+	end_shape.translation = Vector3(0, -6.3, 0)
 	
 func excecute() -> void:
 	animator.play("excecute")
