@@ -225,10 +225,10 @@ margin_right = -20.0
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 10.0
-margin_top = -12.0
+margin_top = -16.0
 margin_right = 90.0
-margin_bottom = 12.0
-rect_pivot_offset = Vector2( 23, 12 )
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 0, 16 )
 toggle_mode = true
 text = "Small"
 
@@ -238,9 +238,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -40.0
-margin_top = -12.0
+margin_top = -16.0
 margin_right = 40.0
-margin_bottom = 12.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 40, 16 )
 toggle_mode = true
 text = "Medium"
 
@@ -250,10 +251,10 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = -90.0
-margin_top = -12.0
+margin_top = -16.0
 margin_right = -10.0
-margin_bottom = 12.0
-rect_pivot_offset = Vector2( 28, 12 )
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 40, 16 )
 toggle_mode = true
 text = "Big"
 
@@ -293,7 +294,7 @@ margin_bottom = 8.5
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 27.0
+margin_top = 29.0
 
 [node name="SoundGrid" type="Control" parent="TabContainer/Sound"]
 anchor_right = 1.0
@@ -394,7 +395,7 @@ max_value = 0.0
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 27.0
+margin_top = 29.0
 
 [node name="ControlsGrid" type="Control" parent="TabContainer/Controls"]
 anchor_right = 1.0
@@ -429,11 +430,11 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = -30.0
-margin_top = -10.0
+margin_top = -16.0
 margin_right = -10.0
-margin_bottom = 10.0
+margin_bottom = 16.0
 grow_horizontal = 0
-rect_pivot_offset = Vector2( 20, 10 )
+rect_pivot_offset = Vector2( 20, 16 )
 
 [node name="BackButton" type="TextureButton" parent="." groups=["resizable_gui"]]
 anchor_top = 1.0

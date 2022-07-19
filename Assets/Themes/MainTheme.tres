@@ -4,6 +4,8 @@
 [ext_resource path="res://Assets/GUI/slider_icon.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxFlat" id=18]
+content_margin_left = 8.0
+content_margin_right = 8.0
 content_margin_top = 6.0
 content_margin_bottom = 6.0
 bg_color = Color( 0.117647, 0.0705882, 0.196078, 1 )
@@ -12,14 +14,16 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 shadow_color = Color( 0, 0, 0, 0.67451 )
 shadow_size = 1
 
 [sub_resource type="StyleBoxFlat" id=17]
+content_margin_left = 8.0
+content_margin_right = 8.0
 content_margin_top = 6.0
 content_margin_bottom = 6.0
 bg_color = Color( 0.117647, 0.0705882, 0.196078, 1 )
@@ -28,25 +32,29 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 shadow_color = Color( 0, 0, 0, 0.67451 )
 shadow_size = 1
 
 [sub_resource type="StyleBoxFlat" id=19]
+content_margin_left = 8.0
+content_margin_right = 8.0
 content_margin_top = 6.0
 content_margin_bottom = 6.0
 bg_color = Color( 0.117647, 0.0705882, 0.196078, 1 )
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 shadow_color = Color( 0, 0, 0, 0.67451 )
 shadow_size = 1
 
 [sub_resource type="StyleBoxFlat" id=20]
+content_margin_left = 8.0
+content_margin_right = 8.0
 content_margin_top = 6.0
 content_margin_bottom = 6.0
 bg_color = Color( 0.117647, 0.0705882, 0.196078, 1 )
@@ -55,10 +63,10 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 shadow_color = Color( 0, 0, 0, 0.67451 )
 shadow_size = 1
 
@@ -157,11 +165,11 @@ HSlider/icons/tick = ExtResource( 3 )
 HSlider/styles/grabber_area = SubResource( 23 )
 HSlider/styles/grabber_area_highlight = SubResource( 23 )
 HSlider/styles/slider = SubResource( 24 )
-Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0.235294 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 Label/constants/shadow_as_outline = 0
-Label/constants/shadow_offset_x = 0
-Label/constants/shadow_offset_y = 0
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 2
 OptionButton/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 OptionButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 OptionButton/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
