@@ -75,9 +75,6 @@ func generate_rooms():
 				check_in = true
 				break
 		if check_in and father.is_valid_room(newpos):
-			# le indica al room_generetor que haga una puerta en self.pos con direccion new_opening
-			father.add_door(self.pos, sprite_size, new_opening)
-			
 			#print(self,self.pos, " creando sala en posicion " , newpos, ", angulo absoluto %f y relativo %f"  % [newangle, relangle])
 			add_childroom(rel_opening, new_opening, relangle, newangle, newpos)
 			
@@ -91,6 +88,9 @@ func generate_rooms():
 	father.room_done(self)
 
 func add_childroom(rel_opening, new_opening, relangle, newangle, newpos):
+	# le indica al room_generetor que haga una puerta en self.pos con direccion new_opening
+	father.add_door(self.pos, sprite_size, new_opening)
+	
 	var new_room : RandomRoom = father.construct_room(newpos, newangle)
 	new_room.translation = self.separation/scale_factor * Vector3(rel_opening.x, 0, rel_opening.y)
 	new_room.rotate_y(relangle)

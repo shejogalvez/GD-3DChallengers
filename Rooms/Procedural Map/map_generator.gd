@@ -195,6 +195,7 @@ func add_to_minimap(sprite : Texture, pos : Vector2):
 	room.texture = sprite
 	minimap.add_child(room)
 	room.translate(pos * minimap_separation)
+	room.z_index = 1
 
 func center_minimap_in(pos : Vector2):
 	minimap_camera.offset = pos * minimap_separation
