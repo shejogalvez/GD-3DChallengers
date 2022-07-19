@@ -41,7 +41,7 @@ func set_state(state):
 	state.start(self)
 
 # useful functions
-func vec_to_player():
+func vec_to_player() -> Vector3:
 	return -(self.global_transform.origin - PlayerManager.get_player_position())
 	
 func vec_to_player2d():
@@ -55,16 +55,23 @@ func face_player():
 	var dir : Vector3 = vec_to_player2d()
 	var angle;
 	var back : Vector3 
-	if self.get_parent_spatial() != null:
-		back = -get_parent().global_transform.basis.z
-	else:
-		back = Vector3.FORWARD
-	if dir.x > 0:
-		angle = -back.angle_to(dir)
-	else:
-		angle = back.angle_to(dir)
-	self.rotation.y = angle + PI
+#	if self.get_parent_spatial() != null:
+#		back = -get_parent().global_transform.basis.z
+#		print(get_parent(), get_parent().angle)
+#	else:
+#		back = Vector3.FORWARD
+#	if dir.x > 0:
+#		angle = -back.angle_to(dir)
+#	else:
+#		angle = back.angle_to(dir)
+	angle = dir.angle_to(global_transform.basis.z)
+	if global_transform.basis.x.dot(dir) > 0:
+		rotate_y(angle)
+	else: rotate_y(-angle)
+	#look_at(PlayerManager.get_player_position(), Vector3.UP)
+	#self.rotation.y += PI
 
 func set_ray_castdir():
-	raycast.cast_to = vec_to_player().normalized() * alert_range
+	var rotation = -global_transform.basis.get_euler().y
+	raycast.cast_to = vec_to_player().normalized().rotated(Vector3.UP, rotation) * alert_range
 	#print(raycast.cast_to)

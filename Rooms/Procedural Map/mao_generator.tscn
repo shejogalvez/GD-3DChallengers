@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Rooms/Procedural Map/map_generator.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Rooms/Tutorial Prueba/Camera.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Trash/room_sprite.png" type="Texture" id=3]
+[ext_resource path="res://Rooms/Procedural Map/minimap/minimap_camera.gd" type="Script" id=4]
 [ext_resource path="res://sand_map/camera_control.gd" type="Script" id=5]
 
 [node name="main" type="Spatial"]
@@ -20,37 +21,41 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.17637, 0 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="GUI"]
-show_behind_parent = true
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -220.0
+[node name="Control" type="Control" parent="GUI"]
+margin_left = 804.0
 margin_top = 20.0
-margin_right = -20.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 200, 200 )
+margin_right = 1012.0
+margin_bottom = 228.0
 
-[node name="ViewportContainer" type="ViewportContainer" parent="GUI/Panel"]
-anchor_left = 1.0
+[node name="Panel" type="Panel" parent="GUI/Control"]
 anchor_right = 1.0
-margin_left = -200.0
-margin_bottom = 200.0
+anchor_bottom = 1.0
+
+[node name="ViewportContainer" type="ViewportContainer" parent="GUI/Control/Panel"]
+margin_right = 207.0
+margin_bottom = 208.0
 rect_min_size = Vector2( 200, 200 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Viewport" type="Viewport" parent="GUI/Panel/ViewportContainer"]
+[node name="Viewport" type="Viewport" parent="GUI/Control/Panel/ViewportContainer"]
 size = Vector2( 200, 200 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Camera" type="Camera" parent="GUI/Panel/ViewportContainer/Viewport"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 500, 0 )
+[node name="minimap" type="Node2D" parent="GUI/Control/Panel/ViewportContainer/Viewport"]
+
+[node name="Camera2D" type="Camera2D" parent="GUI/Control/Panel/ViewportContainer/Viewport/minimap"]
+rotation = 3.14159
+rotating = true
 current = true
-far = 500.0
-script = ExtResource( 3 )
+zoom = Vector2( 2, 2 )
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="GUI/Control/Panel/ViewportContainer/Viewport/minimap"]
+texture = ExtResource( 3 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.90572, 35.1996, 0 )

@@ -1,8 +1,8 @@
 [gd_resource type="AnimatedTexture" load_steps=4 format=2]
 
-[ext_resource path="res://Assets/kel_mad-0.png" type="Texture" id=1]
-[ext_resource path="res://Assets/kel_mad-1.png" type="Texture" id=2]
-[ext_resource path="res://Assets/kel_mad-2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Trash/kel_mad-0.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Trash/kel_mad-1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Trash/kel_mad-2.png" type="Texture" id=3]
 
 [resource]
 flags = 23
