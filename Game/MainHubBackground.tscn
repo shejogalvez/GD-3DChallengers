@@ -344,7 +344,7 @@ texture = ExtResource( 131 )
 [node name="EarthAnimatedSprite" type="AnimatedSprite" parent="EarthPoster/Viewport/SpaceBackground"]
 position = Vector2( 36, 54 )
 frames = SubResource( 23 )
-frame = 71
+frame = 56
 playing = true
 
 [node name="EarthPosterLight" type="OmniLight" parent="EarthPoster"]
@@ -452,6 +452,6 @@ directional_shadow_blend_splits = true
 environment = ExtResource( 16 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.756948, 0.113867, -0.643478, 0.0567892, 0.992439, 0.108815, 0.651003, 0.0458245, -0.757691, 0.171467, 20.5894, 68.8698 )
+transform = Transform( -0.885839, 0.100359, -0.45301, 0.0567892, 0.992439, 0.108814, 0.460505, 0.070666, -0.88484, 2.46203, 20.5894, 65.0228 )
 fov = 94.4
 far = 263.0
