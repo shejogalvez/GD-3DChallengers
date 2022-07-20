@@ -106,7 +106,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=12]
 resource_name = "attack"
-length = 3.16
+length = 2.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hitbox/pivot_cara/body/Spatial2:rotation_degrees")
 tracks/0/interp = 1

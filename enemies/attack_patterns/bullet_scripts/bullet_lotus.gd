@@ -8,6 +8,7 @@ var time_offset : float
 var execution_time : float
 var time_between_bullets : float
 var initial_y : float
+var initial_y_angle : float
 
 var timer = 0
 var vec_index = 0
@@ -17,12 +18,13 @@ var particle_object : Spatial
 var prev : Vector2
 var final_n_bullets = 30
 
-func _init(curve: Curve2D, time_offset : float, execution_time : float, initial_y : float):
+func _init(curve: Curve2D, time_offset : float, execution_time : float, initial_y : float, y_angle : float):
 	self.curve = curve
 	path_of_bullets = curve.get_baked_points()
 	self.time_offset = time_offset
 	self.execution_time = execution_time
 	self.initial_y = initial_y
+	self.initial_y_angle = y_angle
 	time_between_bullets = execution_time / path_of_bullets.size()
 	prev = curve.get_point_position(0)
 	
@@ -37,7 +39,7 @@ func _process(delta):
 	if timer < time_offset:
 		var fofs = (timer / time_offset) * curve.get_baked_length()
 		var vec2 = curve.interpolate_baked(fofs)
-		var angle = Vector2.UP.angle_to(vec2-prev)
+		var angle = Vector2.UP.angle_to(vec2-prev) - initial_y_angle
 		particle_object.rotation = Vector3(0, -angle, 0)
 		particle_object.global_transform.origin = Vector3(vec2.x, initial_y, vec2.y)
 		prev = vec2

@@ -10,14 +10,16 @@ var hit_player = false
 const damage = 15
 
 func _ready():
-	._ready()
+	standbyState = Initial.new()
+	alertedState = Follow.new()
+	set_state(standbyState)
 	hp = 0
 	weapon_area.connect("body_entered", self, "weapon_hit")
 
 func awake():
-	self.state = Follow.new()
-	state.start(self)
+	set_state(alertedState)
 	weapon.visible = true
+	collider.disabled = false
 	hit_player = false
 	
 func found_player():
@@ -37,7 +39,10 @@ func weapon_hit(body):
 			PlayerManager.receive_damage(damage)
 			hit_player = true
 	
-
+class Initial extends Standby:
+	func projectile_hit(damage, global_trans):
+		pass
+		
 class Follow extends State:
 	
 	var dif_vec : Vector3

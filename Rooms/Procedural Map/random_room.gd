@@ -27,7 +27,7 @@ func _ready():
 
 # Initializes the room.
 func _init_room():
-	print("room ", self, " pos: ", pos, " initializated")
+	#print("room ", self, " pos: ", pos, " initializated")
 	pass
 
 func attend_tp_signal(body):

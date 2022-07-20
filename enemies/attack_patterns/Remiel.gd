@@ -1,12 +1,12 @@
 extends KinematicBody
 
-var gradient : float = 1
+var gradient : float = 1.2
 var x_offset : float = 20
 var x_offset_init = 5
-var z_separation : float = 50
-var n_points : int = 4
+var z_separation : float = 100
+var n_points : int = 3
 var bullet_density_inverse = 1
-var control_point_xoffset = 100
+var control_point_xoffset = 50
 
 var animator : AnimationPlayer
 var trail_bullet_scene : PackedScene = preload("res://enemies/attack_patterns/bullet_scenes/enemy_bullert.tscn")
@@ -23,15 +23,16 @@ var enemy_scene : PackedScene = preload( "res://enemies/sand_soldier/sand_soldie
 var random = RandomNumberGenerator.new()
 var state : RemState
 onready var hp_bar = $hp_bar
+var max_hp = 500
 var hp = 500
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hp = max_hp
 	self.state = RemState.phase1.new()
 	state.start(self)
 	
 	random.randomize()
-	to_go_position = global_transform.origin
 	animator = $AnimationPlayer
 	var local_y = Vector2(global_transform.basis.z.x, global_transform.basis.z.z).normalized()
 	var origin2d = Vector2(global_transform.origin.x, global_transform.origin.z)
@@ -55,20 +56,16 @@ func create_curve_path_forward() -> Curve2D:
 	var p2 : Vector2
 	for i in range(n_points):
 		p0 = create_rand_forward_vec2(i, local_x, local_y, origin2d, x_init, 0)
-		#if i != n_points:
 		var max_from_z = gradient * i * z_separation + control_point_xoffset
 		p1 = create_rand_forward_vec2(0.10, local_x, local_y, Vector2.ZERO, x_init, rand_range(0.5*max_from_z, max_from_z))
 		p2 = create_rand_forward_vec2(0.20, local_x, local_y, Vector2.ZERO, x_init, rand_range(-max_from_z, -0.5*max_from_z))
-#		else:
-#			p1 = Vector2.ZERO
-#			p2 = Vector2.ZERO
 		patin.add_point(p0, p1, p2)
 	return patin
 
 func bullet_lotus():
 	face_player()
 	var path = create_curve_path_forward()
-	var attack = BulletLotus.new(path, 2, 1, self.global_transform.origin.y)
+	var attack = BulletLotus.new(path, 2, 1, self.global_transform.origin.y, get_parent().global_transform.basis.get_euler().y)
 	get_parent().add_child(attack)
 
 func trail_bullet():
@@ -102,11 +99,11 @@ func vec_to_player2d():
 func face_player():
 	var dir : Vector3 = vec_to_player2d()
 	var angle;
-	if dir.x > 0:
-		angle = Vector3.BACK.angle_to(dir)
-	else:
-		angle = -Vector3.BACK.angle_to(dir)
-	self.rotation.y = angle
+	var back : Vector3 
+	angle = dir.angle_to(global_transform.basis.z)
+	if global_transform.basis.x.dot(dir) > 0:
+		rotate_y(angle)
+	else: rotate_y(-angle)
 
 ############ MOVE PATTERNS #####################
 
@@ -116,11 +113,13 @@ var radial_variance = 8
 var angle_variance = 5
 var angle_avarage = 30
 
-const margin = {UP=-10, DOWN=-250, LEFT=-120, RIGHT=120}
-var to_go_position : Vector3
+var margin = {UP=-10, DOWN=-250, LEFT=-120, RIGHT=120}
+var to_go_position := Vector3.ZERO
 var vec_from_player : Vector3
 var lerp_weight = 0.1
 var max_speed = 55
+
+var phase2_position = Vector3(0, 55, -40)
 
 # sets a point to move based on self and player position
 func get_next_step():
@@ -132,12 +131,25 @@ func get_next_step():
 	if random.randf() > 0.5:
 		angle = -angle
 	var to_go2d = vec2d.rotated(deg2rad(angle)) * new_radius + player_pos2d
-	to_go2d.x = clamp(to_go2d.x, margin.LEFT, margin.RIGHT)
-	to_go2d.y = clamp(to_go2d.y, margin.DOWN, margin.UP)
+	var room_origin := Vector2.ZERO 
+	if get_parent_spatial() != null:
+		room_origin = Vector2(get_parent_spatial().global_transform.origin.x, get_parent_spatial().global_transform.origin.z)
+	to_go2d.x = clamp(to_go2d.x, room_origin.x + margin.LEFT,  room_origin.x + margin.RIGHT)
+	to_go2d.y = clamp(to_go2d.y, room_origin.y + margin.DOWN, room_origin.y + margin.UP)
 	to_go_position = Vector3(to_go2d.x, self.global_transform.origin.y, to_go2d.y)
 	#print(PlayerManager.get_player_position(), to_go_position, "  angle= %d,  radius= %d " % [angle, new_radius])
 	return to_go_position
-	
+
+func set_room_size(size : float):
+	margin.UP = size
+	margin.DOWN = -size
+	margin.LEFT = -size
+	margin.RIGHT = size
+
+func set_initial_pos(pos : Vector3):
+	translate(pos)
+	to_go_position = pos + get_parent_spatial().global_transform.origin
+
 func physics_process_phase1(delta):
 	var dif_vector = to_go_position - global_transform.origin
 	var jump_candidate : Vector3 = lerp(Vector3.ZERO, to_go_position - global_transform.origin, lerp_weight)
@@ -146,11 +158,19 @@ func physics_process_phase1(delta):
 	else:
 		global_translate(jump_candidate)
 
+func start_phase2():
+	to_go_position = phase2_position + get_parent_spatial().global_transform.origin
+
+func set_state(newstate : RemState):
+	self.state = newstate
+	newstate.start(self)
+
 func projectile_hit(damage, trans):
 	state.projectile_hit(damage)
 
 func _process(delta):
 	state._process(delta)
+	pass
 
 func _physics_process(delta):
 	state._physics_process(delta)
@@ -159,10 +179,7 @@ class RemState:
 	var boss_node
 	
 	func projectile_hit(damage):
-		boss_node.hp -= damage
-		boss_node.hp_bar.update_hp(boss_node.hp)
-		if boss_node.hp <= 0:
-			boss_node.queue_free()
+		pass
 	
 	func start(node):
 		boss_node = node
@@ -172,47 +189,64 @@ class RemState:
 		pass
 	
 	func _physics_process(delta):
-		pass
-	
+		boss_node.physics_process_phase1(delta)
 
 	class wait extends RemState:
 		pass
 
 	class phase1 extends RemState:
 		const cd = 7
-		const attacks : int = 4
-		const time_between_attacks = 0.35
 		var timer = 0
-		var attack = 0
-		enum path {none, trail, lotus}
-		var actual = path.none
-		
-		func _physics_process(delta):
-			boss_node.physics_process_phase1(delta)
-			
+
+
+		func projectile_hit(damage):
+			boss_node.hp -= damage
+			boss_node.hp_bar.update_hp(boss_node.hp)
+			if boss_node.hp <= 0:
+				boss_node.hp = boss_node.max_hp
+				boss_node.set_state(phase2.new())
+
+
 		func _process(delta):
 			if timer > cd:
-				boss_node.get_next_step()
-				timer = 0
-#				if randf() > 0.5:
-#					actual = path.trail
-#					boss_node.get_next_step()
-#				else:
-#					actual = path.lotus
-#				timer = 0
-#			if actual == path.trail:
-#				if attack >= attacks:
-#					actual = path.none
-#					timer = 0
-#					attack = 0
-#				if timer > time_between_attacks * attack:
-#					boss_node.trail_bullet()
-#					attack += 1
-#			elif actual == path.lotus:
-#				boss_node.play("bullet_lotus")
-#				timer = -2
-#				actual = path.none
+				if randf() > 0.5:
+					boss_node.get_next_step()
+					boss_node.play("trail_bullet")
+					timer = 0
+				else:
+					boss_node.play("bullet_lotus")
+					timer = -2
 			timer += delta
-			
+
 	class phase2 extends RemState:
-		pass
+		
+		const spawn_cd = 3.5
+		var spawn_index = 1
+		const explosion_cd = 5.5
+		var explosion_index = 1
+		var timer = 0
+		
+		func projectile_hit(damage):
+			boss_node.hp -= damage*0.75
+			boss_node.hp_bar.update_hp(boss_node.hp)
+			if boss_node.hp <= 0:
+				if GameManager.current_level != null:
+					GameManager.clear_level()
+				boss_node.queue_free()
+		
+		func _ready():
+			boss_node.start_phase2()
+			
+		func _process(delta):
+			if timer > spawn_cd * spawn_index:
+				boss_node.play("spawn")
+				spawn_index+=1
+			if timer > explosion_cd * explosion_index:
+				boss_node.play("explosion")
+				explosion_index+=1
+			boss_node.face_player()
+			timer += delta
+		
+		func _physics_process(delta):
+			._physics_process(delta)
+			boss_node.to_go_position = boss_node.phase2_position + boss_node.get_parent_spatial().global_transform.origin

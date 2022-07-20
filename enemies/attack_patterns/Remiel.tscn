@@ -9,7 +9,6 @@ extents = Vector3( 0.925303, 1.43819, 0.853925 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "bullet_lotus"
-length = 0.6
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -17,11 +16,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "bullet_lotus"
+}, {
+"args": [  ],
+"method": "get_next_step"
 } ]
 }
 
@@ -81,7 +83,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "trail_bullet"
-length = 0.1
+length = 1.6
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -89,22 +91,31 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5, 1.05, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "trail_bullet"
+}, {
+"args": [  ],
+"method": "trail_bullet"
+}, {
+"args": [  ],
+"method": "trail_bullet"
+}, {
 "args": [  ],
 "method": "trail_bullet"
 } ]
 }
 
 [node name="Remiel" type="KinematicBody"]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 0.2
 anims/bullet_lotus = SubResource( 2 )
 anims/explosion = SubResource( 4 )
 anims/move = SubResource( 6 )

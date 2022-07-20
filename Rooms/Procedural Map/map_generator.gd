@@ -5,7 +5,7 @@ class_name RoomGenerator
 
 var rfc : RandomFunctionCaller
 var rfc_rooms : RandomFunctionCaller
-export (int) var number_of_rooms = 12
+export (int) var number_of_rooms = 10
 var random_rooms = [
 	[preload("res://Rooms/Rooms2.0Andrew/SmallEnemyRoom.tscn"), 1] ,
 	[preload("res://Rooms/Rooms2.0Andrew/MidEnemyRoom.tscn"), 1] ,
@@ -14,7 +14,7 @@ var random_rooms = [
 
 # end_room SIMPRE VA PRIMERO!!
 var obligatory_rooms = [
-	[preload("res://Rooms/Test Rooms Stuff/end_room.tscn"), [12]],
+	[preload("res://Rooms/Rooms2.0Andrew/BigBossRoom.tscn"), [12]],
 ]
 var obligatory_rooms_queue = Array()
 export (PackedScene) var initial_room : PackedScene = preload("res://Rooms/Test Rooms Stuff/initial_room.tscn"  )
@@ -195,6 +195,7 @@ func add_to_minimap(sprite : Texture, pos : Vector2):
 	room.texture = sprite
 	minimap.add_child(room)
 	room.translate(pos * minimap_separation)
+	room.rotate(PI)
 	room.z_index = 1
 
 func center_minimap_in(pos : Vector2):

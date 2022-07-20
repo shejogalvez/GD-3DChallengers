@@ -251,7 +251,7 @@ func update_sfx_volume() -> void:
 	if game_data["settings"]["sfx_volume"] <= -25.0:
 		game_data["settings"]["sfx_volume"] = -80.0
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), game_data["settings"]["sfx_volume"])
-	
+
 # Updates the game volume.
 func update_volume_settings() -> void:
 	update_global_volume()
@@ -263,3 +263,7 @@ func set_default_settings() -> void:
 	game_data["settings"] = default_settings.duplicate(true)
 
 var current_level : RoomGenerator = null
+func clear_level() -> void:
+	print("level cleared lol")
+	current_level = null
+	advance_day()

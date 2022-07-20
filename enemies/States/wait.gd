@@ -6,12 +6,11 @@ var hit : bool = true
 func _ready():
 	pass # Replace with function body.
 
-func _init(hit : bool = true):
+func _init(hit : bool = false):
 	self.hit = hit
 	
 func projectile_hit(damage, global_trans):
 	if hit:
-		print(hit)
 		enemy_node.hp -= damage
 		if enemy_node.hp <= 0:
 			enemy_node.queue_free()

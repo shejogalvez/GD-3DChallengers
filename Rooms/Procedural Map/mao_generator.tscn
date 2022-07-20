@@ -22,18 +22,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.17637, 0 )
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="GUI"]
-margin_left = 804.0
-margin_top = 20.0
-margin_right = 1012.0
-margin_bottom = 228.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -225.0
+margin_bottom = 225.0
 
 [node name="Panel" type="Panel" parent="GUI/Control"]
-anchor_right = 1.0
+anchor_top = 1.0
 anchor_bottom = 1.0
+margin_top = -200.0
+margin_right = 200.0
 
 [node name="ViewportContainer" type="ViewportContainer" parent="GUI/Control/Panel"]
-margin_right = 207.0
-margin_bottom = 208.0
 rect_min_size = Vector2( 200, 200 )
 __meta__ = {
 "_edit_use_anchors_": true

@@ -45,6 +45,7 @@ func _bullet_transform(bullet, angle):
 	bullet.rotate_y(angle)
 	bullet.scale = Vector3(3, 3, 3)
 	bullet.global_transform = self.global_transform
+	bullet.translate(Vector3.UP * 1.5)
 	
 # Moves the projectile.
 func _move_projectile(_delta : float) -> void:
