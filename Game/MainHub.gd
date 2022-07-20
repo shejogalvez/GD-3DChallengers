@@ -10,6 +10,7 @@ var dynamic_door_opening := false
 onready var door_single_dynamic := $DoorSingleDynamic
 onready var door_single_dynamic_body := $DoorSingleDynamic/DoorSingleDynamicBody
 onready var door_single_dynamic_area := $DoorSingleDynamic/Area
+onready var door_audio := $DoorSingleDynamic/DoorAudio
 
 onready var earth_poster := $Hall/EarthPoster
 onready var earth_poster_viewport := $Hall/EarthPoster/Viewport
@@ -33,10 +34,12 @@ func _process(_delta) -> void:
 # Opens the dynamic single door body.
 func _open_door_single_dynamic_body(_body : KinematicBody) -> void:
 	dynamic_door_opening = true
+	door_audio.play()
 
 # Closes the dynamic single door body.
 func _close_door_single_dynamic_body(_body : KinematicBody) -> void:
 	dynamic_door_opening = false
+	door_audio.play()
 
 # Teleports the player to a new random level scene.
 func _time_travel(_body : KinematicBody) -> void:

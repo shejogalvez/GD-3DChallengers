@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=2]
+[gd_scene load_steps=167 format=2]
 
 [ext_resource path="res://Assets/Meshes/FutureMesh/future_mesh_library.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://Actors/MainHubPlayer.tscn" type="PackedScene" id=2]
@@ -140,9 +140,10 @@
 [ext_resource path="res://Assets/Sprites/Planets/Earth/113.png" type="Texture" id=138]
 [ext_resource path="res://Assets/Sprites/Planets/Earth/114.png" type="Texture" id=139]
 [ext_resource path="res://Assets/Sprites/Planets/Earth/117.png" type="Texture" id=140]
-[ext_resource path="res://Assets/Audio/Ambient/ambience_power_station.wav" type="AudioStream" id=141]
+[ext_resource path="res://Assets/Audio/Ambient/ambience-power-station.wav" type="AudioStream" id=141]
 [ext_resource path="res://Assets/Meshes/FutureMesh/Paper/Paper.tres" type="PlaneMesh" id=142]
 [ext_resource path="res://GUI/Workstation.tscn" type="PackedScene" id=143]
+[ext_resource path="res://Assets/Audio/Ambient/door-steam.wav" type="AudioStream" id=144]
 [ext_resource path="res://Rooms/Misc/GUIDisplayer.tscn" type="PackedScene" id=145]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -373,13 +374,13 @@ material/4 = null
 [node name="CollisionShape" type="CollisionShape" parent="DoorSingleStatic"]
 shape = SubResource( 5 )
 
-[node name="RigidBody" type="StaticBody" parent="."]
+[node name="EntranceTerminal" type="StaticBody" parent="."]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16, 4.17, -11 )
 
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+[node name="CollisionShape" type="CollisionShape" parent="EntranceTerminal"]
 shape = SubResource( 25 )
 
-[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
+[node name="MeshInstance" type="MeshInstance" parent="EntranceTerminal"]
 mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
@@ -387,7 +388,7 @@ material/2 = null
 material/3 = null
 material/4 = null
 
-[node name="Interaction" parent="RigidBody" instance=ExtResource( 17 )]
+[node name="Interaction" parent="EntranceTerminal" instance=ExtResource( 17 )]
 interaction_message = "Room Terminal"
 
 [node name="Hall" type="Spatial" parent="."]
@@ -621,7 +622,7 @@ texture = ExtResource( 131 )
 [node name="EarthAnimatedSprite" type="AnimatedSprite" parent="Hall/EarthPoster/Viewport/SpaceBackground"]
 position = Vector2( 36, 54 )
 frames = SubResource( 23 )
-frame = 26
+frame = 94
 playing = true
 
 [node name="EarthPosterLight" type="OmniLight" parent="Hall/EarthPoster"]
@@ -656,6 +657,11 @@ collision_mask = 64
 
 [node name="CollisionShape" type="CollisionShape" parent="DoorSingleDynamic/Area"]
 shape = SubResource( 6 )
+
+[node name="DoorAudio" type="AudioStreamPlayer3D" parent="DoorSingleDynamic"]
+stream = ExtResource( 144 )
+unit_db = 10.0
+unit_size = 5.0
 
 [node name="Workstation" parent="." instance=ExtResource( 145 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.795, 4.35481, 122.036 )

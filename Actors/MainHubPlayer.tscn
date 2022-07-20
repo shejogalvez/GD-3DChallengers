@@ -3,7 +3,7 @@
 [ext_resource path="res://Actors/MainHubPlayer.gd" type="Script" id=1]
 [ext_resource path="res://GUI/Menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/MainHubHUD.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actors/PlayerModel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Meshes/Actors/Player/PlayerModel.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.2
@@ -38,7 +38,7 @@ __meta__ = {
 }
 
 [node name="PlayerModel" parent="Model" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.85 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9 )
 
 [node name="Menu" parent="." instance=ExtResource( 2 )]
 

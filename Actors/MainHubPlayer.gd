@@ -148,7 +148,7 @@ func _process_animations(_delta : float) -> void:
 			head_pivot.transform.origin = head_pivot.transform.origin.linear_interpolate(default_head_camera_position, HEAD_ANIMATION_LERP * _delta)
 	elif topdown_movement:
 		if is_sprinting:
-			animation_player.play("Correr estatico Retarget")
+			animation_player.play("Correr estatico")
 			head_pivot.transform.origin = head_pivot.transform.origin.linear_interpolate(sprinting_head_camera_position, HEAD_ANIMATION_LERP * _delta)
 		else:
 			if topdown_movement[0] < 0:
