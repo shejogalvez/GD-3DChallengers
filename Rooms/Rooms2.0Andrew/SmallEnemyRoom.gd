@@ -8,18 +8,18 @@ export(PackedScene) var minion_enemy_scene : PackedScene
 var rng := RandomNumberGenerator.new()
 
 var pot_positions := [
-	Vector3(69.5, 0.5, 69.5),
-	Vector3(64.5, 0.5, 69.5),
-	Vector3(69.5, 0.5, 64.5),
-	Vector3(-69.5, 0.5, 69.5),
-	Vector3(-64.5, 0.5, 69.5),
-	Vector3(-69.5, 0.5, 64.5),
-	Vector3(69.5, 0.5, -69.5),
-	Vector3(64.5, 0.5, -69.5),
-	Vector3(69.5, 0.5, -64.5),
-	Vector3(-69.5, 0.5, -69.5),
-	Vector3(-64.5, 0.5, -69.5),
-	Vector3(-69.5, 0.5, -64.5)	
+	Vector3(69, 0.5, 69),
+	Vector3(60, 0.5, 69),
+	Vector3(69, 0.5, 60),
+	Vector3(-69, 0.5, 69),
+	Vector3(-60, 0.5, 69),
+	Vector3(-69, 0.5, 60),
+	Vector3(69, 0.5, -69),
+	Vector3(60, 0.5, -69),
+	Vector3(69, 0.5, -60),
+	Vector3(-69, 0.5, -69),
+	Vector3(-60, 0.5, -69),
+	Vector3(-69, 0.5, -60)	
 ]
 
 const MIN_POT_AMOUNT := 4
@@ -45,6 +45,7 @@ func _ready():
 
 # Initializes the room with pots and enemies.
 func _init_room():
+	print("Iniciado bro")
 	_generate_random_pots()
 	_generate_random_enemies()
 
