@@ -321,4 +321,4 @@ quality/driver/driver_name="GLES2"
 quality/shadows/filter_mode=2
 quality/filters/msaa=2
 quality/filters/use_fxaa=true
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://Assets/Environments/default_environment.tres"

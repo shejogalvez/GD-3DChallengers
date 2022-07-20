@@ -139,17 +139,19 @@ func _process_movement(delta : float) -> void:
 
 # Process player's animations.
 func _process_animations(_delta : float) -> void:
-	head_pivot.transform.origin = head_pivot.transform.origin.linear_interpolate(default_head_camera_position, HEAD_ANIMATION_LERP * _delta)
+	#head_pivot.transform.origin = head_pivot.transform.origin.linear_interpolate(default_head_camera_position, HEAD_ANIMATION_LERP * _delta)
 	if !is_on_floor() and not is_on_wall():
 		animation_player.play("Salto Retarget001")
 		if vel.y >= 0:
-			head_pivot.transform.origin = head_pivot.transform.origin.linear_interpolate(jumping_head_camera_position, HEAD_ANIMATION_LERP * _delta)
+			pass
+			#head_pivot.transform.origin = head_pivot.transform.origin.linear_interpolate(jumping_head_camera_position, HEAD_ANIMATION_LERP * _delta)
 		else:
-			head_pivot.transform.origin = head_pivot.transform.origin.linear_interpolate(default_head_camera_position, HEAD_ANIMATION_LERP * _delta)
+			pass
+			#head_pivot.transform.origin = head_pivot.transform.origin.linear_interpolate(default_head_camera_position, HEAD_ANIMATION_LERP * _delta)
 	elif topdown_movement:
 		if is_sprinting:
 			animation_player.play("Correr estatico")
-			head_pivot.transform.origin = head_pivot.transform.origin.linear_interpolate(sprinting_head_camera_position, HEAD_ANIMATION_LERP * _delta)
+			#head_pivot.transform.origin = head_pivot.transform.origin.linear_interpolate(sprinting_head_camera_position, HEAD_ANIMATION_LERP * _delta)
 		else:
 			if topdown_movement[0] < 0:
 				animation_player.play("Caminata izquierda Retarget")

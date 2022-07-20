@@ -15,7 +15,7 @@
 [ext_resource path="res://Assets/Meshes/FutureMesh/WoodenShelfSmall/Shelf_Small_GD_Cube088.mesh" type="ArrayMesh" id=13]
 [ext_resource path="res://Assets/Meshes/FutureMesh/Phone/Phone_GD_Cube006.mesh" type="ArrayMesh" id=14]
 [ext_resource path="res://Assets/Meshes/FutureMesh/Plant5/Plant_5_GD_Cylinder021.mesh" type="ArrayMesh" id=15]
-[ext_resource path="res://Assets/Environments/dark_environment.tres" type="Environment" id=16]
+[ext_resource path="res://Assets/Environments/main_hub_environment.tres" type="Environment" id=16]
 [ext_resource path="res://Addons/Interactions/Interaction.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Assets/Meshes/FutureMesh/Table/Table_GD_Cube007.mesh" type="ArrayMesh" id=18]
 [ext_resource path="res://Assets/Meshes/FutureMesh/Capsule/Props_Capsule_GD_Cylinder014.mesh" type="ArrayMesh" id=19]
@@ -145,6 +145,7 @@
 [ext_resource path="res://GUI/Workstation.tscn" type="PackedScene" id=143]
 [ext_resource path="res://Assets/Audio/Ambient/door-steam.wav" type="AudioStream" id=144]
 [ext_resource path="res://Rooms/Misc/GUIDisplayer.tscn" type="PackedScene" id=145]
+
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.77, 0.595852, 0.3157, 1 )

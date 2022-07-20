@@ -11,6 +11,14 @@ points = PoolVector3Array( -0.128296, 3.28626, 1.08078, 0.197551, 3.28626, 1.078
 shape = SubResource( 1 )
 
 [node name="Model" type="MeshInstance" parent="."]
+cast_shadow = 0
 mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
+light_color = Color( 0.94902, 0.603922, 0.0627451, 1 )
+light_energy = 1.5
+omni_range = 100.0
+omni_attenuation = 1.8
