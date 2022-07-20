@@ -1,19 +1,19 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Meshes/AztecMesh/aztec_mesh_library.tres" type="MeshLibrary" id=1]
-[ext_resource path="res://Rooms/Rooms2.0Andrew/MidEnemyRoom.gd" type="Script" id=2]
-[ext_resource path="res://enemies/sand_soldier/sand_soldier.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Rooms/Misc/PotSmall.tscn" type="PackedScene" id=5]
-[ext_resource path="res://enemies/bat/bat.tscn" type="PackedScene" id=6]
-[ext_resource path="res://enemies/minion_egipcio/minion_maloglb.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Rooms/Rooms2.0Andrew/EnemyRooms/MidEnemyRoom.gd" type="Script" id=2]
+[ext_resource path="res://Rooms/Misc/PotSmall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/minion_egipcio/minion_maloglb.tscn" type="PackedScene" id=4]
+[ext_resource path="res://enemies/bat/bat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://enemies/sand_soldier/sand_soldier.tscn" type="PackedScene" id=6]
 
 [node name="MidEnemyRoom" type="Spatial"]
 script = ExtResource( 2 )
 size = 105.0
-pot_small_scene = ExtResource( 5 )
-bat_enemy_scene = ExtResource( 6 )
-minion_enemy_scene = ExtResource( 7 )
-sand_soldier_scene = ExtResource( 4 )
+pot_small_scene = ExtResource( 3 )
+bat_enemy_scene = ExtResource( 5 )
+minion_enemy_scene = ExtResource( 4 )
+sand_soldier_scene = ExtResource( 6 )
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, -15, -22.5 )

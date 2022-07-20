@@ -4,7 +4,7 @@ export(String, FILE) var random_level_generator_scene_path = "res://Rooms/Proced
 export(Vector3) var closed_dynamic_door_pos = Vector3(0, 0, 0)
 export(Vector3) var open_dynamic_door_pos = Vector3(0, 18, 0)
 
-const DYNAMIC_DOOR_OPENING_SPEED = 1.5
+const DYNAMIC_DOOR_OPENING_SPEED = 2.5
 var dynamic_door_opening := false
 
 onready var door_single_dynamic := $DoorSingleDynamic
