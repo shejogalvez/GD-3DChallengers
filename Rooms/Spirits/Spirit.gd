@@ -19,8 +19,10 @@ func _ready():
 # Called on each frame.
 func _process(delta):
 	if current_move_target != null:
-		global_transform.origin = global_transform.origin.linear_interpolate(current_move_target, delta * spirit_speed)
-		if (global_transform.origin - current_move_target).length() < CLOSE_DISTANCE:
+		var direction = (current_move_target - global_transform.origin).normalized()
+		global_transform.origin = global_transform.origin + direction * spirit_speed
+		if (global_transform.origin - current_move_target).length() <= CLOSE_DISTANCE:
+			global_transform.origin = current_move_target
 			current_move_target = null
 	else:
 		if !moves_queue.empty():
