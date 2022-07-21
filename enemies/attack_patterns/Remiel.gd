@@ -146,9 +146,9 @@ func set_room_size(size : float):
 	margin.LEFT = -size
 	margin.RIGHT = size
 
-func set_initial_pos(pos : Vector3):
-	translate(pos)
-	to_go_position = pos + get_parent_spatial().global_transform.origin
+func set_initial_pos(real_pos : Vector3):
+	global_translate(real_pos + Vector3.UP * 30)
+	to_go_position = real_pos + get_parent_spatial().global_transform.origin
 
 func physics_process_phase1(delta):
 	var dif_vector = to_go_position - global_transform.origin

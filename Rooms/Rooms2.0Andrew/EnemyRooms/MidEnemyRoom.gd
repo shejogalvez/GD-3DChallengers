@@ -91,8 +91,7 @@ func _generate_random_pots() -> void:
 	for position in pot_real_positions:
 		var pot_instance : RigidBody = pot_small_scene.instance()
 		add_child(pot_instance)
-		pot_instance.global_transform.origin = self.global_transform.origin
-		pot_instance.translate(position)
+		pot_instance.global_transform.origin = self.global_transform.origin + position.rotated(Vector3.UP, self.angle)
 		
 # Generates random enemies in the center of the room.
 func _generate_random_enemies() -> void:
@@ -111,6 +110,5 @@ func _generate_random_enemies() -> void:
 		var enemy_scene : PackedScene = enemies[rng.randi_range(0, enemies.size() - 1)]
 		var enemy : Spatial = enemy_scene.instance()
 		add_child(enemy)
-		enemy.global_transform.origin = self.global_transform.origin
-		enemy.translate(enemies_real_positions[index])
+		enemy.global_transform.origin = self.global_transform.origin + enemies_real_positions[index].rotated(Vector3.UP, self.angle)
 		index += 1

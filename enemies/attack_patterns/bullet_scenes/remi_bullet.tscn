@@ -26,6 +26,9 @@ kill_timer = 8.0
 max_speed = 40
 bullet_speed_curve = SubResource( 3 )
 
+[node name="Area" parent="." index="0"]
+collision_mask = 64
+
 [node name="CollisionShape" parent="Area" index="0"]
 shape = SubResource( 1 )
 

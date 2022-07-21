@@ -23,7 +23,7 @@ func awake():
 	hit_player = false
 	
 func found_player():
-	set_state(Wait.new())
+	set_state(WaitS.new())
 	animator.play("emerge")
 	
 func set_dash():
@@ -38,11 +38,16 @@ func weapon_hit(body):
 		if body == PlayerManager.get_player():
 			PlayerManager.receive_damage(damage)
 			hit_player = true
-	
+
+class WaitS extends Wait:
+	func _process(delta):
+		if enemy_node.weapon.visible:
+			enemy_node.set_state(enemy_node.alertedState)
+
 class Initial extends Standby:
 	func projectile_hit(damage, global_trans):
 		pass
-		
+
 class Follow extends State:
 	
 	var dif_vec : Vector3
@@ -50,13 +55,16 @@ class Follow extends State:
 	const GRAVITY = -80
 	const MAX_SLOPE_ANGLE = 40
 	const SPEED = 10
+	const ACCEL = 20
+	var actual_speed = 0
 	const ATTACK_DISTANCE = 30
 	const LOSE_DISTANCE = 150
 	
 	func _physics_process(delta):
 		var direction : Vector3 = enemy_node.vec_to_player().normalized()
-		vel.x = direction.x*SPEED
-		vel.z = direction.z*SPEED
+		actual_speed = min(actual_speed + ACCEL*delta, SPEED)
+		vel.x = direction.x*actual_speed
+		vel.z = direction.z*actual_speed
 		
 		vel.y += GRAVITY * delta
 		vel = enemy_node.move_and_slide(vel, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
@@ -71,6 +79,10 @@ class Follow extends State:
 				enemy_node.animator.play_backwards("emerge")
 				enemy_node.set_state(enemy_node.standbyState)
 		enemy_node.face_player()
+		
+	func projectile_hit(damage, trans):
+		.projectile_hit(damage, trans)
+		actual_speed = 0
 		
 class Attacking extends State:
 	

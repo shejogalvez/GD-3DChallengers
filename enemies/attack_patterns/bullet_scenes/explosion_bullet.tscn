@@ -51,5 +51,8 @@ script = ExtResource( 3 )
 damage = 30
 size_curve = SubResource( 3 )
 
+[node name="Area" parent="." index="0"]
+collision_mask = 64
+
 [node name="Model" parent="." index="1"]
 material/0 = SubResource( 2 )

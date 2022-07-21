@@ -1,10 +1,55 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Rooms/Procedural Map/map_generator.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Trash/room_sprite.png" type="Texture" id=3]
 [ext_resource path="res://Rooms/Procedural Map/minimap/minimap_camera.gd" type="Script" id=4]
 [ext_resource path="res://sand_map/camera_control.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Trash/minimap_cover.png" type="Texture" id=6]
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform sampler2D viewport; 
+
+void fragment(){
+	vec2 uv = UV - 0.5;
+	float d = length(uv);
+	float r = 0.5;
+	float c = 0.0;
+	if (d < r) {
+		COLOR=texture(viewport, UV);
+	}
+	else{
+		COLOR=vec4(0.0);
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends ViewportContainer
+
+
+func _process(d):
+	material.set_shader_param('viewport', $Viewport.get_texture())
+"
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void fragment(){
+	vec2 uv = UV - 0.5;
+	float d = length(uv);
+	float r = 0.3;
+	float c = 0.0;
+	if (d < r) {
+		COLOR = vec4(vec3(0.0), 1.0);
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 
 [node name="main" type="Spatial"]
 script = ExtResource( 1 )
@@ -27,35 +72,38 @@ anchor_right = 1.0
 margin_left = -225.0
 margin_bottom = 225.0
 
-[node name="Panel" type="Panel" parent="GUI/Control"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -200.0
+[node name="ViewportContainer" type="ViewportContainer" parent="GUI/Control"]
+material = SubResource( 4 )
+margin_top = 25.0
 margin_right = 200.0
-
-[node name="ViewportContainer" type="ViewportContainer" parent="GUI/Control/Panel"]
+margin_bottom = 225.0
 rect_min_size = Vector2( 200, 200 )
+script = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Viewport" type="Viewport" parent="GUI/Control/Panel/ViewportContainer"]
+[node name="Viewport" type="Viewport" parent="GUI/Control/ViewportContainer"]
 size = Vector2( 200, 200 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="minimap" type="Node2D" parent="GUI/Control/Panel/ViewportContainer/Viewport"]
+[node name="minimap" type="Node2D" parent="GUI/Control/ViewportContainer/Viewport"]
+material = SubResource( 2 )
 
-[node name="Camera2D" type="Camera2D" parent="GUI/Control/Panel/ViewportContainer/Viewport/minimap"]
+[node name="Camera2D" type="Camera2D" parent="GUI/Control/ViewportContainer/Viewport/minimap"]
 rotation = 3.14159
 rotating = true
 current = true
 zoom = Vector2( 2, 2 )
 script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="GUI/Control/Panel/ViewportContainer/Viewport/minimap"]
-texture = ExtResource( 3 )
+[node name="background" type="Sprite" parent="GUI/Control/ViewportContainer/Viewport/minimap/Camera2D"]
+rotation = -3.14159
+scale = Vector2( 3, 3 )
+z_index = -10
+texture = ExtResource( 6 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.90572, 35.1996, 0 )

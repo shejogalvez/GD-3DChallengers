@@ -475,7 +475,7 @@ shape = SubResource( 1 )
 disabled = true
 
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
-transform = Transform( 1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 0.01, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 2 )
@@ -491,7 +491,7 @@ anims/emerge = SubResource( 3 )
 [node name="CPUParticles" type="CPUParticles" parent="Spatial"]
 emitting = false
 amount = 250
-lifetime = 2.0
+lifetime = 0.1
 mesh = SubResource( 5 )
 emission_shape = 5
 emission_ring_radius = 5.0
@@ -500,7 +500,7 @@ emission_ring_height = 0.0
 emission_ring_axis = Vector3( 0, 1, 0 )
 direction = Vector3( 0, 1, 0 )
 spread = 9.51
-gravity = Vector3( 0, 5, 0 )
+gravity = Vector3( 0, 1, 0 )
 initial_velocity = 9.0
 tangential_accel_random = 0.1
 damping_curve = SubResource( 8 )

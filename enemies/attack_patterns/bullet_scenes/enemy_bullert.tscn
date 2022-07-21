@@ -42,6 +42,7 @@ damage = 30
 
 [node name="Area" parent="." index="0"]
 visible = false
+collision_mask = 64
 
 [node name="Model" parent="." index="1"]
 material/0 = SubResource( 4 )

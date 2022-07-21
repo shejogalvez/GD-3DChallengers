@@ -4,6 +4,7 @@ class_name IEnemy
 export (int) var hp = 0
 var alerted : bool
 export (int) var speed = 18
+export (int) var accel = 20
 export (int, -200, 0) var gravity = -80
 export (int, 0, 300) var attack_distance = 15
 export (int, 0, 300) var lose_distance = 150

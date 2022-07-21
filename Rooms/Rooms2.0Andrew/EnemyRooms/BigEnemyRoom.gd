@@ -126,6 +126,5 @@ func _generate_random_enemies() -> void:
 		var enemy_scene : PackedScene = enemies[rng.randi_range(0, enemies.size() - 1)]
 		var enemy : Spatial = enemy_scene.instance()
 		add_child(enemy)
-		enemy.global_transform.origin = self.global_transform.origin
-		enemy.translate(enemies_real_positions[index])
+		enemy.global_transform.origin = self.global_transform.origin + enemies_real_positions[index].rotated(Vector3.UP, self.angle)
 		index += 1

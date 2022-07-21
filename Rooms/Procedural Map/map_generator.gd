@@ -53,8 +53,8 @@ var constructed_rooms_array = Array()
 var rooms_tomake = 1
 const orientations = [Vector2(0, 1), Vector2(1, 0), Vector2(-1, 0)]
 
-onready var minimap = $GUI/Control/Panel/ViewportContainer/Viewport/minimap
-onready var minimap_camera = $GUI/Control/Panel/ViewportContainer/Viewport/minimap/Camera2D
+onready var minimap = $GUI/Control/ViewportContainer/Viewport/minimap
+onready var minimap_camera : Camera2D = $GUI/Control/ViewportContainer/Viewport/minimap/Camera2D
 var minimap_door = preload("res://Rooms/Procedural Map/minimap/door.tscn")
 var actual_pos : Vector2 = Vector2.ZERO
 const minimap_separation = 120
@@ -203,7 +203,7 @@ func add_to_minimap(sprite : Texture, pos : Vector2):
 	room.z_index = 1
 
 func center_minimap_in(pos : Vector2):
-	minimap_camera.offset = pos * minimap_separation
+	minimap_camera.position = pos * minimap_separation
 	actual_pos = pos
 
 func add_door(pos : Vector2, room_size : float, opening : Vector2):
