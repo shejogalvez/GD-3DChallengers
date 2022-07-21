@@ -31,6 +31,11 @@ static func play_button_pressed() -> void:
 	var button_pressed_audio := load("res://Assets/Audio/GUI/button-confirm.wav")
 	play(button_pressed_audio)
 
+# Plays an activation audio.
+static func play_activation_audio() -> void:
+	var activation_audio := load("res://Assets/Audio/activate_mechanism.wav")
+	play(activation_audio)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.pause_mode = PAUSE_MODE_PROCESS

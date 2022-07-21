@@ -42,16 +42,19 @@ func _ready():
 	memo_puzzle.connect("succeded", self, "_end_puzzle")
 
 # Initializes the room with pots and enemies.
-func _init_room():
+func _init_room() -> void:
 	_generate_random_pots()
 
 # Ends the puzzle.
-func _end_puzzle():
+func _end_puzzle() -> void:
+	fox_statue.hide_interaction()
+	fox_statue_2.hide_interaction()
+	fox_statue_3.hide_interaction()
+	fox_statue_4.hide_interaction()
 	spirit.queue_free()
-	print("you have won! :D")
 
 # Resets the puzzle.
-func _reset_puzzle():
+func _reset_puzzle() -> void:
 	fox_statue.hide_interaction()
 	fox_statue_2.hide_interaction()
 	fox_statue_3.hide_interaction()
@@ -60,7 +63,7 @@ func _reset_puzzle():
 	spirit.appear()
 
 # Interacts with the spirit.
-func spirit_interact():
+func spirit_interact() -> void:
 	_move_fox_statues()
 	spirit.reset_movement()
 	spirit.queue_move(fox_statue.get_nose_position())
@@ -74,9 +77,10 @@ func spirit_interact():
 	fox_statue_3.show_interaction()
 	fox_statue_4.show_interaction()
 	memo_puzzle.start()
+	AudioStreamManager.play_activation_audio()
 
 # Moves the fox statues randomly.
-func _move_fox_statues():
+func _move_fox_statues() -> void:
 	var current_transforms = [
 		fox_statue.global_transform,
 		fox_statue_2.global_transform,
