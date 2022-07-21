@@ -7,16 +7,24 @@ export (PackedScene) var area_scene : PackedScene = preload("res://Rooms/Procedu
 func _ready():
 	pass
 
-func set_distance(direction: Vector3, distance : float, offset : float):
+# tambien setea un area para avisar cuando entra el player
+func set_distance_initial(direction: Vector3, distance : float, offset : float, room):
 	var tp = teleport.instance()
 	self.add_child(tp)
 	tp.translate(Vector3.FORWARD * offset)
-	tp.set_teleport_relative_position(direction * distance - (offset) * direction)
+	tp.set_teleport_relative_position(direction * (distance + 8) - (offset) * direction)
+	var area = area_scene.instance()
+	self.add_child(area)
+	area.connect("body_entered", room, "_check_player_enter")
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 func set_distance_and_signal(direction: Vector3, distance : float, offset : float, room):
-	set_distance(direction, distance, offset)
+	var tp = teleport.instance()
+	self.add_child(tp)
+	tp.translate(Vector3.FORWARD * offset)
+	tp.set_teleport_relative_position(direction * (distance + 8) - (offset) * direction)
 	var area = area_scene.instance()
 	self.add_child(area)
 	area.connect("body_entered", room, "attend_tp_signal")

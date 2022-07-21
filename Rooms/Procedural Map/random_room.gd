@@ -16,9 +16,12 @@ var possible_openings = [Vector2(-1, 0), Vector2(1, 0), Vector2(0, 1)]
 var scale_factor = 1
 
 var unused_openings = Array()
+var used_openings := Array() # save pairs dir, angle in local space
+var locks_array := Array()
 
 export (PackedScene) var teleport : PackedScene = preload("res://Rooms/Test Rooms Stuff/TeleportENbase2.tscn")
 export (PackedScene) var wall : PackedScene = preload("res://Rooms/Test Rooms Stuff/WALL.tscn")
+export (PackedScene) var lock_scene : PackedScene = preload("res://Rooms/Procedural Map/door_lock.tscn")
 var filled : bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -29,11 +32,31 @@ func _ready():
 func _init_room():
 	#print("room ", self, " pos: ", pos, " initializated")
 	pass
+	
+func _player_enter():
+	pass
+
+func lock_doors():
+	for opening in used_openings:
+		var block = lock_scene.instance()
+		block.translation = Vector3(opening[0].x, 0, opening[0].y) * size
+		block.rotate_y(opening[1])
+		self.add_child(block)
+		locks_array.append(block)
+
+func unlock_doors():
+	for block in locks_array:
+		block.queue_free()
 
 func attend_tp_signal(body):
 	if body == PlayerManager.get_player() and not filled:
 		self._init_room()
 		filled = true
+
+func _check_player_enter(body):
+	if body == PlayerManager.get_player():
+		self._player_enter()
+	
 
 func center_minimap_to_me():
 	father.center_minimap_in(self.pos)
@@ -42,6 +65,7 @@ func set_openings(openings_set):
 	openings = openings_set
 
 func initialize(angle: float, father, pos: Vector2, father_node : RandomRoom = null):
+	used_openings.append([Vector2(0,-1), PI])
 	self.father = father
 	#separation = father.real_separation
 	self.angle = angle
@@ -54,7 +78,7 @@ func initialize(angle: float, father, pos: Vector2, father_node : RandomRoom = n
 	# le indica al room_generetor que haga una puerta en self.pos con direccion orientation
 	father.add_door(self.pos, sprite_size, orientation)
 	var orient_v3 = Vector3(orientation.x, 0, orientation.y) 
-	back_tp.set_distance(orient_v3, separation - size - father_node.size, tp_offset)
+	back_tp.set_distance_initial(orient_v3, separation - size - father_node.size, tp_offset, self)
 	self.add_child(back_tp)
 	
 func generate_rooms():
@@ -88,6 +112,8 @@ func generate_rooms():
 	father.room_done(self)
 
 func add_childroom(rel_opening, new_opening, relangle, newangle, newpos):
+	# guarda en used openings
+	used_openings.append([rel_opening, relangle])
 	# le indica al room_generetor que haga una puerta en self.pos con direccion new_opening
 	father.add_door(self.pos, sprite_size, new_opening)
 	

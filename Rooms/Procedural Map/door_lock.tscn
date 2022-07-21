@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 12.8651, 14.8363, 1 )
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.529412, 0.407843, 0.407843, 1 )
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 0.5
+emission_operator = 0
+emission_on_uv2 = false
+
+[node name="Spatial" type="Spatial"]
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 2 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+height = 30.0
+material = SubResource( 1 )
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0 )
+height = 30.0
+material = SubResource( 1 )
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+height = 30.0
+material = SubResource( 1 )
+
+[node name="CSGCylinder4" type="CSGCylinder" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
+height = 30.0
+material = SubResource( 1 )
