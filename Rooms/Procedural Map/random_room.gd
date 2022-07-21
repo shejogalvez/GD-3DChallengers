@@ -23,6 +23,7 @@ export (PackedScene) var teleport : PackedScene = preload("res://Rooms/Test Room
 export (PackedScene) var wall : PackedScene = preload("res://Assets/Meshes/AztecMesh/ParedRelleno.tscn")
 export (PackedScene) var lock_scene : PackedScene = preload("res://Rooms/Procedural Map/door_lock.tscn")
 var filled : bool = false
+var player_entered : = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -54,8 +55,9 @@ func attend_tp_signal(body):
 		filled = true
 
 func _check_player_enter(body):
-	if body == PlayerManager.get_player():
+	if body == PlayerManager.get_player() and not player_entered:
 		self._player_enter()
+		player_entered = true
 	
 
 func center_minimap_to_me():

@@ -21,7 +21,7 @@ var obligatory_rooms = [
 	[preload("res://Rooms/Rooms2.0Andrew/BigBossRoom.tscn"), [12]],
 ]
 var obligatory_rooms_queue = Array()
-export (PackedScene) var initial_room : PackedScene = preload("res://Rooms/Test Rooms Stuff/initial_room.tscn"  )
+export (PackedScene) var initial_room : PackedScene = preload("res://Rooms/Rooms2.0Andrew/RoomsExtras/InitialRoom2.0.tscn"  )
 
 
 const front = Vector2.DOWN
