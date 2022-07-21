@@ -1,25 +1,21 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://Rooms/Pedestals/ItemPedestal.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Audio/item-obtained.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Themes/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/Fonts/Atarian/SF Atarian System Extended Bold Italic.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Fonts/Atarian/SF Atarian System Bold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Assets/Meshes/ItemPedestal/item_pedestal_Cylinder.mesh" type="ArrayMesh" id=4]
-[ext_resource path="res://Assets/Themes/MainTheme.tres" type="Theme" id=5]
-[ext_resource path="res://Assets/Fonts/Atarian/SF Atarian System Extended Bold Italic.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://Assets/Fonts/Atarian/SF Atarian System Bold.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://Assets/Meshes/ItemPedestal/Material_002.material" type="Material" id=8]
-[ext_resource path="res://Items/LeatherBackpack.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Items/RubyRing.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Items/SmallChest.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/Meshes/ItemPedestal/Material_002.material" type="Material" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://PedestalTutorial.gd" type="Script" id=7]
 
-[sub_resource type="ConvexPolygonShape" id=8]
+[sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( 4.22063, -1.96794, 0.962791, 4.03802, -0.990927, 0.921262, 3.23818, -0.990927, 2.58242, 3.38443, -1.96794, 2.69853, 4.22063, -1.96794, -0.963638, 2.6821, 1.95393, 2.13916, 4.03802, -0.990927, -0.92211, 3.34477, 1.95393, 0.762774, 1.79715, -0.990927, 3.73166, 1.87813, -1.96794, 3.90032, 3.38443, -1.96794, -2.69937, 3.23818, -0.990927, -2.58326, 1.48813, 1.95393, 3.09093, 3.34477, 1.95393, -0.763622, 2.6821, 1.95393, -2.14001, -0.000826359, 1.95393, 3.43079, -0.000826359, -0.990927, 4.14187, -0.000826359, -1.96794, 4.32832, 1.87813, -1.96794, -3.90117, 1.79715, -0.990927, -3.73251, 1.48813, 1.95393, -3.09178, -1.79798, -0.990927, 3.73166, -1.48895, 1.95393, 3.09093, -1.87896, -1.96794, 3.90032, 0, -1.96794, -4.32917, 0, -0.990927, -4.14271, 0, 1.95393, -3.43164, -2.68292, 1.95393, 2.13916, -3.23901, -0.990927, 2.58242, -3.38526, -1.96794, 2.69853, -1.87896, -1.96794, -3.90117, -1.79798, -0.990927, -3.73251, -1.48895, 1.95393, -3.09178, -3.3456, 1.95393, 0.762774, -4.03885, -0.990927, 0.921262, -4.22063, -1.96794, 0.962791, -3.38526, -1.96794, -2.69937, -3.23901, -0.990927, -2.58326, -2.68292, 1.95393, -2.14001, -3.3456, 1.95393, -0.763622, -4.03885, -0.990927, -0.92211, -4.22063, -1.96794, -0.963638 )
 
 [sub_resource type="CylinderShape" id=2]
 radius = 3.0
 height = 4.0
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("ItemModel:translation")
@@ -34,7 +30,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "float"
 length = 6.0
 loop = true
@@ -52,34 +48,34 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.1, 0 ), Vector3( 0, 1.4, 0 ), Vector3( 0, 1.5, 0 ), Vector3( 0, 1.4, 0 ), Vector3( 0, 0.1, 0 ) ]
 }
 
-[sub_resource type="CylinderShape" id=3]
+[sub_resource type="CylinderShape" id=5]
 radius = 18.0
 height = 16.0
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.34902, 0.211765, 1, 0.705882 )
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=7]
 size = 26
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=8]
 size = 18
 use_filter = true
 extra_spacing_char = 1
-font_data = ExtResource( 7 )
+font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=9]
 size = 24
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=10]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Item/DetailsModel/DetailsViewport/DetailsPanel:modulate")
@@ -118,7 +114,7 @@ tracks/2/keys = {
 "values": [ Color( 0.109333, 0.0672, 0.32, 1 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=11]
 resource_name = "details_appear"
 length = 0.2
 step = 0.05
@@ -159,7 +155,7 @@ tracks/2/keys = {
 "values": [ Color( 0.109333, 0.0672, 0.32, 1 ), Color( 0.349019, 0.211764, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=12]
 resource_name = "details_disappear"
 length = 0.2
 step = 0.05
@@ -200,23 +196,22 @@ tracks/2/keys = {
 "values": [ Color( 0.341667, 0.21, 1, 1 ), Color( 0.109804, 0.0666667, 0.321569, 1 ) ]
 }
 
-[node name="ItemPedestal" type="Spatial"]
-script = ExtResource( 1 )
-SmallChest_scene = ExtResource( 11 )
-RubyRing_scene = ExtResource( 10 )
-LeatherBackpack_scene = ExtResource( 9 )
+[node name="PedestalTutorial" type="Spatial"]
+script = ExtResource( 7 )
 
 [node name="Pedestal" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0 )
+visible = false
 
 [node name="PedestalModel" type="MeshInstance" parent="Pedestal"]
 transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -0.0233192, 0.0323238, -0.0113735 )
 mesh = ExtResource( 4 )
 material/0 = null
-material/1 = ExtResource( 8 )
+material/1 = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Pedestal"]
 transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 
 [node name="Item" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0 )
@@ -241,8 +236,8 @@ shape = SubResource( 2 )
 
 [node name="ItemAnimationPlayer" type="AnimationPlayer" parent="Item"]
 autoplay = "float"
-anims/RESET = SubResource( 7 )
-anims/float = SubResource( 6 )
+anims/RESET = SubResource( 3 )
+anims/float = SubResource( 4 )
 
 [node name="DetailsArea" type="Area" parent="Item"]
 collision_layer = 0
@@ -250,7 +245,7 @@ collision_mask = 64
 monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Item/DetailsArea"]
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="DetailsModel" type="MeshInstance" parent="Item"]
 transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 9, -5, 3 )
@@ -263,17 +258,17 @@ render_target_v_flip = true
 [node name="DetailsPanel" type="Panel" parent="Item/DetailsModel/DetailsViewport"]
 margin_right = 360.0
 margin_bottom = 240.0
-theme = ExtResource( 5 )
-custom_styles/panel = SubResource( 11 )
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 6 )
 
 [node name="DetailsSprite" type="TextureRect" parent="Item/DetailsModel/DetailsViewport/DetailsPanel"]
 anchor_left = 1.0
-anchor_right = 1.0
+anchor_right = 2.0
 margin_left = -120.0
 margin_top = 20.0
 margin_right = -20.0
 margin_bottom = 120.0
-texture = ExtResource( 2 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
 
@@ -289,7 +284,7 @@ margin_right = 190.0
 margin_bottom = 27.0
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 7 )
 text = "Item Name"
 autowrap = true
 uppercase = true
@@ -301,10 +296,10 @@ margin_right = 190.0
 margin_bottom = 61.0
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 8 )
 text = "Item description"
 autowrap = true
-max_lines_visible = 3
+max_lines_visible = 7
 
 [node name="DetailsEffect" type="Label" parent="Item/DetailsModel/DetailsViewport/DetailsPanel"]
 anchor_top = 0.5
@@ -316,16 +311,13 @@ margin_right = -20.0
 margin_bottom = -20.0
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 9 )
 text = "Item effect"
 autowrap = true
 max_lines_visible = 3
 
 [node name="DetailsAnimationPlayer" type="AnimationPlayer" parent="Item"]
 root_node = NodePath("../..")
-anims/RESET = SubResource( 15 )
-anims/details_appear = SubResource( 16 )
-anims/details_disappear = SubResource( 17 )
-
-[node name="ItemPedestalAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
+anims/RESET = SubResource( 10 )
+anims/details_appear = SubResource( 11 )
+anims/details_disappear = SubResource( 12 )
