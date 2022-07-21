@@ -7,17 +7,17 @@ var memo_puzzle := MemoPuzzle.new(4)
 
 var pot_positions := [
 	Vector3(69, 0.5, 69),
-	Vector3(60, 0.5, 69),
-	Vector3(69, 0.5, 60),
+	Vector3(56, 0.5, 69),
+	Vector3(69, 0.5, 56),
 	Vector3(-69, 0.5, 69),
-	Vector3(-60, 0.5, 69),
-	Vector3(-69, 0.5, 60),
+	Vector3(-56, 0.5, 69),
+	Vector3(-69, 0.5, 56),
 	Vector3(69, 0.5, -69),
-	Vector3(60, 0.5, -69),
-	Vector3(69, 0.5, -60),
+	Vector3(56, 0.5, -69),
+	Vector3(69, 0.5, -56),
 	Vector3(-69, 0.5, -69),
-	Vector3(-60, 0.5, -69),
-	Vector3(-69, 0.5, -60)	
+	Vector3(-56, 0.5, -69),
+	Vector3(-69, 0.5, -56)	
 ]
 
 const MIN_POT_AMOUNT := 4

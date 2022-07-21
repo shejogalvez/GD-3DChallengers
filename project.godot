@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://enemies/IEnemy_bullet.gd"
 }, {
+"base": "RandomRoom",
+"class": "EnemyRoom",
+"language": "GDScript",
+"path": "res://Rooms/Rooms2.0Andrew/EnemyRooms/EnemyRoom.gd"
+}, {
 "base": "Spatial",
 "class": "EnemyWeapon",
 "language": "GDScript",
@@ -162,6 +167,7 @@ _global_script_class_icons={
 "ConsumablePickup": "",
 "CurveSpeedBullet": "",
 "EnemyBullet": "",
+"EnemyRoom": "",
 "EnemyWeapon": "res://Assets/Classes/weapon_icon.png",
 "IEnemy": "",
 "Interaction": "",

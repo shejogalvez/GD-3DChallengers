@@ -54,6 +54,7 @@ script = ExtResource( 2 )
 
 [node name="Interaction" parent="." instance=ExtResource( 1 )]
 interaction_icon = ExtResource( 3 )
+interaction_message = "Activate"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 11 )
