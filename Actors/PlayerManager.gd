@@ -199,6 +199,7 @@ func add_total_hp(hp : int) -> void:
 func set_hp(hp : int) -> void:
 	player_hp = clamp(hp, 0, player_total_hp)
 	if player_hp == 0:
+		GameManager.add_money(self.get_money() * 10)
 		GameManager.advance_day()
 	emit_signal("hp_changed")
 
