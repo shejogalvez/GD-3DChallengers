@@ -4,6 +4,7 @@ onready var animator : AnimationPlayer = $AnimationPlayer
 onready var collider = $CollisionShape
 onready var weapon = $weapon
 onready var weapon_area = $weapon/spearV20/Area
+onready var animator_b : AnimationPlayer = $Sand_Soldier/AnimationPlayer
 
 export (Curve) var dash_curve
 var hit_player = false
@@ -54,11 +55,16 @@ class Follow extends State:
 	var vel = Vector3.ZERO
 	const GRAVITY = -80
 	const MAX_SLOPE_ANGLE = 40
-	const SPEED = 10
+	var SPEED = 10
 	const ACCEL = 20
 	var actual_speed = 0
 	const ATTACK_DISTANCE = 30
 	const LOSE_DISTANCE = 150
+	
+	func start(node):
+		.start(node)
+		enemy_node.animator_b.play("Caminata")
+		SPEED = 10
 	
 	func _physics_process(delta):
 		var direction : Vector3 = enemy_node.vec_to_player().normalized()
@@ -73,7 +79,9 @@ class Follow extends State:
 		if not alerted:
 			var dif = enemy_node.global_transform.origin - PlayerManager.get_player_position()
 			if dif.length() < ATTACK_DISTANCE:
+				SPEED = 0.2
 				enemy_node.animator.queue("attack")
+				enemy_node.animator_b.play("Estocada")
 				alerted = true
 			if dif.length() >  LOSE_DISTANCE:
 				enemy_node.animator.play_backwards("emerge")

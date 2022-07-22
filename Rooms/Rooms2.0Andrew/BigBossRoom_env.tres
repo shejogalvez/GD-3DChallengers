@@ -2,7 +2,7 @@
 
 [sub_resource type="ProceduralSky" id=2]
 radiance_size = 0
-sky_energy = 0.6
+sky_energy = 0.75
 sun_energy = 0.0
 
 [resource]

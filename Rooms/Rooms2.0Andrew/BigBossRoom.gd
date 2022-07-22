@@ -14,7 +14,7 @@ func start_fight(body):
 		add_child(boss)
 		var real_pos = boss_initial_pos.rotated(Vector3.UP, angle)
 		boss.set_initial_pos(real_pos)
-		boss.set_room_size(self.size)
+		boss.set_room_size(self.size - 5)
 		boss.phase2_position = Vector3(0, 30, 0)
 		boss.ground_height = 0.5
 		area.queue_free()
