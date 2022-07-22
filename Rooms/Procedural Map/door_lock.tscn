@@ -4,9 +4,9 @@
 extents = Vector3( 12.8651, 14.8363, 1 )
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.529412, 0.407843, 0.407843, 1 )
+albedo_color = Color( 0.168627, 0.0745098, 0.0745098, 1 )
 emission_enabled = true
-emission = Color( 1, 0, 0, 1 )
+emission = Color( 0.152941, 0.12549, 0.12549, 1 )
 emission_energy = 0.5
 emission_operator = 0
 emission_on_uv2 = false
@@ -20,21 +20,31 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0 )
 shape = SubResource( 2 )
 
 [node name="CSGCylinder" type="CSGCylinder" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08533, 0, 0 )
+radius = 0.6
 height = 30.0
 material = SubResource( 1 )
 
 [node name="CSGCylinder2" type="CSGCylinder" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0 )
+radius = 0.6
+height = 30.0
+material = SubResource( 1 )
+
+[node name="CSGCylinder5" type="CSGCylinder" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.20598, 0, 0 )
+radius = 0.6
 height = 30.0
 material = SubResource( 1 )
 
 [node name="CSGCylinder3" type="CSGCylinder" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+radius = 0.6
 height = 30.0
 material = SubResource( 1 )
 
 [node name="CSGCylinder4" type="CSGCylinder" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100506, 0, 0 )
+radius = 0.6
 height = 30.0
 material = SubResource( 1 )

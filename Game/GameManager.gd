@@ -32,7 +32,7 @@ const GAME_DATA_PATH := "user://save_file.save"
 
 var new_game := {
 	"day": 1,
-	"money": 9000,
+	"money": 3000,
 	"ingame": {
 		"total_hp": 80,
 		"attack": 10,

@@ -7,13 +7,12 @@ var rfc : RandomFunctionCaller
 var rfc_rooms : RandomFunctionCaller
 export (int) var number_of_rooms = 10
 var random_rooms = [
-	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoom.tscn"), 10] ,
-	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoomB.tscn"), 10] ,
-	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoomC.tscn"), 10] ,
-	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoomD.tscn"), 10] ,
-	[preload("res://Rooms/Rooms2.0Andrew/PuzzleRooms/SmallPuzzleRoom.tscn"), 10] ,
-	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/MidEnemyRoom.tscn"), 10] ,
-	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/BigEnemyRoom.tscn"), 10]
+	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoom.tscn"), 20] ,
+	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoomB.tscn"), 20] ,
+	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoomC.tscn"), 20] ,
+	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoomD.tscn"), 20] ,
+	[preload("res://Rooms/Rooms2.0Andrew/PuzzleRooms/SmallPuzzleRoom.tscn"), 30] ,
+	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/MidEnemyRoom.tscn"), 30]
 ]
 
 # end_room SIMPRE VA PRIMERO!!

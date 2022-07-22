@@ -1,12 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Rooms/Pedestals/WeaponPedestal.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Meshes/WeaponMesh.tres" type="PrismMesh" id=2]
 [ext_resource path="res://Assets/Audio/weapon-obtained.wav" type="AudioStream" id=3]
-[ext_resource path="res://Assets/Meshes/WeaponPedestal/weapon_pedestal_Cylinder.mesh" type="ArrayMesh" id=4]
-
-[sub_resource type="ConvexPolygonShape" id=8]
-points = PoolVector3Array( 6.8245, -0.97375, 1.55677, 4.56525, 0.97375, 1.0415, 3.66075, 0.97375, 2.92032, 5.47242, -0.97375, 4.36335, 6.8245, -0.97375, -1.55814, 4.56525, 0.97375, -1.04287, 2.03212, 0.97375, 4.21946, 3.03682, -0.97375, 6.30658, 5.47242, -0.97375, -4.36472, 3.66075, 0.97375, -2.92169, 0, 0.97375, 4.68265, 0, -0.97375, 7, 3.03682, -0.97375, -6.30795, 2.03212, 0.97375, -4.22083, -2.03345, 0.97375, 4.21946, -3.03816, -0.97375, 6.30658, 0, -0.97375, -7, 0, 0.97375, -4.68402, -3.66209, 0.97375, 2.92032, -5.47376, -0.97375, 4.36335, -3.03816, -0.97375, -6.30795, -2.03345, 0.97375, -4.22083, -4.56659, 0.97375, 1.0415, -6.8245, -0.97375, 1.55677, -5.47376, -0.97375, -4.36472, -3.66209, 0.97375, -2.92169, -4.56659, 0.97375, -1.04287, -6.8245, -0.97375, -1.55814 )
 
 [sub_resource type="CylinderShape" id=5]
 radius = 3.0
@@ -74,19 +70,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="Pedestal" type="StaticBody" parent="."]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Model" type="MeshInstance" parent="Pedestal"]
-mesh = ExtResource( 4 )
-skeleton = NodePath("../..")
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Pedestal"]
-shape = SubResource( 8 )
 
 [node name="Weapon" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0 )

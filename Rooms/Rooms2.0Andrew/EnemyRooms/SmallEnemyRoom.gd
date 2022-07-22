@@ -10,17 +10,17 @@ func _ready():
 	]
 	pot_positions = [
 	Vector3(69, 0.5, 69),
-	Vector3(60, 0.5, 69),
-	Vector3(69, 0.5, 60),
+	Vector3(54, 0.5, 69),
+	Vector3(69, 0.5, 54),
 	Vector3(-69, 0.5, 69),
-	Vector3(-60, 0.5, 69),
-	Vector3(-69, 0.5, 60),
+	Vector3(-54, 0.5, 69),
+	Vector3(-69, 0.5, 54),
 	Vector3(69, 0.5, -69),
-	Vector3(60, 0.5, -69),
-	Vector3(69, 0.5, -60),
+	Vector3(54, 0.5, -69),
+	Vector3(69, 0.5, -54),
 	Vector3(-69, 0.5, -69),
 	Vector3(-60, 0.5, -69),
-	Vector3(-69, 0.5, -60)	
+	Vector3(-69, 0.5, -54)	
 	]
 	
 	enemies_positions = [

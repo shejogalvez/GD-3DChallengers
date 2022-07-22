@@ -2,6 +2,8 @@ extends RandomRoom
 
 export(PackedScene) var pot_small_scene : PackedScene
 
+export(PackedScene) var item_reward: PackedScene
+
 var rng := RandomNumberGenerator.new()
 var memo_puzzle := MemoPuzzle.new(4)
 
@@ -45,6 +47,9 @@ func _ready():
 func _init_room() -> void:
 	_generate_random_pots()
 
+func _player_enter():
+	lock_doors()
+
 # Ends the puzzle.
 func _end_puzzle() -> void:
 	fox_statue.hide_interaction()
@@ -52,6 +57,11 @@ func _end_puzzle() -> void:
 	fox_statue_3.hide_interaction()
 	fox_statue_4.hide_interaction()
 	spirit.queue_free()
+	var item_reward_instance = item_reward.instance()
+	add_child(item_reward_instance)
+	item_reward_instance.global_transform.origin = $RewardPosition.global_transform.origin
+
+	unlock_doors()
 
 # Resets the puzzle.
 func _reset_puzzle() -> void:
@@ -64,6 +74,7 @@ func _reset_puzzle() -> void:
 
 # Interacts with the spirit.
 func spirit_interact() -> void:
+	_move_fox_statues()
 	_move_fox_statues()
 	spirit.reset_movement()
 	spirit.queue_move(fox_statue.get_nose_position())

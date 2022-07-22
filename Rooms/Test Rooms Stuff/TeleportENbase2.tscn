@@ -1,58 +1,43 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://ZZZTrash/MeshParedE.meshlib" type="MeshLibrary" id=1]
-[ext_resource path="res://ZZZTrash/MeshSueloE.meshlib" type="MeshLibrary" id=2]
 [ext_resource path="res://Rooms/Procedural Map/teleport_base.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Meshes/AztecMesh/aztec_mesh_library.tres" type="MeshLibrary" id=4]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.435294, 0.439216, 0.388235, 1 )
+
+[sub_resource type="PlaneMesh" id=2]
+material = SubResource( 1 )
+size = Vector2( 36, 36 )
 
 [node name="TeleportENbase" type="Spatial"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 script = ExtResource( 3 )
 
-[node name="MeshSueloE" type="GridMap" parent="."]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
-mesh_library = ExtResource( 2 )
-cell_size = Vector3( 1.6, 0.01, 1.6 )
-collision_mask = 17
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, -2.5 )
+mesh_library = ExtResource( 4 )
+cell_size = Vector3( 3.75, 16, 3.75 )
+cell_center_x = false
 data = {
-"cells": PoolIntArray( 65339392, 65531, 131072, 65339393, 65531, 131072, 65339394, 65531, 131072, 65404925, 65531, 131072, 65404926, 65531, 131072, 65404927, 65531, 131072, 0, 65532, 655360, 1, 65532, 655360, 65534, 65532, 655360, 65535, 65532, 655360, 65339392, 65532, 131072, 65339393, 65532, 131072, 65339394, 65532, 131072, 65404925, 65532, 131072, 65404926, 65532, 131072, 65404927, 65532, 131072, 0, 65533, 655360, 1, 65533, 655360, 65534, 65533, 655360, 65535, 65533, 655360, 65339392, 65533, 131072, 65339393, 65533, 131072, 65339394, 65533, 131072, 65404925, 65533, 131072, 65404926, 65533, 131072, 65404927, 65533, 131072, 0, 65534, 655360, 1, 65534, 655360, 65534, 65534, 655360, 65535, 65534, 655360, 65339392, 65534, 131072, 65339393, 65534, 131072, 65339394, 65534, 131072, 65404925, 65534, 131072, 65404926, 65534, 131072, 65404927, 65534, 131072, 0, 65535, 655360, 1, 65535, 655360, 65534, 65535, 655360, 65535, 65535, 655360, 65339392, 65535, 131072, 65339393, 65535, 131072, 65339394, 65535, 131072, 65404925, 65535, 131072, 65404926, 65535, 131072, 65404927, 65535, 131072 )
-}
-__meta__ = {
-"_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 997, 0 )
-}
-
-[node name="MeshParedE1" type="GridMap" parent="MeshSueloE"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72, -1.345, 0 )
-mesh_library = ExtResource( 1 )
-cell_size = Vector3( 1.6, 3.2, 1.6 )
-data = {
-"cells": PoolIntArray( 2, 65532, 1441793, 65538, 65532, 1441793, 131074, 65532, 1441793, 2, 65533, 1441793, 65538, 65533, 1441793, 131074, 65533, 1441793, 2, 65534, 1441793, 65538, 65534, 1441793, 131074, 65534, 1441793, 2, 65535, 1441793, 65538, 65535, 1441793, 131074, 65535, 1441793 )
+"cells": PoolIntArray( 0, 65528, 6, 0, 65532, 1048577, 4, 65532, 1441798, 65532, 65532, 1048582, 131072, 65532, 4 )
 }
 __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 2, 0 )
 }
 
-[node name="MeshParedE2" type="GridMap" parent="MeshSueloE"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.051, -1.345, 0.701 )
-mesh_library = ExtResource( 1 )
-cell_size = Vector3( 1.6, 3.2, 1.6 )
-data = {
-"cells": PoolIntArray( 0, 65531, 1, 1, 65531, 1, 65534, 65531, 1, 65535, 65531, 1, 65536, 65531, 1, 65537, 65531, 1, 131070, 65531, 1, 131071, 65531, 1, 131072, 65531, 1, 131073, 65531, 1, 196606, 65531, 1, 196607, 65531, 1 )
-}
-__meta__ = {
-"_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 2, 0 )
-}
+[node name="FloorCover" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87681e-07, -1, -16.9958 )
+mesh = SubResource( 2 )
+material/0 = null
 
-[node name="MeshParedE3" type="GridMap" parent="MeshSueloE"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, -1.345, -0.011 )
-mesh_library = ExtResource( 1 )
-cell_size = Vector3( 1.6, 3.2, 1.6 )
-data = {
-"cells": PoolIntArray( 65533, 65532, 1441793, 131069, 65532, 1441793, 196605, 65532, 1441793, 65533, 65533, 1441793, 131069, 65533, 1441793, 196605, 65533, 1441793, 65533, 65534, 1441793, 131069, 65534, 1441793, 196605, 65534, 1441793, 65533, 65535, 1441793, 131069, 65535, 1441793, 196605, 65535, 1441793 )
-}
-__meta__ = {
-"_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 2, 0 )
-}
+[node name="WallCover" type="MeshInstance" parent="."]
+transform = Transform( 0.0130373, -0.999915, -8.6283e-08, 0.999915, 0.0130373, 8.74154e-08, -8.6283e-08, -8.74154e-08, 1, 16.5832, 10.8957, -18.8045 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="WallCover2" type="MeshInstance" parent="."]
+transform = Transform( -0.0130371, 0.999915, -8.74228e-08, 0.999915, 0.0130371, 0, 1.13974e-09, -8.74154e-08, -1, -16.5033, 10.8957, -18.5814 )
+mesh = SubResource( 2 )
+material/0 = null
