@@ -88,9 +88,6 @@ class Follow extends State:
 				enemy_node.set_state(enemy_node.standbyState)
 		enemy_node.face_player()
 		
-	func projectile_hit(damage, trans):
-		.projectile_hit(damage, trans)
-		actual_speed = 0
 		
 class Attacking extends State:
 	
