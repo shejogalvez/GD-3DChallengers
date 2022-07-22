@@ -264,6 +264,6 @@ func set_default_settings() -> void:
 
 var current_level : RoomGenerator = null
 func clear_level() -> void:
-	print("level cleared lol")
 	current_level = null
+	add_money(PlayerManager.get_money() * 10)
 	advance_day()

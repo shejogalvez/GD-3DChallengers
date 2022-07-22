@@ -34,6 +34,5 @@ func _ready():
 
 # Initializes the room with pots and enemies.
 func _init_room():
-	print("Small room initialized")
 	_generate_random_pots()
 	_generate_random_enemies()

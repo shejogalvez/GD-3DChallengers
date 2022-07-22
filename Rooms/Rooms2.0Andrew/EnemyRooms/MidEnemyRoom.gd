@@ -41,7 +41,6 @@ func _ready():
 	]
 	
 	enemies_positions = [
-	Vector3(0, 2.5, 0),
 	Vector3(30, 2.5, 0),
 	Vector3(0, 2.5, 30),
 	Vector3(-30, 2.5, 0),
