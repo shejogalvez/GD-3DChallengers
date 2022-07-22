@@ -8,4 +8,6 @@ func _process(delta):
 		if object == PlayerManager.get_player():
 			enemy_node.found_player()
 		
-	
+func projectile_hit(damage, global_trans):
+	.projectile_hit(damage, global_trans)
+	enemy_node.set_state(enemy_node.alertedState)

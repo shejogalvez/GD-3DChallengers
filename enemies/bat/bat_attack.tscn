@@ -190,6 +190,6 @@ disabled = true
 [node name="MeshInstance" type="MeshInstance" parent="pivot"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 2.0
+playback_speed = 2.7
 anims/RESET = SubResource( 3 )
 anims/excecute = SubResource( 4 )

@@ -7,7 +7,7 @@
 [ext_resource path="res://enemies/bat/bat.gd" type="Script" id=5]
 
 [sub_resource type="SphereShape" id=1]
-radius = 1.30252
+radius = 1.35
 
 [sub_resource type="SphereMesh" id=2]
 
@@ -103,6 +103,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitbox:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 20, 0 ) ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "attack"
@@ -131,17 +143,31 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("Hitbox/pivot_cara/body:translation")
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitbox:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0, 0.2, 0.48, 0.72, 0.96 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 20, 0 ), Vector3( 0, 21, 0 ), Vector3( 0, 20, 0 ), Vector3( 0, 21, 0 ), Vector3( 0, 20, 0 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -173,7 +199,7 @@ tracks/1/keys = {
 "values": [ Vector3( 15, 0, 0 ), Vector3( 15, 45, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, -45, 0 ), Vector3( 15, 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Hitbox/pivot_cara/body:translation")
+tracks/2/path = NodePath("Hitbox:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -182,13 +208,14 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.4, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 20, 0 ), Vector3( 0, 21, 0 ), Vector3( 0, 20, 0 ) ]
 }
 
 [node name="bat" instance=ExtResource( 1 )]
 axis_lock_motion_y = true
 move_lock_y = true
 script = ExtResource( 5 )
+hp = 40
 gravity = 0
 alert_range = 35
 

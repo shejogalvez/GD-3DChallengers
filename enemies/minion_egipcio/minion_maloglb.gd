@@ -25,12 +25,18 @@ func look_up_face():
 class initial_state extends State:
 	
 	const follow_distance = 80
+	var attack_distnace = 80
 	
 	func _process(delta):
 		var dif = enemy_node.global_transform.origin - PlayerManager.get_player_position()
-		if dif.length() < follow_distance and not alerted:
+		if dif.length() < attack_distnace and not alerted:
+			attack_distnace = follow_distance
 			enemy_node.animator.play("fire_sequence")
 			alerted = true
 		if alerted:
 			enemy_node.face_player()
 			enemy_node.look_up_face()
+			
+	func projectile_hit(damage, global_trans):
+		.projectile_hit(damage, global_trans)
+		attack_distnace = 300

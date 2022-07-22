@@ -32,7 +32,9 @@ func attack():
 	look_up_face()
 	attacking = true
 	self.speed *= slow_in_attack
-	animator.play("attack")
+	animator.play("attack", -1, 1.5)
+	
+func shoot():
 	bat_attack.excecute()
 
 func back_to_idle(body):

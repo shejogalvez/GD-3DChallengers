@@ -14,7 +14,6 @@ func _ready():
 	standbyState = Initial.new()
 	alertedState = Follow.new()
 	set_state(standbyState)
-	hp = 0
 	weapon_area.connect("body_entered", self, "weapon_hit")
 
 func awake():
@@ -58,13 +57,13 @@ class Follow extends State:
 	var SPEED = 10
 	const ACCEL = 20
 	var actual_speed = 0
-	const ATTACK_DISTANCE = 30
+	const ATTACK_DISTANCE = 35
 	const LOSE_DISTANCE = 150
 	
 	func start(node):
 		.start(node)
 		enemy_node.animator_b.play("Caminata")
-		SPEED = 10
+		SPEED = 14
 	
 	func _physics_process(delta):
 		var direction : Vector3 = enemy_node.vec_to_player().normalized()
