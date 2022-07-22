@@ -1130,3 +1130,6 @@ anims/Rat_Death = SubResource( 2 )
 anims/Rat_Idle = SubResource( 3 )
 anims/Rat_Jump = SubResource( 4 )
 anims/Rat_Walk = SubResource( 5 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]

@@ -196,7 +196,7 @@ class RemState:
 
 	class phase1 extends RemState:
 		const cd = 7
-		var timer = 0
+		var timer = 4.5
 
 
 		func projectile_hit(damage):

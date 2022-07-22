@@ -5,6 +5,7 @@
 [ext_resource path="res://GUI/Menu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Weapons/Revolver.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Audio/damage-short.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Meshes/Actors/Player/PlayerModel.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.2
@@ -16,10 +17,6 @@ size = Vector2( 0.25, 0.25 )
 [sub_resource type="SpatialMaterial" id=6]
 flags_transparent = true
 albedo_color = Color( 0.627451, 0.470588, 0.878431, 0.12549 )
-
-[sub_resource type="CapsuleMesh" id=4]
-radius = 1.2
-mid_height = 9.0
 
 [node name="Player" type="KinematicBody"]
 collision_layer = 65
@@ -80,10 +77,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CapsuleMesh" type="MeshInstance" parent="Model"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.7, 0 )
-mesh = SubResource( 4 )
-material/0 = null
+[node name="PlayerModel" parent="Model" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.33625 )
 
 [node name="Menu" parent="." instance=ExtResource( 3 )]
 

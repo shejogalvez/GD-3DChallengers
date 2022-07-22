@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Rooms/Misc/Torch.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Meshes/AztecMesh/aztec_mesh_library.tres" type="MeshLibrary" id=2]
 [ext_resource path="res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoom.gd" type="Script" id=3]
 [ext_resource path="res://Rooms/Misc/PotSmall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actors/Extra/Rat.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Meshes/AztecMesh/Grass/Grass_GD_Plane005.mesh" type="ArrayMesh" id=7]
 [ext_resource path="res://Assets/Meshes/AztecMesh/DeadTree/DeadTree_GD_Cylinder017.mesh" type="ArrayMesh" id=8]
 [ext_resource path="res://Assets/Meshes/AztecMesh/Skull/Skull_GD_Cylinder043.mesh" type="ArrayMesh" id=9]
@@ -353,3 +354,5 @@ transform = Transform( 0.831198, 0, 0.555977, 0, 0.8, 0, -0.555977, 0, 0.831198,
 mesh = ExtResource( 7 )
 skeleton = NodePath("../..")
 material/0 = null
+
+[node name="Rat" parent="." instance=ExtResource( 5 )]

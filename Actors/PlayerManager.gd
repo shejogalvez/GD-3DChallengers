@@ -149,6 +149,7 @@ func reset_stats() -> void:
 	set_attack(GameManager.get_attack())
 	set_defense(GameManager.get_defense())
 	set_consumables_total_size(GameManager.get_max_consumables())
+	set_money(0)
 		
 # ========================
 # Weapons

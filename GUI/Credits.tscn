@@ -23,34 +23,49 @@ margin_bottom = -40.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 
-[node name="AndresLabel" type="Label" parent="CreditsControl/VBoxContainer"]
+[node name="IntegrantsLabel" type="Label" parent="CreditsControl/VBoxContainer"]
 margin_right = 472.0
-margin_bottom = 17.0
+margin_bottom = 41.0
+text = "Integrantes: 
+"
+
+[node name="AndresLabel" type="Label" parent="CreditsControl/VBoxContainer"]
+margin_top = 45.0
+margin_right = 472.0
+margin_bottom = 64.0
 text = "Andres Bravo"
 
 [node name="JuanLabel" type="Label" parent="CreditsControl/VBoxContainer"]
-margin_top = 21.0
+margin_top = 68.0
 margin_right = 472.0
-margin_bottom = 38.0
+margin_bottom = 87.0
 text = "Juan Flores"
 
 [node name="SergioLabel" type="Label" parent="CreditsControl/VBoxContainer"]
-margin_top = 42.0
+margin_top = 91.0
 margin_right = 472.0
-margin_bottom = 59.0
+margin_bottom = 110.0
 text = "Sergio Galvez"
 
 [node name="RodrigoLabel" type="Label" parent="CreditsControl/VBoxContainer"]
-margin_top = 63.0
+margin_top = 114.0
 margin_right = 472.0
-margin_bottom = 80.0
+margin_bottom = 133.0
 text = "Rodrigo Ortiz"
 
-[node name="QuaterniosLabel" type="Label" parent="CreditsControl/VBoxContainer"]
-margin_top = 84.0
+[node name="AssetsCreatorsLabel" type="Label" parent="CreditsControl/VBoxContainer"]
+margin_top = 137.0
 margin_right = 472.0
-margin_bottom = 101.0
-text = "Quaternius"
+margin_bottom = 200.0
+text = "
+Asseets Creators:
+"
+
+[node name="QuaterniosLabel" type="Label" parent="CreditsControl/VBoxContainer"]
+margin_top = 204.0
+margin_right = 472.0
+margin_bottom = 223.0
+text = "Quaternius (3D Models and animations)"
 
 [node name="BackButton" type="TextureButton" parent="." groups=["resizable_gui"]]
 anchor_top = 1.0
