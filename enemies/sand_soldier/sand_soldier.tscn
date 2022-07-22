@@ -2,7 +2,7 @@
 
 [ext_resource path="res://enemies/sand_soldier/sand_soldier.gd" type="Script" id=1]
 [ext_resource path="res://sand_map/material.tres" type="Material" id=2]
-[ext_resource path="res://enemies/sand_soldier/spearV20.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/sand_soldier/final_spear.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Material.material" type="Material" id=4]
 
 [sub_resource type="Curve" id=14]
@@ -1084,7 +1084,7 @@ visible = false
 [node name="spearV20" parent="weapon" instance=ExtResource( 3 )]
 
 [node name="Area" type="Area" parent="weapon/spearV20"]
-transform = Transform( 0.1, 0, 0, 0, -8.74228e-09, -0.06, 0, 0.2, -2.62268e-09, 0, 0, 0.72376 )
+transform = Transform( 0.5, 0, 0, 0, -4.37114e-08, -0.3, 0, 1, -1.31134e-08, 0, 0, 3.6188 )
 
 [node name="weaponCollision" type="CollisionShape" parent="weapon/spearV20/Area"]
 transform = Transform( 1, 1.78814e-07, 7.45058e-09, 7.45058e-08, 0.999999, -1.11759e-08, 7.45058e-09, 2.98023e-08, 0.999999, -1.1353, -0.399028, 0.486442 )

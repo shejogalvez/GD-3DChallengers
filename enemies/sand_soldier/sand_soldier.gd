@@ -14,6 +14,7 @@ func _ready():
 	standbyState = Initial.new()
 	alertedState = Follow.new()
 	set_state(standbyState)
+	weapon_area = $weapon/spearV20/Area
 	weapon_area.connect("body_entered", self, "weapon_hit")
 
 func awake():
