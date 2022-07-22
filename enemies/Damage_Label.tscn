@@ -16,12 +16,14 @@ var vt = 0.6
 const FORCE = 2
 const DRAG = 3
 const opacity_curve = preload(\"res://enemies/opacity_curve.tres\")
+var head_view_size : float
+const top_view_size := 18
 
 func set_text(content):
 	$Viewport/Label.text = str(content)
 
 func set_size(size):
-	self.scale = Vector3(size, size, 1)
+	self.head_view_size = size
 
 func set_float_dir(dir):
 	self.dir = dir
@@ -36,6 +38,11 @@ func _physics_process(delta):
 	time += delta
 	opacity = opacity_curve.interpolate_baked(time/ttl)
 
+func _process(_delta):
+	if PlayerManager.is_head_view():
+		scale = Vector3(head_view_size, head_view_size, 1)
+	else: 
+		scale = Vector3(top_view_size, top_view_size, 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

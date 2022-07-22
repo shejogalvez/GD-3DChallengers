@@ -15,8 +15,8 @@ func projectile_hit(damage, global_trans):
 	enemy_node.hp -= damage
 	var label = damage_label.instance()
 	label.set_text(str(damage))
-	label.set_size(enemy_node.vec_to_player2d().length() * 0.35)
-	label.set_float_dir(enemy_node.vec_to_player2d())
+	label.set_float_dir(enemy_node.vec_to_player())
+	label.set_size(enemy_node.vec_to_player().length() * 0.15 + 10)
 	enemy_node.get_parent().add_child(label)
 	label.global_transform = global_trans
 	if enemy_node.hp <= 0:
