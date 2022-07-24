@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Rooms/Pedestals/WeaponPedestal.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Meshes/WeaponMesh.tres" type="PrismMesh" id=2]
 [ext_resource path="res://Assets/Audio/Gameplay/weapon-obtained.wav" type="AudioStream" id=3]
 
 [sub_resource type="CylinderShape" id=5]
@@ -79,9 +78,7 @@ __meta__ = {
 
 [node name="Model" type="MeshInstance" parent="Weapon"]
 transform = Transform( 1, 0, 0, 0, 0.952188, 0.305513, 0, -0.305513, 0.952188, 0, 3.55042, 0 )
-mesh = ExtResource( 2 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="PickupArea" type="Area" parent="Weapon"]
 collision_layer = 0

@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/minion_maloglb.glb-e388617f86ee03102dd078693f09c66d.scn"
+path="res://.import/minion_maloglb.glb-3bd1f0b50d6d702da0625a1d899ce221.scn"
 
 [deps]
 
-source_file="res://Assets/Meshes/minion/minion_maloglb.glb"
-dest_files=[ "res://.import/minion_maloglb.glb-e388617f86ee03102dd078693f09c66d.scn" ]
+source_file="res://Assets/Meshes/Minion/minion_maloglb.glb"
+dest_files=[ "res://.import/minion_maloglb.glb-3bd1f0b50d6d702da0625a1d899ce221.scn" ]
 
 [params]
 
