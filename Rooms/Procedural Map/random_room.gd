@@ -19,7 +19,7 @@ var unused_openings = Array()
 var used_openings := Array() # save pairs dir, angle in local space
 var locks_array := Array()
 
-export (PackedScene) var teleport : PackedScene = preload("res://Rooms/Test Rooms Stuff/TeleportENbase2.tscn")
+export (PackedScene) var teleport : PackedScene = preload("res://Rooms/Procedural Map/TeleportENbase2.tscn")
 export (PackedScene) var wall : PackedScene = preload("res://Assets/Meshes/AztecMesh/ParedRelleno.tscn")
 export (PackedScene) var lock_scene : PackedScene = preload("res://Rooms/Procedural Map/door_lock.tscn")
 var filled : bool = false

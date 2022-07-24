@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Rooms/Procedural Map/teleport_base.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Meshes/AztecMesh/aztec_mesh_library.tres" type="MeshLibrary" id=4]
+[ext_resource path="res://Assets/Meshes/AztecMesh/aztec_mesh_library.tres" type="MeshLibrary" id=1]
+[ext_resource path="res://Rooms/Procedural Map/teleport_base.gd" type="Script" id=2]
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.435294, 0.439216, 0.388235, 1 )
@@ -12,11 +12,11 @@ size = Vector2( 36, 36 )
 
 [node name="TeleportENbase" type="Spatial"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, -2.5 )
-mesh_library = ExtResource( 4 )
+mesh_library = ExtResource( 1 )
 cell_size = Vector3( 3.75, 16, 3.75 )
 cell_center_x = false
 data = {
