@@ -12,6 +12,7 @@ var random_rooms = [
 	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoomC.tscn"), 20] ,
 	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoomD.tscn"), 20] ,
 	[preload("res://Rooms/Rooms2.0Andrew/PuzzleRooms/SmallPuzzleRoom.tscn"), 30] ,
+	[preload("res://Rooms/Rooms2.0Andrew/PuzzleRooms/MidPuzzleRoom.tscn"), 3000] ,
 	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/MidEnemyRoom.tscn"), 30]
 ]
 

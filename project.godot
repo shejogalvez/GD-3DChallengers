@@ -114,6 +114,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Rooms/Procedural Map/map_generator.gd"
 }, {
+"base": "Object",
+"class": "RotaPuzzle",
+"language": "GDScript",
+"path": "res://Rooms/Rooms2.0Andrew/PuzzleRooms/RotaPuzzle.gd"
+}, {
 "base": "ProgressBar",
 "class": "SmartBar",
 "language": "GDScript",
@@ -128,6 +133,11 @@ _global_script_classes=[ {
 "class": "State",
 "language": "GDScript",
 "path": "res://enemies/States/enemy_state.gd"
+}, {
+"base": "StaticBody",
+"class": "StatueRotate",
+"language": "GDScript",
+"path": "res://Rooms/Misc/StagStatueRotate.gd"
 }, {
 "base": "Spatial",
 "class": "Teleport",
@@ -181,9 +191,11 @@ _global_script_class_icons={
 "RandomFunctionCaller": "",
 "RandomRoom": "",
 "RoomGenerator": "",
+"RotaPuzzle": "",
 "SmartBar": "",
 "Standby": "",
 "State": "",
+"StatueRotate": "",
 "Teleport": "res://Assets/Classes/teleport_icon.png",
 "TemporaryWeapon": "",
 "Wait": "",

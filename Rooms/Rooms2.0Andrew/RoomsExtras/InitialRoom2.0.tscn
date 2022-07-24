@@ -1,43 +1,35 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Rooms/Misc/Torch.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Meshes/AztecMesh/aztec_mesh_library.tres" type="MeshLibrary" id=2]
 [ext_resource path="res://Rooms/Misc/PotSmall.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Meshes/AztecMesh/Skull/Skull_GD.glb" type="PackedScene" id=5]
 [ext_resource path="res://Rooms/Procedural Map/initial_room.gd" type="Script" id=6]
-[ext_resource path="res://Rooms/Pedestals/PedestalTutorial.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.435294, 0.439216, 0.388235, 1 )
 
 [sub_resource type="PlaneMesh" id=2]
 material = SubResource( 1 )
-size = Vector2( 155, 155 )
+size = Vector2( 95, 95 )
 
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.435294, 0.439216, 0.388235, 1 )
-
-[sub_resource type="PlaneMesh" id=4]
-material = SubResource( 3 )
-size = Vector2( 155, 155 )
+[sub_resource type="QuadMesh" id=4]
+material = SubResource( 1 )
+size = Vector2( 30, 66 )
 
 [sub_resource type="QuadMesh" id=5]
 material = SubResource( 1 )
-size = Vector2( 60, 60 )
+size = Vector2( 36, 33 )
 
-[sub_resource type="QuadMesh" id=6]
+[sub_resource type="QuadMesh" id=3]
 material = SubResource( 1 )
-size = Vector2( 30, 30 )
+size = Vector2( 96, 66 )
 
-[node name="Spatial" type="Spatial"]
+[node name="InitialRoom" type="Spatial"]
 script = ExtResource( 6 )
 size = 45.0
 
-[node name="pivot" type="Spatial" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
-
-[node name="GridMap" type="GridMap" parent="pivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, -15, -22.5 )
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22.5, -15, 22.5 )
 mesh_library = ExtResource( 2 )
 cell_size = Vector3( 15, 30, 15 )
 data = {
@@ -48,116 +40,74 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 0, 0 )
 }
 
-[node name="FloorCover" type="MeshInstance" parent="pivot/GridMap"]
-transform = Transform( 0.6, 0, 0, 0, 1, 0, 0, 0, 0.6, -23.8618, 14.4468, 20 )
+[node name="FloorCover" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 mesh = SubResource( 2 )
 material/0 = null
 
-[node name="CeilingCover" type="MeshInstance" parent="pivot/GridMap"]
-transform = Transform( 0.75, 0, 0, 0, -1, 1.13247e-07, 0, -1.50996e-07, -0.75, -20, 75, 20 )
+[node name="CeilingCover" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 60, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="WallCovers" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 46.75 )
+
+[node name="WallCover" type="MeshInstance" parent="WallCovers"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 33, 30, 0 )
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="Spatial" type="Spatial" parent="pivot"]
+[node name="WallCover2" type="MeshInstance" parent="WallCovers"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -33, 30, 0 )
+mesh = SubResource( 4 )
+material/0 = null
 
-[node name="Torch" parent="pivot/Spatial" instance=ExtResource( 1 )]
-transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 42.4412, 15, 30 )
-
-[node name="Torch2" parent="pivot/Spatial" instance=ExtResource( 1 )]
-transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 43.018, 15, -30 )
-
-[node name="Skull_GD" parent="pivot/Spatial" instance=ExtResource( 5 )]
-transform = Transform( 1.19249e-08, -0.707107, -0.707107, 0, 0.707107, -0.707107, 1, 8.43216e-09, 8.43216e-09, 44.4536, 38.3702, 2.38842e-08 )
-
-[node name="Skull_GD2" parent="pivot/Spatial" instance=ExtResource( 5 )]
-transform = Transform( 1.19249e-08, -0.707107, -0.707107, 0, 0.707107, -0.707107, 1, 8.43216e-09, 8.43216e-09, 44.3831, 43.3589, -5 )
-
-[node name="Skull_GD3" parent="pivot/Spatial" instance=ExtResource( 5 )]
-transform = Transform( 1.19249e-08, -0.707107, -0.707107, 0, 0.707107, -0.707107, 1, 8.43216e-09, 8.43216e-09, 44.5361, 43.2727, 5 )
-
-[node name="WallCovers" type="Spatial" parent="pivot"]
-transform = Transform( 0.75, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50 )
-
-[node name="WallCover" type="MeshInstance" parent="pivot/WallCovers"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 30, 0 )
+[node name="WallCover3" type="MeshInstance" parent="WallCovers"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 46.5, 0 )
 mesh = SubResource( 5 )
 material/0 = null
 
-[node name="WallCover2" type="MeshInstance" parent="pivot/WallCovers"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 30, 0 )
-mesh = SubResource( 5 )
+[node name="WallCover" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.75, 30, 0 )
+mesh = SubResource( 3 )
 material/0 = null
 
-[node name="WallCover3" type="MeshInstance" parent="pivot/WallCovers"]
-transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 30, 0 )
-mesh = SubResource( 6 )
+[node name="WallCover2" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 46.75, 30, 0 )
+mesh = SubResource( 3 )
 material/0 = null
 
-[node name="WallCovers2" type="Spatial" parent="pivot"]
-transform = Transform( -0.75, 0, -8.74228e-08, 0, 1, 0, 6.55671e-08, 0, -1, -1.1303e-07, 0, 47.4142 )
-
-[node name="WallCover" type="MeshInstance" parent="pivot/WallCovers2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 2.13163e-14, 0, 1, -37.3814, 24.7247, 0 )
-mesh = SubResource( 5 )
+[node name="WallCover3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, -46.75 )
+mesh = SubResource( 3 )
 material/0 = null
 
-[node name="WallCover2" type="MeshInstance" parent="pivot/WallCovers2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 2.13163e-14, 0, 1, 37.4032, 24.0437, 0 )
-mesh = SubResource( 5 )
-material/0 = null
+[node name="Torches" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 
-[node name="WallCover3" type="MeshInstance" parent="pivot/WallCovers2"]
-transform = Transform( 1, 0, 0, 0, 2, 0, 1.42109e-14, 0, 1, 0, 21.8509, 0 )
-mesh = SubResource( 6 )
-material/0 = null
+[node name="Torch" parent="Torches" instance=ExtResource( 1 )]
+transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 42.5, 20, 30 )
 
-[node name="WallCovers3" type="Spatial" parent="pivot"]
-transform = Transform( -3.27835e-08, 0, 1, 0, 1, 0, -0.75, 0, -4.37114e-08, -50, 0, 0 )
+[node name="Torch2" parent="Torches" instance=ExtResource( 1 )]
+transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 42.5, 20, -30 )
 
-[node name="WallCover" type="MeshInstance" parent="pivot/WallCovers3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 30, 0 )
-mesh = SubResource( 5 )
-material/0 = null
+[node name="Torch3" parent="Torches" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -42.5, 20, -30 )
 
-[node name="WallCover2" type="MeshInstance" parent="pivot/WallCovers3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 30, 0 )
-mesh = SubResource( 5 )
-material/0 = null
+[node name="Torch4" parent="Torches" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -42.5, 20, 30 )
 
-[node name="WallCover3" type="MeshInstance" parent="pivot/WallCovers3"]
-transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 30, 0 )
-mesh = SubResource( 6 )
-material/0 = null
+[node name="Pots" type="Spatial" parent="."]
 
-[node name="WallCovers4" type="Spatial" parent="pivot"]
-transform = Transform( -3.27835e-08, 0, -1, 0, 1, 0, 0.75, 0, -4.37114e-08, 46, 0, 0 )
+[node name="PotSmall" parent="Pots" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 5, 30 )
 
-[node name="WallCover" type="MeshInstance" parent="pivot/WallCovers4"]
-transform = Transform( 0.9, 0, 0, 0, 1, 0, 0, 0, 1, -48, 30, 0 )
-mesh = SubResource( 5 )
-material/0 = null
-
-[node name="WallCover2" type="MeshInstance" parent="pivot/WallCovers4"]
-transform = Transform( 0.9, 0, 0, 0, 1, 0, 0, 0, 1, 48, 30, 0 )
-mesh = SubResource( 5 )
-material/0 = null
-
-[node name="WallCover3" type="MeshInstance" parent="pivot/WallCovers4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, 0 )
-mesh = SubResource( 6 )
-material/0 = null
-
-[node name="PotSmall" parent="pivot" instance=ExtResource( 3 )]
+[node name="PotSmall2" parent="Pots" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 5, 30 )
 
-[node name="PotSmall2" parent="pivot" instance=ExtResource( 3 )]
+[node name="PotSmall3" parent="Pots" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 5, -30 )
+
+[node name="PotSmall4" parent="Pots" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 5, -30 )
-
-[node name="PotSmall3" parent="pivot" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 5, 29.2297 )
-
-[node name="PotSmall4" parent="pivot" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.8393, 5, -29.8355 )
-
-[node name="PedestalTutorial" parent="pivot" instance=ExtResource( 11 )]
-transform = Transform( -1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 15, 3, 12 )

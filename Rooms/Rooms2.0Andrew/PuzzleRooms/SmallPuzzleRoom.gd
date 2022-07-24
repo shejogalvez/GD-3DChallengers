@@ -6,6 +6,7 @@ export(PackedScene) var item_reward: PackedScene
 
 var rng := RandomNumberGenerator.new()
 var memo_puzzle := MemoPuzzle.new(4)
+var tries := 0
 
 var pot_positions := [
 	Vector3(69, 0.5, 69),
@@ -30,6 +31,7 @@ onready var fox_statue := $Statues/FoxStatue
 onready var fox_statue_2 := $Statues/FoxStatue2
 onready var fox_statue_3 := $Statues/FoxStatue3
 onready var fox_statue_4 := $Statues/FoxStatue4
+onready var reward_position := $RewardPosition
 
 
 # Called when the node enters the scene tree for the first time.
@@ -46,7 +48,9 @@ func _ready():
 # Initializes the room with pots and enemies.
 func _init_room() -> void:
 	_generate_random_pots()
+	_move_fox_statues()
 
+# Called when the player enters the room.
 func _player_enter():
 	lock_doors()
 
@@ -57,14 +61,15 @@ func _end_puzzle() -> void:
 	fox_statue_3.hide_interaction()
 	fox_statue_4.hide_interaction()
 	spirit.queue_free()
-	var item_reward_instance = item_reward.instance()
-	add_child(item_reward_instance)
-	item_reward_instance.global_transform.origin = $RewardPosition.global_transform.origin
-
+	if tries == 0: 
+		var item_reward_instance = item_reward.instance()
+		add_child(item_reward_instance)
+		item_reward_instance.global_transform.origin = reward_position.global_transform.origin
 	unlock_doors()
 
 # Resets the puzzle.
 func _reset_puzzle() -> void:
+	tries += 1
 	fox_statue.hide_interaction()
 	fox_statue_2.hide_interaction()
 	fox_statue_3.hide_interaction()
@@ -74,7 +79,6 @@ func _reset_puzzle() -> void:
 
 # Interacts with the spirit.
 func spirit_interact() -> void:
-	_move_fox_statues()
 	_move_fox_statues()
 	spirit.reset_movement()
 	spirit.queue_move(fox_statue.get_nose_position())
