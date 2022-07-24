@@ -51,8 +51,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.1675, -113.29 )
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 1 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-
 [node name="FloorCover" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 mesh = SubResource( 3 )

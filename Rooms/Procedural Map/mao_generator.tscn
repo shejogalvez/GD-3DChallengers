@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Rooms/Procedural Map/map_generator.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Environments/room_environment.tres" type="Environment" id=3]
 [ext_resource path="res://Rooms/Procedural Map/minimap/minimap_camera.gd" type="Script" id=4]
 [ext_resource path="res://sand_map/camera_control.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Trash/minimap_cover.png" type="Texture" id=6]
@@ -106,5 +107,5 @@ scale = Vector2( 3, 3 )
 z_index = -10
 texture = ExtResource( 6 )
 
-[node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.90572, 35.1996, 0 )
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 3 )

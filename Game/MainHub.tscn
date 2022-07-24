@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/Meshes/FutureMesh/Pod/Props_Pod_GD_Cube003.mesh" type="ArrayMesh" id=5]
 [ext_resource path="res://Assets/Meshes/FutureMesh/ComputerSmall/Props_ComputerSmall_GD_Cube032.mesh" type="ArrayMesh" id=6]
 [ext_resource path="res://Assets/Meshes/FutureMesh/ComputerLarge/Props_Computer_GD_Cube028.mesh" type="ArrayMesh" id=7]
-[ext_resource path="res://Assets/Themes/lounge.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Audio/Music/lounge.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Assets/Meshes/FutureMesh/Crate/Props_Crate_GD_Cube.mesh" type="ArrayMesh" id=9]
 [ext_resource path="res://Assets/Meshes/FutureMesh/CouchLarge/Couch_Large_GD_Cube022.mesh" type="ArrayMesh" id=10]
 [ext_resource path="res://Assets/Meshes/FutureMesh/CouchSmall/Couch_Small_GD_Cube026.mesh" type="ArrayMesh" id=11]
@@ -639,7 +639,7 @@ texture = ExtResource( 131 )
 [node name="EarthAnimatedSprite" type="AnimatedSprite" parent="Hall/EarthPoster/Viewport/SpaceBackground"]
 position = Vector2( 36, 54 )
 frames = SubResource( 23 )
-frame = 4
+frame = 79
 playing = true
 
 [node name="EarthPosterLight" type="OmniLight" parent="Hall/EarthPoster"]
@@ -847,7 +847,7 @@ directional_shadow_blend_splits = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 16 )
 
-[node name="MainTheme" type="AudioStreamPlayer" parent="."]
+[node name="LoungeTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -1.0
 autoplay = true
