@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Rooms/Pedestals/ItemPedestal.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Audio/item-obtained.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Audio/Gameplay/item-obtained.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Meshes/ItemPedestal/item_pedestal_Cylinder.mesh" type="ArrayMesh" id=4]
 [ext_resource path="res://Assets/Themes/MainTheme.tres" type="Theme" id=5]
 [ext_resource path="res://Assets/Fonts/Atarian/SF Atarian System Extended Bold Italic.ttf" type="DynamicFontData" id=6]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Items/LeatherBackpack.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Items/RubyRing.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Items/SmallChest.tscn" type="PackedScene" id=11]
+
 
 [sub_resource type="ConvexPolygonShape" id=8]
 points = PoolVector3Array( 4.22063, -1.96794, 0.962791, 4.03802, -0.990927, 0.921262, 3.23818, -0.990927, 2.58242, 3.38443, -1.96794, 2.69853, 4.22063, -1.96794, -0.963638, 2.6821, 1.95393, 2.13916, 4.03802, -0.990927, -0.92211, 3.34477, 1.95393, 0.762774, 1.79715, -0.990927, 3.73166, 1.87813, -1.96794, 3.90032, 3.38443, -1.96794, -2.69937, 3.23818, -0.990927, -2.58326, 1.48813, 1.95393, 3.09093, 3.34477, 1.95393, -0.763622, 2.6821, 1.95393, -2.14001, -0.000826359, 1.95393, 3.43079, -0.000826359, -0.990927, 4.14187, -0.000826359, -1.96794, 4.32832, 1.87813, -1.96794, -3.90117, 1.79715, -0.990927, -3.73251, 1.48813, 1.95393, -3.09178, -1.79798, -0.990927, 3.73166, -1.48895, 1.95393, 3.09093, -1.87896, -1.96794, 3.90032, 0, -1.96794, -4.32917, 0, -0.990927, -4.14271, 0, 1.95393, -3.43164, -2.68292, 1.95393, 2.13916, -3.23901, -0.990927, 2.58242, -3.38526, -1.96794, 2.69853, -1.87896, -1.96794, -3.90117, -1.79798, -0.990927, -3.73251, -1.48895, 1.95393, -3.09178, -3.3456, 1.95393, 0.762774, -4.03885, -0.990927, 0.921262, -4.22063, -1.96794, 0.962791, -3.38526, -1.96794, -2.69937, -3.23901, -0.990927, -2.58326, -2.68292, 1.95393, -2.14001, -3.3456, 1.95393, -0.763622, -4.03885, -0.990927, -0.92211, -4.22063, -1.96794, -0.963638 )

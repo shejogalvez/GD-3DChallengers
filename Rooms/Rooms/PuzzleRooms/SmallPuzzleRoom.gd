@@ -4,6 +4,8 @@ export(PackedScene) var pot_small_scene : PackedScene
 
 export(PackedScene) var item_reward: PackedScene
 
+export(AudioStream) var activation_audio : AudioStream
+
 var rng := RandomNumberGenerator.new()
 var memo_puzzle := MemoPuzzle.new(4)
 var tries := 0
@@ -92,7 +94,7 @@ func spirit_interact() -> void:
 	fox_statue_3.show_interaction()
 	fox_statue_4.show_interaction()
 	memo_puzzle.start()
-	AudioStreamManager.play_activation_audio()
+	AudioStreamManager.play(activation_audio)
 
 # Moves the fox statues randomly.
 func _move_fox_statues() -> void:

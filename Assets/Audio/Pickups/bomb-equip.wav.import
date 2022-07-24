@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/bomb-pickup.wav-d81fa698f9a575ee2e50db2756c1fb71.sample"
+path="res://.import/bomb-equip.wav-80de07fc338e5d89ca1ad46e64d220d6.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/bomb-pickup.wav"
-dest_files=[ "res://.import/bomb-pickup.wav-d81fa698f9a575ee2e50db2756c1fb71.sample" ]
+source_file="res://Assets/Audio/Pickups/bomb-equip.wav"
+dest_files=[ "res://.import/bomb-equip.wav-80de07fc338e5d89ca1ad46e64d220d6.sample" ]
 
 [params]
 

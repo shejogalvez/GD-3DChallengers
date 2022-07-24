@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/retro-confirm.wav-56b7979e294c9bfba7c80fa81e8663d0.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/GUI/retro-confirm.wav"
+dest_files=[ "res://.import/retro-confirm.wav-56b7979e294c9bfba7c80fa81e8663d0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

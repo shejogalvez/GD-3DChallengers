@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Addons/Interactions/Interaction.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Pickups/Pickup.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Audio/void.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Audio/Ambient/void.wav" type="AudioStream" id=3]
 
 [sub_resource type="CubeMesh" id=1]
 

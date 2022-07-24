@@ -3,7 +3,7 @@
 [ext_resource path="res://Pickups/Consumables/ConsumablePickup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Pickups/Consumables/Bomb.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sprites/Interactions/Item_279.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Audio/bomb-pickup.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Audio/Pickups/bomb-pickup.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Meshes/Bomb/bomb_Icosphere.mesh" type="ArrayMesh" id=5]
 [ext_resource path="res://Pickups/Consumables/Objects/ConsumableBomb.gd" type="Script" id=6]
 

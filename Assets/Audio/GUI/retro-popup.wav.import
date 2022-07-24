@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/potion.drink.wav-c5c24d27f6de620d5e13175629c8f318.sample"
+path="res://.import/retro-popup.wav-8a99e2b5d194be2101701925f23e528f.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/potion.drink.wav"
-dest_files=[ "res://.import/potion.drink.wav-c5c24d27f6de620d5e13175629c8f318.sample" ]
+source_file="res://Assets/Audio/GUI/retro-popup.wav"
+dest_files=[ "res://.import/retro-popup.wav-8a99e2b5d194be2101701925f23e528f.sample" ]
 
 [params]
 

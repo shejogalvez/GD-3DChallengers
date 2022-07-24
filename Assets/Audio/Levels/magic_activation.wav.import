@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/magic_activation.wav-0b7c166a6bd4ae0a5ad8c6327e26fd98.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Levels/magic_activation.wav"
+dest_files=[ "res://.import/magic_activation.wav-0b7c166a6bd4ae0a5ad8c6327e26fd98.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

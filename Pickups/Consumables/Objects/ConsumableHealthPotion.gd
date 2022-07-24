@@ -1,6 +1,6 @@
 extends Consumable
 
-var potion_audio : AudioStream = load("res://Assets/Audio/potion-drink.wav")
+var potion_audio : AudioStream = load("res://Assets/Audio/Pickups/potion-drink.wav")
 
 # Consumes the consumable.
 func consume() -> void:

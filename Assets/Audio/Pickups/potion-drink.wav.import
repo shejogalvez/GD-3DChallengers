@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/potion-drink.wav-b56da5299179e7c840771b5c8fd944f2.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Pickups/potion-drink.wav"
+dest_files=[ "res://.import/potion-drink.wav-b56da5299179e7c840771b5c8fd944f2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

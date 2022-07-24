@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/potion-drink.wav-5cb1ca62571e702d456e4b9bb8c94259.sample"
+path="res://.import/pot-break.wav-1a6e86cb329d5433945896e149ea489d.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/potion-drink.wav"
-dest_files=[ "res://.import/potion-drink.wav-5cb1ca62571e702d456e4b9bb8c94259.sample" ]
+source_file="res://Assets/Audio/Levels/pot-break.wav"
+dest_files=[ "res://.import/pot-break.wav-1a6e86cb329d5433945896e149ea489d.sample" ]
 
 [params]
 

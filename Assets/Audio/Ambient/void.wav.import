@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/gui-popup.wav-71017f402024b13c8ab51e70b3862f4c.sample"
+path="res://.import/void.wav-b0d930efddab0e1c4574d32ab409ee66.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/GUI/gui-popup.wav"
-dest_files=[ "res://.import/gui-popup.wav-71017f402024b13c8ab51e70b3862f4c.sample" ]
+source_file="res://Assets/Audio/Ambient/void.wav"
+dest_files=[ "res://.import/void.wav-b0d930efddab0e1c4574d32ab409ee66.sample" ]
 
 [params]
 

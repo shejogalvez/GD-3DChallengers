@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/damage-short.wav-de513a5db959c73fa5380a345599ad8d.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Gameplay/damage-short.wav"
+dest_files=[ "res://.import/damage-short.wav-de513a5db959c73fa5380a345599ad8d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
