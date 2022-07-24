@@ -7,21 +7,21 @@ var rfc : RandomFunctionCaller
 var rfc_rooms : RandomFunctionCaller
 export (int) var number_of_rooms = 10
 var random_rooms = [
-	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoom.tscn"), 20] ,
-	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoomB.tscn"), 20] ,
-	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoomC.tscn"), 20] ,
-	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/SmallEnemyRoomD.tscn"), 20] ,
-	[preload("res://Rooms/Rooms2.0Andrew/PuzzleRooms/SmallPuzzleRoom.tscn"), 30] ,
-	[preload("res://Rooms/Rooms2.0Andrew/PuzzleRooms/MidPuzzleRoom.tscn"), 3000] ,
-	[preload("res://Rooms/Rooms2.0Andrew/EnemyRooms/MidEnemyRoom.tscn"), 30]
+	[preload("res://Rooms/Rooms/EnemyRooms/SmallEnemyRoom.tscn"), 20] ,
+	[preload("res://Rooms/Rooms/EnemyRooms/SmallEnemyRoomB.tscn"), 20] ,
+	[preload("res://Rooms/Rooms/EnemyRooms/SmallEnemyRoomC.tscn"), 20] ,
+	[preload("res://Rooms/Rooms/EnemyRooms/SmallEnemyRoomD.tscn"), 20] ,
+	[preload("res://Rooms/Rooms/PuzzleRooms/SmallPuzzleRoom.tscn"), 30] ,
+	[preload("res://Rooms/Rooms/PuzzleRooms/MidPuzzleRoom.tscn"), 30] ,
+	[preload("res://Rooms/Rooms/EnemyRooms/MidEnemyRoom.tscn"), 30]
 ]
 
 # end_room SIMPRE VA PRIMERO!!
 var obligatory_rooms = [
-	[preload("res://Rooms/Rooms2.0Andrew/BigBossRoom.tscn"), [12]],
+	[preload("res://Rooms/Rooms/BigBossRoom.tscn"), [12]],
 ]
 var obligatory_rooms_queue = Array()
-export (PackedScene) var initial_room : PackedScene = preload("res://Rooms/Rooms2.0Andrew/RoomsExtras/InitialRoom2.0.tscn"  )
+export (PackedScene) var initial_room : PackedScene = preload("res://Rooms/Rooms/RoomsExtras/InitialRoom2.0.tscn"  )
 
 
 const front = Vector2.DOWN
