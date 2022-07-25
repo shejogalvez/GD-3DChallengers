@@ -1,7 +1,7 @@
 extends Spatial
 class_name RoomGenerator
 
-export (PackedScene) var initial_room : PackedScene = preload("res://Levels/Rooms/RoomsExtras/InitialRoom2.0.tscn")
+export (PackedScene) var initial_room : PackedScene = preload("res://Levels/Rooms/ExtraRooms/InitialRoom2.0.tscn")
 
 export (int) var number_of_rooms = 10
 
@@ -21,7 +21,7 @@ var random_rooms = [
 
 # end_room SIMPRE VA PRIMERO!!
 var obligatory_rooms = [
-	[preload("res://Levels/Rooms/BigBossRoom.tscn"), [12]],
+	[preload("res://Levels/Rooms/BossRooms/BigBossRoom.tscn"), [12]],
 ]
 var obligatory_rooms_queue = Array()
 
@@ -68,24 +68,32 @@ const real_separation = 400
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameManager.current_level = self
+	
 	set_initial_weights()
+	
 	rfc = RandomFunctionCaller.new()
 	rfc_rooms = RandomFunctionCaller.new()
+	
 	for i in range(unique_orientations):
 		rfc.put_func(initial_weights[i], self, "set_orientation", [possible_orientations[i]])
+	
 	for room in random_rooms:
 		rfc_rooms.put_func(room[1], self, "set_room", [room[0]])
 		
 	reset_pool_values()
+	
 	var init = initial_room.instance()
 	init.initialize(0, self, Vector2.ZERO)
 	self.add_child(init)
+	
 	constructed_rooms_array.append(init)
 	leaf_rooms.append(init)
 	reserved_spots.append(Vector2(0, 0))
 	reserved_spots.append(Vector2(0, 1))
 	occupied_spots.append(Vector2(0, 0))
+	
 	set_obligatory_rooms()
+	
 	while(len(leaf_rooms) > 0):
 		if (rooms_tomake <= 1):
 			rfc.update_weight(0, 0)
@@ -158,7 +166,7 @@ func is_valid_room(pos:Vector2) -> bool:
 	return true
 
 func construct_room(pos, angle):
-	#reserved_spots.append(pos)
+	
 	constructed_rooms += 1
 	occupied_spots.append(pos)
 	rooms_tomake -= 1
@@ -179,13 +187,13 @@ func construct_room(pos, angle):
 		while (prev == actual_room):
 			rfc_rooms.call_func()
 			rfc.call_func()
-	#print(actual_orientations)
+
 	actual_room.set_openings(actual_orientations)
 	leaf_rooms.append(actual_room)
 	rooms_tomake += len(actual_room.openings)
 
 	constructed_rooms_array.append(actual_room)
-	#print(reserved_spots)
+	
 	return actual_room
 
 func room_done(room):

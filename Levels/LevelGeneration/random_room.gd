@@ -31,7 +31,6 @@ func _ready():
 
 # Initializes the room.
 func _init_room():
-	#print("room ", self, " pos: ", pos, " initializated")
 	pass
 	
 func _player_enter():
