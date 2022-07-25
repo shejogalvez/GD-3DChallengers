@@ -360,7 +360,7 @@ mesh = SubResource( 4 )
 material/0 = null
 
 [node name="DoorSingleStatic" type="StaticBody" parent="."]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.4325, 3.75466, -11.183 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.432, 4.127, -11.183 )
 
 [node name="MeshInstance" type="MeshInstance" parent="DoorSingleStatic"]
 mesh = ExtResource( 3 )
@@ -621,7 +621,7 @@ texture = ExtResource( 131 )
 [node name="EarthAnimatedSprite" type="AnimatedSprite" parent="Hall/EarthPoster/Viewport/SpaceBackground"]
 position = Vector2( 36, 54 )
 frames = SubResource( 23 )
-frame = 3
+frame = 43
 playing = true
 
 [node name="EarthPosterLight" type="OmniLight" parent="Hall/EarthPoster"]
