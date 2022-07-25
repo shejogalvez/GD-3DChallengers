@@ -7,7 +7,6 @@
 [ext_resource path="res://Levels/LevelGeneration/minimap/minimap_camera.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Environments/room_environment.tres" type="Environment" id=6]
 
-
 [sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 
@@ -53,7 +52,7 @@ void fragment(){
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 
-[node name="main" type="Spatial"]
+[node name="LevelGenerator" type="Spatial"]
 script = ExtResource( 1 )
 number_of_rooms = 5
 

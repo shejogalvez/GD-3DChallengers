@@ -1,4 +1,4 @@
-extends MeshInstance
+extends Spatial
 
 export(float, 0.0, 999.0) var spirit_speed := 1.0
 
@@ -7,8 +7,7 @@ var moves_queue := []
 var current_move_target = null
 var queued_dissapear := false
 
-const CLOSE_DISTANCE = 2
-
+onready var model := $Model
 onready var interaction := $Interaction
 onready var animation_player := $AnimationPlayer
 
@@ -21,7 +20,7 @@ func _process(delta):
 	if current_move_target != null:
 		var direction = (current_move_target - global_transform.origin).normalized()
 		global_transform.origin = global_transform.origin + direction * spirit_speed
-		if (global_transform.origin - current_move_target).length() <= CLOSE_DISTANCE:
+		if (global_transform.origin - current_move_target).length() <= spirit_speed:
 			global_transform.origin = current_move_target
 			current_move_target = null
 	else:
@@ -34,7 +33,9 @@ func _process(delta):
 # Appears.
 func appear() -> void:
 	interaction.set_collision_mask_bit(6, true)
+	model.transform.origin = Vector3.ZERO
 	animation_player.play("appear")
+	animation_player.queue("idle")
 
 # Moves instantly to a target.
 func move(move_target : Vector3) -> void:
