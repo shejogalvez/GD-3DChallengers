@@ -1,9 +1,0 @@
-[gd_resource type="SpatialMaterial" load_steps=2 format=2]
-
-[ext_resource path="res://sand_map/sand_texture.jpg" type="Texture" id=2]
-
-[resource]
-params_specular_mode = 4
-albedo_color = Color( 1, 0.803922, 0.290196, 1 )
-albedo_texture = ExtResource( 2 )
-roughness = 0.82
