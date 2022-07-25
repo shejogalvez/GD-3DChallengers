@@ -1,11 +1,14 @@
 extends Spatial
 class_name RoomGenerator
 
-"""class that keeps track of and manages every global aspect of the procedural dungeon"""
+export (PackedScene) var initial_room : PackedScene = preload("res://Levels/Rooms/RoomsExtras/InitialRoom2.0.tscn")
+
+export (int) var number_of_rooms = 10
+
 
 var rfc : RandomFunctionCaller
 var rfc_rooms : RandomFunctionCaller
-export (int) var number_of_rooms = 10
+
 var random_rooms = [
 	[preload("res://Levels/Rooms/EnemyRooms/SmallEnemyRoom.tscn"), 20] ,
 	[preload("res://Levels/Rooms/EnemyRooms/SmallEnemyRoomB.tscn"), 20] ,
@@ -21,7 +24,6 @@ var obligatory_rooms = [
 	[preload("res://Levels/Rooms/BigBossRoom.tscn"), [12]],
 ]
 var obligatory_rooms_queue = Array()
-export (PackedScene) var initial_room : PackedScene = preload("res://Levels/Rooms/RoomsExtras/InitialRoom2.0.tscn"  )
 
 
 const front = Vector2.DOWN
@@ -31,7 +33,9 @@ const left = Vector2.RIGHT
 var possible_orientations = [
 	[], [right], [left], [front], [left, front], [right, front], [left, right], [right, left, front]
 ]
+
 var unique_orientations = len(possible_orientations)
+
 export (int) var nonew = 15
 export (int) var rightw = 5
 export (int) var leftw = 5
@@ -59,6 +63,8 @@ var minimap_door = preload("res://Levels/LevelGeneration/minimap/door.tscn")
 var actual_pos : Vector2 = Vector2.ZERO
 const minimap_separation = 120
 const real_separation = 400
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameManager.current_level = self
@@ -95,10 +101,10 @@ func _ready():
 			var i = 0
 			while not create_emergency_exit(constructed_rooms - i):
 				i+=1
-			#init.queue_free()
-			#reset()
+
 	#print(constructed_rooms, constructed_rooms_array)
 	
+# Resets.
 func reset():
 	reserved_spots = []
 	occupied_spots = []
@@ -109,14 +115,17 @@ func reset():
 	rooms_tomake = 1
 	obligatory_rooms_queue = []
 
+
 # tries to create a new teleport/room on indexth room created, return true if succeed
 func create_emergency_exit(index) -> bool:
 	var room = constructed_rooms_array[index]
 	#print(room, room.pos)
 	return room.open_exit()
+
 	
 func set_initial_weights():
 	initial_weights = [nonew, rightw, leftw, frontw, left_frontw, right_frontw, left_rightw, right_left_frontw]
+
 	
 class MyCustomSorter:
 	static func sort_hint_ascending(a, b):
@@ -159,8 +168,7 @@ func construct_room(pos, angle):
 		actual_room = (obligatory_rooms_queue[0][0]).instance() 
 		actual_room.possible_openings = actual_room.openings
 		actual_orientations = actual_room.openings
-		#set_available_from_openings(pos, angle, actual_room.openings)
-		#rfc.call_func()
+
 		var last_room = obligatory_rooms_queue.pop_front()
 		if(len(obligatory_rooms_queue)) > 0:
 			while obligatory_rooms_queue[0][1] == last_room[1]:
@@ -169,18 +177,13 @@ func construct_room(pos, angle):
 	# else creates a random room
 	else:
 		while (prev == actual_room):
-			#set_avaliable_rooms(pos, angle)
 			rfc_rooms.call_func()
 			rfc.call_func()
 	#print(actual_orientations)
 	actual_room.set_openings(actual_orientations)
 	leaf_rooms.append(actual_room)
 	rooms_tomake += len(actual_room.openings)
-#	for orientation in actual_room.openings:
-#		var dir = orientation.rotated(-angle)
-#		reserved_spots.append(pos + dir)
-#	reset_pool_values()
-	#print("room ", pos, "= ", actual_room)
+
 	constructed_rooms_array.append(actual_room)
 	#print(reserved_spots)
 	return actual_room
@@ -214,18 +217,6 @@ func add_door(pos : Vector2, room_size : float, opening : Vector2):
 ##################### UNUSED #############################
 ##################### UNUSED #############################
 ##################### UNUSED #############################
-
-func set_avaliable_rooms(pos, angle):
-	var results = [false, false, false]
-	for i in range(3):
-		var dir = orientations[i].rotated(-angle)
-		#print(pos, dir)
-		for spot in reserved_spots:
-			if (spot - (pos + dir)).length() < 0.2:
-				print(spot, " already taken ", i)
-				results[i] = true
-				break
-	update_room_pool(results)
 	
 	
 func set_available_from_openings(pos, angle, hint):
@@ -245,15 +236,7 @@ func set_available_from_openings(pos, angle, hint):
 					break
 	update_room_pool(results)
 	
-# orientations = [(0, 1), (1, 0), (-1, 0)]
-#	rfc.put_func(0, self, "set_room", [room1p]) 0
-#	rfc.put_func(1, self, "set_room", [room2pad]) #(-1, 0)  1
-#	rfc.put_func(1, self, "set_room", [room2pad]) #(1, 0)  2 
-#	rfc.put_func(1, self, "set_room", [room2pop]) #(0, 1)  3
-#	rfc.put_func(1, self, "set_room", [room3p])   #(1, 0), (0, 1)  4
-#	rfc.put_func(1, self, "set_room", [room3p2])   #(-1, 0), (0, 1)  5
-#	rfc.put_func(1, self, "set_room", [room3p3])   #(1, 0), (-1, 0)  6
-#	rfc.put_func(1, self, "set_room", [room4p])   #(-1, 0), (1, 0), (0, 1)  7
+
 func update_room_pool(bool_array):
 	if bool_array[0]:
 		rfc.update_weight(3, 0)
@@ -274,6 +257,4 @@ func update_room_pool(bool_array):
 func reset_pool_values():
 	for i in range(unique_orientations):
 		rfc.update_weight(i, initial_weights[i])
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
