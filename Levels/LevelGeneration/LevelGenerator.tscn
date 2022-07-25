@@ -3,9 +3,10 @@
 [ext_resource path="res://Levels/LevelGeneration/map_generator.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Trash/minimap_cover.png" type="Texture" id=2]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://sand_map/camera_control.gd" type="Script" id=4]
+[ext_resource path="res://Levels/LevelGeneration/camera_control.gd" type="Script" id=4]
 [ext_resource path="res://Levels/LevelGeneration/minimap/minimap_camera.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Environments/room_environment.tres" type="Environment" id=6]
+
 
 [sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
