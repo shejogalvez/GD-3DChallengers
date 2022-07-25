@@ -1,6 +1,6 @@
 extends Spatial
 
-export(String, FILE) var random_level_generator_scene_path = "res://Rooms/Procedural Map/mao_generator.tscn"
+export(String, FILE) var random_level_generator_scene_path = "res://Levels/LevelGeneration/LevelGenerator.tscn"
 export(Vector3) var closed_dynamic_door_pos = Vector3(0, 0, 0)
 export(Vector3) var open_dynamic_door_pos = Vector3(0, 18, 0)
 

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Levels/Pedestals/Teleport.gd" type="Script" id=1]
+
+[sub_resource type="CylinderShape" id=4]
+radius = 3.6
+height = 12.0
+
+[sub_resource type="CylinderMesh" id=5]
+top_radius = 5.4
+bottom_radius = 5.4
+height = 36.0
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+albedo_color = Color( 0.572549, 0.466667, 0.87451, 0.305882 )
+
+[node name="Teleport" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="TeleportArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="TeleportArea"]
+shape = SubResource( 4 )
+
+[node name="Model" type="MeshInstance" parent="TeleportArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.7646, 0 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )

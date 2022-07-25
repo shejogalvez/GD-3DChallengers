@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "RandomRoom",
 "class": "EnemyRoom",
 "language": "GDScript",
-"path": "res://Rooms/Rooms/EnemyRooms/EnemyRoom.gd"
+"path": "res://Levels/Rooms/EnemyRooms/EnemyRoom.gd"
 }, {
 "base": "Spatial",
 "class": "EnemyWeapon",
@@ -72,7 +72,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "ItemPedestal",
 "language": "GDScript",
-"path": "res://Rooms/Pedestals/ItemPedestal.gd"
+"path": "res://Levels/Pedestals/ItemPedestal.gd"
 }, {
 "base": "Spatial",
 "class": "Laser",
@@ -82,7 +82,7 @@ _global_script_classes=[ {
 "base": "Object",
 "class": "MemoPuzzle",
 "language": "GDScript",
-"path": "res://Rooms/Rooms/PuzzleRooms/MemoPuzzle.gd"
+"path": "res://Levels/Rooms/PuzzleRooms/MemoPuzzle.gd"
 }, {
 "base": "RigidBody",
 "class": "Pickup",
@@ -107,17 +107,17 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "RandomRoom",
 "language": "GDScript",
-"path": "res://Rooms/Procedural Map/random_room.gd"
+"path": "res://Levels/LevelGeneration/random_room.gd"
 }, {
 "base": "Spatial",
 "class": "RoomGenerator",
 "language": "GDScript",
-"path": "res://Rooms/Procedural Map/map_generator.gd"
+"path": "res://Levels/LevelGeneration/map_generator.gd"
 }, {
 "base": "Object",
 "class": "RotaPuzzle",
 "language": "GDScript",
-"path": "res://Rooms/Rooms/PuzzleRooms/RotaPuzzle.gd"
+"path": "res://Levels/Rooms/PuzzleRooms/RotaPuzzle.gd"
 }, {
 "base": "ProgressBar",
 "class": "SmartBar",
@@ -137,12 +137,12 @@ _global_script_classes=[ {
 "base": "StaticBody",
 "class": "StatueRotate",
 "language": "GDScript",
-"path": "res://Rooms/Misc/StagStatueRotate.gd"
+"path": "res://Levels/Misc/StagStatueRotate.gd"
 }, {
 "base": "Spatial",
 "class": "Teleport",
 "language": "GDScript",
-"path": "res://Rooms/Pedestals/Teleport.gd"
+"path": "res://Levels/Pedestals/Teleport.gd"
 }, {
 "base": "Weapon",
 "class": "TemporaryWeapon",
@@ -162,7 +162,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "WeaponPedestal",
 "language": "GDScript",
-"path": "res://Rooms/Pedestals/WeaponPedestal.gd"
+"path": "res://Levels/Pedestals/WeaponPedestal.gd"
 }, {
 "base": "Spatial",
 "class": "particle_trail",

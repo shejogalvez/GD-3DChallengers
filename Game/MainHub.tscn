@@ -144,7 +144,7 @@
 [ext_resource path="res://Assets/Meshes/FutureMesh/Paper/Paper.tres" type="PlaneMesh" id=142]
 [ext_resource path="res://GUI/Workstation.tscn" type="PackedScene" id=143]
 [ext_resource path="res://Assets/Audio/Ambient/door-steam.wav" type="AudioStream" id=144]
-[ext_resource path="res://Rooms/Misc/GUIDisplayer.tscn" type="PackedScene" id=145]
+[ext_resource path="res://Levels/Misc/GUIDisplayer.tscn" type="PackedScene" id=145]
 [ext_resource path="res://Assets/GUI/workstation_screen.png" type="Texture" id=147]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -621,7 +621,7 @@ texture = ExtResource( 131 )
 [node name="EarthAnimatedSprite" type="AnimatedSprite" parent="Hall/EarthPoster/Viewport/SpaceBackground"]
 position = Vector2( 36, 54 )
 frames = SubResource( 23 )
-frame = 44
+frame = 3
 playing = true
 
 [node name="EarthPosterLight" type="OmniLight" parent="Hall/EarthPoster"]
