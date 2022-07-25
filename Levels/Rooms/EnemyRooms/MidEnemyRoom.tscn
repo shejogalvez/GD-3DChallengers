@@ -17,11 +17,11 @@ size = Vector2( 215, 215 )
 
 [sub_resource type="QuadMesh" id=3]
 material = SubResource( 2 )
-size = Vector2( 90, 60 )
+size = Vector2( 90, 66 )
 
 [sub_resource type="QuadMesh" id=4]
 material = SubResource( 2 )
-size = Vector2( 40, 30 )
+size = Vector2( 36, 33 )
 
 [sub_resource type="ConvexPolygonShape" id=5]
 points = PoolVector3Array( 2.46221, 5.10258, 2.46221, -2.46221, 5.10258, 2.46221, 2.46221, 0, 2.46221, 2.46221, 5.10258, -2.46221, 1.91221, 29.9242, 1.91222, -2.46221, 5.10258, -2.46221, -2.46221, 0, 2.46221, -1.9127, 29.9242, 1.91222, 2.46221, 0, -2.46221, 1.91221, 29.9242, -1.9127, -2.46221, 0, -2.46221, -1.9127, 29.9242, -1.9127 )
@@ -71,7 +71,7 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="WallCover3" type="MeshInstance" parent="WallCovers"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 45, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 46.5, 0 )
 mesh = SubResource( 4 )
 material/0 = null
 
@@ -89,7 +89,7 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="WallCover3" type="MeshInstance" parent="WallCovers2"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 45, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 46.5, 0 )
 mesh = SubResource( 4 )
 material/0 = null
 
@@ -107,7 +107,7 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="WallCover3" type="MeshInstance" parent="WallCovers3"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 45, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 46.5, 0 )
 mesh = SubResource( 4 )
 material/0 = null
 
@@ -125,7 +125,7 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="WallCover3" type="MeshInstance" parent="WallCovers4"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 45, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 46.5, 0 )
 mesh = SubResource( 4 )
 material/0 = null
 

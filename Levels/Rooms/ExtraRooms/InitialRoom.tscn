@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Assets/Meshes/AztecMesh/aztec_mesh_library.tres" type="MeshLibrary" id=1]
-[ext_resource path="res://Levels/Misc/Torch.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Levels/Misc/PotSmall.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Levels/LevelGeneration/initial_room.gd" type="Script" id=4]
+[ext_resource path="res://Levels/Misc/Torch.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Meshes/AztecMesh/aztec_mesh_library.tres" type="MeshLibrary" id=2]
+[ext_resource path="res://Levels/Rooms/ExtraRooms/InitialRoom.gd" type="Script" id=3]
+[ext_resource path="res://Levels/Misc/PotSmall.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.435294, 0.439216, 0.388235, 1 )
@@ -25,12 +25,12 @@ material = SubResource( 1 )
 size = Vector2( 96, 66 )
 
 [node name="InitialRoom" type="Spatial"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 size = 45.0
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22.5, -15, 22.5 )
-mesh_library = ExtResource( 1 )
+mesh_library = ExtResource( 2 )
 cell_size = Vector3( 15, 30, 15 )
 data = {
 "cells": PoolIntArray( 0, 1, 1048577, 65531, 1, 1048582, 65532, 1, 1048577, 65534, 1, 0, 65537, 1, 1441798, 131067, 1, 1048582, 0, 3, 0, 1, 3, 1441798, 65531, 3, 1048582, 65532, 3, 0, 65534, 3, 1048577, 65537, 3, 1441798, 131067, 3, 1048582, 0, 4, 655366, 65532, 4, 655366, 65534, 4, 655366, 65536, 4, 655366, 131068, 4, 655366, 131070, 4, 655366, 0, 65534, 6, 65532, 65534, 6, 65534, 65534, 6, 65536, 65534, 6, 131068, 65534, 6, 131070, 65534, 6, 0, 65535, 0, 1, 65535, 1441798, 65531, 65535, 1048582, 65532, 65535, 0, 65534, 65535, 1048577, 65537, 65535, 1441798, 131067, 65535, 1048582 )
@@ -86,28 +86,28 @@ material/0 = null
 [node name="Torches" type="Spatial" parent="."]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 
-[node name="Torch" parent="Torches" instance=ExtResource( 2 )]
+[node name="Torch" parent="Torches" instance=ExtResource( 1 )]
 transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 42.5, 20, 30 )
 
-[node name="Torch2" parent="Torches" instance=ExtResource( 2 )]
+[node name="Torch2" parent="Torches" instance=ExtResource( 1 )]
 transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 42.5, 20, -30 )
 
-[node name="Torch3" parent="Torches" instance=ExtResource( 2 )]
+[node name="Torch3" parent="Torches" instance=ExtResource( 1 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -42.5, 20, -30 )
 
-[node name="Torch4" parent="Torches" instance=ExtResource( 2 )]
+[node name="Torch4" parent="Torches" instance=ExtResource( 1 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -42.5, 20, 30 )
 
 [node name="Pots" type="Spatial" parent="."]
 
-[node name="PotSmall" parent="Pots" instance=ExtResource( 3 )]
+[node name="PotSmall" parent="Pots" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 5, 30 )
 
-[node name="PotSmall2" parent="Pots" instance=ExtResource( 3 )]
+[node name="PotSmall2" parent="Pots" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 5, 30 )
 
-[node name="PotSmall3" parent="Pots" instance=ExtResource( 3 )]
+[node name="PotSmall3" parent="Pots" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 5, -30 )
 
-[node name="PotSmall4" parent="Pots" instance=ExtResource( 3 )]
+[node name="PotSmall4" parent="Pots" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 5, -30 )

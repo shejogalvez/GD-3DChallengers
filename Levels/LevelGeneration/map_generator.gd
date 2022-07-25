@@ -1,7 +1,7 @@
 extends Spatial
 class_name RoomGenerator
 
-export (PackedScene) var initial_room : PackedScene = preload("res://Levels/Rooms/ExtraRooms/InitialRoom2.0.tscn")
+export (PackedScene) var initial_room : PackedScene = preload("res://Levels/Rooms/ExtraRooms/InitialRoom.tscn")
 
 export (int) var number_of_rooms = 10
 

@@ -75,29 +75,29 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 75, 20,
 [node name="Torch4" parent="Torches" instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -75, 20, 132.5 )
 
-[node name="Spatial" type="Spatial" parent="."]
+[node name="Columns" type="Spatial" parent="."]
 
-[node name="Column" type="StaticBody" parent="Spatial"]
+[node name="Column" type="StaticBody" parent="Columns"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, -75 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Spatial/Column"]
+[node name="CollisionShape" type="CollisionShape" parent="Columns/Column"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 shape = SubResource( 4 )
 
-[node name="Model" type="MeshInstance" parent="Spatial/Column"]
+[node name="Model" type="MeshInstance" parent="Columns/Column"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 mesh = ExtResource( 3 )
 material/0 = null
 material/1 = null
 
-[node name="Column2" type="StaticBody" parent="Spatial"]
+[node name="Column2" type="StaticBody" parent="Columns"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, 75 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Spatial/Column2"]
+[node name="CollisionShape" type="CollisionShape" parent="Columns/Column2"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 shape = SubResource( 4 )
 
-[node name="Model" type="MeshInstance" parent="Spatial/Column2"]
+[node name="Model" type="MeshInstance" parent="Columns/Column2"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 mesh = ExtResource( 3 )
 material/0 = null
