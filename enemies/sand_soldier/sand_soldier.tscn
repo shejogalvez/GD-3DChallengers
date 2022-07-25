@@ -1,7 +1,9 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://enemies/sand_soldier/sand_soldier.gd" type="Script" id=1]
+[ext_resource path="res://sand_map/material.tres" type="Material" id=2]
 [ext_resource path="res://enemies/sand_soldier/final_spear.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Material.material" type="Material" id=4]
 
 [sub_resource type="Curve" id=14]
 _data = [ Vector2( 0, 0.0337423 ), 0.0, -0.0505785, 0, 0, Vector2( 0.124074, 0.941718 ), -6.41871, -6.41871, 0, 0, Vector2( 0.294444, 0.0214723 ), 1.19632, 1.19632, 0, 0, Vector2( 1, 0.0214723 ), 0.729442, 0.0, 0, 0 ]
@@ -10,16 +12,6 @@ _data = [ Vector2( 0, 0.0337423 ), 0.0, -0.0505785, 0, 0, Vector2( 0.124074, 0.9
 extents = Vector3( 1, 3, 1 )
 
 [sub_resource type="CubeMesh" id=2]
-
-[sub_resource type="StreamTexture" id=23]
-flags = 7
-load_path = "res://.import/sand_texture.jpg-b20b080fd31590306860fae31347cef3.s3tc.stex"
-
-[sub_resource type="SpatialMaterial" id=20]
-params_specular_mode = 4
-albedo_color = Color( 1, 0.803922, 0.290196, 1 )
-albedo_texture = SubResource( 23 )
-roughness = 0.82
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -522,17 +514,6 @@ colors = PoolColorArray( 0, 0, 0, 1, 0.952148, 0.84824, 0.595093, 1, 1, 0.836304
 [sub_resource type="BoxShape" id=12]
 extents = Vector3( 4.51182, 2.40831, 5.9999 )
 
-[sub_resource type="SpatialMaterial" id=19]
-resource_name = "Material"
-vertex_color_use_as_albedo = true
-params_cull_mode = 2
-metallic = 1.0
-emission_enabled = true
-emission = Color( 1, 1, 1, 1 )
-emission_energy = 1.0
-emission_operator = 0
-emission_on_uv2 = false
-
 [sub_resource type="ArrayMesh" id=15]
 resource_name = "Sand_Soldier_Esfera geodésica005"
 surfaces/0 = {
@@ -542,7 +523,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194911,
 "index_count": 16230,
-"material": SubResource( 19 ),
+"material": ExtResource( 4 ),
 "primitive": 4,
 "skeleton_aabb": [ AABB( -2.04803, -8.30992, -1.35745, 3.84941, 5.0846, 2.34245 ), AABB( -1.33131, -4.92617, -1.12561, 2.69358, 2.28512, 2.15103 ), AABB( -2.32102, -4.33644, -1.67558, 4.74589, 3.6992, 2.73252 ), AABB( -2.62165, -4.44187, -1.6822, 5.55214, 3.81821, 2.73914 ), AABB( -1.18612, -1.49638, -1.22491, 2.41733, 2.67567, 2.61172 ), AABB( -1.18612, -1.49638, -1.22491, 2.41733, 3.046, 2.61172 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0.413568, -4.51093, -1.67558, 2.51692, 3.87369, 2.68193 ), AABB( 0.920673, -5.92827, -1.62084, 2.28572, 5.29103, 2.4003 ), AABB( 1.48852, -6.11544, -1.62084, 1.71787, 4.26262, 2.34782 ), AABB( 2.09486, -7.24242, -1.62084, 1.11153, 3.3553, 3.01647 ), AABB( 2.35286, -7.42451, 0.49013, 0.79341, 1.25649, 0.977506 ), AABB( 2.35286, -7.57707, 0.67236, 0.79341, 1.07886, 0.843522 ), AABB( 2.44982, -7.6887, 0.873681, 0.696452, 0.717319, 0.642201 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -2.78611, -3.20262, -1.6822, 2.36428, 2.57896, 2.66558 ), AABB( -3.20818, -5.94886, -1.61074, 2.68185, 5.32519, 2.5426 ), AABB( -3.20818, -6.29973, -1.61074, 1.68877, 3.55241, 2.33939 ), AABB( -3.20818, -6.9807, -1.61074, 1.45149, 3.57309, 2.87275 ), AABB( -3.14662, -7.30886, 0.0713804, 0.791984, 1.70818, 1.32346 ), AABB( -3.14662, -7.69707, 0.590028, 0.791984, 1.26365, 0.921581 ), AABB( -3.03291, -7.69707, 0.921131, 0.655083, 0.728381, 0.590477 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -1.5221, -12.9902, -1.59799, 4.09114, 8.39756, 2.36471 ), AABB( 0.85384, -14.5242, -1.59799, 1.81184, 6.40956, 2.03671 ), AABB( 1.44304, -14.563, -1.30646, 1.22264, 3.67856, 1.73432 ), AABB( 1.60905, -14.563, -1.22676, 1.05663, 3.09351, 2.14682 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -2.57095, -12.5727, -1.59892, 3.33296, 7.86844, 2.36564 ), AABB( -2.66088, -14.5256, -1.59892, 2.19148, 7.27529, 2.27147 ), AABB( -2.66088, -14.564, -1.29457, 1.21375, 3.50978, 1.7775 ), AABB( -2.66088, -14.564, -1.22783, 1.05889, 2.96218, 2.159 ) ],
 "vertex_count": 15926
@@ -650,16 +631,6 @@ bind/31/pose = Transform( -0.997344, -0.0137912, -0.0715112, -0.0710849, -0.0292
 bind/32/name = "mixamorig_RightToe_End"
 bind/32/bone = -1
 bind/32/pose = Transform( -0.997344, -0.0137922, -0.0715111, -0.0710849, -0.0292443, 0.997041, -0.0158425, 0.999477, 0.0281861, -2.5124, -1.43659, 14.4054 )
-
-[sub_resource type="StreamTexture" id=22]
-flags = 7
-load_path = "res://.import/sand_texture.jpg-b20b080fd31590306860fae31347cef3.s3tc.stex"
-
-[sub_resource type="SpatialMaterial" id=21]
-params_specular_mode = 4
-albedo_color = Color( 1, 0.803922, 0.290196, 1 )
-albedo_texture = SubResource( 22 )
-roughness = 0.82
 
 [sub_resource type="Animation" id=17]
 resource_name = "Caminata"
@@ -1077,7 +1048,7 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 0.01, 0, 1, 0, -4.37114e-08, 0, 0
 visible = false
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 20 )
+material/0 = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 1.5
@@ -1300,7 +1271,7 @@ bones/32/bound_children = [  ]
 [node name="Esfera geodésica002" type="MeshInstance" parent="Sand_Soldier/Sand soldier/Skeleton"]
 mesh = SubResource( 15 )
 skin = SubResource( 16 )
-material/0 = SubResource( 21 )
+material/0 = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sand_Soldier"]
 playback_default_blend_time = 0.2

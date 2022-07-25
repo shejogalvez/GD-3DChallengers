@@ -1,12 +1,14 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Levels/Misc/Torch.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Meshes/AztecMesh/aztec_mesh_library.tres" type="MeshLibrary" id=2]
 [ext_resource path="res://Assets/Meshes/AztecMesh/Skull/Skull_GD_Cylinder043.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://enemies/bat/bat.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/Misc/PotSmall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Meshes/AztecMesh/Candles/Candles_1_GD_Cube003.mesh" type="ArrayMesh" id=6]
 [ext_resource path="res://Assets/Meshes/AztecMesh/ColumnSquare/Column_Square_GD_Cylinder026.mesh" type="ArrayMesh" id=7]
 [ext_resource path="res://Assets/Meshes/AztecMesh/Candles2/Candles_2_GD_Cube.mesh" type="ArrayMesh" id=8]
+[ext_resource path="res://minion_maloglb.tscn" type="PackedScene" id=9]
 
 [sub_resource type="GDScript" id=9]
 script/source = "
@@ -83,6 +85,8 @@ points = PoolVector3Array( 0.307256, -0.0988552, -1.12423, -0.527721, -0.0626719
 script = SubResource( 9 )
 size = 75.0
 pot_small_scene = ExtResource( 5 )
+bat_enemy_scene = ExtResource( 4 )
+minion_enemy_scene = ExtResource( 9 )
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, -15, -22.5 )
