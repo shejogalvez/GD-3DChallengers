@@ -216,11 +216,11 @@ default_bus_layout="res://Assets/Audio/Buses/default_bus_layout.tres"
 
 [autoload]
 
-AudioStreamManager="*res://Addons/AudioStreamManager/AudioStreamManager.gd"
+AudioStreamManager="*res://Addons/AudioStreams/AudioStreamsManager.gd"
 InteractionsManager="*res://Addons/Interactions/InteractionsManager.gd"
 GameManager="*res://Game/GameManager.gd"
 PlayerManager="*res://Actors/PlayerManager.gd"
-SceneChanger="*res://Addons/SceneChanger/SceneChanger.gd"
+SceneChanger="*res://Addons/SceneChanges/SceneChangesManager.gd"
 
 [display]
 
