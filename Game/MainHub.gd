@@ -1,10 +1,11 @@
 extends Spatial
 
-export(String, FILE) var random_level_generator_scene_path = "res://Levels/LevelGeneration/LevelGenerator.tscn"
+const DYNAMIC_DOOR_OPENING_SPEED = 2.5
+
+export(String, FILE) var level_generator_scene_path
 export(Vector3) var closed_dynamic_door_pos = Vector3(0, 0, 0)
 export(Vector3) var open_dynamic_door_pos = Vector3(0, 18, 0)
 
-const DYNAMIC_DOOR_OPENING_SPEED = 2.5
 var dynamic_door_opening := false
 
 onready var door_single_dynamic := $DoorSingleDynamic
@@ -44,4 +45,4 @@ func _close_door_single_dynamic_body(_body : KinematicBody) -> void:
 # Teleports the player to a new random level scene.
 func _time_travel(_body : KinematicBody) -> void:
 	PlayerManager.reset_stats()
-	get_tree().change_scene(random_level_generator_scene_path)
+	SceneChangesManager.change_scene_chunked(level_generator_scene_path)

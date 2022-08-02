@@ -14,7 +14,7 @@ var random_rooms = [
 	[preload("res://Levels/Rooms/EnemyRooms/SmallEnemyRoomB.tscn"), 20] ,
 	[preload("res://Levels/Rooms/EnemyRooms/SmallEnemyRoomC.tscn"), 20] ,
 	[preload("res://Levels/Rooms/EnemyRooms/SmallEnemyRoomD.tscn"), 20] ,
-	[preload("res://Levels/Rooms/PuzzleRooms/SmallPuzzleRoom.tscn"), 3000] ,
+	[preload("res://Levels/Rooms/PuzzleRooms/SmallPuzzleRoom.tscn"), 30] ,
 	[preload("res://Levels/Rooms/PuzzleRooms/MidPuzzleRoom.tscn"), 30] ,
 	[preload("res://Levels/Rooms/EnemyRooms/MidEnemyRoom.tscn"), 30]
 ]

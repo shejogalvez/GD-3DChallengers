@@ -132,7 +132,7 @@ func get_day() -> int:
 # Advances to the next day.
 func advance_day() -> void:
 	set_day(game_data["game"]["day"] + 1)
-	get_tree().change_scene(main_hub_scene_path)
+	SceneChangesManager.change_scene_chunked(main_hub_scene_path)
 
 # Sets the money to an specific value.
 func set_money(money : int) -> void:

@@ -127,6 +127,7 @@ tracks/2/keys = {
 pause_mode = 2
 layer = 2
 script = ExtResource( 1 )
+main_menu_scene_path = "res://Game/MainMenu.tscn"
 
 [node name="MenuControl" type="Control" parent="."]
 anchor_right = 1.0

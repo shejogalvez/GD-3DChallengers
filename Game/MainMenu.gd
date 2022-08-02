@@ -1,6 +1,6 @@
 extends Control
 
-export(String, FILE) var main_hub_scene_path = "res://Game/MainHub.tscn"
+export(String, FILE) var main_hub_scene_path
 
 onready var fps_label := $FPSLabel
 onready var menu := $Menu
@@ -38,7 +38,7 @@ func _input(event):
 # Starts a new game.
 func _start_new_game() -> void:
 	GameManager.set_new_game()
-	get_tree().change_scene(main_hub_scene_path)
+	SceneChangesManager.change_scene_chunked(main_hub_scene_path)
 	AudioStreamManager.play_button_pressed()
 
 # Continues the game.

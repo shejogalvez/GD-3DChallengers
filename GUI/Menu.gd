@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-export(String, FILE) var main_menu_scene_path = "res://Game/MainMenu.tscn"
+export(String, FILE) var main_menu_scene_path
 
 var previous_mouse_mode
 
@@ -37,33 +37,35 @@ func _input(event):
 		
 # Pauses the game.
 func _pause_game() -> void:
-	AudioStreamManager.play_button_hover()
 	previous_mouse_mode = Input.get_mouse_mode()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	menu_control.show()
-	animation_player.play("menu_appear")
 	get_tree().paused = true
+	animation_player.play("menu_appear")
+	AudioStreamManager.play_button_hover()
 
 # Resumes the game.
 func _resume_game() -> void:
-	AudioStreamManager.play_button_pressed()
 	Input.set_mouse_mode(previous_mouse_mode) 
 	menu_control.hide()
-	animation_player.play("RESET")
 	get_tree().paused = false
+	animation_player.play("RESET")
+	AudioStreamManager.play_button_pressed()
 
 # Shows the settings.
 func _show_settings() -> void:
-	AudioStreamManager.play_button_pressed()
 	settings.show()
+	AudioStreamManager.play_button_pressed()
 
 # Shows the credits.
 func _show_credits() -> void:
-	AudioStreamManager.play_button_pressed()
 	credits.show()
+	AudioStreamManager.play_button_pressed()
 	
 # Changes the scene to the main menu.
 func _go_to_main_menu() -> void:
-	AudioStreamManager.play_button_pressed()
 	get_tree().paused = false
-	get_tree().change_scene(main_menu_scene_path)
+	SceneChangesManager.change_scene_chunked(main_menu_scene_path)
+	AudioStreamManager.play_button_pressed()
+	
+	
