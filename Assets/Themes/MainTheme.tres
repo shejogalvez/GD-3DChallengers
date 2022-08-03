@@ -1,7 +1,9 @@
-[gd_resource type="Theme" load_steps=16 format=2]
+[gd_resource type="Theme" load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Fonts/Blazma/Blazma.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/GUI/checkbox_unchecked.png" type="Texture" id=2]
 [ext_resource path="res://Assets/GUI/slider_icon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/GUI/checkbox_checked.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0.117647, 0.0705882, 0.196078, 1 )
@@ -150,8 +152,8 @@ Button/styles/focus = SubResource( 18 )
 Button/styles/hover = SubResource( 17 )
 Button/styles/normal = SubResource( 19 )
 Button/styles/pressed = SubResource( 20 )
-CheckBox/icons/checked = null
-CheckBox/icons/unchecked = null
+CheckBox/icons/checked = ExtResource( 4 )
+CheckBox/icons/unchecked = ExtResource( 2 )
 CheckBox/styles/disabled = SubResource( 25 )
 CheckBox/styles/focus = SubResource( 25 )
 CheckBox/styles/hover = SubResource( 25 )

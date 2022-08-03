@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/workstation_close_icon_p.png-412133ca4ea890821ceed04dd501e962.stex"
+path="res://.import/checkbox_checked.png-e7cb823eaf2908b7d393e72f606bd6d9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GUI/workstation_close_icon_p.png"
-dest_files=[ "res://.import/workstation_close_icon_p.png-412133ca4ea890821ceed04dd501e962.stex" ]
+source_file="res://Assets/GUI/checkbox_checked.png"
+dest_files=[ "res://.import/checkbox_checked.png-e7cb823eaf2908b7d393e72f606bd6d9.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -286,9 +286,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -8.5
-margin_bottom = 8.5
+margin_left = -20.0
+margin_top = -10.0
+margin_bottom = 10.0
 
 [node name="Sound" type="Tabs" parent="TabContainer"]
 visible = false

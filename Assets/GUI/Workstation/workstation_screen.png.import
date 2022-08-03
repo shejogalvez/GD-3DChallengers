@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/workstation_screen.png-c558ac46415f7ef66c47e1416c5d9399.s3tc.stex"
-path.etc2="res://.import/workstation_screen.png-c558ac46415f7ef66c47e1416c5d9399.etc2.stex"
+path.s3tc="res://.import/workstation_screen.png-b50ce1b69fec71d4a8308aa1f9d25329.s3tc.stex"
+path.etc2="res://.import/workstation_screen.png-b50ce1b69fec71d4a8308aa1f9d25329.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/GUI/workstation_screen.png"
-dest_files=[ "res://.import/workstation_screen.png-c558ac46415f7ef66c47e1416c5d9399.s3tc.stex", "res://.import/workstation_screen.png-c558ac46415f7ef66c47e1416c5d9399.etc2.stex" ]
+source_file="res://Assets/GUI/Workstation/workstation_screen.png"
+dest_files=[ "res://.import/workstation_screen.png-b50ce1b69fec71d4a8308aa1f9d25329.s3tc.stex", "res://.import/workstation_screen.png-b50ce1b69fec71d4a8308aa1f9d25329.etc2.stex" ]
 
 [params]
 

@@ -71,3 +71,4 @@ func set_new_scene(scene_resource : PackedScene) -> void:
 	get_tree().root.add_child(scene)
 	get_tree().current_scene = scene
 
+

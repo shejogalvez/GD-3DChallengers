@@ -145,7 +145,7 @@
 [ext_resource path="res://GUI/Workstation.tscn" type="PackedScene" id=143]
 [ext_resource path="res://Assets/Audio/Ambient/door-steam.wav" type="AudioStream" id=144]
 [ext_resource path="res://Levels/Misc/GUIDisplayer.tscn" type="PackedScene" id=145]
-[ext_resource path="res://Assets/GUI/workstation_screen.png" type="Texture" id=147]
+[ext_resource path="res://Assets/GUI/Workstation/workstation_screen.png" type="Texture" id=147]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.77, 0.595852, 0.3157, 1 )
