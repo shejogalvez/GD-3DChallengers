@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/game_logo_no_color.png-43ad23e1a1313ac16b91408826b3e108.stex"
+path="res://.import/pocket_watch.png-12417c90c9e6786f3896c8f6260a33ee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GUI/game_logo_no_color.png"
-dest_files=[ "res://.import/game_logo_no_color.png-43ad23e1a1313ac16b91408826b3e108.stex" ]
+source_file="res://Assets/GUI/pocket_watch.png"
+dest_files=[ "res://.import/pocket_watch.png-12417c90c9e6786f3896c8f6260a33ee.stex" ]
 
 [params]
 

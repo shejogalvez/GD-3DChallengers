@@ -1,7 +1,7 @@
 extends Node
 
 const loading_screen := preload("res://Addons/SceneChanges/LoadingScreen.tscn")
-const MAX_LOAD_TIME := 100 # in milliseconds
+const MAX_LOAD_TIME := 50 # in milliseconds
 
 var loader : ResourceInteractiveLoader
 var waiting_loading_screen := false
