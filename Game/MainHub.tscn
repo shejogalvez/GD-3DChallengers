@@ -321,42 +321,42 @@ __meta__ = {
 }
 
 [node name="WindowExtraMesh" type="MeshInstance" parent="WindowExtraMeshes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.08876, 15.0894, 0.822708 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.089, 15.27, 0.823 )
 mesh = SubResource( 4 )
 material/0 = null
 
 [node name="WindowExtraMesh2" type="MeshInstance" parent="WindowExtraMeshes"]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 15.3612, 16.7867, 0.822708 )
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 15.89, 16.787, 0.823 )
 mesh = SubResource( 4 )
 material/0 = null
 
 [node name="WindowExtraMesh3" type="MeshInstance" parent="WindowExtraMeshes"]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.0567, 16.7867, 0.822708 )
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.4, 16.787, 0.823 )
 mesh = SubResource( 4 )
 material/0 = null
 
 [node name="WindowExtraMesh4" type="MeshInstance" parent="WindowExtraMeshes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.08876, 26.1872, 0.822708 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.089, 26.46, 0.823 )
 mesh = SubResource( 4 )
 material/0 = null
 
 [node name="WindowExtraMesh5" type="MeshInstance" parent="WindowExtraMeshes"]
-transform = Transform( 0.678262, 0.73482, 0, -0.73482, 0.678262, 0, 0, 0, 1, 14.2864, 26.1872, 0.822708 )
+transform = Transform( 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 14.286, 26.38, 0.823 )
 mesh = SubResource( 4 )
 material/0 = null
 
 [node name="WindowExtraMesh6" type="MeshInstance" parent="WindowExtraMeshes"]
-transform = Transform( 0.735636, -0.677377, 0, 0.677377, 0.735636, 0, 0, 0, 1, -6.39137, 26.2627, 0.822708 )
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -6.391, 26.78, 0.823 )
 mesh = SubResource( 4 )
 material/0 = null
 
 [node name="WindowExtraMesh7" type="MeshInstance" parent="WindowExtraMeshes"]
-transform = Transform( 0.72089, -0.693049, 0, 0.693049, 0.72089, 0, 0, 0, 1, 13.6346, 14.6341, 0.822708 )
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 13.635, 14.67, 0.823 )
 mesh = SubResource( 4 )
 material/0 = null
 
 [node name="WindowExtraMesh8" type="MeshInstance" parent="WindowExtraMeshes"]
-transform = Transform( -0.693251, -0.720696, 0, 0.720696, -0.693251, 0, 0, 0, 1, -6.19409, 14.6341, 0.822708 )
+transform = Transform( -0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0, 0, 1, -6.194, 14.75, 0.823 )
 mesh = SubResource( 4 )
 material/0 = null
 
@@ -622,7 +622,7 @@ texture = ExtResource( 131 )
 [node name="EarthAnimatedSprite" type="AnimatedSprite" parent="Hall/EarthPoster/Viewport/SpaceBackground"]
 position = Vector2( 36, 54 )
 frames = SubResource( 23 )
-frame = 116
+frame = 56
 playing = true
 
 [node name="EarthPosterLight" type="OmniLight" parent="Hall/EarthPoster"]
