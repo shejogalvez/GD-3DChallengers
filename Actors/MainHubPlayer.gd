@@ -135,7 +135,13 @@ func _process_movement(delta : float) -> void:
 	vel.z = hvel.z
 	vel.y += delta * GRAVITY
 	# Move the player and change the velocity according to the collisions.
-	vel = move_and_slide(vel, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
+	vel = move_and_slide(vel, Vector3.UP, false, 4, deg2rad(MAX_SLOPE_ANGLE), false)
+	
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if collision.collider is RigidBody:
+			collision.collider.apply_central_impulse(-collision.normal)
+
 
 # Process player's animations.
 func _process_animations(_delta : float) -> void:
