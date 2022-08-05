@@ -297,7 +297,7 @@ __meta__ = {
 }
 
 [node name="DoorExtraMesh" type="MeshInstance" parent="DoorExtraMeshes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6538, 15.0098, 101.402 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.682, 15.01, 101.402 )
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
 material/0 = null
@@ -309,7 +309,7 @@ skeleton = NodePath("../..")
 material/0 = null
 
 [node name="DoorExtraMesh3" type="MeshInstance" parent="DoorExtraMeshes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.8435, 15.0098, 101.402 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.818, 15.01, 101.402 )
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
 material/0 = null
@@ -622,7 +622,7 @@ texture = ExtResource( 131 )
 [node name="EarthAnimatedSprite" type="AnimatedSprite" parent="Hall/EarthPoster/Viewport/SpaceBackground"]
 position = Vector2( 36, 54 )
 frames = SubResource( 23 )
-frame = 78
+frame = 83
 playing = true
 
 [node name="EarthPosterLight" type="OmniLight" parent="Hall/EarthPoster"]
