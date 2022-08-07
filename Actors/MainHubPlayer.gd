@@ -6,15 +6,19 @@ const MAX_VISION_ANGLE := 72
 # XZ plane movement
 const MAX_SPEED := 28
 const ACCEL := 4.5
-const DEACCEL := 20
+const DEACCEL := 45.0
 # Jumping and gravity
 const JUMP_SPEED := 40
 const GRAVITY := -80
 const MAX_SLOPE_ANGLE := 40
+var is_jumping := false
 # Sprinting
-const MAX_SPRINT_SPEED := 42
+const MAX_SPRINT_SPEED := 48
 const SPRINT_ACCEL := 16
 var is_sprinting := false
+# Crouching
+const MAX_CROUCH_SPEED := 12
+var is_crouching := false
 # Movement vectors
 var topdown_direction := Vector2()
 var direction := Vector3()
@@ -24,11 +28,14 @@ const ADS_LERP := 20
 var default_fov := 90.0
 var ads_fov := 60.0
 
-
 onready var hitbox := $Hitbox
 onready var head_pivot := $HeadPivot
 onready var head_camera := $HeadPivot/Camera
 onready var head_camera_animation_player := $HeadPivot/Camera/AnimationPlayer
+onready var crouch_position := $CrouchPosition
+
+# DEBUGGING
+var jump_init := Vector3()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,14 +54,26 @@ func _process_input(_delta : float) -> void:
 	_process_head_input(_delta)
 	
 	# Jumping
+	if is_jumping and is_on_floor():
+		is_jumping = false
+		var distance := (global_transform.origin - jump_init).length()
+		print("Distance jumped: " + str(distance))
 	if Input.is_action_pressed("movement_jump") and is_on_floor():
 		velocity.y = JUMP_SPEED
-			
+		jump_init = global_transform.origin	
+		is_jumping = true
+		
 	# Sprinting
-	if Input.is_action_pressed("movement_sprint") and direction:
+	if Input.is_action_pressed("movement_sprint") and is_on_floor() and direction:
 		is_sprinting = true
 	else:
 		is_sprinting = false
+		
+	# Crouching
+	if Input.is_action_pressed("movement_crouch") and is_on_floor():
+		pass
+	else:
+		pass
 	
 # Process input if current view is on head camera.
 func _process_head_input(_delta : float) -> void:
@@ -93,18 +112,21 @@ func _process_head_input(_delta : float) -> void:
 func _process_movement(delta : float) -> void:
 	
 	# Velocity in the horizontal plane XZ.
-	var horizontal_velocity = velocity
+	var horizontal_velocity := velocity
 	horizontal_velocity.y = 0
 	
 	# Horizontal velocity target 
-	var horizontal_velocity_target = direction
+	var horizontal_velocity_target := direction
 	if is_sprinting:
 		horizontal_velocity_target *= MAX_SPRINT_SPEED
-	else:
+	elif is_on_floor():
 		horizontal_velocity_target *= MAX_SPEED
+	else:
+		var target_speed = max(horizontal_velocity.length(), MAX_SPEED * 0.5)
+		horizontal_velocity_target *= target_speed
 	
 	# Acceleration magnitude
-	var acceleration
+	var acceleration : float
 	if direction.dot(horizontal_velocity) > 0:
 		# The two vectors points towards the same direction.
 		if is_sprinting:
@@ -117,18 +139,18 @@ func _process_movement(delta : float) -> void:
 		acceleration = DEACCEL # Big
 
 	# Velocity adjustment
-	horizontal_velocity = horizontal_velocity.linear_interpolate(horizontal_velocity_target, acceleration * delta)
+	var interpolation_weight := min(acceleration * delta, 1.0)
+	horizontal_velocity = horizontal_velocity.linear_interpolate(horizontal_velocity_target, interpolation_weight)
+	
 	velocity.x = horizontal_velocity.x
 	velocity.z = horizontal_velocity.z
 	
 	# Affected by gravity
-	if !is_on_floor():
-		velocity.y += delta * GRAVITY
+	velocity.y += delta * GRAVITY
 	
-	# If player is affected by any force, moves the player and change the 
-	# velocity according to the collisions.
-	if direction || velocity.y:
-		velocity = move_and_slide(velocity, Vector3.UP, false, 4, deg2rad(MAX_SLOPE_ANGLE), false)
+	# Moves the player and change the velocity according to the collisions.
+	var snap = Vector3.DOWN if not is_jumping else Vector3.ZERO
+	velocity = move_and_slide_with_snap(velocity, snap, Vector3.UP, true, 4, deg2rad(MAX_SLOPE_ANGLE), false)
 	
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
@@ -141,6 +163,7 @@ func _process_animations(_delta : float) -> void:
 	if is_sprinting:
 		head_camera_animation_player.play("head_bob")
 	else:
+		#$Model/Casual_Hoodie/AnimationPlayer.play("Idle")
 		head_camera_animation_player.stop()
 
 
