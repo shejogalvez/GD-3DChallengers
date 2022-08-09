@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Actors/MainHubPlayer.gd" type="Script" id=1]
 [ext_resource path="res://GUI/Menu.tscn" type="PackedScene" id=2]
@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 2.0
-height = 9.0
+height = 10.0
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -21,18 +21,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 0, -180, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("..:translation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 11.4, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -53,22 +41,6 @@ tracks/0/keys = {
 "values": [ Vector3( 0, -180, 0 ), Vector3( 0, -181, -0.1 ), Vector3( 0, -180, 0 ), Vector3( 0, -179, 0.1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "head_crouch"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/path = NodePath("..:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 11.4, 0 ), Vector3( 0, 7.4, 0 ) ]
-}
-
 [node name="MainHubPlayer" type="KinematicBody"]
 collision_layer = 65
 script = ExtResource( 1 )
@@ -77,11 +49,11 @@ __meta__ = {
 }
 
 [node name="Hitbox" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.70016, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 7, 0 )
 shape = SubResource( 1 )
 
 [node name="HeadPivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.4, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -95,10 +67,6 @@ far = 500.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HeadPivot/Camera"]
 anims/RESET = SubResource( 2 )
 anims/head_bob = SubResource( 3 )
-anims/head_crouch = SubResource( 4 )
-
-[node name="CrouchPosition" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.18754, 0 )
 
 [node name="Model" type="Spatial" parent="."]
 __meta__ = {
