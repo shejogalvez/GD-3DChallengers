@@ -114,20 +114,11 @@ func _process_head_input(_delta : float) -> void:
 	cam_front = cam_front.normalized()
 	
 	# The 2D vector representing the player topdown movement.
-	topdown_direction = Vector2()
-	if Input.is_action_pressed("movement_left"):
-		topdown_direction.x -= 1
-	if Input.is_action_pressed("movement_right"):
-		topdown_direction.x += 1
-	if Input.is_action_pressed("movement_forward"):
-		topdown_direction.y -= 1
-	if Input.is_action_pressed("movement_backward"):
-		topdown_direction.y += 1
-		
+	topdown_direction = Input.get_vector("movement_left", "movement_right", "movement_forward", "movement_backward")
+
 	# Change movement direction by camera plane and inputs.
 	direction += cam_front * topdown_direction.y
 	direction += cam_right * topdown_direction.x
-	direction = direction.normalized()
 	
 	# ADS
 	if Input.is_action_pressed("aim_down_sights"):
@@ -210,6 +201,8 @@ func _input(event):
 		# Limit the vertical rotation angle.
 		head_pivot.rotation.x = clamp(head_pivot.rotation.x, deg2rad(-MAX_VISION_ANGLE), deg2rad(MAX_VISION_ANGLE))
 
+	if event is InputEventJoypadMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		print("Axis: " + str(event.axis) + " Value: " + str(event.axis_value))
 
 # Returns true if is on ceiling. False otherwise.
 func _is_on_ceiling() -> bool:
