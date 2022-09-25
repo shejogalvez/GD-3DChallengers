@@ -1,14 +1,15 @@
 extends KinematicBody
 
-# Mouse sensitivity
-const MOUSE_SENSITIVITY := 0.05 
+# Camera movement
+const MOUSE_SENSITIVITY := 0.05
+const JOYPAD_SENSITIVITY := 3
 const MAX_VISION_ANGLE := 72
 # XZ plane movement
 const MAX_SPEED := 28
 const ACCEL := 4.5
 const DEACCEL := 45.0
 # Jumping and gravity
-const JUMP_SPEED := 40
+const JUMP_SPEED := 36
 const GRAVITY := -80
 const MAX_SLOPE_ANGLE := 40
 var is_jumping := false
@@ -39,10 +40,6 @@ onready var head_pivot := $HeadPivot
 onready var head_camera := $HeadPivot/Camera
 onready var head_camera_animation_player := $HeadPivot/Camera/AnimationPlayer
 
-# DEBUGGING
-var jump_init := Vector3()
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -64,11 +61,8 @@ func _process_input(_delta : float) -> void:
 	# Jumping
 	if is_jumping and is_on_floor():
 		is_jumping = false
-		var distance := (global_transform.origin - jump_init).length()
-		print("Distance jumped: " + str(distance))
 	if Input.is_action_pressed("movement_jump") and is_on_floor():
 		velocity.y = JUMP_SPEED
-		jump_init = global_transform.origin
 		is_jumping = true
 		
 	# Sprinting
@@ -126,6 +120,12 @@ func _process_head_input(_delta : float) -> void:
 	else:
 		head_camera.fov = lerp(head_camera.fov, default_fov, ADS_LERP * _delta)
 		
+	# Camera movement for joypad
+	if InputEventJoypadMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		# Analog logic to mouse movement
+		var joypad_position = Input.get_vector("look_left", "look_right", "look_up", "look_down")
+		self.rotate_y(deg2rad(joypad_position.x * JOYPAD_SENSITIVITY * -1))
+		head_pivot.rotate_x(deg2rad(joypad_position.y * JOYPAD_SENSITIVITY))
 		
 # Process player's movement.
 func _process_movement(delta : float) -> void:
@@ -171,7 +171,7 @@ func _process_movement(delta : float) -> void:
 	# Affected by gravity
 	velocity.y += delta * GRAVITY
 	
-	# Moves the player and change the velocity according to the collisions.
+	# Move the player and change the velocity according to the collisions.
 	var snap = Vector3.DOWN if not is_jumping else Vector3.ZERO
 	velocity = move_and_slide_with_snap(velocity, snap, Vector3.UP, true, 4, deg2rad(MAX_SLOPE_ANGLE), false)
 	
@@ -200,10 +200,8 @@ func _input(event):
 		head_pivot.rotate_x(deg2rad(cursor_position.y * MOUSE_SENSITIVITY))
 		# Limit the vertical rotation angle.
 		head_pivot.rotation.x = clamp(head_pivot.rotation.x, deg2rad(-MAX_VISION_ANGLE), deg2rad(MAX_VISION_ANGLE))
-
-	if event is InputEventJoypadMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		print("Axis: " + str(event.axis) + " Value: " + str(event.axis_value))
-
+		
+		
 # Returns true if is on ceiling. False otherwise.
 func _is_on_ceiling() -> bool:
 	return test_move(global_transform, Vector3(0, 2.0, 0))

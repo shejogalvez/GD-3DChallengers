@@ -28,7 +28,7 @@ func _ready():
 
 # Called on each input event.
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_home"):
 		if not menu_control.visible:
 			_pause_game()
 		else:
@@ -37,6 +37,7 @@ func _input(event):
 		
 # Pauses the game.
 func _pause_game() -> void:
+	resume_button.grab_focus()
 	previous_mouse_mode = Input.get_mouse_mode()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	menu_control.show()
@@ -67,5 +68,8 @@ func _go_to_main_menu() -> void:
 	get_tree().paused = false
 	SceneChangesManager.change_scene_chunked(main_menu_scene_path)
 	AudioStreamManager.play_button_pressed()
+	
+func _button_on_mouse_entered() -> void:
+	AudioStreamManager.play_button_hover()
 	
 	

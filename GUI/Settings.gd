@@ -130,7 +130,7 @@ func _change_resolution(resolution_index : int) -> void:
 	GameManager.save_data()
 	
 # Changes the resizable GUI scale.
-func _change_gui_size(_button : Object) -> void:
+func _change_gui_size(_button : Object) -> void:	
 	GameManager.game_data["settings"]["gui_size"] = gui_size_buttonlist.find(gui_size_buttongroup.get_pressed_button())
 	GameManager.update_gui_size()
 	GameManager.save_data()
